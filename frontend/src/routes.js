@@ -11,7 +11,7 @@ const routes = [
     label: "Home 🏠",
   },
   {
-    path: "board",
+    path: "/board",
     component: <BoardIndex />,
     label: "Board",
     routes: [
@@ -23,7 +23,7 @@ const routes = [
     ],
   },
   {
-    path: "workspaces",
+    path: "/workspaces",
     component: <Workspaces />,
     label: "Workspaces",
   },
