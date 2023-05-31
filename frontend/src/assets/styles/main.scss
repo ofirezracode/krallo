@@ -11,22 +11,28 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // Views
-@import "views/AboutUs";
-@import "views/HomePage";
-@import "views/CarIndex";
-@import "views/ReviewIndex";
-@import "views/UserDetails";
+// @import "views/AboutUs";
+// @import "views/HomePage";
+// @import "views/CarIndex";
+// @import "views/ReviewIndex";
+// @import "views/UserDetails";
+
+@import "views/_home.scss";
+@import "views/_workspaces.scss";
+@import "views/_board-index.scss";
 
 // Components
-@import "cmps/AppHeader";
-@import "cmps/AppFooter";
-@import "cmps/UserMsg";
-@import "cmps/ShoppingCart";
+// @import "cmps/AppHeader";
+// @import "cmps/AppFooter";
+// @import "cmps/UserMsg";
+// @import "cmps/ShoppingCart";
 
-
-
-
-
-
+@import "cmps/_app-header.scss";
+@import "cmps/_app-footer.scss";
+@import "cmps/_group-list.scss";
+@import "cmps/_group.scss";
+@import "cmps/_task-preview.scss";
+@import "cmps/_task-details.scss";
+@import "cmps/_board-menu.scss";
+@import "cmps/_workspace-menu.scss";
