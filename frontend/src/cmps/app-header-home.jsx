@@ -7,7 +7,7 @@ import { LoginSignup } from "./login-signup.jsx";
 import Img from "../assets/img/logo.svg"
 
 
-export function AppHeader() {
+export function AppHeaderHome() {
     // const user = useSelector(storeState => storeState.userModule.user)
 
     // async function onLogin(credentials) {
@@ -36,7 +36,7 @@ export function AppHeader() {
     // }
 
     return (
-        <header className="app-header flex between">
+        <header className="app-header-home flex between">
             <div className="logo flex column between">
                 {/* <span>ATTLASSIAN</span> */}
                 <Link to={'/'}><img className="logo-img" src={Img} alt="logo" /></Link>

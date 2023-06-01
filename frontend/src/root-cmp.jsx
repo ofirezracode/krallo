@@ -6,13 +6,13 @@ import routes from './routes'
 //remove line
 import { boardService } from './services/board.service.local'
 
-import { AppHeader } from './cmps/app-header'
+import { AppHeaderHome } from './cmps/app-header-home'
 import { AppFooter } from './cmps/app-footer'
 
 export function RootCmp() {
   return (
     <div>
-      <AppHeader />
+      <AppHeaderHome />
       <main>
         <Routes>{_getRoutes(routes)}</Routes>
       </main>
