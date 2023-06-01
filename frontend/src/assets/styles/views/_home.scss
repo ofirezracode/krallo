@@ -1,43 +1,44 @@
 .home {
-
+    overflow-x: hidden;
     background: url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
     background-blend-mode: normal, normal;
 
-    .wave {
-        display: block;
-        position: relative;
-        height: 40px;
-        width: 100%;
-        background: url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
-        background-blend-mode: normal, normal;
-        transform: scale(1, 1);
-    }
+    // .wave {
 
-    .wave:before {
-        content: "";
-        display: block;
-        position: absolute;
-        border-radius: 100%;
-        width: 100%;
-        height: 300px;
-        background-color: white;
-        right: 25%;
-        top: 20px
-    }
+    //     display: block;
+    //     position: relative;
+    //     height: 40px;
+    //     width: 100%;
+    //     background: url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    //     background-blend-mode: normal, normal;
+    //     transform: scale(1, 1);
+    // }
 
-    .wave:after {
-        content: "";
-        display: block;
-        position: absolute;
-        border-radius: 100%;
-        width: 100%;
-        height: 300px;
-        background: url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
-        background-blend-mode: normal, normal;
-        left: 25%;
-        top: -240px;
-        clip-path: ellipse(100% 15% at -15% 100%);
-    }
+    // .wave:before {
+    //     content: "";
+    //     display: block;
+    //     position: absolute;
+    //     border-radius: 100%;
+    //     width: 100%;
+    //     height: 300px;
+    //     background-color: white;
+    //     right: 25%;
+    //     top: 20px
+    // }
+
+    // .wave:after {
+    //     content: "";
+    //     display: block;
+    //     position: absolute;
+    //     border-radius: 100%;
+    //     width: 100%;
+    //     height: 300px;
+    //     background: url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    //     background-blend-mode: normal, normal;
+    //     left: 25%;
+    //     top: -240px;
+    //     clip-path: ellipse(100% 15% at -15% 100%);
+    // }
 
     .home-container {
         // max-width: 1140px;

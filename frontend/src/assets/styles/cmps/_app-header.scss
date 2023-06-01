@@ -1,10 +1,34 @@
-.app-header{
+.app-header {
 
-    .gray-logo{
+    padding: rem(8px);
+    align-items: center;
+
+    .gray-logo {
         font-size: rem(14px);
         width: rem(20px);
         font-weight: 700;
         font-family: charlie-bold;
+    }
+
+    .app-header-links {
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        gap: rem(15px);
+        .search-input{
+            height: rem(32px);
+            width: 100%;
+            padding: rem(0px) rem(12px) rem(0px) rem(30px);
+            border-radius: rem(5px);
+            font-size: rem(15px);
+            border: 2px solid lightgray;
+        }
+        .btn-search{
+            position: absolute;
+            left: rem(10px);
+            top: rem(12px);
+            background-color: transparent;
+        }
     }
 
     .btn {
@@ -12,20 +36,22 @@
         border: none;
         padding: 0;
         cursor: pointer;
-        
+
         &:hover {
-          background-color: rgba(0, 0, 0, 0.1); /* Transparent gray */
+            background-color: rgba(0, 0, 0, 0.1);
+            /* Transparent gray */
         }
+
         .btn-icon {
-          border-radius: 50%; /* Make the button round */
-          width: 30px; /* Adjust the width as needed */
-          height: 30px; /* Adjust the height as needed */
-          display: flex;
-          align-items: center;
-          justify-content: center;
+            border-radius: 50%;
+            width: rem(36px);
+            height: rem(32px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-      }
-      
-      
+    }
+
+
 
 }
