@@ -3,62 +3,64 @@
 $blue-button: #0c66e4;
 $blue-bgc: #e9f2ff;
 
-//board 
+//board
 //header
 $header-bgc: #594455;
 $btn-blue: #0065ff;
 $atlassian: #0747a6;
 //board-header
-$button-highlighted: #DFE1E6;
-$board-header-background-transparent: #684f63;
+$button-highlighted: #dfe1e6;
+// $board-header-background-transparent: #684f63;
+$board-header-background-transparent: #0000003d;
 $button-board-header: #dfe1e6;
 
 //card
 $card-preview: #f1f2f4;
 $card-title: #172b4d;
-$card-input-hover: #091e42;// opacity 14%
+// $card-input-hover: #091e42;// opacity 14%
+$card-input-hover: rgba(9, 30, 66, 0.14); // opacity 14%
 $logic-button-bgc: #579dff;
 $logic-button: #09326c;
 $small-titles: #44546f;
+$card-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
 
 //labels
-$red-subtlest: #FFEDEB;
-$red-subtler: #FFD2CC;
-$red-subtle: #F87462;
-$red-bolder: #CA3521;
-$orange-subtlest: #FFF4E5;
-$orange-subtler: #FFE2BD;
-$orange-subtle: #FAA53D;
-$orange-bolder: #B65C02;
-$yellow-subtlest: #FFF7D6;
-$yellow-subtler: #F8E6A0;
-$yellow-subtle: #E2B203;
-$yellow-bolder: #946F00;
-$green-subtlest: #DFFCF0;
-$green-subtler: #BAF3DB;
-$green-subtle: #4BCE97;
-$green-bolder: #1F845A;
-$teal-subtlest: #E3FAFC;
-$teal-subtler: #C1F0F5;
-$teal-subtle: #60C6D2;
-$teal-bolder: #1D7F8C;
-$blue-subtlest: #E9F2FF;
-$blue-subtler: #CCE0FF;
-$blue-subtle: #579DFF;
-$blue-bolder: #0C66E4;
-$purple-subtlest: #F3F0FF;
-$purple-subtler: #DFD8FD;
-$purple-subtle: #9F8FEF;
-$purple-bolder: #6E5DC6;
-$magenta-subtlest: #FFECF8;
-$magenta-subtler: #FDD0EC;
-$magenta-subtle: #E774BB;
-$magenta-bolder: #AE4787;
-$-gray-subtlest: #F1F2F4;
-$gray-subtler: #DCDFE4;
-$gray-subtle: #8590A2;
-$gray-bolder: #626F86;
-
+$red-subtlest: #ffedeb;
+$red-subtler: #ffd2cc;
+$red-subtle: #f87462;
+$red-bolder: #ca3521;
+$orange-subtlest: #fff4e5;
+$orange-subtler: #ffe2bd;
+$orange-subtle: #faa53d;
+$orange-bolder: #b65c02;
+$yellow-subtlest: #fff7d6;
+$yellow-subtler: #f8e6a0;
+$yellow-subtle: #e2b203;
+$yellow-bolder: #946f00;
+$green-subtlest: #dffcf0;
+$green-subtler: #baf3db;
+$green-subtle: #4bce97;
+$green-bolder: #1f845a;
+$teal-subtlest: #e3fafc;
+$teal-subtler: #c1f0f5;
+$teal-subtle: #60c6d2;
+$teal-bolder: #1d7f8c;
+$blue-subtlest: #e9f2ff;
+$blue-subtler: #cce0ff;
+$blue-subtle: #579dff;
+$blue-bolder: #0c66e4;
+$purple-subtlest: #f3f0ff;
+$purple-subtler: #dfd8fd;
+$purple-subtle: #9f8fef;
+$purple-bolder: #6e5dc6;
+$magenta-subtlest: #ffecf8;
+$magenta-subtler: #fdd0ec;
+$magenta-subtle: #e774bb;
+$magenta-bolder: #ae4787;
+$-gray-subtlest: #f1f2f4;
+$gray-subtler: #dcdfe4;
+$gray-subtle: #8590a2;
+$gray-bolder: #626f86;
 
 // Breakpoints
 $mobile-breakpoint: 460px;
