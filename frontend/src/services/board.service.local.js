@@ -22,32 +22,32 @@ const boards = [
     },
     labels: [
       {
-        id: 'l101',
+        _id: 'l101',
         title: 'Done!',
         color: '#4bce97',
       },
       {
-        id: 'l102',
+        _id: 'l102',
         title: 'In Progress',
         color: '#faa53d',
       },
       {
-        id: 'l103',
+        _id: 'l103',
         title: 'Error',
         color: '#f87462',
       },
       {
-        id: 'l104',
+        _id: 'l104',
         title: 'Design',
         color: '#9f8fef',
       },
       {
-        id: 'l105',
+        _id: 'l105',
         title: 'React',
         color: '#579dff',
       },
       {
-        id: 'l106',
+        _id: 'l106',
         title: 'Backend',
         color: '#60c6d2',
       },
@@ -71,17 +71,17 @@ const boards = [
     ],
     groups: [
       {
-        id: 'g101',
+        _id: 'g101',
         title: 'Backlog',
         // "archivedAt": 1589983468418,
         tasks: [
           {
-            id: 'c101',
+            _id: 'c101',
             title: 'Adding a task recording feature',
             description: 'Let the user to record a task instead of writing it. Also, it will be more productive and comfortable',
             comments: [
               {
-                id: 'ZdPnm',
+                _id: 'ZdPnm',
                 txt: 'also @Ofir please CR this',
                 createdAt: 1590999817436,
                 byMember: {
@@ -98,37 +98,37 @@ const boards = [
             },
           },
           {
-            id: 'c102',
+            _id: 'c102',
             title: 'Implement user authentication feature',
           },
           {
-            id: 'c103',
+            _id: 'c103',
             title: 'Optimize database queries',
           },
           {
-            id: 'c104',
+            _id: 'c104',
             title: 'Implement responsive design',
           },
         ],
         style: {},
       },
       {
-        id: 'g102',
+        _id: 'g102',
         title: 'Design',
         tasks: [
           {
-            id: 'c103',
+            _id: 'c103',
             title: 'Create wireframes for homepage',
             // "archivedAt": 1589983468418,
           },
           {
-            id: 'c104',
+            _id: 'c104',
             title: 'Create grid template for the board',
             description:
               'Develop the HTML and CSS structure for the homepage. Implement the layout according to the wireframes provided in the Design group.',
             comments: [
               {
-                id: 'ZdPnm',
+                _id: 'ZdPnm',
                 txt: 'also @etail please CR this',
                 createdAt: 1590999817436,
                 byMember: {
@@ -140,21 +140,21 @@ const boards = [
             ],
             checklists: [
               {
-                id: 'YEhmF',
+                _id: 'YEhmF',
                 title: 'New components needed for the feature',
                 todos: [
                   {
-                    id: '351Dz',
+                    _id: '351Dz',
                     title: 'Card',
                     isDone: false,
                   },
                   {
-                    id: '212jX',
+                    _id: '212jX',
                     title: 'Button',
                     isDone: true,
                   },
                   {
-                    id: '947jQ',
+                    _id: '947jQ',
                     title: 'Menu',
                     isDone: false,
                   },
@@ -177,24 +177,24 @@ const boards = [
         style: {},
       },
       {
-        id: 'g103',
+        _id: 'g103',
         title: 'To Do',
         tasks: [
           {
-            id: 'c105',
+            _id: 'c105',
             title: 'Create GIT repository',
             description:
               'Create a new Git repository for the project. Initialize the repository with the initial project structure and configure branch protection rules.',
             // "archivedAt": 1589983468418,
           },
           {
-            id: 'c106',
+            _id: 'c106',
             title: 'Create grid template for the board',
             description:
               'Develop the HTML and CSS structure for the homepage. Implement the layout according to the wireframes provided in the Design group.',
             comments: [
               {
-                id: 'ZdPnm',
+                _id: 'ZdPnm',
                 txt: "Please, don't forget to do git pull before push",
                 createdAt: 1590999817874,
                 byMember: {
@@ -204,7 +204,7 @@ const boards = [
                 },
               },
               {
-                id: 'Pghdys',
+                _id: 'Pghdys',
                 txt: "I know that, don't worry :)",
                 createdAt: 1590999817912,
                 byMember: {
@@ -214,7 +214,7 @@ const boards = [
                 },
               },
               {
-                id: 'ZdPnm',
+                _id: 'ZdPnm',
                 txt: 'No problem, good luck!',
                 createdAt: 1590999817031,
                 byMember: {
@@ -226,21 +226,21 @@ const boards = [
             ],
             checklists: [
               {
-                id: 'YEhmF',
+                _id: 'YEhmF',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
-                    id: '635gW',
+                    _id: '635gW',
                     title: 'Start by replay the lesson of Stav',
                     isDone: true,
                   },
                   {
-                    id: '989lA',
+                    _id: '989lA',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    id: '147Vj',
+                    _id: '147Vj',
                     title: 'Check the DevTools',
                     isDone: false,
                   },
@@ -265,7 +265,7 @@ const boards = [
     ],
     activities: [
       {
-        id: 'a101',
+        _id: 'a101',
         txt: 'Changed Color',
         createdAt: 154514,
         byMember: {
@@ -274,7 +274,7 @@ const boards = [
           imgUrl: '../assets/img/members/etai-pic.jpg',
         },
         task: {
-          id: 'c101',
+          _id: 'c101',
           title: 'Replace Logo',
         },
       },
@@ -298,6 +298,7 @@ export const boardService = {
   save,
   remove,
   saveTask,
+  getEmptyBoard,
 }
 window.bs = boardService
 
@@ -351,12 +352,14 @@ async function _createBoards() {
   await save(boards[2])
 }
 
-// function getEmptyBoard() {
-//     return {
-//         vendor: 'Susita-' + (Date.now() % 1000),
-//         price: utilService.getRandomIntInclusive(1000, 9000),
-//     }
-// }
+function getEmptyBoard() {
+  return {
+    _id: '0000',
+    title: 'empty board',
+    isStarred: false,
+    groups: [],
+  }
+}
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))

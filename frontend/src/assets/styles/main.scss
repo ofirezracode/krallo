@@ -1,15 +1,15 @@
 // Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
 
 // Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/links";
-@import "basics/forms";
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/base';
+@import 'basics/links';
+@import 'basics/forms';
 
 // Views
 // @import "views/AboutUs";
@@ -18,9 +18,9 @@
 // @import "views/ReviewIndex";
 // @import "views/UserDetails";
 
-@import "views/_home.scss";
-@import "views/_workspaces.scss";
-@import "views/_board-index.scss";
+@import 'views/_home.scss';
+@import 'views/_workspaces.scss';
+@import 'views/_board-index.scss';
 
 // Components
 // @import "cmps/AppHeader";
@@ -28,12 +28,13 @@
 // @import "cmps/UserMsg";
 // @import "cmps/ShoppingCart";
 
-@import "cmps/_app-header.scss";
-@import "cmps/_app-footer.scss";
-@import "cmps/_group-list.scss";
-@import "cmps/_group-preview.scss";
-@import "cmps/_task-list.scss";
-@import "cmps/_task-preview.scss";
-@import "cmps/_task-details.scss";
-@import "cmps/_board-menu.scss";
-@import "cmps/_workspace-menu.scss";
+@import 'cmps/_app-header.scss';
+@import 'cmps/_app-footer.scss';
+@import 'cmps/_group-list.scss';
+@import 'cmps/_group-preview.scss';
+@import 'cmps/_task-list.scss';
+@import 'cmps/_task-preview.scss';
+@import 'cmps/_task-details.scss';
+@import 'cmps/_board-menu.scss';
+@import 'cmps/_workspace-menu.scss';
+@import 'cmps/_board-header.scss';

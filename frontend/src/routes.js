@@ -11,12 +11,12 @@ const routes = [
     label: 'Home 🏠',
   },
   {
-    path: '/board',
+    path: '/board/:boardId',
     component: <BoardIndex />,
     label: 'Board',
     routes: [
       {
-        path: '/board/:taskId',
+        path: '/board/:boardId/:taskId',
         component: <TaskDetails />,
         label: 'Task Details',
       },

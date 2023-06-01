@@ -1,24 +1,20 @@
 button {
-    border:0;
-    color:whitesmoke;
-    padding: 5px 10px;
-    margin: 5px;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
 }
 
 form > * {
-    display: block;
-    width: 200px;
-    margin: 10px 0px;
+  display: block;
+  width: 200px;
+  margin: 10px 0px;
 }
 
 .btn-link {
-    border:0;
-    background-color: transparent;
-    text-decoration: underline;
-    transition: .5s;
+  border: 0;
+  background-color: transparent;
+  text-decoration: underline;
+  transition: 0.5s;
 }
 .btn-link:hover {
-
-    transform: scale(1.1);
+  transform: scale(1.1);
 }

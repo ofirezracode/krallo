@@ -1,2 +1,60 @@
 .group-preview {
+  width: rem(272px);
+  padding: rem(7px) rem(8px) 0;
+  margin-inline: 6px;
+  border-radius: 12px;
+  background-color: $card-preview;
+  box-shadow: $card-shadow;
+  header {
+    h3 {
+      padding: rem(4px) rem(8px) rem(4px) rem(12px);
+      font-size: inherit;
+      font-weight: 600;
+    }
+
+    button {
+      border-radius: 3px;
+      &:hover {
+        background-color: $card-input-hover;
+      }
+      // icon {
+      //   font-size: 16px;
+      //   height: 20px;
+      //   line-height: 20px;
+      //   width: 20px;
+      // }
+    }
+  }
+
+  .add-card-section {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    color: $small-titles;
+
+    .add-card-icon {
+      padding: 6px;
+      margin: 4px 0;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $card-input-hover;
+      }
+    }
+
+    .add-card {
+      border-radius: 8px;
+      margin: 8px 0 8px 8px;
+      padding: 4px 8px 4px 6px;
+      cursor: pointer;
+
+      label:first-child {
+        margin-inline-end: 6px;
+      }
+      &:hover {
+        background-color: $card-input-hover;
+      }
+    }
+  }
 }

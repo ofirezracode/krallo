@@ -1,11 +1,16 @@
-import React from "react";
+import React from 'react'
+import GroupPreview from './group-preview'
 
-function GroupList() {
+function GroupList({ groups }) {
   return (
-    <ul className="group-list">
-      <div></div>
+    <ul className="group-list clean-list flex">
+      {groups.map((group) => (
+        <li key={group._id}>
+          <GroupPreview group={group}></GroupPreview>
+        </li>
+      ))}
     </ul>
-  );
+  )
 }
 
-export default GroupList;
+export default GroupList
