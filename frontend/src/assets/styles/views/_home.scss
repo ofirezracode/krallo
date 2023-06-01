@@ -1,8 +1,13 @@
 .home {
 
-    // background: url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg) 
-    // center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
-    // background-blend-mode: normal, normal;
+    background: url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg) 
+    center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+
+    // .home-container{
+    //     margin-inline: rem(50px);
+    // }
+
     img {
         max-width: 100%;
         height: auto;
@@ -11,19 +16,8 @@
     .home-txt {
         width: 50%;
         flex: 0 0 auto;
+        color: #ffff;
     }
-
-    form {
-        gap: rem(16px);
-
-        .signup-input {
-            height: rem(49.99px);
-            margin: 0;
-            width: rem(300px);
-            padding: rem(11.2px) rem(16px) rem(12.8px);
-            border-radius: rem(4.8px);
-            border: rem(1px) solid rgb(223, 225, 230);
-        }
 
         .signup-btn {
             margin: 0;
@@ -36,7 +30,6 @@
             color: #fff;
             border-radius: rem(4.8px);
         }
-    }
 
 
 }
