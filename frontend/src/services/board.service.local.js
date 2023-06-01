@@ -17,8 +17,8 @@ const boards = [
       //     type: 'img'
       //     imgUrl: ''
       // },
-      type: 'bgColor',
-      bgColor: '#DFD8FD',
+      type: 'img',
+      imgUrl: 'https://images.unsplash.com/photo-1684852439598-59db50985462?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80',
     },
     labels: [
       {
@@ -287,17 +287,17 @@ const boards = [
     isStarred: true,
     groups: [],
     style: {
-      type: 'bgColor',
-      bgColor: '#faa53d',
-    },
+      type: 'img',
+      imgUrl: 'https://images.unsplash.com/photo-1626440409578-8bc4ab03b772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+    }
   },
   {
     title: 'Project X',
     isStarred: true,
     groups: [],
     style: {
-      type: 'bgColor',
-      bgColor: '#60c6d2'
+      type: 'img',
+      imgUrl: 'https://images.unsplash.com/photo-1682685797769-481b48222adf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
     }
   },
   {
@@ -305,8 +305,8 @@ const boards = [
     isStarred: false,
     groups: [],
     style: {
-      type: 'bgColor',
-      bgColor: '#4bce97'
+      type: 'img',
+      imgUrl: 'https://images.unsplash.com/photo-1685306893255-b2b6f6272d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1298&q=80'
     }
   },
 ]

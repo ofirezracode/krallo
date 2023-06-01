@@ -17,7 +17,7 @@ function Workspaces() {
       <section className="all-boards">
         <section className="starred-boards">
           <div className="title flex center">
-            <BsPerson className="title-icon" />
+            <BsPerson className="title-icon" strokeWidth={'.5px'} />
             <h1>Starred boards</h1>
           </div>
           <div className="boards-container">
@@ -30,6 +30,9 @@ function Workspaces() {
                   if (board.style) {
                     if (board.style.type === 'bgColor') {
                       boardStyle = { backgroundColor: board.style.bgColor }
+                    } else if (board.style.type === 'img') {
+                      boardStyle = { backgroundImage: `url(${board.style.imgUrl})` }
+                      console.log('boardStyle', boardStyle)
                     }
                   }
                   return board.isStarred && <li key={board._id} style={boardStyle}>
@@ -45,7 +48,7 @@ function Workspaces() {
               </ul>
             </section>
             <div className="title flex center">
-              <BsPerson className="title-icon" />
+              <BsPerson className="title-icon" strokeWidth={'.5px'} />
               <h1>Your boards</h1>
             </div>
             <section className="board-list">
@@ -57,13 +60,16 @@ function Workspaces() {
                   if (board.style) {
                     if (board.style.type === 'bgColor') {
                       boardStyle = { backgroundColor: board.style.bgColor }
+                    } else if (board.style.type === 'img') {
+                      boardStyle = { backgroundImage: `url(${board.style.imgUrl})` }
+                      console.log('boardStyle', boardStyle)
                     }
                   }
                   return <li key={board._id} style={boardStyle}>
                     <article>
                       <Link to={`/board/${board._id}`}>
                         <h4>{board.title}</h4>
-                        {board.isStarred ? <BsStarFill className="star-fill" /> : <BsStar className="star-empty" />}
+                        {board.isStarred ? <BsStarFill className="star-fill" /> : <BsStar className="star-empty" strokeWidth={'1px'} />}
                       </Link>
                     </article>
                   </li>
