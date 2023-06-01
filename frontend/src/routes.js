@@ -1,32 +1,32 @@
-import Home from "./pages/home.jsx";
-import BoardIndex from "./pages/board-index.jsx";
-import Workspaces from "./pages/workspaces.jsx";
-import TaskDetails from "./cmps/task-details.jsx";
+import Home from './pages/home.jsx'
+import BoardIndex from './pages/board-index.jsx'
+import Workspaces from './pages/workspaces.jsx'
+import TaskDetails from './cmps/task-details.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
   {
-    path: "/",
+    path: '/',
     component: <Home />,
-    label: "Home 🏠",
+    label: 'Home 🏠',
   },
   {
-    path: "/board",
+    path: '/board',
     component: <BoardIndex />,
-    label: "Board",
+    label: 'Board',
     routes: [
       {
-        path: "/:taskId",
+        path: '/board/:taskId',
         component: <TaskDetails />,
-        label: "Task Details",
+        label: 'Task Details',
       },
     ],
   },
   {
-    path: "/workspaces",
+    path: '/workspaces',
     component: <Workspaces />,
-    label: "Workspaces",
+    label: 'Workspaces',
   },
-];
+]
 
-export default routes;
+export default routes
