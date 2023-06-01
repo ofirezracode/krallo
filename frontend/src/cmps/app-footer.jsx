@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
-import { removeFromCart, checkout } from "../store/car.actions";
-import { UserMsg } from "./user-msg.jsx";
+import { UserMsg } from './user-msg.jsx'
 
 export function AppFooter() {
   // const [isCartShown, setIsCartShown] = useState(false)
@@ -54,5 +53,5 @@ export function AppFooter() {
             </section>}
             <UserMsg /> */}
     </footer>
-  );
+  )
 }
