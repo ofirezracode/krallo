@@ -22,10 +22,12 @@
                     line-height: rem(24px);
                 }
 
-                svg {
-                    width: rem(17px);
+                .title-icon {
+                    width: rem(24px);
+                    height: rem(24px);
                     margin: rem(8px);
                     margin-inline-start: 0;
+                    color: #42526e;
                 }
 
             }
@@ -35,12 +37,13 @@
                     .starred-board-list {
                         gap: rem(14.25px);
                         padding-inline-start: rem(14px);
+                        margin-block-end: rem(52px);
 
                         li {
                             border-radius: rem(3px);
-                            width: rem(154px);
+                            width: rem(190px);
                             height: rem(96px);
-                            background-color: rgb(255, 172, 77);
+                            background-color: rgb(222, 222, 222);
                             cursor: pointer;
                             position: relative;
                             // flex-grow: 1;
@@ -69,6 +72,15 @@
                                         bottom: rem(10px);
                                         right: rem(15px);
                                         color: #f2d600;
+                                        width: rem(14px);
+                                        height: rem(14px);
+                                    }
+
+                                    .star-empty {
+                                        position: absolute;
+                                        bottom: rem(10px);
+                                        right: rem(15px);
+                                        color: #fff;
                                         width: rem(14px);
                                         height: rem(14px);
                                     }
