@@ -285,12 +285,18 @@ const boards = [
   {
     title: 'Another project',
     isStarred: true,
-    groups: []
+    groups: [],
+    style: {
+      bgColor: '#faa53d'
+    }
   },
   {
     title: 'Another another project',
     isStarred: true,
-    groups: []
+    groups: [],
+    style: {
+      bgColor: '#60c6d2'
+    }
   },
 ]
 
