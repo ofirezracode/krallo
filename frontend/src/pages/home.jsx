@@ -13,18 +13,18 @@ export default function Home() {
   //   }
 
   return (
-    <section className="home flex">
+    <section className="home">
+      <section className="home-container flex">
             <div className="home-txt">
               <h1> Krallo brings all your tasks, teammate, and tools together</h1>
               <p>Keep everything in the same place-even if your team isn't.</p>
-              <form className="flex wrap">
-              <input className="signup-input" type="email" id="email" name="email" placeholder="Email" />
-              <button className="signup-btn" >Sign up - it's free!</button>
-              </form>
+
+              <button className="signup-btn" >Try demo - it's free!</button>
             </div>
       <div>
       <img src={HomeImg} alt="home-image" />
       </div>
+      </section>
     </section>
   );
 }
