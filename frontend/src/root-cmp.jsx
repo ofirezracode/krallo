@@ -3,6 +3,9 @@ import { Routes, Route } from 'react-router'
 
 import routes from './routes'
 
+//remove line
+import { boardService } from './services/board.service.local'
+
 import { AppHeader } from './cmps/app-header'
 import { AppFooter } from './cmps/app-footer'
 
