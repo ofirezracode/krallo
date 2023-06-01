@@ -1,2 +1,27 @@
 .task-preview {
+  min-height: 20px;
+
+  box-shadow: $card-shadow;
+
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    background-color: $card-preview;
+  }
+
+  .preview-cover {
+    height: 32px;
+  }
+
+  .preview-container {
+    padding: 8px 8px 4px 12px;
+    background-color: #fff;
+  }
+
+  h4 {
+    font-weight: 400;
+    margin-block-end: 4px;
+  }
 }

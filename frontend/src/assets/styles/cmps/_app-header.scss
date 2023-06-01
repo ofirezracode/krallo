@@ -1,0 +1,31 @@
+.app-header{
+
+    .gray-logo{
+        font-size: rem(14px);
+        width: rem(20px);
+        font-weight: 700;
+        font-family: charlie-bold;
+    }
+
+    .btn {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1); /* Transparent gray */
+        }
+        .btn-icon {
+          border-radius: 50%; /* Make the button round */
+          width: 30px; /* Adjust the width as needed */
+          height: 30px; /* Adjust the height as needed */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      
+      
+
+}

@@ -40,13 +40,12 @@
     }
 
     .home-container {
-        max-width: 1140px;
-        margin: auto;
+        // max-width: 1140px;
+        margin-inline: rem(129px);
     }
 
-    .home-img {
-        margin-block-start: 8rem;
-
+    .home-img{
+        padding: rem(128px) rem(16px)rem(0px);
         img {
             max-width: 100%;
             height: auto;

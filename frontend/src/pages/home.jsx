@@ -19,11 +19,11 @@ export default function Home() {
           <h1 className="txt-opening"> Krallo brings all your tasks, teammate, and tools together</h1>
           <p className="txt-opening-p">Keep everything in the same place-even if your team isn't.</p>
 
-          <button className="signup-btn" >Try demo - it's free!</button>
-        </div>
-        <div className="home-img">
-          <img src={HomeImg} alt="home-image" />
-        </div>
+              <button className="signup-btn" >Try demo - it's free!</button>
+            </div>
+      <div className="home-img">
+      <img src={HomeImg} alt="home-image" />
+      </div>
       </section>
       <div className="wave"></div>
     </section>

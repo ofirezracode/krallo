@@ -1,0 +1,15 @@
+.user-img {
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 0;
+    width: rem(32px); /* Adjust the desired width */
+    height: rem(32px); /* Adjust the desired height */
+  }
+  
+  .user-img img {
+    width: 100%;
+    height: auto;
+  }
