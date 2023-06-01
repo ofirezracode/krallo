@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 // import { carService } from '../services/car.service.js'
 
-export function BoardIndex() {
+export default function BoardIndex() {
   // const cars = useSelector(storeState => storeState.carModule.cars)
 
   // useEffect(() => {

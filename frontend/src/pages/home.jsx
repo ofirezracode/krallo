@@ -2,7 +2,7 @@ import React from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { CHANGE_COUNT } from "../store/user.reducer";
 
-export function Home() {
+export default function Home() {
   //   const dispatch = useDispatch();
   //   const count = useSelector((storeState) => storeState.userModule.count);
 
