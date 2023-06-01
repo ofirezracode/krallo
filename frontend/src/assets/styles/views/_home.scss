@@ -1,19 +1,41 @@
 .home {
+
     // background: url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg) 
     // center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
     // background-blend-mode: normal, normal;
-
-    .signup-input{
-        padding: rem(11.2px) rem(16px) rem(12.8px);
+    img {
+        max-width: 100%;
+        height: auto;
     }
 
-    .signup-btn{
-        background-color: $btn-blue;
-        padding: rem(11.2px) rem(16px) rem(12.8px);
-        border: none;
-        // border-radius: ;
-        font-family: sans-serif;
-        color: #fff;
+    .home-txt {
+        width: 50%;
+        flex: 0 0 auto;
+    }
+
+    form {
+        gap: rem(16px);
+
+        .signup-input {
+            height: rem(49.99px);
+            margin: 0;
+            width: rem(300px);
+            padding: rem(11.2px) rem(16px) rem(12.8px);
+            border-radius: rem(4.8px);
+            border: rem(1px) solid rgb(223, 225, 230);
+        }
+
+        .signup-btn {
+            margin: 0;
+            height: rem(49.99px);
+            width: rem(164.14px);
+            background-color: $btn-blue;
+            padding: rem(11.2px) rem(16px) rem(12.8px);
+            border: rem(1px) solid $btn-blue;
+            font-family: sans-serif;
+            color: #fff;
+            border-radius: rem(4.8px);
+        }
     }
 
 
