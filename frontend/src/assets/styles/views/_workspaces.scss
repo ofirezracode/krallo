@@ -1,4 +1,7 @@
 .workspaces {
+    max-width: 1038px;
+    padding-block-start: 47px 0 40px;
+    margin: auto;
 
     .all-boards {
 
@@ -37,7 +40,7 @@
                             border-radius: rem(3px);
                             width: rem(154px);
                             height: rem(96px);
-                            background-color: rgb(255, 93, 34);
+                            background-color: rgb(255, 172, 77);
                             cursor: pointer;
                             position: relative;
                             // flex-grow: 1;
@@ -61,10 +64,13 @@
                                         padding: rem(8px);
                                     }
 
-                                    svg {
+                                    .star-fill {
                                         position: absolute;
                                         bottom: rem(10px);
                                         right: rem(15px);
+                                        color: #f2d600;
+                                        width: rem(14px);
+                                        height: rem(14px);
                                     }
                                 }
                             }
