@@ -1,5 +1,6 @@
 import { storageService } from './async-storage.service.js'
 import { userService } from './user.service.js'
+import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'boards'
 
@@ -299,10 +300,11 @@ export const boardService = {
   remove,
   saveTask,
   getEmptyBoard,
+  createTask,
 }
 window.bs = boardService
 
-_createBoards()
+// _createBoards()
 
 async function query(filterBy = {}) {
   var boards = await storageService.query(STORAGE_KEY)
@@ -337,13 +339,27 @@ async function save(board) {
 
 async function saveTask(boardId, groupId, updatedTask, activity) {
   const board = await getById(boardId)
-  const group = board.groups.find((group) => group.id === groupId)
-  const task = group.tasks.find((task) => task.id === updatedTask.id)
-  task = { ...updatedTask }
+  const group = board.groups.find((group) => group._id === groupId)
+  console.log('group', group)
+  let task = group.tasks.find((task) => task._id === updatedTask._id)
+  if (task && Object.keys(task).length > 0) {
+    task = { ...updatedTask }
+  } else {
+    group.tasks.push(updatedTask)
+  }
 
   board.activities.unshift(activity)
   save(board)
   return board
+}
+
+function createTask(taskText) {
+  const task = {
+    _id: utilService.makeId(),
+    title: taskText,
+  }
+
+  return task
 }
 
 async function _createBoards() {
