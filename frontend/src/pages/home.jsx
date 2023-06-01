@@ -16,8 +16,8 @@ export default function Home() {
     <section className="home">
       <section className="home-container flex">
             <div className="home-txt">
-              <h1> Krallo brings all your tasks, teammate, and tools together</h1>
-              <p>Keep everything in the same place-even if your team isn't.</p>
+              <h1 className="txt-opening"> Krallo brings all your tasks, teammate, and tools together</h1>
+              <p className="txt-opening-p">Keep everything in the same place-even if your team isn't.</p>
 
               <button className="signup-btn" >Try demo - it's free!</button>
             </div>
@@ -25,6 +25,7 @@ export default function Home() {
       <img src={HomeImg} alt="home-image" />
       </div>
       </section>
+      <div className="wave"></div>
     </section>
   );
 }
