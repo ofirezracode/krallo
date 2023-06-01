@@ -21,7 +21,7 @@ export default function Home() {
 
               <button className="signup-btn" >Try demo - it's free!</button>
             </div>
-      <div>
+      <div className="home-img">
       <img src={HomeImg} alt="home-image" />
       </div>
       </section>
