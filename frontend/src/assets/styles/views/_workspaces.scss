@@ -1,11 +1,16 @@
 .workspaces {
+    max-width: 1038px;
+    padding-block-start: 47px 0 40px;
+    margin: auto;
 
     .all-boards {
 
         .starred-boards {
             gap: rem(10px);
+            padding: 0;
 
             .title {
+                padding-inline-start: 14px;
                 color: rgb(23, 43, 77);
                 align-items: center;
                 // gap: rem();
@@ -17,48 +22,68 @@
                     line-height: rem(24px);
                 }
 
-                svg {
-                    width: rem(17px);
+                .title-icon {
+                    width: rem(24px);
+                    height: rem(24px);
                     margin: rem(8px);
                     margin-inline-start: 0;
+                    color: #42526e;
                 }
 
-                padding-inline-start: rem(10px);
             }
 
             .boards-container {
                 .board-list {
                     .starred-board-list {
                         gap: rem(14.25px);
+                        padding-inline-start: rem(14px);
+                        margin-block-end: rem(52px);
 
                         li {
                             border-radius: rem(3px);
-                            width: rem(154px);
+                            width: rem(190px);
                             height: rem(96px);
-                            background-color: rgb(255, 93, 34);
+                            background-color: rgb(222, 222, 222);
                             cursor: pointer;
                             position: relative;
-                            flex-grow: 1;
+                            // flex-grow: 1;
 
                             &:hover {
                                 filter: brightness(90%);
                             }
 
-                            a {
-                                height: rem(80px);
-                                text-decoration: none;
+                            article {
+                                height: 100%;
 
-                                h4 {
-                                    color: #fff;
-                                    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                                    line-height: 20px;
-                                    padding: rem(8px);
-                                }
+                                a {
+                                    height: 100%;
+                                    text-decoration: none;
+                                    display: block;
 
-                                svg {
-                                    position: absolute;
-                                    bottom: rem(10px);
-                                    right: rem(15px);
+                                    h4 {
+                                        color: #fff;
+                                        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                                        line-height: 20px;
+                                        padding: rem(8px);
+                                    }
+
+                                    .star-fill {
+                                        position: absolute;
+                                        bottom: rem(10px);
+                                        right: rem(15px);
+                                        color: #f2d600;
+                                        width: rem(14px);
+                                        height: rem(14px);
+                                    }
+
+                                    .star-empty {
+                                        position: absolute;
+                                        bottom: rem(10px);
+                                        right: rem(15px);
+                                        color: #fff;
+                                        width: rem(14px);
+                                        height: rem(14px);
+                                    }
                                 }
                             }
                         }

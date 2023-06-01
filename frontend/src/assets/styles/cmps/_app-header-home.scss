@@ -1,0 +1,45 @@
+.app-header-home {
+    line-height: rem(30px);
+
+    .logo {
+
+        .logo-img {
+            padding: rem(16px);
+        }
+
+        span {
+            font-size: rem(12px);
+            color: $atlassian;
+        }
+    }
+
+    .nav{
+        flex: 1;
+        gap: rem(4px);
+        a{
+            color: $card-title;
+            padding: rem(20px) rem(16px) rem(16px);
+        }
+    }
+
+    .header-btns{
+        .try-btn {
+            margin: 0;
+            background-color: $btn-blue;
+            color: #fff;
+            font-size: rem(20px);
+            padding: rem(8px) rem(24px);
+            font-weight: 550;
+        }
+    
+        .login-btn {
+            margin: 0;
+            color: $card-title;
+            background-color: #fff;
+            font-size: rem(19.2px);
+            padding: rem(8px) rem(24px);
+        }
+
+    }
+
+}

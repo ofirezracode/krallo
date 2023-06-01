@@ -286,10 +286,29 @@ const boards = [
   {
     title: 'Another project',
     isStarred: true,
+    groups: [],
+    style: {
+      type: 'bgColor',
+      bgColor: '#faa53d',
+    },
   },
   {
-    title: 'Another another project',
+    title: 'Project X',
     isStarred: true,
+    groups: [],
+    style: {
+      type: 'bgColor',
+      bgColor: '#60c6d2'
+    }
+  },
+  {
+    title: 'Research',
+    isStarred: false,
+    groups: [],
+    style: {
+      type: 'bgColor',
+      bgColor: '#4bce97'
+    }
   },
 ]
 
@@ -366,6 +385,7 @@ async function _createBoards() {
   await save(boards[0])
   await save(boards[1])
   await save(boards[2])
+  await save(boards[3])
 }
 
 function getEmptyBoard() {

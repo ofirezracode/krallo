@@ -5,14 +5,15 @@ import routes from './routes'
 
 //remove line
 import { boardService } from './services/board.service.local'
-
-import { AppHeader } from './cmps/app-header'
+import { AppHeaderHome } from './cmps/app-header-home'
 import { AppFooter } from './cmps/app-footer'
+import AppHeader from './cmps/app-header'
 
 export function RootCmp() {
   return (
     <div>
-      <AppHeader />
+      {/* <AppHeaderHome /> */}
+      <AppHeader/>
       <main>
         <Routes>{_getRoutes(routes)}</Routes>
       </main>
