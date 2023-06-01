@@ -1,16 +1,28 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+
+import GroupList from '../cmps/group-list'
+import { loadBoards } from '../store/board.actions'
+import { boardService } from '../services/board.service.local'
+import BoardHeader from '../cmps/board-header'
 // import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/car.actions.js'
 
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 // import { carService } from '../services/car.service.js'
 
 export default function BoardIndex() {
-  // const cars = useSelector(storeState => storeState.carModule.cars)
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const { boardId } = useParams()
+  const [board, setBoard] = useState(boardService.getEmptyBoard())
 
-  // useEffect(() => {
-  //     loadCars()
-  // }, [])
+  useEffect(() => {
+    loadBoards()
+  }, [])
+
+  useEffect(() => {
+    if (boards.length !== 0) setBoard(...boards.filter((board) => board._id === boardId))
+  }, [boards])
 
   // async function onRemoveCar(carId) {
   //     try {
@@ -53,8 +65,19 @@ export default function BoardIndex() {
   //     console.log(`TODO Adding msg to car`)
   // }
 
+  console.log('board', board)
+  let boardStyle = {}
+  if (board.style) {
+    if (board.style.type === 'bgColor') {
+      boardStyle = { backgroundColor: board.style.bgColor }
+    }
+  }
+
   return (
-    <section className="board-index">
+    <section style={boardStyle} className="board-index">
+      {/* headers */}
+      <BoardHeader board={board}></BoardHeader>
+      <GroupList groups={board.groups}></GroupList>
       {/* <h3>Cars App</h3>
             <main>
                 <button onClick={onAddCar}>Add Car ⛐</button>
@@ -77,5 +100,5 @@ export default function BoardIndex() {
                 </ul>
             </main> */}
     </section>
-  );
+  )
 }
