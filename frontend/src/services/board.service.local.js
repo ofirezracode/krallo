@@ -284,11 +284,11 @@ const boards = [
   },
   {
     title: 'Another project',
-    isStarred: false,
+    isStarred: true,
   },
   {
     title: 'Another another project',
-    isStarred: false,
+    isStarred: true,
   },
 ]
 
@@ -302,7 +302,7 @@ export const boardService = {
 }
 window.bs = boardService
 
-// _createBoards()
+_createBoards()
 
 async function query(filterBy = {}) {
   var boards = await storageService.query(STORAGE_KEY)
