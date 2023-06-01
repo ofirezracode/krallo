@@ -1,10 +1,10 @@
-import React from "react";
-import { Routes, Route } from "react-router";
+import React from 'react'
+import { Routes, Route } from 'react-router'
 
-import routes from "./routes";
+import routes from './routes'
 
-import { AppHeader } from "./cmps/app-header";
-import { AppFooter } from "./cmps/app-footer";
+import { AppHeader } from './cmps/app-header'
+import { AppFooter } from './cmps/app-footer'
 
 export function RootCmp() {
   return (
@@ -15,24 +15,20 @@ export function RootCmp() {
       </main>
       <AppFooter />
     </div>
-  );
+  )
 }
 
 function _getRoutes(routes) {
-  let routeComponents = [];
+  let routeComponents = []
   if (routes && routes.length > 0) {
     routes.map((route) => {
-      const childRoutes = _getRoutes(route.routes)(
-        <Route
-          key={route.path}
-          exact={true}
-          element={route.component}
-          path={route.path}
-        >
+      const childRoutes = _getRoutes(route.routes)
+      routeComponents.push(
+        <Route key={route.path} exact={true} element={route.component} path={route.path}>
           {childRoutes}
         </Route>
-      );
-    });
+      )
+    })
   }
-  return routeComponents;
+  return routeComponents
 }
