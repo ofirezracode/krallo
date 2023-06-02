@@ -39,3 +39,8 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+button,
+label {
+  cursor: pointer;
+}

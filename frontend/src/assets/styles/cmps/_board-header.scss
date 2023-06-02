@@ -57,12 +57,11 @@
       align-items: center;
 
       &:hover {
-        background-color: rgba(255, 255, 255, .14);
+        background-color: rgba(255, 255, 255, 0.14);
       }
     }
 
     .btn-fill {
-
       a {
         padding: rem(6px) rem(12px);
         background-color: $button-board-header;
@@ -80,7 +79,6 @@
       svg {
         color: $card-title;
       }
-
     }
 
     button {
@@ -92,7 +90,6 @@
       justify-content: space-between;
       align-items: center;
       background-color: transparent;
-
     }
 
     .btn-more {
