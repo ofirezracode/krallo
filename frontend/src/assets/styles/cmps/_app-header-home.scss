@@ -17,29 +17,43 @@
 
         a {
             align-self: center;
-            font-size: rem(20px);
+            font-size: rem(16px);
             font-family: 600;
             color: $card-title;
             padding: rem(20px) rem(16px) rem(16px);
+            text-decoration: none;
+        }
+
+        transition: .2s ease-in-out;
+
+        &:hover a {
+            color: $btn-blue1;
         }
     }
 
     .header-btns {
-        .try-btn {
-            margin: 0;
-            background-color: $btn-blue;
-            color: #fff;
-            font-size: rem(20px);
-            padding: rem(8px) rem(24px);
-            width: rem(240px);
-        }
 
         .login-btn {
             margin: 0;
+            width: rem(101.81px);
             color: $card-title;
             background-color: #fff;
             font-size: rem(19.2px);
             padding: rem(8px) rem(24px);
+
+        }
+
+        .try-btn {
+            margin: 0;
+            background-color: $btn-blue;
+            color: #fff;
+            font-size: rem(19.2px);
+            padding: rem(8px) rem(24px);
+            width: rem(204px);
+
+            &:hover {
+                background-color: $atlassian;
+            }
         }
 
     }
