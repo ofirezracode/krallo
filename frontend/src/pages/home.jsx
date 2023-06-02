@@ -2,6 +2,7 @@ import React from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { CHANGE_COUNT } from "../store/user.reducer";
 import HomeImg from "../assets/img/home-img.webp"
+import { Link } from "react-router-dom";
 
 export default function Home() {
   //   const dispatch = useDispatch();
@@ -17,13 +18,13 @@ export default function Home() {
       <section className="home-container flex">
         <div className="home-txt">
           <h1 className="txt-opening"> Krallo brings all your tasks, teammate, and tools together</h1>
-          <p className="txt-opening-p">Keep everything in the same place-even if your team isn't.</p>
+          <p className="txt-opening-p">Keep everything in the same place-even if your team isn’t.</p>
 
-              <button className="signup-btn" >Try demo - it's free!</button>
-            </div>
-      <div className="home-img">
-      <img src={HomeImg} alt="home-image" />
-      </div>
+          <button className="signup-btn"><Link to={'/workspaces'}>Try demo - it’s free!</Link></button>
+        </div>
+        <div className="home-img">
+          <img src={HomeImg} alt="home-image" />
+        </div>
       </section>
       <div className="wave"></div>
     </section>

@@ -1,54 +1,63 @@
 .home {
-        background: url("//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg") center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background: url("//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg") center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
 
-        font-family: charlie-regular;
+    font-family: charlie-regular;
 
     .home-container {
-      width:rem(1240px);
-      margin-inline: rem(220px);
-    }
+        width: rem(1240px);
+        margin-inline: rem(220px);
 
-    .home-img{
-        padding: rem(128px) rem(16px)rem(0px);
-        img {
-            max-width: 100%;
-            height: auto;
+        .home-img {
+            padding: rem(128px) rem(16px)rem(0px);
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        .home-txt {
+            width: 50%;
+            flex: 0 0 auto;
+            color: #ffff;
+            padding: rem(128px) rem(16px);
+        }
+
+        .txt-opening {
+            line-height: 1.25;
+            font-size: rem(48px);
+            margin-block-end: rem(8px);
+            font-family: charlie-semibold;
+        }
+
+        .txt-opening-p {
+            font-size: rem(20px);
+            margin-block-end: rem(24px);
+            font-weight: 400;
+
+        }
+
+        .signup-btn {
+            margin: 0;
+            height: rem(49.99px);
+            width: rem(380px);
+            background-color: $btn-blue;
+            padding: rem(11.2px) rem(16px) rem(12.8px);
+            border: rem(1px) solid $btn-blue;
+            border-radius: rem(4.8px);
+            font-size: rem(16px);
+            transition: .2s ease-in-out;
+
+            &:hover {
+                background-color: $atlassian;
+                border-color: $atlassian;
+            }
+
+            a {
+                color: #fff;
+                text-decoration: none;
+                font-family: charlie-regular;
+            }
         }
     }
-
-    .home-txt {
-        width: 50%;
-        flex: 0 0 auto;
-        color: #ffff;
-        padding: rem(128px) rem(16px);
-    }
-
-    .txt-opening {
-        line-height: 1.25;
-        font-size: rem(48px);
-        margin-block-end: rem(8px);
-        font-family: charlie-semibold;
-    }
-
-    .txt-opening-p {
-        font-size: rem(20px);
-        margin-block-end: rem(24px);
-        font-weight: 400;
-
-    }
-
-    .signup-btn {
-        margin: 0;
-        height: rem(49.99px);
-        width: rem(380px);
-        background-color: $btn-blue;
-        padding: rem(11.2px) rem(16px) rem(12.8px);
-        border: rem(1px) solid $btn-blue;
-        color: #fff;
-        border-radius: rem(4.8px);
-        font-size: rem(16px);
-    }
-
-
-
 }

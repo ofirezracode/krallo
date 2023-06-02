@@ -60,11 +60,11 @@ export function AppHeaderHome() {
                     </section>
                 } */}
             </nav>
-                <div className="header-btns flex">
-                    <div></div>
-                <button className="login-btn">Log in</button>
-                <button className="try-btn" >Get Karllo for free</button>
-                </div>
+            <div className="header-btns flex">
+                <div></div>
+                <button className="login-btn" title="Log in">Log in</button>
+                <button className="try-btn" title="Get Krallo for free">Get Krallo for free</button>
+            </div>
         </header>
     )
 }
