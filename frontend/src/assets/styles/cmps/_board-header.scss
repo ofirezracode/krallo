@@ -13,4 +13,31 @@
     color: #fff;
     padding: 0 10px;
   }
+
+  li {
+    svg {
+      color: #fff;
+      width: rem(16px);
+      height: rem(16px);
+    }
+
+
+    a {
+      color: #fff;
+
+    }
+
+    button:not(.board-members) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: rem(6px) rem(12px);
+      background-color: transparent;
+
+      .workspace-visible-btn {
+        gap: rem(10px);
+      }
+    }
+
+  }
 }
