@@ -9,9 +9,12 @@ import { boardService } from '../services/board.service.local'
 import { activityService } from '../services/activity.service'
 import AddCloseButtons from './add-close-buttons'
 
-function GroupPreview({ group }) {
+function GroupPreview({ group, onUpdateGroupTitle }) {
   const [isAddingTask, setIsAddingTask] = useState(false)
   const [newTaskText, setNewTaskText] = useState('')
+
+  const [isEditingTitle, setIsEditingTitle] = useState(false)
+  const [editedTitle, setEditedTitle] = useState(group.title)
 
   const { boardId } = useParams()
 
@@ -32,10 +35,27 @@ function GroupPreview({ group }) {
     setNewTaskText('')
   }
 
+  function onTitleChange(e) {
+    setEditedTitle(e.target.value)
+  }
+
+  async function onTitleEdit(e) {
+    e.preventDefault()
+
+    await onUpdateGroupTitle(group._id, editedTitle)
+
+    setIsEditingTitle(false)
+  }
+
   return (
     <article className="group-preview flex column">
       <header className="flex between">
-        <h3>{group.title}</h3>
+        {!isEditingTitle && <h3 onClick={() => setIsEditingTitle(true)}>{group.title}</h3>}
+        {isEditingTitle && (
+          <form className="flex align-center" onSubmit={onTitleEdit}>
+            <input value={editedTitle} onChange={(e) => onTitleChange(e)}></input>
+          </form>
+        )}
         <button className="group-options flex justify-center align-center">
           <BsThreeDots />
         </button>
