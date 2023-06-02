@@ -44,7 +44,7 @@
                         padding-inline-start: rem(14px);
                         margin-block-end: rem(52px);
 
-                        li {
+                        li:not(.new-board) {
                             border-radius: rem(3px);
                             width: rem(190px);
                             height: rem(96px);
@@ -54,8 +54,9 @@
                             // flex-grow: 1;
                             background-image: linear-gradient(rgba(34, 34, 34, 0.6),
                                     rgba(34, 34, 34, 0.6));
-                            //     url(../../img/members/etai-pic.jpg);
+                            background-position: center;
                             background-size: cover;
+                            transition: .2s ease-in-out;
 
                             &:hover {
                                 filter: brightness(90%);
@@ -65,6 +66,7 @@
                                 height: 100%;
 
                                 a {
+
                                     height: 100%;
                                     text-decoration: none;
                                     display: block;
@@ -82,18 +84,61 @@
                                         bottom: rem(10px);
                                         right: rem(15px);
                                         color: #f2d600;
-                                        width: rem(14px);
+                                        width: rem(15px);
                                         height: rem(14px);
+                                        transition: .2s ease-out;
+
+                                        &:hover {
+                                            scale: 1.15;
+                                            stroke-width: rem(1px);
+                                        }
                                     }
 
                                     .star-empty {
+                                        color: #fff;
+                                        width: rem(15px);
+                                        height: rem(14px);
                                         position: absolute;
                                         bottom: rem(10px);
-                                        right: rem(15px);
-                                        color: #fff;
-                                        width: rem(14px);
-                                        height: rem(14px);
+                                        right: rem(-15px);
+                                        opacity: 0;
+                                        overflow-clip-margin: content-box;
+                                        overflow: hidden;
+                                        transition: .2s ease-out;
+
+                                        &:hover {
+                                            scale: 1.15;
+                                        }
                                     }
+
+                                    &:hover .star-empty {
+                                        opacity: 1;
+                                        bottom: rem(10px);
+                                        right: rem(15px);
+                                    }
+                                }
+                            }
+                        }
+
+                        .new-board {
+                            border-radius: rem(3px);
+                            width: rem(190px);
+                            height: rem(96px);
+                            background-color: rgb(222, 222, 222);
+                            cursor: pointer;
+                            transition: .2s ease-in-out;
+
+                            &:hover {
+                                filter: brightness(90%);
+                            }
+
+                            article {
+                                height: 100%;
+
+                                p {
+                                    color: $card-title;
+                                    font-size: rem(14px);
+
                                 }
                             }
                         }
