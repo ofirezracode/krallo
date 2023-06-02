@@ -2,7 +2,7 @@ import React from 'react'
 import GroupPreview from './group-preview'
 import AddGroup from './add-group'
 
-function GroupList({ groups, onUpdateGroupTitle }) {
+function GroupList({ groups, onUpdateGroupTitle, onAddGroup }) {
   return (
     <ul className="group-list clean-list flex">
       {groups.map((group) => (
@@ -11,7 +11,7 @@ function GroupList({ groups, onUpdateGroupTitle }) {
         </li>
       ))}
       <li key={'add-group'}>
-        <AddGroup />
+        <AddGroup onAddGroup={onAddGroup} />
       </li>
     </ul>
   )
