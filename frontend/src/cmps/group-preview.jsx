@@ -2,16 +2,19 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { BsThreeDots, BsPlusLg, BsWindowStack } from 'react-icons/bs'
-import { HiXMark } from 'react-icons/hi2'
 
 import TaskList from './task-list'
 import { saveTask } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import { activityService } from '../services/activity.service'
+import AddCloseButtons from './add-close-buttons'
 
-function GroupPreview({ group }) {
+function GroupPreview({ group, onUpdateGroupTitle }) {
   const [isAddingTask, setIsAddingTask] = useState(false)
   const [newTaskText, setNewTaskText] = useState('')
+
+  const [isEditingTitle, setIsEditingTitle] = useState(false)
+  const [editedTitle, setEditedTitle] = useState(group.title)
 
   const { boardId } = useParams()
 
@@ -32,10 +35,27 @@ function GroupPreview({ group }) {
     setNewTaskText('')
   }
 
+  function onTitleChange(e) {
+    setEditedTitle(e.target.value)
+  }
+
+  async function onTitleEdit(e) {
+    e.preventDefault()
+
+    await onUpdateGroupTitle(group._id, editedTitle)
+
+    setIsEditingTitle(false)
+  }
+
   return (
-    <article className="group-preview">
+    <article className="group-preview flex column">
       <header className="flex between">
-        <h3>{group.title}</h3>
+        {!isEditingTitle && <h3 onClick={() => setIsEditingTitle(true)}>{group.title}</h3>}
+        {isEditingTitle && (
+          <form className="flex align-center" onSubmit={onTitleEdit}>
+            <input value={editedTitle} onChange={(e) => onTitleChange(e)}></input>
+          </form>
+        )}
         <button className="group-options flex justify-center align-center">
           <BsThreeDots />
         </button>
@@ -59,12 +79,7 @@ function GroupPreview({ group }) {
           <div className="text-container">
             <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText}></textarea>
           </div>
-          <div className="button-container flex align-center">
-            <button className="add-button">Add Card</button>
-            <button onClick={onCloseAddCard} className="close-button flex align-center">
-              <HiXMark />
-            </button>
-          </div>
+          <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} />
         </form>
       )}
       <div></div>

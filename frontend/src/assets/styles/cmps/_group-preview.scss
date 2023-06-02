@@ -11,6 +11,22 @@
       padding: rem(4px) rem(8px) rem(4px) 12px;
       font-size: inherit;
       font-weight: 600;
+      cursor: pointer;
+    }
+
+    input {
+      margin-block-start: -4px;
+      padding: rem(4px) rem(8px) rem(4px) 12px;
+      font-size: inherit;
+      font-weight: 600;
+      font-family: inherit;
+
+      overflow: hidden;
+      overflow-wrap: break-word;
+
+      border-radius: 3px;
+
+      border: none;
     }
 
     .group-options {
@@ -95,24 +111,6 @@
         &:focus {
           outline: none;
         }
-      }
-    }
-
-    .button-container {
-      margin-block-end: 8px;
-      gap: 4px;
-      .add-button {
-        padding: 8px 12px;
-        background-color: $btn-blue;
-        color: #fff;
-
-        border-radius: 3px;
-      }
-
-      svg {
-        cursor: pointer;
-        font-size: 24px;
-        color: $icon;
       }
     }
   }
