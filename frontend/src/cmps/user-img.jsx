@@ -1,8 +1,20 @@
 import React from 'react'
 import userImg from "../assets/img/ofir.png"
 
-export default function UserImg() {
+export default function UserImg({size ,hover}) {
+  let imgClasses =''
+
+  if(!size){
+    imgClasses = 'medium'
+  } else{
+    imgClasses = size
+  }
+
+  if(hover){
+    imgClasses += ' hover'
+  }
+
   return (
-    <button className='user-img'><img src={userImg} alt="" /></button>
+    <img className={imgClasses} src={userImg} alt="" />
   )
 }

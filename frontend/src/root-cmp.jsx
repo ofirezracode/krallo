@@ -1,6 +1,5 @@
-import React from 'react'
 import { Routes, Route } from 'react-router'
-
+import React, { useState } from 'react';
 import routes from './routes'
 
 //remove line
@@ -10,10 +9,11 @@ import { AppFooter } from './cmps/app-footer'
 import AppHeader from './cmps/app-header'
 
 export function RootCmp() {
+  const [loggedIn, setLoggedIn] = useState(true)
+
   return (
     <div>
-      {/* <AppHeaderHome /> */}
-      <AppHeader/>
+        {loggedIn ? <AppHeader />:  <AppHeaderHome />}
       <main>
         <Routes>{_getRoutes(routes)}</Routes>
       </main>

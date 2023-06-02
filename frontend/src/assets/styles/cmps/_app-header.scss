@@ -105,18 +105,4 @@
         }
     }
 
-    .user-img-header {
-        height: rem(47px);
-        align-items: center;
-        img {
-            align-self: center;
-        } 
-        
-        &:hover {
-            background-color: $icon-hover;
-            border-radius: 50%;
-        }
-
-    }
-
 }
