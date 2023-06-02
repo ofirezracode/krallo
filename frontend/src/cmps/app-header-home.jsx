@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import routes from "../routes";
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { login, logout, signup } from "../store/user.actions.js";
-import { LoginSignup } from "./login-signup.jsx";
+import { LoginSignup } from "../pages/login-signup.jsx";
 import Img from "../assets/img/logo.svg"
 
 
@@ -61,9 +61,8 @@ export function AppHeaderHome() {
                 } */}
             </nav>
                 <div className="header-btns flex">
-                    <div></div>
-                <button className="login-btn">Log in</button>
-                <button className="try-btn" >Get Karllo for free</button>
+                <Link to={'/login'} className="login-btn">Log in</Link>
+                <Link className="try-btn" >Get Krallo for free</Link>
                 </div>
         </header>
     )

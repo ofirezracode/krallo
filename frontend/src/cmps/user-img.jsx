@@ -1,20 +1,20 @@
 import React from 'react'
 import userImg from "../assets/img/ofir.png"
 
-export default function UserImg({size ,hover}) {
-  let imgClasses =''
+export default function UserImg({ size, hover }) {
+  let imgClasses = ''
 
-  if(!size){
+  if (!size) {
     imgClasses = 'medium'
-  } else{
+  } else {
     imgClasses = size
   }
 
-  if(hover){
+  if (hover) {
     imgClasses += ' hover'
   }
 
   return (
-    <img className={`user-img ${imgClasses}`} src={userImg} alt="" />
+    <img className={`user-img ${imgClasses}`} src={userImg} alt="" title='Ofir Ezra (ofirezra)' />
   )
 }
