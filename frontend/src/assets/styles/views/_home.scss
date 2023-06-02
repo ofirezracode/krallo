@@ -1,25 +1,17 @@
 .home {
-    background: url("//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg") center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background: url("//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg") center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
 
     font-family: charlie-regular;
 
     .home-container {
         width: rem(1240px);
-        margin-inline: rem(220px);
-
-        .home-img {
-            padding: rem(128px) rem(16px)rem(0px);
-
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-        }
+        margin: auto;
+        padding-block-start: rem(21px);
 
         .home-txt {
             width: 50%;
             flex: 0 0 auto;
-            color: #ffff;
+            color: #fff;
             padding: rem(128px) rem(16px);
         }
 
@@ -28,13 +20,23 @@
             font-size: rem(48px);
             margin-block-end: rem(8px);
             font-family: charlie-semibold;
+            letter-spacing: rem(-2px);
         }
 
         .txt-opening-p {
             font-size: rem(20px);
             margin-block-end: rem(24px);
             font-weight: 400;
+        }
 
+        .home-img {
+            padding: rem(113px) rem(0px) rem(0px);
+
+            img {
+                max-width: 100%;
+                height: auto;
+                scale: 1.02;
+            }
         }
 
         .signup-btn {
