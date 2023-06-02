@@ -52,6 +52,7 @@ export default function BoardIndex() {
 
     const newBoard = { ...board, groups: newGroups }
     setBoard(newBoard)
+
     try {
       await updateBoard(newBoard)
     } catch (err) {
@@ -80,7 +81,6 @@ export default function BoardIndex() {
   //     console.log(`TODO Adding msg to car`)
   // }
 
-  console.log('board', board)
   let boardStyle = {}
   if (board.style) {
     if (board.style.type === 'bgColor') {
@@ -94,7 +94,7 @@ export default function BoardIndex() {
       }
     }
   }
-  console.log('boardStyle', boardStyle)
+
   return (
     <section style={boardStyle} className="board-index flex column">
       {/* headers */}
