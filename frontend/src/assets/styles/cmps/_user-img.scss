@@ -4,6 +4,7 @@ img.user-img{
   background-color: transparent;
   border-radius: 50%;
   padding: rem(4px);
+  cursor: pointer;
 
   &.small {
     width: rem(32px);
@@ -15,7 +16,7 @@ img.user-img{
     height: rem(34px);
   }
 
-  &:hover {
+  &.hover:hover {
     background-color: $icon-hover;
     border-radius: 50%;
   }

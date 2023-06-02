@@ -61,12 +61,13 @@
             }
 
             &:hover{
-                background-color:#f8f8f8f8;
+                background-color: #F7F8F9;
             }
 
             &:focus {
                 outline: 2px solid $btn-blue;
                 width: 700px;
+                border: none;
             }
         
 
