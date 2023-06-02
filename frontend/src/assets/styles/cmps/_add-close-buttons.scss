@@ -1,0 +1,27 @@
+.add-close-buttons {
+  // margin-block-end: 0;
+  gap: 4px;
+
+  height: 0;
+  overflow: hidden;
+  transition: all 0.15s;
+
+  &.visible {
+    background-color: $card-preview;
+    height: 32px;
+  }
+
+  .add-button {
+    padding: 8px 12px;
+    background-color: $btn-blue;
+    color: #fff;
+
+    border-radius: 3px;
+  }
+
+  svg {
+    cursor: pointer;
+    font-size: 24px;
+    color: $icon;
+  }
+}

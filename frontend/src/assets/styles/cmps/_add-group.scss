@@ -21,18 +21,16 @@
   }
 
   input {
+    margin-block-end: 8px;
   }
 
-  .add-group-controls {
-    height: 0;
-    overflow: hidden;
-    transition: all 0.15s;
-  }
+  // .add-group-controls {
+  //   height: 0;
+  //   overflow: hidden;
+  //   transition: all 0.15s;
+  // }
 
   &.visible {
     background-color: $card-preview;
-    .add-group-controls {
-      height: 32px;
-    }
   }
 }
