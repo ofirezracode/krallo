@@ -1,0 +1,38 @@
+.add-group {
+  margin-inline: 4px;
+  padding: 8px;
+  width: rem(272px);
+  border-radius: 12px;
+  // box-shadow: $card-shadow;
+  color: #fff;
+
+  background: $add-card;
+
+  transition: background 85ms ease-in, opacity 40ms ease-in, border-color 85ms ease-in;
+
+  cursor: pointer;
+
+  .open-form-button {
+    padding: 6px 8px;
+    width: 100%;
+    background-color: transparent;
+    text-align: start;
+    color: inherit;
+  }
+
+  input {
+  }
+
+  .add-group-controls {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.15s;
+  }
+
+  &.visible {
+    background-color: $card-preview;
+    .add-group-controls {
+      height: 32px;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import GroupPreview from './group-preview'
+import AddGroup from './add-group'
 
 function GroupList({ groups }) {
   return (
@@ -9,6 +10,9 @@ function GroupList({ groups }) {
           <GroupPreview group={group}></GroupPreview>
         </li>
       ))}
+      <li key={'add-group'}>
+        <AddGroup />
+      </li>
     </ul>
   )
 }

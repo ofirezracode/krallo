@@ -1,17 +1,23 @@
-.user-img {
+img {
   display: inline-block;
   border: none;
   background-color: transparent;
   border-radius: 50%;
   overflow: hidden;
-  padding: 0;
-  width: rem(30px);
-  /* Adjust the desired width */
-  height: rem(30px);
-  /* Adjust the desired height */
-}
+  padding: rem(4px);
 
-.user-img img {
-  width: 100%;
-  height: auto;
+  &.small {
+    width: rem(32px);
+    height: rem(32px);
+  }
+
+  &.medium {
+    width: rem(34px);
+    height: rem(34px);
+  }
+
+  &:hover {
+    background-color: $icon-hover;
+    border-radius: 50%;
+  }
 }
