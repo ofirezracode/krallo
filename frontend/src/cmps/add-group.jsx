@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import AddCloseButtons from './add-close-buttons'
 
 function AddGroup() {
   const [isAdding, setIsAdding] = useState(false)
@@ -17,10 +18,7 @@ function AddGroup() {
         </button>
       )}
       {isAdding && <input placeholder="new group"></input>}
-      <div className="add-group-controls">
-        <button>add</button>
-        <button onClick={(e) => toggleInput(e)}>close</button>
-      </div>
+      <AddCloseButtons btnText={'Add another list'} onClose={(e) => toggleInput(e)} isVisible={isAdding} />
     </form>
   )
 }

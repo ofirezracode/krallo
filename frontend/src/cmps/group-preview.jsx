@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { BsThreeDots, BsPlusLg, BsWindowStack } from 'react-icons/bs'
-import { HiXMark } from 'react-icons/hi2'
 
 import TaskList from './task-list'
 import { saveTask } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import { activityService } from '../services/activity.service'
+import AddCloseButtons from './add-close-buttons'
 
 function GroupPreview({ group }) {
   const [isAddingTask, setIsAddingTask] = useState(false)
@@ -33,7 +33,7 @@ function GroupPreview({ group }) {
   }
 
   return (
-    <article className="group-preview">
+    <article className="group-preview flex column">
       <header className="flex between">
         <h3>{group.title}</h3>
         <button className="group-options flex justify-center align-center">
@@ -59,12 +59,7 @@ function GroupPreview({ group }) {
           <div className="text-container">
             <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText}></textarea>
           </div>
-          <div className="button-container flex align-center">
-            <button className="add-button">Add Card</button>
-            <button onClick={onCloseAddCard} className="close-button flex align-center">
-              <HiXMark />
-            </button>
-          </div>
+          <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} />
         </form>
       )}
       <div></div>

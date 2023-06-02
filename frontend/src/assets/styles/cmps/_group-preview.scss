@@ -97,23 +97,5 @@
         }
       }
     }
-
-    .button-container {
-      margin-block-end: 8px;
-      gap: 4px;
-      .add-button {
-        padding: 8px 12px;
-        background-color: $btn-blue;
-        color: #fff;
-
-        border-radius: 3px;
-      }
-
-      svg {
-        cursor: pointer;
-        font-size: 24px;
-        color: $icon;
-      }
-    }
   }
 }
