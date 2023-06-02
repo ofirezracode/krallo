@@ -25,28 +25,19 @@
     }
 
     .btn-star {
-      a {
-        padding: rem(6px);
+      padding: rem(12px);
 
-        svg:hover {
-          scale: 1.2;
-        }
+      svg:hover {
+        scale: 1.2;
       }
     }
 
-    .star-empty {
-      width: rem(18px);
-      height: rem(14px);
-      stroke-width: rem(1px);
-    }
-
+    .star-empty,
     .star-fill {
-      width: rem(18px);
-      height: rem(14px);
-      stroke-width: rem(1px);
+      width: rem(12px);
     }
 
-    a {
+    button {
       color: #fff;
       text-decoration: none;
       gap: rem(5px);
@@ -55,58 +46,54 @@
       padding: rem(6px) rem(12px);
       display: flex;
       align-items: center;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.14);
-      }
-    }
-
-    .btn-fill {
-      a {
-        padding: rem(6px) rem(12px);
-        background-color: $button-board-header;
-        display: flex;
-        align-items: center;
-        color: $card-title;
-        border-radius: rem(3px);
-        height: rem(32px);
-
-        &:hover {
-          background-color: #fff;
-        }
-      }
-
-      svg {
-        color: $card-title;
-      }
-    }
-
-    button {
       font-size: rem(14px);
-    }
 
-    button:not(.board-members) {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: transparent;
-    }
-
-    .btn-more {
-      a {
-        svg {
-          width: rem(20px);
-          height: rem(20px);
-        }
-
-        padding: rem(6px);
+      &:not(.btn-fill) {
+        background-color: transparent;
       }
+
+      &:not(.board-members) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover:not(.btn-fill) {
+          background-color: rgba(255, 255, 255, 0.14);
+        }
+      }
+    }
+
+    button .btn-more {
+      svg {
+        width: rem(20px);
+        height: rem(20px);
+      }
+
+      padding: rem(6px);
     }
 
     span {
       width: rem(1px);
       color: #ffffff4f;
       font-weight: 100;
+    }
+
+    .btn-fill {
+      padding: rem(6px) rem(12px);
+      background-color: $button-board-header;
+      display: flex;
+      align-items: center;
+      color: $card-title;
+      border-radius: rem(3px);
+      height: rem(32px);
+
+      &:hover {
+        background-color: #fff;
+      }
+
+      svg {
+        color: $card-title;
+      }
     }
   }
 }
