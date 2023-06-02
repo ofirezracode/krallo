@@ -1,6 +1,28 @@
 .group-list {
-  width: 100%;
-  padding: 0;
-  margin-block-start: 12px;
+  margin-block: 12px 8px;
   padding-inline-start: 16px;
+  padding-block-end: 8px;
+
+  flex-grow: 1;
+
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    height: 12px;
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #00000026;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $add-card;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: block;
+    height: 1px;
+    width: 25px;
+  }
 }

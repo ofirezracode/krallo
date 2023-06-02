@@ -81,7 +81,7 @@ export default function BoardIndex() {
   }
   console.log('boardStyle', boardStyle)
   return (
-    <section style={boardStyle} className="board-index">
+    <section style={boardStyle} className="board-index flex column">
       {/* headers */}
       <BoardHeader board={board}></BoardHeader>
       <GroupList groups={board.groups}></GroupList>
