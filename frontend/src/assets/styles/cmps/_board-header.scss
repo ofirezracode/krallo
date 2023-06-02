@@ -24,7 +24,12 @@
 
     a {
       color: #fff;
+      text-decoration: none;
+    }
 
+    .btn-fill {
+
+      gap: rem(10px);
     }
 
     button:not(.board-members) {

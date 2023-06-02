@@ -7,8 +7,6 @@ export default function BoardPreview({ boards, toggleIsStarred, boardStyle }) {
         <section className="board-list">
             <ul className="starred-board-list clean-list flex wrap">
                 {boards.map(board => {
-
-                    // board.isStarred && <li key={board._id}>
                     let boardStyle = {}
                     if (board.style) {
                         if (board.style.type === 'bgColor') {
