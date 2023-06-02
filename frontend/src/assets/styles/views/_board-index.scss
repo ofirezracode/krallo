@@ -1,5 +1,5 @@
 .board-index {
-  height: 100vh;
+  height: calc(100vh - 57px);
   font-size: 14px;
   color: $card-title;
 }

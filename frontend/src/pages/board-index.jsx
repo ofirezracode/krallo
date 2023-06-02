@@ -70,9 +70,16 @@ export default function BoardIndex() {
   if (board.style) {
     if (board.style.type === 'bgColor') {
       boardStyle = { backgroundColor: board.style.bgColor }
+    } else if (board.style.type === 'img') {
+      boardStyle = {
+        backgroundImage: `url(${board.style.imgUrl})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }
     }
   }
-
+  console.log('boardStyle', boardStyle)
   return (
     <section style={boardStyle} className="board-index">
       {/* headers */}
