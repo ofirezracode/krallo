@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import GroupList from '../cmps/group-list'
-import { loadBoards } from '../store/board.actions'
+import { loadBoards, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import BoardHeader from '../cmps/board-header'
 // import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/car.actions.js'
@@ -43,6 +43,21 @@ export default function BoardIndex() {
   //         showErrorMsg('Cannot add car')
   //     }
   // }
+
+  async function onUpdateGroupTitle(groupId, newTitle) {
+    const groupIndex = board.groups.findIndex((group) => group._id === groupId)
+
+    const newGroups = [...board.groups]
+    newGroups[groupIndex].title = newTitle
+
+    const newBoard = { ...board, groups: newGroups }
+    setBoard(newBoard)
+    try {
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
 
   // async function onUpdateCar(car) {
   //     const price = +prompt('New price?')
@@ -84,7 +99,7 @@ export default function BoardIndex() {
     <section style={boardStyle} className="board-index flex column">
       {/* headers */}
       <BoardHeader board={board}></BoardHeader>
-      <GroupList groups={board.groups}></GroupList>
+      <GroupList groups={board.groups} onUpdateGroupTitle={onUpdateGroupTitle}></GroupList>
       {/* <h3>Cars App</h3>
             <main>
                 <button onClick={onAddCar}>Add Car ⛐</button>
