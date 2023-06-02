@@ -34,7 +34,8 @@
 
     .star-empty,
     .star-fill {
-      width: rem(12px);
+      width: rem(13px);
+      stroke-width: rem(.5px);
     }
 
     button {
