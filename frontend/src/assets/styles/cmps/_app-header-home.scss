@@ -22,13 +22,13 @@
             color: $card-title;
             padding: rem(20px) rem(16px) rem(16px);
             text-decoration: none;
+            transition: .2s ease-in-out;
+
+            &:hover {
+                color: $btn-blue1;
+            }
         }
 
-        transition: .2s ease-in-out;
-
-        &:hover a {
-            color: $btn-blue1;
-        }
     }
 
     .header-btns {
