@@ -15,32 +15,83 @@
   }
 
   li {
+    gap: rem(5px);
+
     svg {
       color: #fff;
       width: rem(16px);
       height: rem(16px);
     }
 
+    .star-empty {
+      width: rem(18px);
+      height: rem(14px);
+      stroke-width: rem(1px);
+    }
+
+    .star-fill {
+      width: rem(18px);
+      height: rem(14px);
+      stroke-width: rem(1px);
+    }
 
     a {
       color: #fff;
       text-decoration: none;
+      gap: rem(5px);
+      height: rem(32px);
+      border-radius: rem(3px);
+      padding: rem(6px) rem(12px);
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, .14);
+      }
     }
 
     .btn-fill {
 
-      gap: rem(10px);
+      a {
+        padding: rem(6px) rem(12px);
+        background-color: $button-board-header;
+        display: flex;
+        align-items: center;
+        color: $card-title;
+        border-radius: rem(3px);
+        height: rem(32px);
+
+        &:hover {
+          background-color: #fff;
+        }
+      }
+
+      svg {
+        color: $card-title;
+      }
+
+    }
+
+    button {
+      font-size: rem(14px);
     }
 
     button:not(.board-members) {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: rem(6px) rem(12px);
       background-color: transparent;
 
-      .workspace-visible-btn {
-        gap: rem(10px);
+    }
+
+    .btn-more {
+      a {
+        svg {
+          width: rem(20px);
+          height: rem(20px);
+        }
+
+        padding: rem(6px);
       }
     }
 
