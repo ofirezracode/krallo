@@ -15,6 +15,6 @@ export default function UserImg({size ,hover}) {
   }
 
   return (
-    <img className={imgClasses} src={userImg} alt="" />
+    <img className={`user-img ${imgClasses}`} src={userImg} alt="" />
   )
 }

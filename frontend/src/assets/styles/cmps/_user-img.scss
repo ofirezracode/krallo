@@ -1,9 +1,8 @@
-img {
+img.user-img{
   display: inline-block;
   border: none;
   background-color: transparent;
   border-radius: 50%;
-  overflow: hidden;
   padding: rem(4px);
 
   &.small {
