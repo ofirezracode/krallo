@@ -24,15 +24,17 @@
     }
 
     .txt-opening {
+        line-height: 1.25;
         font-size: rem(48px);
-        font-family: charlie-semibold;
         margin-block-end: rem(8px);
+        font-family: charlie-semibold;
     }
 
     .txt-opening-p {
         font-size: rem(20px);
         margin-block-end: rem(24px);
         font-weight: 400;
+
     }
 
     .signup-btn {
