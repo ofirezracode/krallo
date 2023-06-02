@@ -60,6 +60,18 @@ export default function BoardIndex() {
     }
   }
 
+  async function onAddGroup(group) {
+    const newBoard = { ...board }
+    newBoard.groups.push(group)
+    setBoard(newBoard)
+
+    try {
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   // async function onUpdateCar(car) {
   //     const price = +prompt('New price?')
   //     const carToSave = { ...car, price }
@@ -99,7 +111,7 @@ export default function BoardIndex() {
     <section style={boardStyle} className="board-index flex column">
       {/* headers */}
       <BoardHeader board={board}></BoardHeader>
-      <GroupList groups={board.groups} onUpdateGroupTitle={onUpdateGroupTitle}></GroupList>
+      <GroupList groups={board.groups} onUpdateGroupTitle={onUpdateGroupTitle} onAddGroup={onAddGroup}></GroupList>
       {/* <h3>Cars App</h3>
             <main>
                 <button onClick={onAddCar}>Add Car ⛐</button>
