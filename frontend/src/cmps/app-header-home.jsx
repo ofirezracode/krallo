@@ -43,8 +43,6 @@ export function AppHeaderHome() {
             </div>
             <nav className="nav flex">
                 <Link to={'/workspaces'}>Workspaces</Link>
-                <Link to={'/board'}>Board</Link>
-
 
                 {/* {user &&
                     <span className="user-info">

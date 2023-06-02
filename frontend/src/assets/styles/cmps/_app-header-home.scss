@@ -1,15 +1,12 @@
 .app-header-home {
-    line-height: rem(30px);
+    font-family: charlie-regular;
+    height: rem(80px);
 
     .logo {
-
+        height: rem(60px);
+        width: rem(170px);
         .logo-img {
             padding: rem(16px);
-        }
-
-        span {
-            font-size: rem(12px);
-            color: $atlassian;
         }
     }
 
@@ -17,6 +14,9 @@
         flex: 1;
         gap: rem(4px);
         a{
+            align-self: center;
+            font-size: rem(20px);
+            font-family: 600;
             color: $card-title;
             padding: rem(20px) rem(16px) rem(16px);
         }
@@ -29,7 +29,7 @@
             color: #fff;
             font-size: rem(20px);
             padding: rem(8px) rem(24px);
-            font-weight: 550;
+            width: rem(240px);
         }
     
         .login-btn {
