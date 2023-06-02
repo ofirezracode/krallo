@@ -12,10 +12,8 @@ function Popover({ isShown, title, type, parentRect, onClose }) {
 
   //todo: check viewport overflow on y
 
-  popoverStyles.top = parentRect.bottom
+  popoverStyles.top = parentRect.bottom + 5
   popoverStyles.left = parentRect.left
-
-  console.log('popoverStyles', popoverStyles)
 
   return (
     <div className="popover" style={popoverStyles}>

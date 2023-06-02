@@ -7,15 +7,12 @@ export const usePopover = () => {
   const [parentRect, setParentRect] = useState({})
 
   function onTogglePopover(e, type, title) {
-    console.log('here')
     if (isShown) {
-      console.log('shown')
       setTitle('')
       setType('')
       setParentRect({})
       setIsShown(false)
     } else {
-      console.log('not')
       setTitle(title)
       setType(type)
       const closestBtn = e.target.closest('button')
