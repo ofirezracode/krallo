@@ -32,6 +32,10 @@
     }
 
     .header-btns {
+        & * {
+            text-decoration: none;
+            letter-spacing: .03em;
+        }
 
         .login-btn {
             text-decoration: none;
@@ -41,7 +45,6 @@
             background-color: #fff;
             font-size: rem(19.2px);
             padding: rem(8px) rem(24px);
-
         }
 
         .try-btn {

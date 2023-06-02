@@ -2,7 +2,7 @@ import React from 'react'
 import { BsStar, BsStarFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
-export default function BoardPreview({ boards, toggleIsStarred, boardStyle }) {
+export default function BoardPreview({ boards, toggleIsStarred }) {
     return (
         <section className="board-list">
             <ul className="starred-board-list clean-list flex wrap">
@@ -26,6 +26,13 @@ export default function BoardPreview({ boards, toggleIsStarred, boardStyle }) {
                     </li>
                 })
                 }
+                <li className="new-board">
+                    <article className="flex align-center justify-center">
+                        {/* <Link to={`/board/${board._id}`}> */}
+                        <p>Create new board</p>
+                        {/* </Link> */}
+                    </article>
+                </li>
             </ul>
         </section>
     )
