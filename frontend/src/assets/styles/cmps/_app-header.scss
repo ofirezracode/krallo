@@ -1,7 +1,9 @@
 .app-header {
-
+    height: 48px;
     padding: rem(8px);
     align-items: center;
+    backdrop-filter: blur(6px);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
     a {
         gap: rem(5px);
@@ -17,10 +19,14 @@
 
     .gray-logo {
         font-size: rem(18px);
-        width: rem(30px);
         font-weight: 700;
         font-family: charlie-bold;
         margin-inline-start: rem(32px);
+
+        .logo-link{
+            height: 32px;
+            width: 75px;
+        }
         div{
             font-size: rem(25px);
         }
@@ -29,10 +35,11 @@
             background-color: $btn-blue;
             color: #ffff;
             border-radius: rem(4px);
-            padding: rem(0px) rem(12px);
-            font-size: rem(18px);
-            margin-inline: (rem(4px));
-
+            padding: 0px 12px;
+            font-size: rem(16px);
+            height:32px;
+            width: 69px;
+            align-self: center;
             &:hover{
                 background-color:  $btn-blue-hover;
             }
@@ -47,11 +54,10 @@
         // gap: rem(15px);
 
         .search-input {
-            height: rem(42px);
-            width: 100%;
-            padding: rem(0px) rem(30px) rem(0px) rem(40px);
+            height: rem(32px);
+            padding: 0px 12px 0px 30px;
             border-radius: rem(5px);
-            font-size: rem(15px);
+            font-size: rem(14px);
             border: 2px solid lightgray;
             margin: rem(2px);
             transition: width 0.3s;
@@ -76,9 +82,10 @@
         .btn-search {
             position: absolute;
             left: rem(10px);
-            top: rem(12px);
+            top: rem(8px);
             background-color: transparent;
             color: #626F86;
+            outline: none;
         }
     }
 
