@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { BsPeople, BsStar, BsStarFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import UserImg from './user-img'
+import Ofir from "../assets/img/members/ofir-pic.jpg"
+import Etai from "../assets/img/members/etai-pic.jpg"
+import Tamar from "../assets/img/members/tamar-pic.jpg"
 import { updateBoard } from '../store/board.actions'
 import Popover from './popover'
 import { usePopover } from '../customHooks/usePopover'
@@ -88,7 +91,12 @@ function BoardHeader({ board }) {
           {/* {board.members.map(member =>
             < img src={member.imgUrl} alt="" />
           )} */}
-          <UserImg className="board-members" />
+          <div className='members'>
+            < img src={Ofir} className='member-img' alt="" />
+            < img src={Etai} className='member-img' alt="" />
+            < img src={Tamar} className='member-img' alt="" />
+          </div>
+          {/* <UserImg className="board-members" /> */}
           <button className="btn-fill" title="Share board">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -104,7 +112,7 @@ function BoardHeader({ board }) {
             </svg>
             <p>Share</p>
           </button>
-          <button className="btn-more" title="Open the board menu.">
+          <button className="btn-more" title="Open the board menu">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fill-rule="evenodd"

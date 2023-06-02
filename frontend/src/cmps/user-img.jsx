@@ -1,5 +1,5 @@
 import React from 'react'
-import userImg from "../assets/img/ofir.png"
+import userImg from "../assets/img/members/ofir-pic.jpg"
 
 export default function UserImg({ size, hover }) {
   let imgClasses = ''

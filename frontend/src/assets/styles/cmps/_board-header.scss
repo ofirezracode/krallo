@@ -64,6 +64,22 @@
       }
     }
 
+    .members {
+      padding-inline-start: rem(12px);
+      display: flex;
+
+      .member-img {
+        width: rem(34px);
+        padding: rem(4px);
+        border-radius: 50%;
+        margin-inline-start: -10px;
+
+        &:hover {
+          filter: contrast(70%) brightness(120%);
+        }
+      }
+    }
+
     .btn-more {
       svg {
         width: rem(20px);
