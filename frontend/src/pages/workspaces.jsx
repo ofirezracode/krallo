@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { loadBoards, updateBoard } from "../store/board.actions";
 import { BsPerson } from "react-icons/bs";
 import BoardPreview from "../cmps/board-preview";
+import { Link } from "react-router-dom";
 
 function Workspaces() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)

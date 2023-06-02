@@ -14,19 +14,28 @@
       cursor: pointer;
     }
 
-    input {
-      margin-block-start: -4px;
-      padding: rem(4px) rem(8px) rem(4px) 12px;
-      font-size: inherit;
-      font-weight: 600;
-      font-family: inherit;
+    form {
+      flex-grow: 1;
+      input {
+        margin-block-start: -4px;
+        padding: rem(4px) rem(8px) rem(4px) rem(12px);
+        width: 100%;
+        font-size: inherit;
+        font-weight: 600;
+        font-family: inherit;
 
-      overflow: hidden;
-      overflow-wrap: break-word;
+        overflow: hidden;
+        overflow-wrap: break-word;
 
-      border-radius: 3px;
+        border-radius: 3px;
 
-      border: none;
+        border: none;
+
+        &:focus {
+          outline: none;
+          box-shadow: inset 0 0 0 2px #388bff;
+        }
+      }
     }
 
     .group-options {

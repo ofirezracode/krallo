@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { BsThreeDots, BsPlusLg, BsWindowStack } from 'react-icons/bs'
@@ -16,7 +16,38 @@ function GroupPreview({ group, onUpdateGroupTitle }) {
   const [isEditingTitle, setIsEditingTitle] = useState(false)
   const [editedTitle, setEditedTitle] = useState(group.title)
 
+  const [requiresSubmit, setRequiresSubmit] = useState(false)
+
+  const formRef = useRef(null)
+
   const { boardId } = useParams()
+
+  useEffect(() => {
+    function handleDocumentClick(e) {
+      if (!e.target.closest('.edit-title-form') && !e.target.classList.contains('group-preview-title')) {
+        setRequiresSubmit(true)
+      }
+    }
+
+    if (isEditingTitle) {
+      document.addEventListener('click', handleDocumentClick)
+    }
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick)
+    }
+  }, [isEditingTitle])
+
+  useEffect(() => {
+    if (requiresSubmit) {
+      onSubmit()
+      setRequiresSubmit(false)
+    }
+  }, [requiresSubmit])
+
+  function toggleForm(status) {
+    setIsEditingTitle(status)
+  }
 
   function onCloseAddCard(e) {
     e.preventDefault()
@@ -39,21 +70,25 @@ function GroupPreview({ group, onUpdateGroupTitle }) {
     setEditedTitle(e.target.value)
   }
 
-  async function onTitleEdit(e) {
-    e.preventDefault()
-
+  async function onSubmit(e) {
+    if (e) {
+      e.preventDefault()
+    }
     await onUpdateGroupTitle(group._id, editedTitle)
-
-    setIsEditingTitle(false)
+    toggleForm(false)
   }
 
   return (
     <article className="group-preview flex column">
       <header className="flex between">
-        {!isEditingTitle && <h3 onClick={() => setIsEditingTitle(true)}>{group.title}</h3>}
+        {!isEditingTitle && (
+          <h3 className="group-preview-title" onClick={() => toggleForm(true)}>
+            {group.title}
+          </h3>
+        )}
         {isEditingTitle && (
-          <form className="flex align-center" onSubmit={onTitleEdit}>
-            <input value={editedTitle} onChange={(e) => onTitleChange(e)}></input>
+          <form ref={formRef} className="edit-title-form flex align-center" onSubmit={onSubmit}>
+            <input value={editedTitle} onChange={(e) => onTitleChange(e)} autoFocus></input>
           </form>
         )}
         <button className="group-options flex justify-center align-center">

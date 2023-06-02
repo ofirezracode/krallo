@@ -62,7 +62,7 @@ export function AppHeaderHome() {
             </nav>
                 <div className="header-btns flex">
                 <Link to={'/login'} className="login-btn">Log in</Link>
-                <Link className="try-btn" >Get Karllo for free</Link>
+                <Link className="try-btn" >Get Krallo for free</Link>
                 </div>
         </header>
     )
