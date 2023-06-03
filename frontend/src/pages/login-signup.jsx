@@ -3,6 +3,7 @@ import { userService } from '../services/user.service'
 // import { ImgUploader } from '../cmps/img-uploader'
 import footerImgRight from '../assets/img/right-footer-img.svg'
 import footerImgLeft from '../assets/img/left-footer-img.svg'
+import logo from "../assets/img/logo.svg"
 
 export default function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
@@ -53,16 +54,18 @@ export default function LoginSignup(props) {
 
     return (
         <div className="login-page">
-            <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/167dc7b9900a5b241b15ba21f8037cf8/trello-logo-blue.svg" alt="logo" />
-            <section className='login-container'>
-                <div>
-                    <form action="">
-                        {/* <input type="text" /> */}
-                    </form>
+            <section>
+                <div className='login-container'>
+                    <img className='login-logo-img' src={logo} alt="logo" />
+                    <div>
+                        <form action="">
+                            {/* <input type="text" /> */}
+                        </form>
+                    </div>
                 </div>
 
             </section>
-            <footer>
+            <footer className='flex'>
                 <img className='footer-img-left' src={footerImgLeft} alt="footer image" />
                 <img className='footer-img-right' src={footerImgRight} alt="footer image" />
             </footer>
@@ -79,7 +82,7 @@ export default function LoginSignup(props) {
                     <option value="">Select User</option>
                     {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
                 </select> */}
-                {/* <input
+            {/* <input
                         type="text"
                         name="username"
                         value={username}
@@ -96,7 +99,7 @@ export default function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     /> */}
-                {/* <button>Login!</button>
+            {/* <button>Login!</button>
             </form>}
             <div className="signup-section">
                 {isSignup && <form className="signup-form" onSubmit={onSignup}>
