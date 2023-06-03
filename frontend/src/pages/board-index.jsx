@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
 
 import GroupList from '../cmps/group-list'
 import { loadBoards, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import BoardHeader from '../cmps/board-header'
-import { func } from 'prop-types'
 
 export default function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -85,6 +84,7 @@ export default function BoardIndex() {
 
   return (
     <section style={boardStyle} className="board-index flex column">
+      <Outlet />
       <BoardHeader board={board}></BoardHeader>
       <GroupList board={board} onDndTask={onDndTask} onDndGroup={onDndGroup} onUpdateGroupTitle={onUpdateGroupTitle} onAddGroup={onAddGroup}></GroupList>
     </section>
