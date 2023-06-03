@@ -1,5 +1,5 @@
 .board-preview:not(.new-board) {
-    border-radius: rem(3px);
+    border-radius: 3px;
     width: rem(190.58px);
     height: rem(96px);
     background-color: rgb(222, 222, 222);
@@ -73,7 +73,7 @@
 }
 
 .new-board {
-    border-radius: rem(3px);
+    border-radius: 3px;
     width: rem(190px);
     height: rem(96px);
     background-color: rgb(244, 244, 244);
