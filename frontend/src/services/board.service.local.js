@@ -325,6 +325,7 @@ export const boardService = {
   getEmptyBoard,
   createTask,
   createGroup,
+  boardService
 }
 window.bs = boardService
 
@@ -375,6 +376,10 @@ async function saveTask(boardId, groupId, updatedTask, activity) {
   board.activities.unshift(activity)
   save(board)
   return board
+}
+
+function createBoardFromTemplate(){
+  
 }
 
 function createTask(taskText) {
