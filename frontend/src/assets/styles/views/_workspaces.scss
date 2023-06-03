@@ -1,18 +1,15 @@
 .workspaces {
-    max-width: 1038px;
-    padding-block-start: 47px 0 40px;
+    max-width: 1104px;
+    padding-block-start: 47px;
+    padding-inline: rem(47px);
     margin: auto;
 
     .all-boards {
-        &:first-of-type {
-            padding-block-start: rem(47px);
-        }
 
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: rem(10px);
-        padding-inline: rem(50px);
+        gap: rem(45px);
 
         .title {
             padding-inline-start: rem(5px);

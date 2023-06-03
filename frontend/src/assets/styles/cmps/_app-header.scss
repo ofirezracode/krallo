@@ -11,7 +11,7 @@
         text-decoration: none;
         padding-inline: rem(8px);
 
-        label{
+        label {
             font-size: rem(20px);
             letter-spacing: .03rem;
         }
@@ -23,27 +23,29 @@
         font-family: charlie-bold;
         margin-inline-start: rem(32px);
 
-        .logo-link{
+        .logo-link {
             height: 32px;
         }
-        div{
+
+        div {
             font-size: rem(25px);
         }
 
-        .create-btn{
+        .create-btn {
             background-color: $btn-blue;
             color: #ffff;
-            border-radius: rem(4px);
+            border-radius: 4px;
             font-size: rem(16px);
-            height:32px;
+            height: 32px;
             width: 69px;
-            &:hover{
-                background-color:  $btn-blue-hover;
+
+            &:hover {
+                background-color: $btn-blue-hover;
             }
         }
     }
 
-    
+
     .app-header-links {
         align-items: center;
         justify-content: flex-end;
@@ -54,17 +56,17 @@
         .search-input {
             height: rem(32px);
             padding: 0px 12px 0px 30px;
-            border-radius: rem(5px);
+            border-radius: 5px;
             font-size: rem(14px);
             border: 2px solid lightgray;
             margin: rem(2px);
             transition: width 0.3s;
 
-            &::placeholder{
+            &::placeholder {
                 font-size: rem(17px);
             }
 
-            &:hover{
+            &:hover {
                 background-color: #F7F8F9;
             }
 
@@ -73,7 +75,7 @@
                 width: 700px;
                 border: none;
             }
-        
+
 
         }
 
@@ -110,7 +112,8 @@
         }
 
     }
-    .user-img-header{
+
+    .user-img-header {
         background-color: transparent;
     }
 
