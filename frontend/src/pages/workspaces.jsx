@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { addBoard, loadBoards, updateBoard } from "../store/board.actions";
-import BoardList from "../cmps/board-list";
-import { boardService } from "../services/board.service.local";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { addBoard, loadBoards, updateBoard } from '../store/board.actions'
+import BoardList from '../cmps/board-list'
+import { boardService } from '../services/board.service.local'
+import { useNavigate } from 'react-router-dom'
 
 function Workspaces() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -36,8 +36,8 @@ function Workspaces() {
         <BoardList boards={boards} toggleIsStarred={toggleIsStarred} isOnlyStarred={true} />
         <BoardList boards={boards} toggleIsStarred={toggleIsStarred} isOnlyStarred={false} onAddBoard={onAddBoard} />
       </section>
-    </section >
+    </section>
   )
 }
 
-export default Workspaces;
+export default Workspaces
