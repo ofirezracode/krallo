@@ -45,7 +45,10 @@ function remove(userId) {
 
 async function login(userCred) {
   const users = await storageService.query('user')
+  console.log('services users',users);
+  console.log(userCred, 'userCred');
   const user = users.find((user) => user.username === userCred.username)
+  console.log(user, 'user');
   // const user = await httpService.post('auth/login', userCred)
   if (user) {
     return saveLocalUser(user)

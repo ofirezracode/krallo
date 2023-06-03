@@ -71,8 +71,8 @@
                         font-family: inherit;
                         font-weight: bold;
                     }
-                    
-                    .continue-btn-gray{
+
+                    .continue-btn-gray {
                         border: 0px;
                         cursor: not-allowed;
                         background-color: rgb(235, 236, 250) !important;
@@ -87,12 +87,12 @@
                     }
                 }
 
-                .acknowledge-pra{
+                .acknowledge-pra {
                     font-family: charlie-regular;
                     font-size: rem(14px);
                     color: #091e42;
                     margin-block: 1.5rem;
-                    
+
                 }
 
                 .login-separator {
@@ -170,69 +170,66 @@
                     overflow: hidden;
                 }
 
-                .signup-account {
+                .account {
                     text-align: center;
                     font-size: rem(14px);
-                    margin: rem(0px) rem(8px) rem(0px) rem(4px);
-                    cursor: pointer;
+                    background: none;
+                }
 
-                    a {
-                        text-decoration: none;
-                        color: $btn-blue;
+                .signup-account {
+                    margin: rem(0px) rem(8px) rem(0px) rem(4px);
+                    text-decoration: none;
+                    color: $btn-blue;
+                    &:hover {
+                        color: $atlassian;
                     }
                 }
 
                 .login-account {
-                    cursor: pointer;
-                    text-align: center;
+                    font-family: charlie-regular;
+                    text-decoration: underline;
+                    color: $btn-blue-hover;
 
-                    a {
-                        font-family: charlie-regular;
-                        text-decoration: underline;
-                        color: $btn-blue-hover;
-                        font-size: rem(14px);
-
-                        &:hover {
-                            color: $atlassian;
-                        }
+                    &:hover {
+                        color: $atlassian;
                     }
                 }
-
             }
+
         }
     }
+}
 
 
-    footer {
+footer {
 
-        .img-footer-container {
-            z-index: -900;
-            height: 100%;
-            width: 100%;
-            position: fixed;
-            top: 0;
+    .img-footer-container {
+        z-index: -900;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+
+        .footer-img-left {
+            position: absolute;
+            width: rem(400px);
+            bottom: 0;
             left: 0;
-            overflow: hidden;
-
-            .footer-img-left {
-                position: absolute;
-                width: rem(400px);
-                bottom: 0;
-                left: 0;
-                z-index: -999;
-                max-width: 30%;
-            }
-
-            .footer-img-right {
-                position: absolute;
-                width: rem(400px);
-                bottom: 0;
-                right: 0;
-                z-index: -999;
-                max-width: 30%;
-            }
+            z-index: -999;
+            max-width: 30%;
         }
 
-
+        .footer-img-right {
+            position: absolute;
+            width: rem(400px);
+            bottom: 0;
+            right: 0;
+            z-index: -999;
+            max-width: 30%;
+        }
     }
+
+
 }

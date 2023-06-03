@@ -9,7 +9,7 @@ import { AppFooter } from './cmps/app-footer'
 import AppHeader from './cmps/app-header'
 
 export function RootCmp() {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
 
   return (
     <div>
