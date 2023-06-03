@@ -22,7 +22,7 @@ export function AdminApp() {
                             removeUser(user._id)
                         }}
                     >
-                        Remove {user.username}
+                        Remove {user.userImg}
                     </button>
                 </li>
             ))}

@@ -97,6 +97,8 @@
 
         svg {
             color: $card-title;
+            height: rem(20px);
+            width: rem(20px);
         }
 
         .btn-icon {
@@ -104,6 +106,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+           
+        
         }
 
         &:hover {
