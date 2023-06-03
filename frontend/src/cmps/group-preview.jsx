@@ -74,7 +74,7 @@ function GroupPreview({ group, onUpdateGroupTitle, provided }) {
         </button>
       </header>
 
-      <TaskList tasks={group.tasks} provided={provided} />
+      <TaskList boardId={boardId} tasks={group.tasks} provided={provided} />
 
       {!isAddingTask && (
         <section className="add-card-section">

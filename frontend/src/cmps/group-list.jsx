@@ -13,7 +13,6 @@ function GroupList({ board, onDndTask, onDndGroup, onUpdateGroupTitle, onAddGrou
   }, [])
 
   function onDragEnd(result) {
-    console.log('result', result)
     if (!result.destination) return
     const { source, destination } = result
     const sourceGroupId = source.droppableId
