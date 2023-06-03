@@ -8,45 +8,19 @@ import { saveTask } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import { activityService } from '../services/activity.service'
 import AddCloseButtons from './add-close-buttons'
+import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
 function GroupPreview({ group, onUpdateGroupTitle }) {
   const [isAddingTask, setIsAddingTask] = useState(false)
   const [newTaskText, setNewTaskText] = useState('')
 
-  const [isEditingTitle, setIsEditingTitle] = useState(false)
+  const [isEditing, setIsEditing] = useCloseOnOutsideClick(onSubmit, '.edit-title-form', 'group-preview-title')
   const [editedTitle, setEditedTitle] = useState(group.title)
-
-  const [requiresSubmit, setRequiresSubmit] = useState(false)
-
-  const formRef = useRef(null)
 
   const { boardId } = useParams()
 
-  useEffect(() => {
-    function handleDocumentClick(e) {
-      if (!e.target.closest('.edit-title-form') && !e.target.classList.contains('group-preview-title')) {
-        setRequiresSubmit(true)
-      }
-    }
-
-    if (isEditingTitle) {
-      document.addEventListener('click', handleDocumentClick)
-    }
-
-    return () => {
-      document.removeEventListener('click', handleDocumentClick)
-    }
-  }, [isEditingTitle])
-
-  useEffect(() => {
-    if (requiresSubmit) {
-      onSubmit()
-      setRequiresSubmit(false)
-    }
-  }, [requiresSubmit])
-
   function toggleForm(status) {
-    setIsEditingTitle(status)
+    setIsEditing(status)
   }
 
   function onCloseAddCard(e) {
@@ -85,13 +59,13 @@ function GroupPreview({ group, onUpdateGroupTitle }) {
   return (
     <article className="group-preview flex column">
       <header className="flex between">
-        {!isEditingTitle && (
+        {!isEditing && (
           <h3 className="group-preview-title" onClick={() => toggleForm(true)}>
             {group.title}
           </h3>
         )}
-        {isEditingTitle && (
-          <form ref={formRef} className="edit-title-form flex align-center" onSubmit={onSubmit}>
+        {isEditing && (
+          <form className="edit-title-form flex align-center" onSubmit={onSubmit}>
             <input value={editedTitle} onChange={(e) => onTitleChange(e)} autoFocus></input>
           </form>
         )}
