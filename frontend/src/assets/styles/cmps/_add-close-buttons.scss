@@ -17,11 +17,19 @@
     color: #fff;
 
     border-radius: 3px;
+
+    &:hover {
+      background-color: $btn-blue-hover;
+    }
   }
 
   svg {
     cursor: pointer;
     font-size: 24px;
     color: $icon;
+
+    &:hover {
+      color: $small-titles;
+    }
   }
 }
