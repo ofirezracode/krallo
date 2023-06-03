@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { addBoard, loadBoards, updateBoard } from "../store/board.actions";
 import BoardList from "../cmps/board-list";

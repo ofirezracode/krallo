@@ -325,7 +325,7 @@ export const boardService = {
   getEmptyBoard,
   createTask,
   createGroup,
-  boardService
+  createBoardFromTemplate
 }
 window.bs = boardService
 
@@ -378,8 +378,8 @@ async function saveTask(boardId, groupId, updatedTask, activity) {
   return board
 }
 
-function createBoardFromTemplate(){
-  
+function createBoardFromTemplate() {
+
 }
 
 function createTask(taskText) {
@@ -417,7 +417,7 @@ function getEmptyBoard() {
     groups: [createGroup('New group')],
     style: {
       type: 'bgColor',
-      bgColor: '#60c6d2'
+      bgColor: utilService.getRandomColor()
     }
   }
 }
