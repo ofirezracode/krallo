@@ -47,6 +47,16 @@ export default function BoardIndex() {
     }
   }
 
+  async function onDndGroup(sourceGroupId, destGroupId) {
+    const newBoard = boardService.dndGroup(board, sourceGroupId, destGroupId)
+    setBoard(newBoard)
+    try {
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   async function onAddGroup(group) {
     const newBoard = { ...board }
     newBoard.groups.push(group)
@@ -76,7 +86,7 @@ export default function BoardIndex() {
   return (
     <section style={boardStyle} className="board-index flex column">
       <BoardHeader board={board}></BoardHeader>
-      <GroupList board={board} onDndTask={onDndTask} onUpdateGroupTitle={onUpdateGroupTitle} onAddGroup={onAddGroup}></GroupList>
+      <GroupList board={board} onDndTask={onDndTask} onDndGroup={onDndGroup} onUpdateGroupTitle={onUpdateGroupTitle} onAddGroup={onAddGroup}></GroupList>
     </section>
   )
 }
