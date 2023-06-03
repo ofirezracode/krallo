@@ -406,11 +406,14 @@ async function _createBoards() {
 
 function getEmptyBoard() {
   return {
-    _id: '0000',
-    title: 'empty board',
+    title: 'New board',
     isStarred: false,
     createdAt: Date.now(),
-    groups: [],
+    groups: [createGroup('New group')],
+    style: {
+      type: 'bgColor',
+      bgColor: '#60c6d2'
+    }
   }
 }
 

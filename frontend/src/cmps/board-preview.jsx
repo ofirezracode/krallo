@@ -2,9 +2,9 @@ import React from 'react'
 import { BsStar, BsStarFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
-export default function BoardPreview({ boards, toggleIsStarred }) {
+export default function BoardPreview({ boards, toggleIsStarred, isOnlyStarred, onAddBoard }) {
     return (
-        <ul className="starred-board-list clean-list flex wrap">
+        <ul className="board-list clean-list flex wrap">
             {boards.map(board => {
                 let boardStyle = {}
                 if (board.style) {
@@ -14,7 +14,7 @@ export default function BoardPreview({ boards, toggleIsStarred }) {
                         boardStyle = { backgroundImage: `url(${board.style.imgUrl})` }
                     }
                 }
-                return <li key={board._id} style={boardStyle}>
+                return <li key={board._id} style={boardStyle} className='board-preview'>
                     <article>
                         <Link to={`/board/${board._id}`}>
                             <h4>{board.title}</h4>
@@ -25,6 +25,13 @@ export default function BoardPreview({ boards, toggleIsStarred }) {
                 </li>
             })
             }
+            {!isOnlyStarred && <li className="new-board" onClick={onAddBoard}>
+                {/* <Link to={`/board/${board._id}`}> */}
+                <article className="flex align-center justify-center">
+                    <p>Create new board</p>
+                </article>
+                {/* </Link> */}
+            </li>}
         </ul>
     )
 }
