@@ -40,15 +40,16 @@
         }
 
         .signup-btn {
+            text-decoration: none;
             margin: 0;
             height: rem(49.99px);
-            width: rem(380px);
             background-color: $btn-blue;
             padding: rem(11.2px) rem(16px) rem(12.8px);
             border: rem(1px) solid $btn-blue;
             border-radius: rem(4.8px);
             font-size: rem(16px);
             transition: .2s ease-in-out;
+            color: #fff;
 
             &:hover {
                 background-color: $atlassian;
