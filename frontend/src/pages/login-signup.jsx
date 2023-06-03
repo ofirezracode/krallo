@@ -3,7 +3,7 @@ import { userService } from '../services/user.service'
 // import { ImgUploader } from '../cmps/img-uploader'
 import footerImgRight from '../assets/img/right-footer-img.svg'
 import footerImgLeft from '../assets/img/left-footer-img.svg'
-import logo from "../assets/img/logo.svg"
+import KralloLogo from "../assets/img/krallo-logo-blue.svg"
 
 export default function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
@@ -54,20 +54,25 @@ export default function LoginSignup(props) {
 
     return (
         <div className="login-page">
-            <section>
+                    <img className='login-logo-img' src={KralloLogo} alt="logo" />
+            <section className='main-login'>
                 <div className='login-container'>
-                    <img className='login-logo-img' src={logo} alt="logo" />
-                    <div>
+                    <div className='login-container-layout'>
+                        <h1 className='login-title'>Log in to Krallo</h1>
+                        <div className='login-password-container'>
                         <form action="">
-                            {/* <input type="text" /> */}
+                            <input className='email-input' type="email" />
                         </form>
+                        </div>
                     </div>
                 </div>
 
             </section>
-            <footer className='flex'>
-                <img className='footer-img-left' src={footerImgLeft} alt="footer image" />
-                <img className='footer-img-right' src={footerImgRight} alt="footer image" />
+            <footer >
+                <div className='img-footer-container'>
+                <div className='footer-img-left'><img  src={footerImgLeft} alt="footer image" /></div>
+                <div className='footer-img-right'><img  src={footerImgRight} alt="footer image" /></div>
+                </div>
             </footer>
 
             {/* <p>

@@ -1,15 +1,95 @@
-.login-page{
+.login-page {
 
-    .login-container{
+    .login-logo-img {
+        display: block;
+        height: 43px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
 
-        .login-logo-img{
-            width: 201px;
-            height: 42px;
+    .main-login {
+        width: 100%;
+        padding: 0px;
+        overflow: visible;
+        margin-bottom: 30px;
+
+        .login-container {
+            margin: 0 auto;
+
+            .login-container-layout {
+                background-color: #ffffff;
+                border-radius: 3px;
+                padding: 25px 40px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
+                display: block;
+                max-width: 585px;
+                margin: 0 auto;
+                position: relative;
+
+                .login-title{
+                    text-align: center;
+                    color: $login-title;
+                    font-size: 16px;
+                    letter-spacing: -0.01em;
+                    line-height: 28px;
+                    margin-top: 10px;
+                    margin-bottom: 25px;
+                }
+
+                .email-input{
+                    font-size: 14px;
+                    background-color: #fafbfc;
+                    border: 2px solid #dfe1e6;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    border-radius: 3px;
+                    height: 40px;
+                    -webkit-transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
+                    transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
+                    padding: 0.5em;
+                    max-width: 400px;
+                    margin: 0 0 1.2em;
+                }
+            }
         }
     }
 
-    footer{
-        
+
+    footer {
+
+        // margin-bottom: rem(10px) rem(14px) rem(24px);
+        // font-size: 14px;
+        // line-height: 20px;
+        .img-footer-container {
+            z-index: -900;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+
+            .footer-img-left {
+                position: absolute;
+                width: rem(400px);
+                bottom: 0;
+                left: 0;
+                z-index: -999;
+                max-width: 30%;
+            }
+
+            .footer-img-right {
+                position: absolute;
+                width: rem(400px);
+                bottom: 0;
+                right: 0;
+                z-index: -999;
+                max-width: 30%;
+            }
+        }
+
 
     }
 }
