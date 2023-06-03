@@ -43,6 +43,7 @@ export function AppHeaderHome() {
             </div>
             <nav className="nav flex">
                 <Link to={'/workspaces'}>Workspaces</Link>
+                <button>login switch</button>
 
                 {/* {user &&
                     <span className="user-info">
