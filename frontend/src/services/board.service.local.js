@@ -324,6 +324,7 @@ export const boardService = {
   saveTask,
   getEmptyBoard,
   createTask,
+  getTaskById,
   createGroup,
   createBoardFromTemplate,
   dndTask,
@@ -367,7 +368,6 @@ async function save(board) {
 async function saveTask(boardId, groupId, updatedTask, activity) {
   const board = await getById(boardId)
   const group = board.groups.find((group) => group._id === groupId)
-  console.log('group', group)
   let task = group.tasks.find((task) => task._id === updatedTask._id)
   if (task && Object.keys(task).length > 0) {
     task = { ...updatedTask }
@@ -408,6 +408,17 @@ function createTask(taskText) {
   }
 
   return task
+}
+
+function getTaskById(taskId, boardId) {
+
+  const board = boards.map(board => {
+    console.log(board)
+    const task = board.groups.tasks.find(task._id === taskId)
+    console.log('task', task)
+  })
+  console.log('board', board)
+  // const task = board.map(group => group.map())
 }
 
 function createGroup(groupTitle) {
