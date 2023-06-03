@@ -10,7 +10,7 @@ import { activityService } from '../services/activity.service'
 import AddCloseButtons from './add-close-buttons'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
-function GroupPreview({ group, onUpdateGroupTitle }) {
+function GroupPreview({ group, onUpdateGroupTitle, provided }) {
   const [isAddingTask, setIsAddingTask] = useState(false)
   const [newTaskText, setNewTaskText] = useState('')
 
@@ -74,7 +74,7 @@ function GroupPreview({ group, onUpdateGroupTitle }) {
         </button>
       </header>
 
-      <TaskList tasks={group.tasks} />
+      <TaskList tasks={group.tasks} provided={provided} />
 
       {!isAddingTask && (
         <section className="add-card-section">
