@@ -18,6 +18,8 @@
 
     border-radius: 3px;
 
+    transition: 85ms all ease;
+
     &:hover {
       background-color: $btn-blue-hover;
     }
