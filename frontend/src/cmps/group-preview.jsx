@@ -78,8 +78,8 @@ function GroupPreview({ group, onUpdateGroupTitle }) {
     if (e) {
       e.preventDefault()
     }
-    await onUpdateGroupTitle(group._id, editedTitle)
     toggleForm(false)
+    await onUpdateGroupTitle(group._id, editedTitle)
   }
 
   return (
