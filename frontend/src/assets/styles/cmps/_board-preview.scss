@@ -6,10 +6,9 @@
     cursor: pointer;
     position: relative;
 
-    background: linear-gradient(rgba(34, 34, 34, 0.6),
-            rgba(34, 34, 34, 0.6));
-    background-position: center;
-    background-size: cover;
+    // // background-color: rgba(0, 0, 0, .37);
+    // background-position: center;
+    // background-size: cover;
     transition: .2s ease-in-out;
 
     &:hover {
