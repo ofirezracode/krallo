@@ -22,16 +22,19 @@ function TaskDetails() {
           </button>
         </div>
       </div>
+      <header className="flex">
+        <div className="title-img">
+          <BsFillCreditCardFill className="card-title-img" />
+        </div>
+        <div className="task-title">
+          <h1>Drag and Drop</h1>
+          <p>in list <Link>Code Review</Link></p>
+        </div>
+      </header>
       <section className="task-details-container">
         <section className="card-details-container">
 
-          <header className="flex">
-            <BsFillCreditCardFill className="card-title-img" />
-            <div className="task-title">
-              <h1>Drag and Drop</h1>
-              <p>in list <Link>Code Review</Link></p>
-            </div>
-          </header>
+
           <section className="members-labels">
             <div className="members-wrapper">
               <h5>Members</h5>
@@ -45,7 +48,7 @@ function TaskDetails() {
             <div className="labels-wrapper">
               <h5>Labels</h5>
               <div className="labels">
-                <button className="label">Logic</button>
+                <button className="label-btn">Logic</button>
                 <button className="add-label"><BsPlusLg /></button>
               </div>
             </div>
@@ -53,8 +56,8 @@ function TaskDetails() {
 
         </section>
         <section className="add-to-card-container">
+          <h5>Add to card</h5>
           <section className="add-to-card-btns">
-            <h5>Add to card</h5>
             <button className="add-btn flex justify-center">
               <BsPerson className="add-to-card-img" />
               <p>Members</p>
