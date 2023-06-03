@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import routes from "../routes";
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { login, logout, signup } from "../store/user.actions.js";
 import { LoginSignup } from "../pages/login-signup.jsx";
@@ -38,11 +37,10 @@ export function AppHeaderHome() {
     return (
         <header className="app-header-home flex between">
             <div className="logo flex column between">
-                {/* <span>ATTLASSIAN</span> */}
                 <Link to={'/'}><img className="logo-img" src={Img} alt="logo" /></Link>
             </div>
             <nav className="nav flex">
-                <Link to={'/workspaces'}>Workspaces</Link>
+                <NavLink to={'/workspaces'}>Workspaces</NavLink>
                 <button>login switch</button>
 
                 {/* {user &&
