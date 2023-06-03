@@ -3,8 +3,9 @@ import React from 'react'
 import { useState } from 'react'
 import PopoverDummy from './popovers/popover-dummy'
 import { HiXMark } from 'react-icons/hi2'
+import PopoverLabels from './popovers/popover-labels'
 
-function Popover({ isShown, title, type, parentRect, onClose }) {
+function Popover({ isShown, title, type, parentRect, onClose, props }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
   let popoverStyles = { position: 'fixed' }
 
@@ -22,7 +23,7 @@ function Popover({ isShown, title, type, parentRect, onClose }) {
         <HiXMark onClick={onClose} />
       </header>
       <section>
-        <DynamicCmp type={type}></DynamicCmp>
+        <DynamicCmp type={type} props={props}></DynamicCmp>
       </section>
     </div>
   )
@@ -30,10 +31,12 @@ function Popover({ isShown, title, type, parentRect, onClose }) {
 
 export default Popover
 
-function DynamicCmp({ type }) {
+function DynamicCmp({ type, props }) {
   switch (type) {
     case 'dummy':
       return <PopoverDummy />
+    case 'labels':
+      return <PopoverLabels {...props} />
     default:
       return <PopoverDummy />
   }
