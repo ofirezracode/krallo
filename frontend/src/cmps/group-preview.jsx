@@ -60,7 +60,11 @@ function GroupPreview({ group, onUpdateGroupTitle }) {
     if (newTaskText.trim().length > 0) {
       const task = boardService.createTask(newTaskText)
       const activity = activityService.createActivity('add', {}, task)
-      await saveTask(boardId, group._id, task, activity)
+      try {
+        await saveTask(boardId, group._id, task, activity)
+      } catch (err) {
+        console.log('err', err)
+      }
     }
     setIsAddingTask(false)
     setNewTaskText('')

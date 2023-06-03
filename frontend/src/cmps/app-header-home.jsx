@@ -60,10 +60,10 @@ export function AppHeaderHome() {
                     </section>
                 } */}
             </nav>
-                <div className="header-btns flex">
-                <Link to={'/login'} className="login-btn">Log in</Link>
-                <Link className="try-btn" >Get Krallo for free</Link>
-                </div>
+            <div className="header-btns flex">
+                <Link to={'/login'} className="login-btn flex align-center justify-center">Log in</Link>
+                <Link className="try-btn flex align-center justify-center">Get Krallo for free</Link>
+            </div>
         </header>
     )
 }
