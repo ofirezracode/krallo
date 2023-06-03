@@ -1,7 +1,7 @@
 .home {
     background: url("//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg") center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
     font-family: charlie-regular;
-    
+
 
     .home-container {
         max-width: rem(1240px);
@@ -36,7 +36,7 @@
             padding: rem(113px) rem(0px) rem(0px);
 
             img {
-              width:rem(528px) ;
+                width: rem(528px);
                 height: auto;
                 scale: 1.02;
             }
@@ -50,7 +50,7 @@
             background-color: $btn-blue;
             padding: rem(11.2px) rem(16px) rem(12.8px);
             border: rem(1px) solid $btn-blue;
-            border-radius: rem(4.8px);
+            border-radius: 4.8px;
             font-size: rem(16px);
             transition: .2s ease-in-out;
             color: #fff;

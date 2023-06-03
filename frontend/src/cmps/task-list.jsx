@@ -6,7 +6,7 @@ function TaskList({ tasks }) {
     <ul className="task-list clean-list flex column">
       {tasks.map((task) => (
         <li key={task._id}>
-          <TaskPreview task={task}></TaskPreview>
+          <TaskPreview task={task} />
         </li>
       ))}
     </ul>

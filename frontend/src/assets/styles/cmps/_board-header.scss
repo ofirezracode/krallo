@@ -43,7 +43,7 @@
       text-decoration: none;
       gap: rem(5px);
       height: rem(32px);
-      border-radius: rem(3px);
+      border-radius: 3px;
       padding: rem(6px) rem(12px);
       display: flex;
       align-items: center;
@@ -101,7 +101,7 @@
       display: flex;
       align-items: center;
       color: $card-title;
-      border-radius: rem(3px);
+      border-radius: 3px;
       height: rem(32px);
 
       &:hover {
