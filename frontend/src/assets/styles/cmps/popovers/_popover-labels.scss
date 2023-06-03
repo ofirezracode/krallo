@@ -1,0 +1,131 @@
+.popover-labels {
+  input {
+    padding: 8px 12px;
+    width: 100%;
+
+    color: $text;
+    font-size: 14px;
+    line-height: 20px;
+
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 85ms;
+    transition-timing-function: ease;
+
+    outline: none;
+    border: none;
+    border-radius: 3px;
+
+    &:focus {
+      box-shadow: inset 0 0 0 2px $input-focus;
+    }
+  }
+
+  p {
+    color: $text-subtle;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    margin-top: 12px;
+  }
+
+  .labels-list {
+    padding-block: 4px 8px;
+
+    li {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+
+      .checkbox-container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        .checkbox {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+
+          /* When the checkbox is checked, add a blue background */
+          &:checked ~ .checkmark {
+            background-color: #2196f3;
+            /* Show the checkmark when checked */
+            &:after {
+              display: block;
+            }
+          }
+        }
+
+        /* On mouse-over, add a grey background color */
+        &:hover {
+          .checkmark {
+            background-color: #ccc;
+          }
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 25px;
+          width: 25px;
+          background-color: #eee;
+
+          /* Create the checkmark/indicator (hidden when not checked) */
+          &:after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+        }
+      }
+
+      .label-color {
+        max-width: 100%;
+        min-width: 48px;
+        // width: 100%;
+        height: 32px;
+        padding-inline: 12px;
+
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 32px;
+        text-align: left;
+
+        border-radius: 3px;
+
+        overflow: hidden;
+
+        &:hover {
+          filter: saturate(85%) brightness(85%);
+        }
+      }
+
+      .edit-icon-btn {
+        padding: 8px;
+        .edit-icon {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}

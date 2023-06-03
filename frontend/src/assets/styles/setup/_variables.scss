@@ -1,3 +1,7 @@
+// Fonts
+$text-subtle: #44546f;
+$text: #172b4d;
+
 // Colors
 
 $blue-button: #0c66e4;
@@ -17,7 +21,7 @@ $board-header-background-transparent: #0000003d;
 $button-board-header: #dfe1e6;
 
 //login
-
+$continue-btn: #5AAC44;
 $login-title: #5e6c84;
 
 //card
@@ -44,35 +48,39 @@ $red-subtle: #f87462;
 $red-bolder: #ca3521;
 $orange-subtlest: #fff4e5;
 $orange-subtler: #ffe2bd;
-$orange-subtle: #faa53d;
+$orange-subtle: #faa53d; //default 3
 $orange-bolder: #b65c02;
 $yellow-subtlest: #fff7d6;
 $yellow-subtler: #f8e6a0;
-$yellow-subtle: #e2b203;
+$yellow-subtle: #e2b203; //default 2
 $yellow-bolder: #946f00;
+$lime-subtlest: #eefbda;
+$lime-subtler: #d3f1a7;
+$lime-subtle: #94c748; //default 7
+$lime-bolder: #5b7f24;
 $green-subtlest: #dffcf0;
 $green-subtler: #baf3db;
-$green-subtle: #4bce97;
+$green-subtle: #4bce97; //default 1
 $green-bolder: #1f845a;
 $teal-subtlest: #e3fafc;
 $teal-subtler: #c1f0f5;
-$teal-subtle: #60c6d2;
+$teal-subtle: #60c6d2; //default 6
 $teal-bolder: #1d7f8c;
 $blue-subtlest: #e9f2ff;
 $blue-subtler: #cce0ff;
-$blue-subtle: #579dff;
+$blue-subtle: #579dff; //default 5
 $blue-bolder: #0c66e4;
 $purple-subtlest: #f3f0ff;
 $purple-subtler: #dfd8fd;
-$purple-subtle: #9f8fef;
+$purple-subtle: #9f8fef; //default 4
 $purple-bolder: #6e5dc6;
 $magenta-subtlest: #ffecf8;
 $magenta-subtler: #fdd0ec;
-$magenta-subtle: #e774bb;
+$magenta-subtle: #e774bb; //default 8
 $magenta-bolder: #ae4787;
 $-gray-subtlest: #f1f2f4;
 $gray-subtler: #dcdfe4;
-$gray-subtle: #8590a2;
+$gray-subtle: #8590a2; //default 9
 $gray-bolder: #626f86;
 
 // Breakpoints
