@@ -13,7 +13,7 @@ export function RootCmp() {
 
   return (
     <div>
-        {loggedIn ? <AppHeader />:  <AppHeaderHome />}
+      {loggedIn ? <AppHeader /> : <AppHeaderHome />}
       <main>
         <Routes>{_getRoutes(routes)}</Routes>
       </main>

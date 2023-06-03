@@ -3,15 +3,16 @@
     padding-block-start: 47px 0 40px;
     margin: auto;
 
-    .starred-boards {
+    .all-boards {
         &:first-of-type {
             padding-block-start: rem(47px);
         }
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
         gap: rem(10px);
-        padding: 0;
+        padding-inline: rem(50px);
 
         .title {
             padding-inline-start: rem(5px);
