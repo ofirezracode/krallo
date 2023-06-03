@@ -60,7 +60,7 @@ export default function LoginSignup(props) {
                     <div className='login-container-layout'>
                         <h1 className='login-title'>Log in to Krallo</h1>
                         <div className='login-password-container'>
-                        <form action="">
+                        <form className='login-form' action="">
                             <input className='email-input' type="email" />
                         </form>
                         </div>

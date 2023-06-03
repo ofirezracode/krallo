@@ -17,16 +17,13 @@
 
         .login-container {
             margin: 0 auto;
+            max-width: rem(400px);
 
             .login-container-layout {
                 background-color: #ffffff;
                 border-radius: 3px;
                 padding: 25px 40px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
-                display: block;
-                max-width: 585px;
-                margin: 0 auto;
-                position: relative;
+                box-shadow: rgba(0,0,0,0.1) 0 0 10px;
 
                 .login-title{
                     text-align: center;
@@ -37,20 +34,19 @@
                     margin-top: 10px;
                     margin-bottom: 25px;
                 }
-
-                .email-input{
-                    font-size: 14px;
-                    background-color: #fafbfc;
-                    border: 2px solid #dfe1e6;
-                    -moz-box-sizing: border-box;
-                    box-sizing: border-box;
-                    border-radius: 3px;
-                    height: 40px;
-                    -webkit-transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
-                    transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
-                    padding: 0.5em;
-                    max-width: 400px;
-                    margin: 0 0 1.2em;
+                .login-form{
+                    max-width: rem(320px);
+                    .email-input{
+                        width: rem(320px);
+                        font-size: 14px;
+                        background-color: #fafbfc;
+                        border: 2px solid #dfe1e6;
+                        border-radius: 3px;
+                        height: 40px;
+                        transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
+                        padding: 0.5em;
+                        margin: 0 0 1.2em;
+                    }
                 }
             }
         }
