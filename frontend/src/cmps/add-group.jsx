@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import AddCloseButtons from './add-close-buttons'
 import { BsPlusLg } from 'react-icons/bs'
 import { boardService } from '../services/board.service.local'
-import { addBoard } from '../store/board.actions'
+import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
 function AddGroup({ onAddGroup }) {
-  const [isAdding, setIsAdding] = useState(false)
   const [newTitle, setNewTitle] = useState('')
 
+  const [isEditing, setIsEditing] = useCloseOnOutsideClick(toggleInput, '.add-group-input', 'open-form-button')
+
   function toggleInput(e) {
-    e.preventDefault()
-    setIsAdding((prev) => !prev)
+    if (e) {
+      e.preventDefault()
+    }
+    setIsEditing((prev) => !prev)
   }
 
   async function onSubmit(e) {
@@ -21,15 +24,22 @@ function AddGroup({ onAddGroup }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className={`add-group ${isAdding ? 'visible' : ''}`}>
-      {!isAdding && (
+    <form onSubmit={onSubmit} className={`add-group ${isEditing ? 'visible' : ''}`}>
+      {!isEditing && (
         <button onClick={(e) => toggleInput(e)} className="open-form-button flex align-center">
           <BsPlusLg className="icon" />
           Add another list
         </button>
       )}
-      {isAdding && <input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="Enter list title..."></input>}
-      <AddCloseButtons btnText={'Add list'} onClose={(e) => toggleInput(e)} isVisible={isAdding} />
+      {isEditing && (
+        <input
+          className="add-group-input"
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
+          placeholder="Enter list title..."
+        ></input>
+      )}
+      <AddCloseButtons btnText={'Add list'} onClose={(e) => toggleInput(e)} isVisible={isEditing} />
     </form>
   )
 }

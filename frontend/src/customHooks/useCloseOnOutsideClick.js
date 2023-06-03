@@ -22,7 +22,9 @@ export const useCloseOnOutsideClick = (action, currStateElementClass, prevStateE
 
   useEffect(() => {
     if (requiresAction) {
-      action()
+      if (action) {
+        action()
+      }
       setRequiresAction(false)
     }
   }, [requiresAction])
