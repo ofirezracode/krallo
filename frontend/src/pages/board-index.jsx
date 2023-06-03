@@ -6,6 +6,7 @@ import GroupList from '../cmps/group-list'
 import { loadBoards, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import BoardHeader from '../cmps/board-header'
+import { func } from 'prop-types'
 
 export default function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -29,6 +30,16 @@ export default function BoardIndex() {
     const newBoard = { ...board, groups: newGroups }
     setBoard(newBoard)
 
+    try {
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async function onDndTask(sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex) {
+    const newBoard = boardService.dndTask(board, sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex)
+    setBoard(newBoard)
     try {
       await updateBoard(newBoard)
     } catch (err) {
@@ -65,7 +76,7 @@ export default function BoardIndex() {
   return (
     <section style={boardStyle} className="board-index flex column">
       <BoardHeader board={board}></BoardHeader>
-      <GroupList groups={board.groups} onUpdateGroupTitle={onUpdateGroupTitle} onAddGroup={onAddGroup}></GroupList>
+      <GroupList board={board} onDndTask={onDndTask} onUpdateGroupTitle={onUpdateGroupTitle} onAddGroup={onAddGroup}></GroupList>
     </section>
   )
 }

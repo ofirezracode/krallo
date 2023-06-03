@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import GroupPreview from './group-preview'
 import AddGroup from './add-group'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+import { useSelector } from 'react-redux'
+import { loadBoards } from '../store/board.actions'
 
-function GroupList({ groups, onUpdateGroupTitle, onAddGroup }) {
+function GroupList({ board, onDndTask, onUpdateGroupTitle, onAddGroup }) {
+
+  // const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const { groups } = board
+
+  useEffect(() => {
+    loadBoards()
+  }, [])
+
   function onDragEnd(result) {
     console.log('result', result)
+    if (!result.destination) return
+    const { source, destination, draggableId } = result
+    const sourceGroupId = source.droppableId
+    const destGroupId = destination.droppableId
+    const taskSourceIndex = source.index
+    const taskDestIndex = destination.index
+    onDndTask(sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex)
   }
   return (
     <DragDropContext onDragEnd={onDragEnd}>
