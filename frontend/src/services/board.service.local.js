@@ -119,12 +119,12 @@ const boards = [
         title: 'Design',
         tasks: [
           {
-            _id: 'c103',
+            _id: 'd103',
             title: 'Create wireframes for homepage',
             // "archivedAt": 1589983468418,
           },
           {
-            _id: 'c104',
+            _id: 'd104',
             title: 'Create grid template for the board',
             description:
               'Develop the HTML and CSS structure for the homepage. Implement the layout according to the wireframes provided in the Design group.',
@@ -325,7 +325,7 @@ export const boardService = {
   getEmptyBoard,
   createTask,
   createGroup,
-  createBoardFromTemplate
+  createBoardFromTemplate,
 }
 window.bs = boardService
 
@@ -378,9 +378,7 @@ async function saveTask(boardId, groupId, updatedTask, activity) {
   return board
 }
 
-function createBoardFromTemplate() {
-
-}
+function createBoardFromTemplate() {}
 
 function createTask(taskText) {
   const task = {
@@ -417,8 +415,8 @@ function getEmptyBoard() {
     groups: [createGroup('New group')],
     style: {
       type: 'bgColor',
-      bgColor: utilService.getRandomColor()
-    }
+      bgColor: utilService.getRandomColor(),
+    },
   }
 }
 
