@@ -11,7 +11,7 @@
         text-decoration: none;
         padding-inline: rem(8px);
 
-        div {
+        label{
             font-size: rem(20px);
             letter-spacing: .03rem;
         }
@@ -34,11 +34,9 @@
             background-color: $btn-blue;
             color: #ffff;
             border-radius: rem(4px);
-            padding: 0px 12px;
             font-size: rem(16px);
             height:32px;
             width: 69px;
-            align-self: center;
             &:hover{
                 background-color:  $btn-blue-hover;
             }
@@ -50,7 +48,8 @@
         align-items: center;
         justify-content: flex-end;
         position: relative;
-        // gap: rem(15px);
+        list-style: none;
+
 
         .search-input {
             height: rem(32px);
@@ -92,7 +91,6 @@
         background-color: transparent;
         border: none;
         padding: rem(8px);
-        cursor: pointer;
         display: flex;
 
         svg {
@@ -110,6 +108,10 @@
             background-color: $icon-hover;
             border-radius: 50%;
         }
+
+    }
+    .user-img-header{
+        background-color: transparent;
     }
 
 }
