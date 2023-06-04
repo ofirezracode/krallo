@@ -14,10 +14,6 @@ const boards = [
       imgUrl: '../assets/img/members/ofir-pic.jpg',
     },
     style: {
-      // background: { // if the background will be just a color, then this object will contain a bgColor instead of the url and the type will change
-      //     type: 'img'
-      //     imgUrl: ''
-      // },
       type: 'img',
       imgUrl:
         'https://images.unsplash.com/photo-1684852439598-59db50985462?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80',
@@ -382,13 +378,13 @@ async function saveTask(boardId, groupId, updatedTask, activity) {
   return board
 }
 
-function moveTask(board, sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex) {
+function moveTask(board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
   const newBoard = { ...board }
   const { groups } = newBoard
   const sourceGroupIdx = groups.findIndex((group) => group._id === sourceGroupId)
   const destGroupIdx = groups.findIndex((group) => group._id === destGroupId)
-  const [removed] = groups[sourceGroupIdx].tasks.splice(taskSourceIndex, 1)
-  groups[destGroupIdx].tasks.splice(taskDestIndex, 0, removed)
+  const [removed] = groups[sourceGroupIdx].tasks.splice(taskSourceIdx, 1)
+  groups[destGroupIdx].tasks.splice(taskDestIdx, 0, removed)
   return newBoard
 }
 
@@ -402,7 +398,7 @@ function moveGroup(board, sourceGroupId, destGroupId) {
   return newBoard
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {

@@ -6,7 +6,7 @@ import { logout } from "../store/user.actions.js";
 import { useNavigate } from "react-router-dom";
 import userImg from "../assets/img/members/ofir-pic.jpg"
 
-export default function AppHeader() {
+export function AppHeader() {
   const navigate = useNavigate()
 
   async function onLogout() {

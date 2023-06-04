@@ -4,7 +4,7 @@ import { BsPlusLg } from 'react-icons/bs'
 import { boardService } from '../services/board.service.local'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
-function AddGroup({ onAddGroup }) {
+export function AddGroup({ onAddGroup }) {
   const [newTitle, setNewTitle] = useState('')
 
   const [isEditing, setIsEditing] = useCloseOnOutsideClick(toggleInput, '.add-group-input', 'open-form-button')
@@ -43,5 +43,3 @@ function AddGroup({ onAddGroup }) {
     </form>
   )
 }
-
-export default AddGroup

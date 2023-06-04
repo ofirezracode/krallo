@@ -2,7 +2,7 @@ import React from 'react'
 import { BsStar, BsStarFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
-export default function BoardPreview({ board, toggleIsStarred }) {
+export function BoardPreview({ board, toggleIsStarred }) {
     return (
         <article>
             <Link to={`/board/${board._id}`}>

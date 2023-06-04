@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 
-function TaskPreview({ boardId, task }) {
+export function TaskPreview({ boardId, task }) {
 
   const navigate = useNavigate()
 
@@ -25,5 +25,3 @@ function TaskPreview({ boardId, task }) {
     </article>
   )
 }
-
-export default TaskPreview

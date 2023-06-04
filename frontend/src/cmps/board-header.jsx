@@ -9,7 +9,7 @@ import { updateBoard } from '../store/board.actions'
 import Popover from './popover'
 import { usePopover } from '../customHooks/usePopover'
 
-function BoardHeader({ board }) {
+export function BoardHeader({ board }) {
   const [popoverProps, onTogglePopover] = usePopover()
 
   function toggleIsStarred(ev, board) {
@@ -128,5 +128,3 @@ function BoardHeader({ board }) {
     </section>
   )
 }
-
-export default BoardHeader

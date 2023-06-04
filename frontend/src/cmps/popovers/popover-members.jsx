@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BsPencil } from 'react-icons/bs'
 import UserImg from '../user-img'
 
-function PopoverMembers({ members }) {
+export function PopoverMembers({ members }) {
   const [searchTerm, setSearchTerm] = useState('')
   console.log('members', members)
   return (
@@ -26,5 +26,3 @@ function PopoverMembers({ members }) {
     </div>
   )
 }
-
-export default PopoverMembers
