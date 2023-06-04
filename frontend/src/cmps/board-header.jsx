@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { BsPeople, BsStar, BsStarFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { UserImg } from './user-img'
-import Ofir from "../assets/img/members/ofir-pic.jpg"
-import Etai from "../assets/img/members/etai-pic.jpg"
-import Tamar from "../assets/img/members/tamar-pic.jpg"
+import Ofir from '../assets/img/members/ofir-pic.jpg'
+import Etai from '../assets/img/members/etai-pic.jpg'
+import Tamar from '../assets/img/members/tamar-pic.jpg'
 import { updateBoard } from '../store/board.actions'
 import { Popover } from './popover'
 import { usePopover } from '../customHooks/usePopover'
@@ -17,6 +17,8 @@ export function BoardHeader({ board }) {
     board.isStarred = !board.isStarred
     updateBoard(board)
   }
+
+  if (!board) return <div></div>
 
   return (
     <section>
@@ -91,10 +93,10 @@ export function BoardHeader({ board }) {
           {/* {board.members.map(member =>
             < img src={member.imgUrl} alt="" />
           )} */}
-          <div className='members'>
-            < img src={Ofir} className='member-img' alt="" />
-            < img src={Etai} className='member-img' alt="" />
-            < img src={Tamar} className='member-img' alt="" />
+          <div className="members">
+            <img src={Ofir} className="member-img" alt="" />
+            <img src={Etai} className="member-img" alt="" />
+            <img src={Tamar} className="member-img" alt="" />
           </div>
           {/* <UserImg className="board-members" /> */}
           <button className="btn-fill" title="Share board">

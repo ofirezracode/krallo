@@ -4,34 +4,6 @@
   height: rem(116px);
   position: relative;
 
-  .close-button {
-    margin: 4px 4px;
-    height: 40px;
-    width: 40px;
-
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    background-color: inherit;
-
-    .close-icon {
-      height: 40px;
-      width: 40px;
-      padding: 8px;
-
-      border-radius: 50%;
-      color: $small-titles;
-
-      transition: background-color 85ms, color 85ms;
-      z-index: 2;
-
-      &:hover {
-        background-color: $close-icon-hover;
-      }
-    }
-  }
-
   .cover-btn-container {
     display: flex;
     justify-content: flex-end;

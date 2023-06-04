@@ -9,9 +9,6 @@ export function TaskCover({ task }) {
   if (!coverColor) return <div />
   return (
     <section className="task-cover" style={coverColor}>
-      <button className="close-button">
-        <HiXMark className="close-icon" />
-      </button>
       <div className="cover-btn-container">
         <button className="flex center">
           <BsSquareHalf className="box-icon" />

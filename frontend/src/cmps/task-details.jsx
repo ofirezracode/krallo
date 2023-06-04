@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { boardService } from '../services/board.service.local'
 import { Link } from 'react-router-dom'
-import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsPlusLg, BsTag } from 'react-icons/bs'
-import Ofir from '../assets/img/members/ofir-pic.jpg'
-import Etai from '../assets/img/members/etai-pic.jpg'
-import Tamar from '../assets/img/members/tamar-pic.jpg'
+import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsTag } from 'react-icons/bs'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
+import { ShowMembersLabels } from './task-details/show-members-labels'
+import { HiXMark } from 'react-icons/hi2'
 import { TaskCover } from './task-details/task-cover'
 
 export function TaskDetails() {
@@ -21,6 +21,8 @@ export function TaskDetails() {
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (boards.length !== 0) {
@@ -41,8 +43,10 @@ export function TaskDetails() {
   return (
     <section className="screen">
       <div className="backdrop"></div>
-
       <article ref={taskDetails} className="task-details">
+        <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
+          <HiXMark className="close-icon" />
+        </button>
         <TaskCover task={task} />
         <header className="flex">
           <div className="title-img">
@@ -57,28 +61,7 @@ export function TaskDetails() {
         </header>
         <section className="task-details-container">
           <section className="card-details-container">
-            <section className="members-labels">
-              <div className="members-wrapper">
-                <h5>Members</h5>
-                <div className="members">
-                  <img src={Ofir} className="member-img" alt="" />
-                  <img src={Etai} className="member-img" alt="" />
-                  <img src={Tamar} className="member-img" alt="" />
-                  <button className="add-member">
-                    <BsPlusLg />
-                  </button>
-                </div>
-              </div>
-              <div className="labels-wrapper">
-                <h5>Labels</h5>
-                <div className="labels">
-                  <button className="label-btn">Logic</button>
-                  <button className="add-label">
-                    <BsPlusLg />
-                  </button>
-                </div>
-              </div>
-            </section>
+            <ShowMembersLabels task={task} />
           </section>
           <section className="add-to-card-container">
             <h5>Add to card</h5>
@@ -88,7 +71,7 @@ export function TaskDetails() {
                 <p>Members</p>
               </button>
               <button title="Labels">
-                <BsTag />
+                <BsTag className='label-icon' />
                 <p>Labels</p>
               </button>
               <button title="Checklist">
@@ -100,7 +83,7 @@ export function TaskDetails() {
                 <p>Dates</p>
               </button>
               <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attachment')} title="Attachment">
-                <BsPaperclip />
+                <BsPaperclip className='clip-icon' />
                 <p>Attachment</p>
               </button>
             </section>

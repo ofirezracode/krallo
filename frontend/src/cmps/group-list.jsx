@@ -5,11 +5,13 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { loadBoards } from '../store/board.actions'
 
 export function GroupList({ board, onDndTask, onDndGroup, onUpdateGroupTitle, onAddGroup }) {
-  const { groups } = board
-
   useEffect(() => {
     loadBoards()
   }, [])
+
+  if (!board) return <div></div>
+
+  const { groups } = board
 
   function onDragEnd(result) {
     if (!result.destination) return
@@ -21,6 +23,7 @@ export function GroupList({ board, onDndTask, onDndGroup, onUpdateGroupTitle, on
     onDndTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
     // onDndGroup(sourceGroupId, destGroupId) // Not working - need fixes
   }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <ul className="group-list clean-list flex">
