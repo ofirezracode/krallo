@@ -1,4 +1,4 @@
-img.user-img{
+img.user-img {
   display: inline-block;
   border: none;
   background-color: transparent;
@@ -14,6 +14,11 @@ img.user-img{
   &.medium {
     width: rem(34px);
     height: rem(34px);
+  }
+
+  &.large {
+    width: rem(40px);
+    height: rem(40px);
   }
 
   &.hover:hover {
