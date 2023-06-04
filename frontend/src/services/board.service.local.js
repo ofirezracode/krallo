@@ -401,12 +401,15 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
   return newBoard
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {
     _id: utilService.makeId(),
     title: title,
+    style: {
+      bgColor: ''
+    }
   }
 
   return task
@@ -431,10 +434,10 @@ function getBoardById(boards, boardId) {
   return boards.find((board) => board._id === boardId)
 }
 
-function createGroup(Title) {
+function createGroup(title) {
   const group = {
     _id: utilService.makeId(),
-    title: Title,
+    title,
     style: {},
     tasks: [],
   }
@@ -443,10 +446,9 @@ function createGroup(Title) {
 }
 
 async function _createBoards() {
-  await save(boards[0])
-  await save(boards[1])
-  await save(boards[2])
-  await save(boards[3])
+  for (const board of boards) {
+    await save(board)
+  }
 }
 
 function getEmptyBoard() {
@@ -461,3 +463,7 @@ function getEmptyBoard() {
     },
   }
 }
+
+// ;(async () => {
+//   await _createBoards()
+// })()

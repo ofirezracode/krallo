@@ -21,7 +21,7 @@
     top: 0;
     left: 0;
     transform: translate(calc(50vw - 50%));
-    background-color: #fff;
+    background-color: #f0f2f4;
     border-radius: 8px;
     margin-block-end: rem(48px);
     width: rem(768px);
@@ -32,7 +32,6 @@
 
     .cover-color {
       border-radius: 8px 8px 0 0;
-      background-color: #e774bb;
       height: rem(116px);
       position: relative;
 
@@ -65,17 +64,19 @@
       }
     }
 
-    header {
+    >header {
       padding: rem(23px) rem(40px) rem(8px) rem(16px);
 
       .title-img {
         width: rem(32px);
         display: flex;
+        padding-inline-start: rem(2px);
 
         .card-title-img {
           width: rem(24px);
           height: rem(25px);
           padding: rem(3px);
+          color: $gray-bolder;
         }
       }
 
@@ -216,7 +217,7 @@
           flex-direction: column;
           gap: rem(8px);
 
-          .add-btn {
+          button {
             width: 100%;
             height: rem(32px);
             padding: rem(6px);
@@ -231,7 +232,7 @@
             align-items: center;
             gap: rem(5px);
 
-            .add-to-card-img {
+            svg {
               width: rem(20px);
               height: rem(20px);
               padding: rem(2px);
@@ -241,4 +242,5 @@
       }
     }
   }
+
 }
