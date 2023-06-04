@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import { BsPencil } from 'react-icons/bs'
 import { UserImg } from '../user-img'
 import { BsCheckLg } from "react-icons/bs";
 
 export function PopoverMembers({ members }) {
   const [searchTerm, setSearchTerm] = useState('')
+  const [isMember, setIsMember] = useState(false)
+
+  function toggleMember() {
+    setIsMember(!isMember)
+}
+
+
   console.log('members', members)
   return (
     <div className="popover-members">
@@ -15,10 +21,10 @@ export function PopoverMembers({ members }) {
           const userInfo = `${member.fullname} (${member.email ? member.email : ''})`
           return (
             <li key={member._id}>
-              <button className="user-button flex align-center">
+              <button className="user-button flex align-center" onClick={toggleMember}>
                 <UserImg userImg={member.imgUrl} size="large" />
                 <p className="user-info">{userInfo}</p>
-                <span><BsCheckLg/></span>
+                {!isMember && <span><BsCheckLg/></span>}
               </button>
             </li>
           )

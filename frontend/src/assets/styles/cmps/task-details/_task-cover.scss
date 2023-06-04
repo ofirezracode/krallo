@@ -21,11 +21,15 @@
 
       .box-icon {
         rotate: -90deg;
+        width: rem(16px);
+        height: rem(16px);
+        padding: rem(2px);
+        color: $text-subtle;
       }
 
       &:hover {
         border-radius: 3px;
-        background-color: #091e4224;
+        background-color: $button-hover;
       }
 
       p {

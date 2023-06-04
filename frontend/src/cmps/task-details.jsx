@@ -10,6 +10,8 @@ import { Popover } from './popover'
 import { ShowMembersLabels } from './task-details/show-members-labels'
 import { HiXMark } from 'react-icons/hi2'
 import { TaskCover } from './task-details/task-cover'
+import { TaskDetailsHeader } from './task-details/task-details-header'
+import { ActionsList } from './task-details/actions-list'
 
 export function TaskDetails() {
   // const [task, setTask] = useState(boardService.getEmptyTask())
@@ -41,53 +43,19 @@ export function TaskDetails() {
   }
 
   return (
-    <section className="screen">
+    <section className="task-details-screen">
       <div className="backdrop"></div>
       <article ref={taskDetails} className="task-details">
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
           <HiXMark className="close-icon" />
         </button>
         <TaskCover task={task} />
-        <header className="flex">
-          <div className="title-img">
-            <BsFillCreditCardFill className="card-title-img" />
-          </div>
-          <div className="task-title">
-            <h1>Drag and Drop</h1>
-            <p>
-              in list <Link>Code Review</Link>
-            </p>
-          </div>
-        </header>
+        <TaskDetailsHeader task={task} />
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} />
           </section>
-          <section className="add-to-card-container">
-            <h5>Add to card</h5>
-            <section className="add-to-card-btns">
-              <button onClick={(e) => onOpenPopover(e, { members: board.members }, 'members', 'Members')} title="Members">
-                <BsPerson />
-                <p>Members</p>
-              </button>
-              <button title="Labels">
-                <BsTag className='label-icon' />
-                <p>Labels</p>
-              </button>
-              <button title="Checklist">
-                <BsCheck2Square />
-                <p>Checklist</p>
-              </button>
-              <button title="Dates">
-                <BsClock />
-                <p>Dates</p>
-              </button>
-              <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attachment')} title="Attachment">
-                <BsPaperclip className='clip-icon' />
-                <p>Attachment</p>
-              </button>
-            </section>
-          </section>
+          <ActionsList task={task} onOpenPopover={onOpenPopover} board={board} />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
       </article>
