@@ -76,6 +76,7 @@
           width: rem(24px);
           height: rem(25px);
           padding: rem(3px);
+          color: $gray-bolder;
         }
       }
 
@@ -216,7 +217,7 @@
           flex-direction: column;
           gap: rem(8px);
 
-          .add-btn {
+          button {
             width: 100%;
             height: rem(32px);
             padding: rem(6px);
@@ -231,7 +232,7 @@
             align-items: center;
             gap: rem(5px);
 
-            .add-to-card-img {
+            svg {
               width: rem(20px);
               height: rem(20px);
               padding: rem(2px);

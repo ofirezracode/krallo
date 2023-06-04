@@ -91,27 +91,26 @@ export function TaskDetails() {
           <section className="add-to-card-container">
             <h5>Add to card</h5>
             <section className="add-to-card-btns">
-              <button
-                onClick={(e) => onOpenPopover(e, { members: board.members }, 'members', 'Members')}
-                className="add-btn flex justify-center">
-                <BsPerson className="add-to-card-img" />
+              <button onClick={(e) => onOpenPopover(e, { members: board.members }, 'members', 'Members')}
+                title='Members'>
+                <BsPerson />
                 <p>Members</p>
               </button>
-              <button className="add-btn flex justify-center" title='Labels'>
-                <BsTag className="add-to-card-img" />
+              <button title='Labels'>
+                <BsTag />
                 <p>Labels</p>
               </button>
-              <button className="add-btn flex justify-center" title='Checklist'>
-                <BsCheck2Square className="add-to-card-img" />
+              <button title='Checklist'>
+                <BsCheck2Square />
                 <p>Checklist</p>
               </button>
-              <button className="add-btn flex justify-center" title='Dates'>
+              <button title='Dates'>
                 <BsClock />
                 <p>Dates</p>
               </button>
               <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attachment')}
-                className="add-btn flex justify-center" title='Attachment'>
-                <BsPaperclip className="add-to-card-img" />
+                title='Attachment'>
+                <BsPaperclip />
                 <p>Attachment</p>
               </button>
             </section>
