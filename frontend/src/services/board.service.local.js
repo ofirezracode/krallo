@@ -329,6 +329,7 @@ export const boardService = {
   createBoardFromTemplate,
   dndTask,
   dndGroup,
+  getBoardById,
 }
 window.bs = boardService
 
@@ -410,15 +411,23 @@ function createTask(taskText) {
   return task
 }
 
-function getTaskById(taskId, boardId) {
+function getTaskById(boards, boardId, taskId) {
+  const board = getBoardById(boards, boardId)
+  if (!board) return {}
+  let task
+  for (let i = 0; i < board.groups.length && !task; i++) {
+    for (let j = 0; j < board.groups[i].tasks.length; j++) {
+      if (board.groups[i].tasks[j]._id === taskId) {
+        task = board.groups[i].tasks[j]
+        break
+      }
+    }
+  }
+  return task
+}
 
-  const board = boards.map(board => {
-    console.log(board)
-    const task = board.groups.tasks.find(task._id === taskId)
-    console.log('task', task)
-  })
-  console.log('board', board)
-  // const task = board.map(group => group.map())
+function getBoardById(boards, boardId) {
+  return boards.find((board) => board._id === boardId)
 }
 
 function createGroup(groupTitle) {

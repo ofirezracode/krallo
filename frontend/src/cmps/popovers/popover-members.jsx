@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { BsPencil } from 'react-icons/bs'
 import UserImg from '../user-img'
 
-function PopoverMembers(members) {
+function PopoverMembers({ members }) {
   const [searchTerm, setSearchTerm] = useState('')
+  console.log('members', members)
   return (
     <div className="popover-members">
       <input type="text" value={searchTerm} onChange={setSearchTerm} placeholder="Search members" />
