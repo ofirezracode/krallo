@@ -401,12 +401,15 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
   return newBoard
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {
     _id: utilService.makeId(),
     title: title,
+    style: {
+      bgColor: ''
+    }
   }
 
   return task

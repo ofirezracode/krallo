@@ -21,6 +21,7 @@ export function TaskDetails() {
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
 
+
   useEffect(() => {
     if (boards.length !== 0) {
       setBoard(...boards.filter((board) => board._id === boardId))
@@ -37,12 +38,13 @@ export function TaskDetails() {
     onTogglePopover(e, type, title)
   }
 
+  const coverColor = !task.style.bgColor ? { backgroundColor: 'white' } : { backgroundColor: task.style.bgColor }
   return (
     <section className="screen">
       <div className="backdrop"></div>
 
       <article ref={taskDetails} className="task-details">
-        <div className="cover-color">
+        <div className="cover-color" style={coverColor}>
           <div className="cover-btn-container">
             <button>
               {/* <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(0.75turn) translateY(-20%) translateX(22%);"><path d="M8 15V1h6a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H8zm6 1a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12z"></path></svg> */}
@@ -91,8 +93,7 @@ export function TaskDetails() {
             <section className="add-to-card-btns">
               <button
                 onClick={(e) => onOpenPopover(e, { members: board.members }, 'members', 'Members')}
-                className="add-btn flex justify-center"
-              >
+                className="add-btn flex justify-center">
                 <BsPerson className="add-to-card-img" />
                 <p>Members</p>
               </button>
@@ -108,7 +109,8 @@ export function TaskDetails() {
                 <BsClock />
                 <p>Dates</p>
               </button>
-              <button className="add-btn flex justify-center" title='Attachment'>
+              <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attachment')}
+                className="add-btn flex justify-center" title='Attachment'>
                 <BsPaperclip className="add-to-card-img" />
                 <p>Attachment</p>
               </button>

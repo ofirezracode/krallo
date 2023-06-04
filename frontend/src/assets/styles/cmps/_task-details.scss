@@ -32,7 +32,7 @@
 
     .cover-color {
       border-radius: 8px 8px 0 0;
-      background-color: #e774bb;
+      background-color: #fff;
       height: rem(116px);
       position: relative;
 
@@ -65,12 +65,13 @@
       }
     }
 
-    > header {
+    >header {
       padding: rem(23px) rem(40px) rem(8px) rem(16px);
 
       .title-img {
         width: rem(32px);
         display: flex;
+        padding-inline-start: rem(2px);
 
         .card-title-img {
           width: rem(24px);
