@@ -11,7 +11,6 @@ export default function Home() {
         <div className="home-txt">
           <h1 className="txt-opening"> Krallo brings all your tasks, teammate, and tools together</h1>
           <p className="txt-opening-p">Keep everything in the same place-even if your team isn’t.</p>
-
           <button className="signup-btn" onClick={() => boardService.createBoardFromTemplate()} >Try demo - it’s free!</button>
         </div>
         <div className="home-img">

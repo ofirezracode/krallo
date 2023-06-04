@@ -1,5 +1,5 @@
 .app-header {
-    height: 48px;
+    height: rem(48px);
     padding: rem(8px);
     align-items: center;
     backdrop-filter: blur(6px);
@@ -99,6 +99,11 @@
             color: $card-title;
             height: rem(20px);
             width: rem(20px);
+
+            &.bell{
+                height: rem(24px);
+                width: rem(24px);
+            }
         }
 
         .btn-icon {
