@@ -35,10 +35,7 @@ export function TaskDetails() {
   }, [boards])
 
   function onOpenPopover(e, props, type, title) {
-    // const containerRect = e.target.closest('.task-details').getBoundingClientRect()
-    const containerRect = taskDetails.current.getBoundingClientRect()
-    props.xDiff = containerRect.x
-    props.yDiff = containerRect.y
+    props.refElement = taskDetails.current
     setAddedProps(props)
     onTogglePopover(e, type, title)
   }
