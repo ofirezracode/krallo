@@ -323,8 +323,7 @@ export const boardService = {
   getTaskById,
   createGroup,
   createBoardFromTemplate,
-  dndTask: moveTask,
-  dndGroup: moveGroup,
+  move,
   getBoardById,
 }
 window.bs = boardService
@@ -378,27 +377,31 @@ async function saveTask(boardId, groupId, updatedTask, activity) {
   return board
 }
 
-function moveTask(board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
+function move(type, board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
   const newBoard = { ...board }
   const { groups } = newBoard
   const sourceGroupIdx = groups.findIndex((group) => group._id === sourceGroupId)
   const destGroupIdx = groups.findIndex((group) => group._id === destGroupId)
+  if (type === 'task') {
+    return _moveTask(newBoard, groups, sourceGroupIdx, destGroupIdx, taskSourceIdx, taskDestIdx)
+  } else if (type === 'group') {
+    return _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx)
+  }
+}
+
+function _moveTask(newBoard, groups, sourceGroupIdx, destGroupIdx, taskSourceIdx, taskDestIdx) {
   const [removed] = groups[sourceGroupIdx].tasks.splice(taskSourceIdx, 1)
   groups[destGroupIdx].tasks.splice(taskDestIdx, 0, removed)
   return newBoard
 }
 
-function moveGroup(board, sourceGroupId, destGroupId) {
-  const newBoard = { ...board }
-  const { groups } = newBoard
-  const sourceGroupIdx = groups.findIndex((group) => group._id === sourceGroupId)
-  const destGroupIdx = groups.findIndex((group) => group._id === destGroupId)
+function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
   const [removed] = groups.splice(sourceGroupIdx, 1)
   groups.splice(destGroupIdx, 0, removed)
   return newBoard
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
