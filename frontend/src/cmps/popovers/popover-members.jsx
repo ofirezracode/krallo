@@ -1,14 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { UserImg } from '../user-img'
 import { BsCheckLg } from "react-icons/bs";
 import { useSelector } from 'react-redux'
 
 export function PopoverMembers({ members, taskMembers, onHandleTaskMembers }) {
   const [searchTerm, setSearchTerm] = useState('')
-  const [updatedMembers, setUpdatedMembers] = useState(members.map(member => {
-    const isOnBoard = taskMembers.some(taskMember => taskMember._id === member._id)
-    return { ...member, isOnBoard }
-  }))
+  const [updatedMembers, setUpdatedMembers] = useState(
+    members.map((member) => {
+      const isOnBoard = false
+      return { ...member, isOnBoard }
+    })
+  )
+
+  useEffect(() => {
+    if (taskMembers && taskMembers.length > 0) {
+      const newMembers =  members.map((member) => {
+        const isOnBoard = taskMembers.some((taskMember) => taskMember._id === member._id)
+        return { ...member, isOnBoard }
+      })
+      setUpdatedMembers(newMembers)
+    }
+  }, [taskMembers])
 
 
   function toggleMember({_id, fullname, imgUrl, isOnBoard}) {
