@@ -188,7 +188,7 @@
           text-decoration: none;
           color: $btn-blue;
           &:hover {
-            color: $atlassian;
+            color: $default-blue;
           }
         }
 
@@ -198,7 +198,7 @@
           color: $btn-blue-hover;
 
           &:hover {
-            color: $atlassian;
+            color: $default-blue;
           }
         }
       }
