@@ -6,7 +6,7 @@ export function TaskList({ boardId, tasks, provided }) {
   return (
     <ul className="task-list clean-list flex column">
       {tasks.map((task, idx) => (
-        <Draggable key={task._id} draggableId={task._id} idx={idx}>
+        <Draggable key={task._id} draggableId={task._id} index={idx}>
           {(provided, snapshot) => (
             <li
               key={task._id}
