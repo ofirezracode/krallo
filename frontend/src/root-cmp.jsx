@@ -11,8 +11,6 @@ import AppHeader from './cmps/app-header'
 export function RootCmp() {
   const user = useSelector((storeState) => storeState.userModule.user)
 
-  console.log(user);
-
   return (
     <div>
       {user ? <AppHeader /> : <AppHeaderHome />}
