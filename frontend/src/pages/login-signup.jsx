@@ -25,10 +25,9 @@ export default function LoginSignup() {
             const user = await login(credentials)
             console.log('user', user)
             navigate(`/workspaces`)
-            // showSuccessMsg(`Welcome: ${user.fullname}`)
             clearState()
         } catch (err) {
-            // showErrorMsg('Cannot login')
+            console.log('cannot login')
         }
 
     }
@@ -39,9 +38,8 @@ export default function LoginSignup() {
             const user = await signup(credentials)
             navigate(`/workspaces`)
             clearState()
-            // showSuccessMsg(`Welcome new user: ${user.fullname}`)
         } catch (err) {
-            // showErrorMsg('Cannot signup')
+            console.log('cannot sign up')
         }
     }
 
@@ -97,7 +95,7 @@ export default function LoginSignup() {
                             <li><Link><span ><img className='login-icon slack' src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/267584bf90783090ede8f337d9baf909/slack-logo.svg" alt="slack" /></span><span className='login-label'>Continue with Slack</span></Link></li>
                         </ul>
                         <hr />
-                        <button className={`account ${!isSignup ? 'signup-account':'login-account ' } `} onClick={toggleSignup}>{!isSignup ? 'Already have an account? Log In' : 'Sign up for an account'}</button>
+                        <button className={`account ${!isSignup ? 'signup-account' : 'login-account '} `} onClick={toggleSignup}>{!isSignup ? 'Already have an account? Log In' : 'Sign up for an account'}</button>
                     </div>
                 </div>
             </section>
