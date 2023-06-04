@@ -21,7 +21,7 @@
     top: 0;
     left: 0;
     transform: translate(calc(50vw - 50%));
-    background-color: #fff;
+    background-color: #f0f2f4;
     border-radius: 8px;
     margin-block-end: rem(48px);
     width: rem(768px);
@@ -42,6 +42,7 @@
           width: rem(24px);
           height: rem(25px);
           padding: rem(3px);
+          color: $gray-bolder;
         }
       }
 
@@ -182,7 +183,7 @@
           flex-direction: column;
           gap: rem(8px);
 
-          .add-btn {
+          button {
             width: 100%;
             height: rem(32px);
             padding: rem(6px);
@@ -197,7 +198,7 @@
             align-items: center;
             gap: rem(5px);
 
-            .add-to-card-img {
+            svg {
               width: rem(20px);
               height: rem(20px);
               padding: rem(2px);
