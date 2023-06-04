@@ -366,7 +366,8 @@ async function saveTask(boardId, groupId, updatedTask, activity) {
   const board = await getById(boardId)
   const group = board.groups.find((group) => group._id === groupId)
   let task = group.tasks.find((task) => task._id === updatedTask._id)
-  if (task && Object.keys(task).length > 0) {
+  if (task) {
+    // if (task && Object.keys(task).length > 0) {
     task = { ...updatedTask }
   } else {
     group.tasks.push(updatedTask)
