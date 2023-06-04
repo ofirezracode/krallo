@@ -1,7 +1,6 @@
 import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsTag } from 'react-icons/bs'
 
 export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers }) {
-  console.log('task', task)
   return (
     <section className="add-to-card-container">
       <h5>Add to card</h5>

@@ -18,20 +18,23 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
     onTogglePopover(e, type, title)
   }
 
-  if (!coverColor) return <div />
   return (
-    <section className="task-cover" style={coverColor}>
-      <div className="cover-btn-container">
-        <button
-          ref={coverChangeBtnRef}
-          onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover', 'Cover')}
-          className="flex center"
-        >
-          <BsSquareHalf className="box-icon" />
-          <p>Cover</p>
-        </button>
-      </div>
+    <>
+      {coverColor && (
+        <section className="task-cover" style={coverColor}>
+          <div className="cover-btn-container">
+            <button
+              ref={coverChangeBtnRef}
+              onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover', 'Cover')}
+              className="flex center"
+            >
+              <BsSquareHalf className="box-icon" />
+              <p>Cover</p>
+            </button>
+          </div>
+        </section>
+      )}
       <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
-    </section>
+    </>
   )
 }

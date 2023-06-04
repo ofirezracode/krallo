@@ -21,13 +21,115 @@
       button {
         width: 100%;
         height: 62px;
-        background-color: red;
+        border: 1px solid $button-hover;
 
         border-radius: 3px;
+
         &.active {
           box-shadow: 0 0 0 2px var(--ds-border-inverse, #ffffff), 0 0 0 4px var(--ds-border-brand, #0079bf);
         }
+
+        &:not(.active):hover {
+          filter: saturate(85%) brightness(85%);
+        }
+
+        &.size-half {
+          .part-cover {
+            height: 28px;
+            width: 100%;
+            border-radius: 3px 3px 0 0;
+          }
+
+          .part-cover {
+            height: 28px;
+            width: 100%;
+            border-radius: 3px 3px 0 0;
+          }
+
+          .parts-container {
+            position: relative;
+            padding: 6px 4px 4px 6px;
+
+            .part-line-longer {
+              background: $gray-subtle;
+              height: 4px;
+              border-radius: 2px;
+              width: 122px;
+            }
+
+            .part-line-long {
+              background: $gray-subtle;
+              height: 4px;
+              border-radius: 2px;
+              width: 98px;
+              margin-block-start: 4px;
+            }
+
+            .block-parts-container {
+              display: flex;
+              margin-block-start: 6px;
+
+              .part-block {
+                width: 16px;
+                height: 6px;
+                background: $gray-subtle;
+                border-radius: 2px;
+                margin-right: 2px;
+              }
+            }
+
+            .part-circle {
+              position: absolute;
+              width: 10px;
+              height: 10px;
+              right: 4px;
+              bottom: 4px;
+              background: $gray-subtle;
+              border-radius: 5px;
+            }
+          }
+        }
+
+        &.size-full {
+          position: relative;
+          .parts-container {
+            padding: 6px 4px 4px 6px;
+
+            position: absolute;
+            bottom: 4px;
+
+            .part-line-longer {
+              height: 4px;
+              border-radius: 2px;
+              width: 122px;
+            }
+
+            .part-line-long {
+              height: 4px;
+              border-radius: 2px;
+              width: 98px;
+              margin-block-start: 4px;
+            }
+          }
+        }
       }
+    }
+  }
+
+  .remove-cover-btn {
+    width: 100%;
+    margin-block: 4px 16px;
+    padding: 6px 12px;
+
+    border: none;
+    border-radius: 3px;
+
+    color: $text;
+    font-family: inherit;
+    line-height: 20px;
+
+    &:hover {
+      background-color: $button-hover;
     }
   }
 
