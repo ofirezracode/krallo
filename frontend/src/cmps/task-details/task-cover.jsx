@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import { BsSquareHalf } from 'react-icons/bs'
-import { HiXMark } from 'react-icons/hi2'
 import { usePopover } from '../../customHooks/usePopover'
 import { Popover } from '../popover'
 

@@ -3,6 +3,7 @@ import { TaskPreview } from './task-preview'
 import { Draggable } from 'react-beautiful-dnd'
 
 export function TaskList({ boardId, tasks, provided }) {
+
   return (
     <ul className="task-list clean-list flex column">
       {tasks.map((task, idx) => (

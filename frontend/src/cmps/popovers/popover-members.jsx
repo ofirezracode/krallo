@@ -15,6 +15,16 @@ export function PopoverMembers({ members, taskMembers, onHandleTaskMembers }) {
   useEffect(() => {
     if (taskMembers && taskMembers.length > 0) {
       const newMembers = members.map((member) => {
+        const isOnBoard = taskMembers.some((taskMember) => taskMember._id === member._id)
+        return { ...member, isOnBoard }
+      })
+      setUpdatedMembers(newMembers)
+    }
+  }, [taskMembers])
+
+  useEffect(() => {
+    if (taskMembers && taskMembers.length > 0) {
+      const newMembers = members.map((member) => {
         const isOnBoard = taskMembers.some((taskMember) => {
           console.log('taskMember._id', taskMember._id)
           console.log('member._id', member._id)

@@ -1,3 +1,4 @@
+import { render } from 'react-dom'
 import { storageService } from './async-storage.service.js'
 import { userService } from './user.service.js'
 import { utilService } from './util.service.js'
@@ -392,20 +393,23 @@ async function save(board) {
   return savedBoard
 }
 
-async function saveTask(board, updatedTask, groupId, activity) {
+async function saveTask(board, updatedTask, activity) {
   let group
   let task
+  let taskIdx
   for (let i = 0; i < board.groups.length; i++) {
     group = board.groups[i]
     for (let j = 0; j < board.groups[i].tasks.length; j++) {
       if (board.groups[i].tasks[j]._id === updatedTask._id) {
         task = board.groups[i].tasks[j]
+        taskIdx = j
       }
     }
   }
   if (task) {
     // if (task && Object.keys(task).length > 0) {
     task = { ...updatedTask }
+    group.tasks[taskIdx] = task
   } else {
     group.tasks.push(updatedTask)
   }
@@ -442,10 +446,13 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
 function toggleMemberOnTask(task, member, activityType) {
   console.log('member', member)
   if (activityType === 'add-member') {
-    return task.members.push(member)
+    task.members.push(member)
   } else if (activityType === 'remove-member') {
-    return task.members.splice(member, 1)
+    const memberIdx = task.members.findIndex((m) => m._id === member._id);
+      task.members.splice(memberIdx, 1)
   }
+
+  return task;
 }
 
 function createBoardFromTemplate() {}
