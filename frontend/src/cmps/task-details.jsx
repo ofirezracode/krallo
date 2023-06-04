@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { boardService } from '../services/board.service.local'
@@ -19,6 +19,7 @@ function TaskDetails() {
   const [addedProps, setAddedProps] = useState({})
 
   const [popoverProps, onTogglePopover] = usePopover()
+  const taskDetails = useRef()
 
   useEffect(() => {
     if (boards.length !== 0) {
@@ -28,7 +29,8 @@ function TaskDetails() {
   }, [boards])
 
   function onOpenPopover(e, props) {
-    const containerRect = e.target.closest('.task-details').getBoundingClientRect()
+    // const containerRect = e.target.closest('.task-details').getBoundingClientRect()
+    const containerRect = taskDetails.current.getBoundingClientRect()
     props.xDiff = containerRect.x
     props.yDiff = containerRect.y
     setAddedProps(props)
@@ -39,7 +41,7 @@ function TaskDetails() {
     <section className="screen">
       <div className="backdrop"></div>
 
-      <article className="task-details">
+      <article ref={taskDetails} className="task-details">
         <div className="cover-color">
           <div className="cover-btn-container">
             <button>
