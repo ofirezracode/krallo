@@ -5,8 +5,8 @@ import { Draggable } from 'react-beautiful-dnd'
 export function TaskList({ boardId, tasks, provided }) {
   return (
     <ul className="task-list clean-list flex column">
-      {tasks.map((task, index) => (
-        <Draggable key={task._id} draggableId={task._id} index={index}>
+      {tasks.map((task, idx) => (
+        <Draggable key={task._id} draggableId={task._id} index={idx}>
           {(provided, snapshot) => (
             <li
               key={task._id}

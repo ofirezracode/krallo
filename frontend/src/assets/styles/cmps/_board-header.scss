@@ -1,18 +1,18 @@
 .board-header {
-  padding: 12px 10px 12px 16px;
+  padding: rem(12px) rem(10px) rem(12px) rem(16px);
   background-color: $board-header-background-transparent;
   flex-wrap: wrap;
 
   h1 {
-    font-size: 18px;
+    font-size: rem(18px);
     font-weight: bold;
-    line-height: 32px;
+    line-height: rem(32px);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     height: 100%;
     color: #fff;
-    padding: 0 10px;
+    padding: 0 rem(10px);
   }
 
   li {
@@ -35,7 +35,7 @@
     .star-empty,
     .star-fill {
       width: rem(13px);
-      stroke-width: rem(.5px);
+      stroke-width: rem(0.5px);
     }
 
     button {
@@ -72,7 +72,7 @@
         width: rem(34px);
         padding: rem(4px);
         border-radius: 50%;
-        margin-inline-start: -10px;
+        margin-inline-start: rem(-10px);
 
         &:hover {
           filter: contrast(70%) brightness(120%);

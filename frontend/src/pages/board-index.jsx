@@ -21,10 +21,10 @@ export function BoardIndex() {
   }, [boards])
 
   async function onUpdateGroupTitle(groupId, newTitle) {
-    const groupIndex = board.groups.findIndex((group) => group._id === groupId)
+    const groupIdx = board.groups.findIndex((group) => group._id === groupId)
 
     const newGroups = [...board.groups]
-    newGroups[groupIndex].title = newTitle
+    newGroups[groupIdx].title = newTitle
 
     const newBoard = { ...board, groups: newGroups }
     setBoard(newBoard)
@@ -36,8 +36,8 @@ export function BoardIndex() {
     }
   }
 
-  async function onDndTask(sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex) {
-    const newBoard = boardService.dndTask(board, sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex)
+  async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
+    const newBoard = boardService.dndTask(board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
     setBoard(newBoard)
     try {
       await updateBoard(newBoard)
@@ -46,7 +46,7 @@ export function BoardIndex() {
     }
   }
 
-  async function onDndGroup(sourceGroupId, destGroupId) {
+  async function onMoveGroup(sourceGroupId, destGroupId) {
     const newBoard = boardService.dndGroup(board, sourceGroupId, destGroupId)
     setBoard(newBoard)
     try {
@@ -86,7 +86,7 @@ export function BoardIndex() {
     <section style={boardStyle} className="board-index flex column">
       <Outlet />
       <BoardHeader board={board}></BoardHeader>
-      <GroupList board={board} onDndTask={onDndTask} onDndGroup={onDndGroup} onUpdateGroupTitle={onUpdateGroupTitle} onAddGroup={onAddGroup}></GroupList>
+      <GroupList board={board} onDndTask={onMoveTask} onDndGroup={onMoveGroup} onUpdateGroupTitle={onUpdateGroupTitle} onAddGroup={onAddGroup}></GroupList>
     </section>
   )
 }

@@ -17,9 +17,9 @@ export function GroupList({ board, onDndTask, onDndGroup, onUpdateGroupTitle, on
     const { source, destination } = result
     const sourceGroupId = source.droppableId
     const destGroupId = destination.droppableId
-    const taskSourceIndex = source.index
-    const taskDestIndex = destination.index
-    onDndTask(sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex)
+    const taskSourceIdx = source.index
+    const taskDestIdx = destination.index
+    onDndTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
     // onDndGroup(sourceGroupId, destGroupId) // Not working - need fixes
   }
   return (

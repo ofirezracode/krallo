@@ -1,15 +1,15 @@
 .group-list {
-  margin-block: 12px 8px;
-  padding-inline-start: 16px;
-  padding-block-end: 8px;
+  margin-block: rem(12px) rem(8px);
+  padding-inline-start: rem(16px);
+  padding-block-end: rem(8px);
 
   flex-grow: 1;
 
   overflow-x: scroll;
 
   &::-webkit-scrollbar {
-    height: 12px;
-    width: 10px;
+    height: rem(12px);
+    width: rem(10px);
   }
   &::-webkit-scrollbar-track {
     background: #00000026;
@@ -22,7 +22,7 @@
 
   &::-webkit-scrollbar-button {
     display: block;
-    height: 1px;
-    width: 25px;
+    height: rem(1px);
+    width: rem(25px);
   }
 }
