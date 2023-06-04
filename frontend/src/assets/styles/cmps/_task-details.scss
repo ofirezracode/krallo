@@ -59,7 +59,7 @@
       }
     }
 
-    > header {
+    >header {
       padding: rem(23px) rem(40px) rem(8px) rem(16px);
 
       .title-img {
@@ -139,11 +139,16 @@
                 align-items: center;
                 justify-content: center;
                 background-color: #091e420f;
+                transition: .2s ease-in-out;
 
                 svg {
                   width: rem(16px);
                   height: rem(16px);
                   color: $text;
+                }
+
+                &:hover {
+                  background-color: $button-hover;
                 }
               }
             }
@@ -183,12 +188,18 @@
                 align-items: center;
                 justify-content: center;
                 background-color: #091e420f;
+                transition: .2s ease-in-out;
+
 
                 svg {
                   width: rem(16px);
                   height: rem(16px);
                   stroke-width: 0.5px;
                   color: $text;
+                }
+
+                &:hover {
+                  background-color: $button-hover;
                 }
               }
             }
@@ -226,11 +237,24 @@
             justify-content: start;
             align-items: center;
             gap: rem(5px);
+            transition: .2s ease-in-out;
 
             svg {
               width: rem(20px);
               height: rem(20px);
               padding: rem(2px);
+            }
+
+            .label-icon {
+              transform: scaleX(-1);
+            }
+
+            .clip-icon {
+              rotate: 45deg;
+            }
+
+            &:hover {
+              background-color: $button-hover;
             }
           }
         }

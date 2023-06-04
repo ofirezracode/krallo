@@ -71,7 +71,7 @@ export function TaskDetails() {
                 <p>Members</p>
               </button>
               <button title="Labels">
-                <BsTag />
+                <BsTag className='label-icon' />
                 <p>Labels</p>
               </button>
               <button title="Checklist">
@@ -83,7 +83,7 @@ export function TaskDetails() {
                 <p>Dates</p>
               </button>
               <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attachment')} title="Attachment">
-                <BsPaperclip />
+                <BsPaperclip className='clip-icon' />
                 <p>Attachment</p>
               </button>
             </section>
