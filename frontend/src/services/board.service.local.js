@@ -381,13 +381,13 @@ async function saveTask(boardId, groupId, updatedTask, activity) {
   return board
 }
 
-function moveTask(board, sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex) {
+function moveTask(board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
   const newBoard = { ...board }
   const { groups } = newBoard
   const sourceGroupIdx = groups.findIndex((group) => group._id === sourceGroupId)
   const destGroupIdx = groups.findIndex((group) => group._id === destGroupId)
-  const [removed] = groups[sourceGroupIdx].tasks.splice(taskSourceIndex, 1)
-  groups[destGroupIdx].tasks.splice(taskDestIndex, 0, removed)
+  const [removed] = groups[sourceGroupIdx].tasks.splice(taskSourceIdx, 1)
+  groups[destGroupIdx].tasks.splice(taskDestIdx, 0, removed)
   return newBoard
 }
 

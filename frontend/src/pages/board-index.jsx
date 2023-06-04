@@ -21,10 +21,10 @@ export default function BoardIndex() {
   }, [boards])
 
   async function onUpdateGroupTitle(groupId, newTitle) {
-    const groupIndex = board.groups.findIndex((group) => group._id === groupId)
+    const groupIdx = board.groups.findIndex((group) => group._id === groupId)
 
     const newGroups = [...board.groups]
-    newGroups[groupIndex].title = newTitle
+    newGroups[groupIdx].title = newTitle
 
     const newBoard = { ...board, groups: newGroups }
     setBoard(newBoard)
@@ -36,8 +36,8 @@ export default function BoardIndex() {
     }
   }
 
-  async function onMoveTask(sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex) {
-    const newBoard = boardService.dndTask(board, sourceGroupId, destGroupId, taskSourceIndex, taskDestIndex)
+  async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
+    const newBoard = boardService.dndTask(board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
     setBoard(newBoard)
     try {
       await updateBoard(newBoard)
