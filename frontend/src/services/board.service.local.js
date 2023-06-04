@@ -461,6 +461,7 @@ function createTask(title) {
   const task = {
     _id: utilService.makeId(),
     title: title,
+    attachments: [],
     style: {
       bgColor: '',
     },
