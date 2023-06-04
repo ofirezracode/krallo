@@ -1,9 +1,8 @@
 import React from 'react'
 import { BsSquareHalf } from 'react-icons/bs'
-import { HiXMark } from 'react-icons/hi2'
 import { usePopover } from '../../customHooks/usePopover'
 
-export function TaskCover({ task }) {
+export function TaskCover({ task, board, onOpenPopover }) {
   const coverColor = task.style && task.style.bgColor ? { backgroundColor: task.style.bgColor } : null
 
   const [popoverProps, onTogglePopover] = usePopover()
