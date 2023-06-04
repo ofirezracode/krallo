@@ -72,7 +72,7 @@ export default function LoginSignup() {
                             <h1 className='login-title'>Log in to Krallo</h1>
                             <div className='login-password-container'>
                                 <form className='login-form' onSubmit={(e) => onLogin(e)}>
-                                    <input className='email-input' type="email" placeholder='Enter email' name="email"
+                                    <input className='email-input login-input' type="email" placeholder='Enter email' name="email"
                                         value={credentials.email} onChange={handleChange} />
                                     <button className='continue-btn'>Continue</button>
                                 </form>
@@ -82,7 +82,7 @@ export default function LoginSignup() {
                             <h1 className='sginup-title'>Sing up for your account</h1>
                             <div className='login-password-container'>
                                 <form className='login-form' onSubmit={(e) => onSignup(e)}>
-                                    <input className='email-input' type="email" placeholder='Enter email' name="email"
+                                    <input className='email-input signup-input' type="email" placeholder='Enter email' name="email"
                                         value={credentials.email} onChange={handleChange} />
                                     <p className='acknowledge-pra'>By clicking “Continue” below, you agree to the Atlassian Cloud Terms of Service and acknowledge the Privacy Policy.</p>
                                     <button className='continue-btn-gray'>Continue</button>
@@ -97,7 +97,7 @@ export default function LoginSignup() {
                             <li><Link><span ><img className='login-icon slack' src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/267584bf90783090ede8f337d9baf909/slack-logo.svg" alt="slack" /></span><span className='login-label'>Continue with Slack</span></Link></li>
                         </ul>
                         <hr />
-                        <button className={`account ${!isSignup ? 'signup-account':'login-account ' } `} onClick={toggleSignup}>{!isSignup ? 'Sign up for an account' : 'Already have an account? Log In'}</button>
+                        <button className={`account ${!isSignup ? 'signup-account':'login-account ' } `} onClick={toggleSignup}>{!isSignup ? 'Already have an account? Log In' : 'Sign up for an account'}</button>
                     </div>
                 </div>
             </section>
