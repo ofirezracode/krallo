@@ -5,44 +5,42 @@ import { useSelector } from 'react-redux'
 
 export function PopoverMembers({ members, taskMembers, onHandleTaskMembers }) {
   const [searchTerm, setSearchTerm] = useState('')
-  const [updatedMembers, setUpdatedMembers] = useState(
-    members.map((member) => {
-      const isOnBoard = false
-      return { ...member, isOnBoard }
-    })
-  )
-
+  
+  const updatedMembers = members.map(member => {
+    const isOnBoard = taskMembers.some(taskMember => taskMember._id === member._id)
+    return { ...member, isOnBoard }
+  })
+  const [newUpdatedMembers, setNewUpdatedMembers] = useState(updatedMembers)
+  
   useEffect(() => {
-    if (taskMembers && taskMembers.length > 0) {
-      const newMembers = members.map((member) => {
-        const isOnBoard = taskMembers.some((taskMember) => taskMember._id === member._id)
-        return { ...member, isOnBoard }
-      })
-      setUpdatedMembers(newMembers)
-    }
+    setNewUpdatedMembers(newUpdatedMembers)
   }, [taskMembers])
+  
+  // const [updatedMembers, setUpdatedMembers] = useState(
+  //   members.map((member) => {
+  //     const isOnBoard = false
+  //     return { ...member, isOnBoard }
+  //   })
+  // )
 
-  useEffect(() => {
-    if (taskMembers && taskMembers.length > 0) {
-      const newMembers = members.map((member) => {
-        const isOnBoard = taskMembers.some((taskMember) => {
-          console.log('taskMember._id', taskMember._id)
-          console.log('member._id', member._id)
-          return taskMember._id === member._id
-        })
-        return { ...member, isOnBoard }
-      })
-      setUpdatedMembers(newMembers)
-    }
-  }, [taskMembers])
+  // useEffect(() => {
+  //   if (taskMembers && taskMembers.length > 0) {
+  //     const newMembers = members.map((member) => {
+  //       const isOnBoard = taskMembers.some((taskMember) => {
+  //         return taskMember._id === member._id
+  //       })
+  //       return { ...member, isOnBoard }
+  //     })
+  //     setUpdatedMembers(newMembers)
+  //   }
+  // }, [taskMembers])
 
   function toggleMember({ _id, fullname, imgUrl, isOnBoard }) {
     const activityType = isOnBoard ? 'remove-member' : 'add-member'
+    console.log('activityType',activityType);
     onHandleTaskMembers(activityType, { _id, fullname, imgUrl })
   }
 
-  console.log('taskMembers', taskMembers)
-  console.log('updatedMembers', updatedMembers)
 
   return (
     <div className="popover-members">

@@ -448,6 +448,7 @@ function toggleMemberOnTask(task, member, activityType) {
   if (activityType === 'add-member') {
     task.members.push(member)
   } else if (activityType === 'remove-member') {
+    console.log('@@@@@');
     const memberIdx = task.members.findIndex((m) => m._id === member._id);
       task.members.splice(memberIdx, 1)
   }
