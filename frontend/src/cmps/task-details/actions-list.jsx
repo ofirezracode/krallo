@@ -1,6 +1,7 @@
-import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsTag } from 'react-icons/bs'
+import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsSquareHalf, BsTag } from 'react-icons/bs'
+import { ChangeCoverBtn } from '../change-cover-btn'
 
-export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers }) {
+export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, possibleCoverColors, onStyleChange, coverChangeBtnRef }) {
     return (
         <section className="add-to-card-container">
             <h5>Add to card</h5>
@@ -30,6 +31,12 @@ export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers })
                     <BsPaperclip className="clip-icon" />
                     <p>Attachment</p>
                 </button>
+                <ChangeCoverBtn
+                    coverChangeBtnRef={coverChangeBtnRef}
+                    onOpenPopover={onOpenPopover}
+                    possibleCoverColors={possibleCoverColors}
+                    task={task}
+                    onStyleChange={onStyleChange} />
             </section>
         </section>
     )

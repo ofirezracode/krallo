@@ -22,9 +22,12 @@ export function TaskDetails() {
   const [task, setTask] = useState(boardService.getEmptyTask())
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
 
+  const possibleCoverColors = ['#4bce97', '#e2b203', '#faa53d', '#f87462', '#9f8fef', '#579dff', '#60c6d2', '#94c748', '#e774bb', '#8590a2']
+
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
+  const coverChangeBtnRef = useRef()
 
   const navigate = useNavigate()
 
@@ -73,17 +76,28 @@ export function TaskDetails() {
     <section className="task-details-screen">
       <div className="backdrop"></div>
       <article ref={taskDetails} className="task-details">
-        <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
+        <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
           <HiXMark className="close-icon" />
         </button>
-        <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
+        <TaskCover
+          task={task}
+          taskDetails={taskDetails}
+          onStyleChange={onStyleChange}
+          coverChangeBtnRef={coverChangeBtnRef} />
         <TaskDetailsHeader task={task} />
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} />
             <TaskAttachments task={task} />
           </section>
-          <ActionsList task={task} onHandleTaskMembers={onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} />
+          <ActionsList
+            task={task}
+            onHandleTaskMembers={onHandleTaskMembers}
+            onOpenPopover={onOpenPopover}
+            board={board}
+            possibleCoverColors={possibleCoverColors}
+            coverChangeBtnRef={coverChangeBtnRef}
+            onStyleChange={onStyleChange} />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
       </article>

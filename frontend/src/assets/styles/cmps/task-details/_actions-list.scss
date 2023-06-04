@@ -44,6 +44,12 @@
                 rotate: 45deg;
             }
 
+            .box-icon {
+                rotate: -90deg;
+                width: rem(16px);
+                height: rem(16px);
+            }
+
             &:hover {
                 background-color: $button-hover;
             }
