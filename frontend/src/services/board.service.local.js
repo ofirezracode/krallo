@@ -403,10 +403,10 @@ function moveGroup(board, sourceGroupId, destGroupId) {
 
 function createBoardFromTemplate() {}
 
-function createTask(taskText) {
+function createTask(title) {
   const task = {
     _id: utilService.makeId(),
-    title: taskText,
+    title: title,
   }
 
   return task
