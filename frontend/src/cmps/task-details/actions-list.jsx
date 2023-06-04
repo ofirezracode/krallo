@@ -21,7 +21,7 @@ export function ActionsList({ task, onOpenPopover, board }) {
                     <BsClock />
                     <p>Dates</p>
                 </button>
-                <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attachment')} title="Attachment">
+                <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attach from...')} title="Attachment">
                     <BsPaperclip className='clip-icon' />
                     <p>Attachment</p>
                 </button>

@@ -12,6 +12,7 @@ import { HiXMark } from 'react-icons/hi2'
 import { TaskCover } from './task-details/task-cover'
 import { TaskDetailsHeader } from './task-details/task-details-header'
 import { ActionsList } from './task-details/actions-list'
+import { TaskAttachments } from './task-details/task-attachments'
 
 export function TaskDetails() {
   // const [task, setTask] = useState(boardService.getEmptyTask())
@@ -54,6 +55,7 @@ export function TaskDetails() {
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} />
+            <TaskAttachments task={task} />
           </section>
           <ActionsList task={task} onOpenPopover={onOpenPopover} board={board} />
         </section>
