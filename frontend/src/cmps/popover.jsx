@@ -15,8 +15,14 @@ export function Popover({ isShown, title, type, parentRect, onClose, addedProps 
 
   //todo: check viewport overflow on y
 
-  let yDiff = addedProps && addedProps.yDiff ? addedProps.yDiff : 0
-  let xDiff = addedProps && addedProps.xDiff ? addedProps.xDiff : 0
+  let yDiff = 0
+  let xDiff = 0
+
+  if (addedProps.refElement) {
+    const containerRect = addedProps.refElement.getBoundingClientRect()
+    xDiff = containerRect.x
+    yDiff = containerRect.y
+  }
 
   popoverStyles.top = parentRect.bottom + 5 - yDiff
   popoverStyles.left = parentRect.left - xDiff
