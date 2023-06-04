@@ -174,11 +174,7 @@ const boards = [
                 ],
               },
             ],
-            attachments: [
-              {
-                url: '../assets/img/members/tamar-pic.jpg',
-              },
-            ],
+            attachments: ['../assets/img/members/tamar-pic.jpg'],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l101', 'l104'],
             dueDate: 16156215211,
@@ -447,7 +443,7 @@ function toggleMemberOnTask(task, member, activityType) {
   }
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {
@@ -524,7 +520,6 @@ function getEmptyTask() {
     title: 'Loading...',
   }
 }
-
-// ;(async () => {
+// ; (async () => {
 //   await _createBoards()
 // })()

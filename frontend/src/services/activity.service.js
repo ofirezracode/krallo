@@ -28,10 +28,12 @@ function createActivity(activityType, byMember, task, groupName = '') {
 
   if (activityType === 'add') {
     activity.txt = `${byMember.fullname ? byMember.fullname : 'Ghost'} added ${task.title} to ${groupName}`
-  }else if(activityType === 'add-member') {
+  } else if (activityType === 'add-member') {
     activity.txt = `${byMember.fullname} joined ${task.title}`
-  }else if(activityType === 'remove-member') {
+  } else if (activityType === 'remove-member') {
     activity.txt = `${byMember.fullname} left ${task.title}`
+  } else if (activityType === 'add-attachment') {
+    activity.txt = `${byMember.fullname} attached an image to ${task.title}`
   }
   return activity
 }

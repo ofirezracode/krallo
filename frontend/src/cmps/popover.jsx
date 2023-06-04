@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { useState } from 'react'
 import { PopoverDummy } from './popovers/popover-dummy'
 import { HiXMark } from 'react-icons/hi2'
 import { PopoverLabels } from './popovers/popover-labels'
