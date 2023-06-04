@@ -8,10 +8,7 @@ import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, B
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
 import { ShowMembersLabels } from './task-details/show-members-labels'
-import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsTag } from 'react-icons/bs'
 import { HiXMark } from 'react-icons/hi2'
-import { usePopover } from '../customHooks/usePopover'
-import { Popover } from './popover'
 import { TaskCover } from './task-details/task-cover'
 
 export function TaskDetails() {
