@@ -16,8 +16,8 @@ export function TaskDetails() {
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getTaskById(boards ? boards : [], boardId, taskId))
   const [board, setBoard] = useState(boardService.getEmptyBoard())
-  const [addedProps, setAddedProps] = useState({})
 
+  const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
 
@@ -28,13 +28,13 @@ export function TaskDetails() {
     }
   }, [boards])
 
-  function onOpenPopover(e, props) {
+  function onOpenPopover(e, props, type, title) {
     // const containerRect = e.target.closest('.task-details').getBoundingClientRect()
     const containerRect = taskDetails.current.getBoundingClientRect()
     props.xDiff = containerRect.x
     props.yDiff = containerRect.y
     setAddedProps(props)
-    onTogglePopover(e, 'members', 'Members')
+    onTogglePopover(e, type, title)
   }
 
   return (
@@ -89,7 +89,10 @@ export function TaskDetails() {
           <section className="add-to-card-container">
             <h5>Add to card</h5>
             <section className="add-to-card-btns">
-              <button onClick={(e) => onOpenPopover(e, { members: board.members })} className="add-btn flex justify-center" title='Members'>
+              <button
+                onClick={(e) => onOpenPopover(e, { members: board.members }, 'members', 'Members')}
+                className="add-btn flex justify-center"
+              >
                 <BsPerson className="add-to-card-img" />
                 <p>Members</p>
               </button>
