@@ -30,6 +30,35 @@
     position: relative;
     transform: translate(-50%);
 
+    .close-button {
+      margin: 4px 4px;
+      height: 40px;
+      width: 40px;
+
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      background-color: unset;
+
+      z-index: 200;
+
+      .close-icon {
+        height: 40px;
+        width: 40px;
+        padding: 8px;
+
+        border-radius: 50%;
+        color: $small-titles;
+
+        transition: background-color 85ms, color 85ms;
+
+        &:hover {
+          background-color: $close-icon-hover;
+        }
+      }
+    }
+
     > header {
       padding: rem(23px) rem(40px) rem(8px) rem(16px);
 

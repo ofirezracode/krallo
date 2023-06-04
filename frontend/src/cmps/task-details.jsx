@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { boardService } from '../services/board.service.local'
 import { Link } from 'react-router-dom'
 import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsPlusLg, BsTag } from 'react-icons/bs'
+import { HiXMark } from 'react-icons/hi2'
 import Ofir from '../assets/img/members/ofir-pic.jpg'
 import Etai from '../assets/img/members/etai-pic.jpg'
 import Tamar from '../assets/img/members/tamar-pic.jpg'
@@ -21,6 +23,8 @@ export function TaskDetails() {
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (boards.length !== 0) {
@@ -41,8 +45,10 @@ export function TaskDetails() {
   return (
     <section className="screen">
       <div className="backdrop"></div>
-
       <article ref={taskDetails} className="task-details">
+        <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
+          <HiXMark className="close-icon" />
+        </button>
         <TaskCover task={task} />
         <header className="flex">
           <div className="title-img">
