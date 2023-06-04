@@ -91,10 +91,10 @@ export async function updateBoard(board) {
   }
 }
 
-export async function saveTask(boardId, groupId, task, activity) {
+export async function saveTask(board, updatedTask, activity){
   try {
-    const savedBoard = await boardService.saveTask(boardId, groupId, task, activity)
-    console.log('Saved task', task)
+    const savedBoard = await boardService.saveTask(board, updatedTask, activity)
+
     store.dispatch(getActionUpdateBoard(savedBoard))
   } catch (err) {
     console.log('Cannot save task', err)

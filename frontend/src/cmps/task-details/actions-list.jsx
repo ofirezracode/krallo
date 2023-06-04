@@ -1,11 +1,11 @@
 import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsTag } from "react-icons/bs";
 
-export function ActionsList({ task, onOpenPopover, board }) {
+export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers }) {
     return (
         <section className="add-to-card-container">
             <h5>Add to card</h5>
             <section className="add-to-card-btns">
-            <button onClick={(e) => onOpenPopover(e, { members: board.members, taskMembers: task.members }, 'members', 'Members')} title="Members">
+            <button onClick={(e) => onOpenPopover(e, { members: board.members, taskMembers: task.members, onHandleTaskMembers }, 'members', 'Members')} title="Members">
                     <BsPerson />
                     <p>Members</p>
                 </button>

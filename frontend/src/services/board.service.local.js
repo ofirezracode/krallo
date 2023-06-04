@@ -92,11 +92,11 @@ const boards = [
                 },
               },
             ],
-            members: [{
-              _id: 'u103',
-              imgUrl: '../assets/img/members/etai-pic.jpg',
-            },
-
+            members: [
+              {
+                _id: 'u103',
+                imgUrl: '../assets/img/members/etai-pic.jpg',
+              },
             ],
             byMember: {
               _id: 'u102',
@@ -145,6 +145,12 @@ const boards = [
                 },
               },
             ],
+            members: [
+              {
+                _id: 'u103',
+                imgUrl: '../assets/img/members/etai-pic.jpg',
+              },
+            ],
             checklists: [
               {
                 _id: 'YEhmF',
@@ -168,9 +174,11 @@ const boards = [
                 ],
               },
             ],
-            attachments: [{
-              url: '../assets/img/members/tamar-pic.jpg'
-            }],
+            attachments: [
+              {
+                url: '../assets/img/members/tamar-pic.jpg',
+              },
+            ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l101', 'l104'],
             dueDate: 16156215211,
@@ -181,6 +189,7 @@ const boards = [
             },
             style: {
               bgColor: '#faa53d',
+              type: 'half',
             },
           },
         ],
@@ -234,6 +243,12 @@ const boards = [
                 },
               },
             ],
+            members: [
+              {
+                _id: 'u103',
+                imgUrl: '../assets/img/members/etai-pic.jpg',
+              },
+            ],
             checklists: [
               {
                 _id: 'YEhmF',
@@ -267,6 +282,7 @@ const boards = [
             },
             style: {
               bgColor: '#579dff',
+              type: 'half',
             },
           },
         ],
@@ -337,6 +353,9 @@ export const boardService = {
   createBoardFromTemplate,
   move,
   getBoardById,
+  getGroupByTaskId,
+  toggleMemberOnTask,
+  getEmptyTask,
 }
 window.bs = boardService
 
@@ -373,10 +392,17 @@ async function save(board) {
   return savedBoard
 }
 
-async function saveTask(boardId, groupId, updatedTask, activity) {
-  const board = await getById(boardId)
-  const group = board.groups.find((group) => group._id === groupId)
-  let task = group.tasks.find((task) => task._id === updatedTask._id)
+async function saveTask(board, updatedTask, groupId, activity) {
+  let group
+  let task
+  for (let i = 0; i < board.groups.length; i++) {
+    group = board.groups[i]
+    for (let j = 0; j < board.groups[i].tasks.length; j++) {
+      if (board.groups[i].tasks[j]._id === updatedTask._id) {
+        task = board.groups[i].tasks[j]
+      }
+    }
+  }
   if (task) {
     // if (task && Object.keys(task).length > 0) {
     task = { ...updatedTask }
@@ -413,33 +439,50 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
   return newBoard
 }
 
-function createBoardFromTemplate() { }
+function toggleMemberOnTask(task, member, activityType) {
+  if (activityType === 'add-member') {
+    return task.members.push(member)
+  } else if (activityType === 'remove-member') {
+    return task.members.splice(member, 1)
+  }
+}
+
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
     _id: utilService.makeId(),
     title: title,
     style: {
-      bgColor: ''
-    }
+      bgColor: '',
+    },
   }
 
   return task
 }
 
-function getTaskById(boards, boardId, taskId) {
-  const board = getBoardById(boards, boardId)
-  if (!board) return {}
-  let task
-  for (let i = 0; i < board.groups.length && !task; i++) {
+function getGroupByTaskId(board, taskId) {
+  for (let i = 0; i < board.groups.length; i++) {
     for (let j = 0; j < board.groups[i].tasks.length; j++) {
       if (board.groups[i].tasks[j]._id === taskId) {
-        task = board.groups[i].tasks[j]
-        break
+        return board.groups[i]
       }
     }
   }
-  return task
+  return null
+}
+
+function getTaskById(board, taskId) {
+  if (board && board.groups) {
+    for (let i = 0; i < board.groups.length; i++) {
+      for (let j = 0; j < board.groups[i].tasks.length; j++) {
+        if (board.groups[i].tasks[j]._id === taskId) {
+          return board.groups[i].tasks[j]
+        }
+      }
+    }
+  }
+  return null
 }
 
 function getBoardById(boards, boardId) {
@@ -473,6 +516,12 @@ function getEmptyBoard() {
       type: 'bgColor',
       bgColor: utilService.getRandomColor(),
     },
+  }
+}
+
+function getEmptyTask() {
+  return {
+    title: 'Loading...',
   }
 }
 

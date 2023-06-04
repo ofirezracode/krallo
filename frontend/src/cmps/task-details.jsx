@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import { boardService } from '../services/board.service.local'
-import { Link } from 'react-router-dom'
-import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsTag } from 'react-icons/bs'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
 import { ShowMembersLabels } from './task-details/show-members-labels'
@@ -12,14 +10,18 @@ import { HiXMark } from 'react-icons/hi2'
 import { TaskCover } from './task-details/task-cover'
 import { TaskDetailsHeader } from './task-details/task-details-header'
 import { ActionsList } from './task-details/actions-list'
+import { saveTask } from '../store/board.actions'
+import { activityService, createActivity } from '../services/activity.service'
+
 import { TaskAttachments } from './task-details/task-attachments'
 
 export function TaskDetails() {
   // const [task, setTask] = useState(boardService.getEmptyTask())
   const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const board = useSelector((storeState) => storeState.boardModule.board)
   const { taskId, boardId } = useParams()
-  const [task, setTask] = useState(boardService.getTaskById(boards ? boards : [], boardId, taskId))
-  const [board, setBoard] = useState(boardService.getEmptyBoard())
+  const [task, setTask] = useState(boardService.getEmptyTask())
+  // const [board, setBoard] = useState(boardService.getEmptyBoard())
 
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
@@ -29,8 +31,8 @@ export function TaskDetails() {
 
   useEffect(() => {
     if (boards.length !== 0) {
-      setBoard(...boards.filter((board) => board._id === boardId))
-      setTask(boardService.getTaskById(boards ? boards : [], boardId, taskId))
+      // setBoard(...boards.filter((board) => board._id === boardId))
+      setTask(boardService.getTaskById(board ? board : [], taskId))
     }
   }, [boards])
 
@@ -40,6 +42,16 @@ export function TaskDetails() {
     onTogglePopover(e, type, title)
   }
 
+  async function onHandleTaskMembers(activityType, member) {
+    try {
+      let activity = activityService.createActivity(activityType, member, task)
+      const updatedTask = boardService.toggleMemberOnTask(task, member, activityType)
+      await saveTask(board, updatedTask, activity)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
@@ -47,14 +59,14 @@ export function TaskDetails() {
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
           <HiXMark className="close-icon" />
         </button>
-        <TaskCover task={task} />
+        <TaskCover task={task} taskDetails={taskDetails} />
         <TaskDetailsHeader task={task} />
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} />
             <TaskAttachments task={task} />
           </section>
-          <ActionsList task={task} onOpenPopover={onOpenPopover} board={board} />
+          <ActionsList task={task} onHandleTaskMembers={onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
       </article>
