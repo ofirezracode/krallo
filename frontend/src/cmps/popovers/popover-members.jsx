@@ -15,7 +15,7 @@ function PopoverMembers({ members }) {
           return (
             <li key={member._id}>
               <button className="user-button">
-                <UserImg url={members.imgUrl} />
+                <UserImg userImg={member.imgUrl} />
                 <p className="user-info">{userInfo}</p>
                 <BsPencil className="edit-icon" />
               </button>

@@ -28,6 +28,9 @@ function TaskDetails() {
   }, [boards])
 
   function onOpenPopover(e, props) {
+    const containerRect = e.target.closest('.task-details').getBoundingClientRect()
+    props.xDiff = containerRect.x
+    props.yDiff = containerRect.y
     setAddedProps(props)
     onTogglePopover(e, 'members', 'Members')
   }
