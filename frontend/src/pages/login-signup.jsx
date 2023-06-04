@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { login, logout, signup } from "../store/user.actions.js";
+import { login, signup } from "../store/user.actions.js";
 import footerImgRight from '../assets/img/right-footer-img.svg'
 import footerImgLeft from '../assets/img/left-footer-img.svg'
 import KralloLogo from "../assets/img/krallo-logo-blue.svg"
@@ -9,7 +9,7 @@ import { loadUsers } from '../store/user.actions';
 import { useNavigate } from "react-router-dom";
 
 export default function LoginSignup() {
-    const [credentials, setCredentials] = useState({ username: '', password: '' })
+    const [credentials, setCredentials] = useState({ email: '', password: '' })
     const [isSignup, setIsSignup] = useState(true)
     const users = useSelector((storeState) => storeState.userModule.users)
     const navigate = useNavigate()
@@ -37,6 +37,7 @@ export default function LoginSignup() {
         if (ev) ev.preventDefault()
         try {
             const user = await signup(credentials)
+            navigate(`/workspaces`)
             clearState()
             // showSuccessMsg(`Welcome new user: ${user.fullname}`)
         } catch (err) {
@@ -45,7 +46,7 @@ export default function LoginSignup() {
     }
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+        setCredentials({ email: '', password: '', fullname: '', imgUrl: '' })
         setIsSignup(false)
     }
 
@@ -55,16 +56,6 @@ export default function LoginSignup() {
         const value = ev.target.value
         setCredentials({ ...credentials, [field]: value })
     }
-
-    // async function onLogout() {
-    //     try {
-    //         await logout()
-    //         showSuccessMsg(`Bye now`)
-    //     } catch(err) {
-    //         showErrorMsg('Cannot logout')
-    //     }
-    // }
-
 
     function toggleSignup() {
         setIsSignup(!isSignup)
@@ -81,8 +72,8 @@ export default function LoginSignup() {
                             <h1 className='login-title'>Log in to Krallo</h1>
                             <div className='login-password-container'>
                                 <form className='login-form' onSubmit={(e) => onLogin(e)}>
-                                    <input className='email-input' type="text" placeholder='Enter email' name="username"
-                                        value={credentials.username} onChange={handleChange} />
+                                    <input className='email-input' type="email" placeholder='Enter email' name="email"
+                                        value={credentials.email} onChange={handleChange} />
                                     <button className='continue-btn'>Continue</button>
                                 </form>
                             </div>
@@ -90,9 +81,9 @@ export default function LoginSignup() {
                         {!isSignup && <div>
                             <h1 className='sginup-title'>Sing up for your account</h1>
                             <div className='login-password-container'>
-                                <form className='login-form' onSubmit={(e) => onLogin(e)}>
-                                    <input className='email-input' type="text" placeholder='Enter email' name="username"
-                                        value={credentials.username} onChange={handleChange} />
+                                <form className='login-form' onSubmit={(e) => onSignup(e)}>
+                                    <input className='email-input' type="email" placeholder='Enter email' name="email"
+                                        value={credentials.email} onChange={handleChange} />
                                     <p className='acknowledge-pra'>By clicking “Continue” below, you agree to the Atlassian Cloud Terms of Service and acknowledge the Privacy Policy.</p>
                                     <button className='continue-btn-gray'>Continue</button>
                                 </form>
@@ -116,68 +107,6 @@ export default function LoginSignup() {
                     <div className='footer-img-right'><img src={footerImgRight} alt="footer image" /></div>
                 </div>
             </footer>
-
-            {/* <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-            </p>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                <select
-                    name="username"
-                    value={credentials.username}
-                    onChange={handleChange}
-                >
-                    <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                </select> */}
-            {/* <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    /> */}
-            {/* <button>Login!</button>
-            </form>}
-            <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                    <input
-                        type="text"
-                        name="fullname"
-                        value={credentials.fullname}
-                        placeholder="Fullname"
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="text"
-                        name="username"
-                        value={credentials.username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={credentials.password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    />
-                    <ImgUploader onUploaded={onUploaded} />
-                    <button >Signup!</button>
-                </form>}
-            </div> */}
         </div>
     )
 }

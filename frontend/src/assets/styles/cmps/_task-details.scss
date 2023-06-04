@@ -1,4 +1,5 @@
 .task-details {
+    z-index: 999;
     position: fixed;
     top: 0;
     left: 0;
@@ -42,56 +43,67 @@
         }
     }
 
+    header {
+        padding: rem(23px) rem(40px) rem(8px) rem(16px);
+
+        .title-img {
+            width: rem(32px);
+            display: flex;
+
+            .card-title-img {
+                width: rem(24px);
+                height: rem(25px);
+                padding: rem(3px);
+            }
+        }
+
+        .task-title {
+            display: flex;
+            flex-direction: column;
+            padding-inline-start: rem(5px);
+
+            h1 {
+                line-height: 1.25em;
+                margin-block-end: rem(7px);
+                font-size: rem(20px);
+                font-weight: 500;
+            }
+
+            p {
+                color: $small-titles;
+                line-height: 1em;
+                padding-inline-start: rem(3px);
+
+                a {
+                    color: $small-titles;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+    }
+
     .task-details-container {
-        padding: rem(24px) rem(16px);
+        padding-block: rem(16px);
+        padding-inline-start: rem(16px);
         display: grid;
-        grid-template-columns: rem(536.5px) rem(192px);
+        grid-template-columns: rem(560px) rem(192px);
 
         .card-details-container {
             grid-column: 1;
 
-            header {
-                padding-inline-start: rem(6px);
 
-                .card-title-img {
-                    width: rem(18px);
-                    height: rem(32px);
-
-                    // padding: rem(8.5px) rem(8px);
-                    margin-inline-end: rem(17px);
-                }
-
-                h1 {
-                    line-height: 1.2em;
-                    min-height: rem(32px);
-                    font-size: rem(20px);
-                    font-weight: 500;
-                    position: relative;
-                }
-
-                p {
-                    color: $small-titles;
-                    line-height: 1em;
-                    padding-inline-start: rem(2px);
-
-                    a {
-                        color: $small-titles;
-                        text-decoration: underline;
-                    }
-                }
-
-            }
 
             .members-labels {
-                padding-inline-start: 40px;
-                padding-block-start: 32px;
+                padding-inline: rem(40px);
+                padding-block-start: rem(9px);
                 display: flex;
 
                 .members-wrapper {
 
-
-                    h4 {
-                        font-weight: 100;
+                    h5 {
+                        font-weight: 500;
+                        letter-spacing: .2px;
                     }
 
                     .members {
@@ -109,10 +121,60 @@
                             width: rem(32px);
                             height: rem(32px);
                             border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #091e420f;
 
                             svg {
                                 width: rem(16px);
                                 height: rem(16px);
+                                color: $text;
+                            }
+                        }
+                    }
+                }
+
+                .labels-wrapper {
+                    margin-inline-start: rem(15px);
+
+                    h5 {
+                        font-weight: 500;
+                        letter-spacing: .2px;
+                        margin-block-end: rem(4px);
+                    }
+
+                    .labels {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 4px;
+
+                        .label-btn {
+                            width: rem(58px);
+                            height: rem(32px);
+                            color: $text;
+                            background-color: $logic-button-bgc;
+                            border-radius: 3px;
+                            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                            font-size: rem(14px);
+                            font-weight: 600;
+
+                        }
+
+                        .add-label {
+                            width: rem(32px);
+                            height: rem(32px);
+                            border-radius: 3px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #091e420f;
+
+                            svg {
+                                width: rem(16px);
+                                height: rem(16px);
+                                stroke-width: .5px;
+                                color: $text;
                             }
                         }
                     }
@@ -122,8 +184,42 @@
 
         .add-to-card-container {
             grid-column: 2;
-            margin-block-start: rem(93px);
-            padding: 0 16px 8px 8px;
+            padding: 0 rem(16px) rem(8px) rem(8px);
+
+            h5 {
+                font-weight: 500;
+                letter-spacing: .2px;
+                margin-block-start: rem(1px);
+                margin-block-end: rem(4px);
+            }
+
+            .add-to-card-btns {
+                display: flex;
+                flex-direction: column;
+                gap: rem(8px);
+
+
+                .add-btn {
+                    width: 100%;
+                    height: rem(32px);
+                    padding: rem(6px);
+                    background-color: #091e420f;
+                    border-radius: 3px;
+                    color: $text;
+                    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: rem(14px);
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    gap: rem(5px);
+
+                    .add-to-card-img {
+                        width: rem(20px);
+                        height: rem(20px);
+                        padding: rem(2px);
+                    }
+                }
+            }
         }
     }
 }

@@ -47,7 +47,7 @@ async function login(userCred) {
   const users = await storageService.query('user')
   console.log('services users',users);
   console.log(userCred, 'userCred');
-  const user = users.find((user) => user.username === userCred.username)
+  const user = users.find((user) => user.email === userCred.email)
   console.log(user, 'user');
   // const user = await httpService.post('auth/login', userCred)
   if (user) {
@@ -76,8 +76,8 @@ function getLoggedinUser() {
 }
 
 // ;(async () => {
-//   await userService.signup({ fullname: 'Etai', username: 'etai', password: '123', isAdmin: true })
-//   await userService.signup({ fullname: 'Tamar', username: 'tamar', password: '123', isAdmin: true })
-//   await userService.signup({ fullname: 'Ofir', username: 'ofir', password: '123', isAdmin: true })
-//   await userService.signup({ fullname: 'User', username: 'user', password: '123', isAdmin: false })
+//   await userService.signup({ fullname: 'Etai', email: 'etai@krallo.com', password: '123', isAdmin: true })
+//   await userService.signup({ fullname: 'Tamar', email: 'tamar@krallo.com', password: '123', isAdmin: true })
+//   await userService.signup({ fullname: 'Ofir', email: 'ofir@krallo.com', password: '123', isAdmin: true })
+//   await userService.signup({ fullname: 'User', email: 'user@krallo.com', password: '123', isAdmin: false })
 // })()
