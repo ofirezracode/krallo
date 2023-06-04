@@ -1,11 +1,11 @@
 .popover-labels {
   input {
-    padding: 8px 12px;
+    padding: rem(8px) rem(12px);
     width: 100%;
 
     color: $text;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: rem(14px);
+    line-height: rem(20px);
 
     transition-property: background-color, border-color, box-shadow;
     transition-duration: 85ms;
@@ -22,14 +22,14 @@
 
   p {
     color: $text-subtle;
-    font-size: 12px;
+    font-size: rem(12px);
     font-weight: 600;
-    line-height: 16px;
-    margin-top: 12px;
+    line-height: rem(16px);
+    margin-top: rem(12px);
   }
 
   .labels-list {
-    padding-block: 4px 8px;
+    padding-block: rem(4px) rem(8px);
 
     li {
       display: grid;
@@ -38,10 +38,10 @@
       .checkbox-container {
         display: block;
         position: relative;
-        padding-left: 35px;
-        margin-bottom: 12px;
+        padding-left: rem(35px);
+        margin-bottom: rem(12px);
         cursor: pointer;
-        font-size: 22px;
+        font-size: rem(22px);
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
@@ -76,8 +76,8 @@
           position: absolute;
           top: 0;
           left: 0;
-          height: 25px;
-          width: 25px;
+          height: rem(25px);
+          width: rem(25px);
           background-color: #eee;
 
           /* Create the checkmark/indicator (hidden when not checked) */
@@ -85,10 +85,10 @@
             content: '';
             position: absolute;
             display: none;
-            left: 9px;
-            top: 5px;
-            width: 5px;
-            height: 10px;
+            left: rem(9px);
+            top: rem(5px);
+            width: rem(5px);
+            height: rem(10px);
             border: solid white;
             border-width: 0 3px 3px 0;
             -webkit-transform: rotate(45deg);
@@ -100,14 +100,14 @@
 
       .label-color {
         max-width: 100%;
-        min-width: 48px;
+        min-width: rem(48px);
         // width: 100%;
-        height: 32px;
-        padding-inline: 12px;
+        height: rem(32px);
+        padding-inline: rem(12px);
 
-        font-size: 14px;
+        font-size: rem(14px);
         font-weight: 500;
-        line-height: 32px;
+        line-height: rem(32px);
         text-align: left;
 
         border-radius: 3px;
@@ -120,10 +120,10 @@
       }
 
       .edit-icon-btn {
-        padding: 8px;
+        padding: rem(8px);
         .edit-icon {
-          width: 16px;
-          height: 16px;
+          width: rem(16px);
+          height: rem(16px);
         }
       }
     }

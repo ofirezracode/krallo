@@ -1,68 +1,70 @@
 .home {
-    background: url("//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg") center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
-    font-family: charlie-regular;
+  background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center
+      bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
+    linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+  font-family: charlie-regular;
 
-    .home-container {
-        max-width: rem(1240px);
-        margin: auto;
-        padding-block-start: rem(21px);
-        flex-wrap: wrap;
-        justify-content: center;
+  .home-container {
+    max-width: rem(1240px);
+    margin: auto;
+    padding-block-start: rem(21px);
+    flex-wrap: wrap;
+    justify-content: center;
 
-        .home-txt {
-            width: 500px;
-            flex: 0 0 auto;
-            color: #fff;
-            padding: rem(128px) rem(16px);
-        }
-
-        .txt-opening {
-            line-height: 1.25;
-            font-size: rem(48px);
-            margin-block-end: rem(8px);
-            font-family: charlie-semibold;
-            letter-spacing: rem(-2px);
-        }
-
-        .txt-opening-p {
-            font-size: rem(20px);
-            margin-block-end: rem(24px);
-            font-weight: 400;
-        }
-
-        .home-img {
-            padding: rem(113px) rem(0px) rem(0px);
-
-            img {
-                width: rem(528px);
-                height: auto;
-                scale: 1.02;
-            }
-        }
-
-        .signup-btn {
-            font-family: inherit;
-            text-decoration: none;
-            margin: 0;
-            height: rem(49.99px);
-            background-color: $btn-blue;
-            padding: rem(11.2px) rem(16px) rem(12.8px);
-            border: rem(1px) solid $btn-blue;
-            border-radius: 4.8px;
-            font-size: rem(16px);
-            transition: .2s ease-in-out;
-            color: #fff;
-
-            &:hover {
-                background-color: $atlassian;
-                border-color: $atlassian;
-            }
-
-            a {
-                color: #fff;
-                text-decoration: none;
-                font-family: inherit;
-            }
-        }
+    .home-txt {
+      width: rem(500px);
+      flex: 0 0 auto;
+      color: #fff;
+      padding: rem(128px) rem(16px);
     }
+
+    .txt-opening {
+      line-height: 1.25;
+      font-size: rem(48px);
+      margin-block-end: rem(8px);
+      font-family: charlie-semibold;
+      letter-spacing: rem(-2px);
+    }
+
+    .txt-opening-p {
+      font-size: rem(20px);
+      margin-block-end: rem(24px);
+      font-weight: 400;
+    }
+
+    .home-img {
+      padding: rem(113px) rem(0px) rem(0px);
+
+      img {
+        width: rem(528px);
+        height: auto;
+        scale: 1.02;
+      }
+    }
+
+    .signup-btn {
+      font-family: inherit;
+      text-decoration: none;
+      margin: 0;
+      height: rem(49.99px);
+      background-color: $btn-blue;
+      padding: rem(11.2px) rem(16px) rem(12.8px);
+      border: rem(1px) solid $btn-blue;
+      border-radius: 4.8px;
+      font-size: rem(16px);
+      transition: 0.2s ease-in-out;
+      color: #fff;
+
+      &:hover {
+        background-color: $atlassian;
+        border-color: $atlassian;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-family: inherit;
+      }
+    }
+  }
 }
