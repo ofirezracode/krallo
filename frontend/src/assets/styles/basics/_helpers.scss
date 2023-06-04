@@ -32,7 +32,7 @@
 .flex {
   display: flex;
 
-  >*.full {
+  > *.full {
     flex: 1;
   }
 
@@ -55,11 +55,16 @@
   &.wrap {
     flex-wrap: wrap;
   }
+
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.clean-list {
-  list-style-type: none;
-}
+// .clean-list {
+//   list-style-type: none;
+// }
 
 .clean-list {
   list-style: none;
