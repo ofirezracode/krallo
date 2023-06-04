@@ -54,16 +54,19 @@ const boards = [
       {
         _id: 'u101',
         fullname: 'Ofir Ezra',
+        email: 'ofir@krallo.com',
         imgUrl: '../assets/img/members/ofir-pic.jpg',
       },
       {
         _id: 'u102',
         fullname: 'Tamar Millgram',
+        email: 'tamar@krallo.com',
         imgUrl: '../assets/img/members/tamar-pic.jpg',
       },
       {
         _id: 'u103',
         fullname: 'Etai Levi',
+        email: 'etai@krallo.com',
         imgUrl: '../assets/img/members/etai-pic.jpg',
       },
     ],
@@ -88,6 +91,12 @@ const boards = [
                   imgUrl: '../assets/img/members/etai-pic.jpg',
                 },
               },
+            ],
+            members:[{
+              _id: 'u103',
+              imgUrl: '../assets/img/members/etai-pic.jpg',
+            },
+
             ],
             byMember: {
               _id: 'u102',
