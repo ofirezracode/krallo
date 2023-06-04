@@ -2,8 +2,7 @@ import React from "react";
 import HomeImg from "../assets/img/home-img.webp"
 import { boardService } from "../services/board.service.local";
 
-export default function Home() {
-
+export function Home() {
 
   return (
     <section className="home">

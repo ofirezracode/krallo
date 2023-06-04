@@ -6,7 +6,7 @@ import { HiXMark } from 'react-icons/hi2'
 import PopoverLabels from './popovers/popover-labels'
 import PopoverMembers from './popovers/popover-members'
 
-function Popover({ isShown, title, type, parentRect, onClose, addedProps }) {
+export function Popover({ isShown, title, type, parentRect, onClose, addedProps }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
   let popoverStyles = { position: 'fixed' }
 
@@ -32,8 +32,6 @@ function Popover({ isShown, title, type, parentRect, onClose, addedProps }) {
     </div>
   )
 }
-
-export default Popover
 
 function DynamicCmp({ type, addedProps }) {
   switch (type) {

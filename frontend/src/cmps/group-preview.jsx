@@ -10,7 +10,7 @@ import { activityService } from '../services/activity.service'
 import AddCloseButtons from './add-close-buttons'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
-function GroupPreview({ group, onUpdateGroupTitle, provided }) {
+export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
   const [isAddingTask, setIsAddingTask] = useState(false)
   const [newTaskText, setNewTaskText] = useState('')
 
@@ -99,5 +99,3 @@ function GroupPreview({ group, onUpdateGroupTitle, provided }) {
     </article>
   )
 }
-
-export default GroupPreview

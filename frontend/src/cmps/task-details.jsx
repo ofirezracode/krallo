@@ -10,7 +10,7 @@ import Tamar from '../assets/img/members/tamar-pic.jpg'
 import { usePopover } from '../customHooks/usePopover'
 import Popover from './popover'
 
-function TaskDetails() {
+export function TaskDetails() {
   // const [task, setTask] = useState(boardService.getEmptyTask())
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const { taskId, boardId } = useParams()
@@ -115,5 +115,3 @@ function TaskDetails() {
     </section>
   )
 }
-
-export default TaskDetails

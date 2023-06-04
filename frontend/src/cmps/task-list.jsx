@@ -2,7 +2,7 @@ import React from 'react'
 import TaskPreview from './task-preview'
 import { Draggable } from 'react-beautiful-dnd'
 
-function TaskList({ boardId, tasks, provided }) {
+export function TaskList({ boardId, tasks, provided }) {
   return (
     <ul className="task-list clean-list flex column">
       {tasks.map((task, index) => (
@@ -27,5 +27,3 @@ function TaskList({ boardId, tasks, provided }) {
     </ul>
   )
 }
-
-export default TaskList

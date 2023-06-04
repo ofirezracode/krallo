@@ -1,6 +1,6 @@
 import { BsPerson } from 'react-icons/bs'
 
-export default function BoardListTitle({ title }) {
+export function BoardListTitle({ title }) {
   return (
     <header className="board-title-preview flex center">
       <BsPerson className="title-icon" strokeWidth={'.5px'} />

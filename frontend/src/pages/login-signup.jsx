@@ -8,12 +8,11 @@ import KralloLogo from "../assets/img/krallo-logo-blue.svg"
 import { loadUsers } from '../store/user.actions';
 import { useNavigate } from "react-router-dom";
 
-export default function LoginSignup() {
+export function LoginSignup() {
     const [credentials, setCredentials] = useState({ email: '', password: '' })
     const [isSignup, setIsSignup] = useState(true)
     const users = useSelector((storeState) => storeState.userModule.users)
     const navigate = useNavigate()
-
 
     useEffect(() => {
         loadUsers()
@@ -58,7 +57,6 @@ export default function LoginSignup() {
     function toggleSignup() {
         setIsSignup(!isSignup)
     }
-
 
     return (
         <div className="login-page">

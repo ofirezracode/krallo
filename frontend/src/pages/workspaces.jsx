@@ -5,7 +5,7 @@ import BoardList from '../cmps/board-list'
 import { boardService } from '../services/board.service.local'
 import { useNavigate } from 'react-router-dom'
 
-function Workspaces() {
+export function Workspaces() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const navigate = useNavigate()
 
@@ -39,5 +39,3 @@ function Workspaces() {
     </section>
   )
 }
-
-export default Workspaces
