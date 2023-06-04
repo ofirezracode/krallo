@@ -1,12 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { boardService } from '../services/board.service.local'
 import { Link } from 'react-router-dom'
 import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsTag } from 'react-icons/bs'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
 import { ShowMembersLabels } from './task-details/show-members-labels'
+import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsTag } from 'react-icons/bs'
+import { HiXMark } from 'react-icons/hi2'
+import { usePopover } from '../customHooks/usePopover'
+import { Popover } from './popover'
+import { TaskCover } from './task-details/task-cover'
 
 export function TaskDetails() {
   // const [task, setTask] = useState(boardService.getEmptyTask())
@@ -19,6 +25,7 @@ export function TaskDetails() {
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
 
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (boards.length !== 0) {
@@ -36,20 +43,14 @@ export function TaskDetails() {
     onTogglePopover(e, type, title)
   }
 
-  const coverColor = !task.style.bgColor ? { backgroundColor: 'white' } : { backgroundColor: task.style.bgColor }
   return (
     <section className="screen">
       <div className="backdrop"></div>
-
       <article ref={taskDetails} className="task-details">
-        <div className="cover-color" style={coverColor}>
-          <div className="cover-btn-container">
-            <button>
-              {/* <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(0.75turn) translateY(-20%) translateX(22%);"><path d="M8 15V1h6a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H8zm6 1a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12z"></path></svg> */}
-              <p>Cover</p>
-            </button>
-          </div>
-        </div>
+        <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
+          <HiXMark className="close-icon" />
+        </button>
+        <TaskCover task={task} />
         <header className="flex">
           <div className="title-img">
             <BsFillCreditCardFill className="card-title-img" />
@@ -68,25 +69,23 @@ export function TaskDetails() {
           <section className="add-to-card-container">
             <h5>Add to card</h5>
             <section className="add-to-card-btns">
-              <button onClick={(e) => onOpenPopover(e, { members: board.members }, 'members', 'Members')}
-                title='Members'>
+              <button onClick={(e) => onOpenPopover(e, { members: board.members }, 'members', 'Members')} title="Members">
                 <BsPerson />
                 <p>Members</p>
               </button>
-              <button title='Labels'>
+              <button title="Labels">
                 <BsTag />
                 <p>Labels</p>
               </button>
-              <button title='Checklist'>
+              <button title="Checklist">
                 <BsCheck2Square />
                 <p>Checklist</p>
               </button>
-              <button title='Dates'>
+              <button title="Dates">
                 <BsClock />
                 <p>Dates</p>
               </button>
-              <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attachment')}
-                title='Attachment'>
+              <button onClick={(e) => onOpenPopover(e, { attachment: board.attachment }, 'attachment', 'Attachment')} title="Attachment">
                 <BsPaperclip />
                 <p>Attachment</p>
               </button>
