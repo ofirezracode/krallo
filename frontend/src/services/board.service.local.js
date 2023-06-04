@@ -461,6 +461,3 @@ function getEmptyBoard() {
     },
   }
 }
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))

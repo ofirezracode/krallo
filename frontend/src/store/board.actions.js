@@ -8,6 +8,7 @@ import {
   //   UNDO_REMOVE_BOARD,
   UPDATE_BOARD,
 } from './board.reducer.js'
+import { async } from 'q'
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -65,18 +66,16 @@ export async function addBoard(board) {
   }
 }
 
-export function updateBoard(board) {
-  return boardService
-    .save(board)
-    .then((savedBoard) => {
-      console.log('Updated Board:', savedBoard)
-      store.dispatch(getActionUpdateBoard(savedBoard))
-      return savedBoard
-    })
-    .catch((err) => {
-      console.log('Cannot save board', err)
-      throw err
-    })
+export async function updateBoard(board) {
+  try {
+    const savedBoard = await boardService.save(board)
+    console.log('Updated Board:', savedBoard);
+    store.dispatch(getActionUpdateBoard(savedBoard));
+    return savedBoard;
+  } catch (err) {
+    console.log('Cannot save board', err);
+    throw err;
+  }
 }
 
 export async function saveTask(boardId, groupId, task, activity) {

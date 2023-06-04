@@ -71,10 +71,6 @@ const boards = [{
         "imgUrl": "../assets/img/members/ofir-pic.jpg"
     },
     style: {
-        // background: { // if the background will be just a color, then this object will contain a bgColor instead of the url and the type will change
-        //     type: 'img'
-        //     imgUrl: ''
-        // },
         type: 'bgColor',
         bgColor: '#DFD8FD'
     },
