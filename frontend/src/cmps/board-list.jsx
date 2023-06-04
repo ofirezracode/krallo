@@ -1,7 +1,7 @@
 import BoardPreview from './board-preview'
 import BoardListTitle from './board-list-title'
 
-export default function BoardList({ boards, toggleIsStarred, isOnlyStarred, onAddBoard }) {
+export function BoardList({ boards, toggleIsStarred, isOnlyStarred, onAddBoard }) {
     let filteredBoards = isOnlyStarred ? boards.filter((board) => board.isStarred) : boards
 
     return (

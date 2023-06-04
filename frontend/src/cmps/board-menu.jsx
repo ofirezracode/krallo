@@ -1,11 +1,9 @@
 import React from "react";
 
-function BoardMenu() {
+export function BoardMenu() {
   return (
     <section className="board-menu">
       <div></div>
     </section>
   );
 }
-
-export default BoardMenu;

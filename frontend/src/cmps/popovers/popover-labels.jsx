@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BsPencil } from 'react-icons/bs'
 
-function PopoverLabels(labels) {
+export function PopoverLabels(labels) {
   const [searchTerm, setSearchTerm] = useState('')
   return (
     <div className="popover-labels">
@@ -30,5 +30,3 @@ function PopoverLabels(labels) {
     </div>
   )
 }
-
-export default PopoverLabels

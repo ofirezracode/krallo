@@ -4,7 +4,7 @@ import AddGroup from './add-group'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { loadBoards } from '../store/board.actions'
 
-function GroupList({ board, onDndTask, onDndGroup, onUpdateGroupTitle, onAddGroup }) {
+export function GroupList({ board, onDndTask, onDndGroup, onUpdateGroupTitle, onAddGroup }) {
 
   const { groups } = board
 
@@ -26,7 +26,7 @@ function GroupList({ board, onDndTask, onDndGroup, onUpdateGroupTitle, onAddGrou
     <DragDropContext onDragEnd={onDragEnd}>
       <ul className="group-list clean-list flex">
         {groups.map((group, idx) => (
-          <Droppable key={group._id} index={idx} droppableId={group._id}>
+          <Droppable key={group._id} idx={idx} droppableId={group._id}>
             {(provided) => (
               <li key={group._id} {...provided.droppableProps} ref={provided.innerRef}>
                 <GroupPreview group={group} onUpdateGroupTitle={onUpdateGroupTitle} provided={provided} />
@@ -41,5 +41,3 @@ function GroupList({ board, onDndTask, onDndGroup, onUpdateGroupTitle, onAddGrou
     </DragDropContext>
   )
 }
-
-export default GroupList

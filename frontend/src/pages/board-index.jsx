@@ -7,7 +7,7 @@ import { loadBoards, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import BoardHeader from '../cmps/board-header'
 
-export default function BoardIndex() {
+export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const { boardId } = useParams()
   const [board, setBoard] = useState(boardService.getEmptyBoard())
