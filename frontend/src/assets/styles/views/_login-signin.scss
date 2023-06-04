@@ -58,6 +58,14 @@
                         transition: background-color .2s ease-in-out 0s, border-color .2s ease-in-out 0s;
                         padding: rem(7px);
                         margin: 0 0 rem(16.8px);
+
+                        &.signup-input{
+
+                            &:focus{
+                                outline: rgb(9, 30, 66) solid 2px;
+                                border: none;
+                            }
+                        }
                     }
 
                     .continue-btn {
@@ -70,6 +78,10 @@
                         border-radius: 4.2px;
                         font-family: inherit;
                         font-weight: bold;
+
+                        &:hover{
+                            background: #61BD4F;
+                        }
                     }
 
                     .continue-btn-gray {
@@ -117,6 +129,11 @@
                         margin-bottom: rem(12px);
                         display: block;
                         text-decoration: none;
+
+                        &:hover{
+                            background-color: #f9fafc;
+                        }
+
 
                         .login-icon {
                             width: 18px;
