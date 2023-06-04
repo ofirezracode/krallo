@@ -1,219 +1,241 @@
-.task-details {
-  z-index: 999;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(calc(50vw - 50%));
-  background-color: #fff;
-  border-radius: 8px;
-  margin-block: rem(48px) rem(80px);
-  width: rem(768px);
+.screen {
+  position: absolute;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
 
-  .cover-color {
-    border-radius: 8px 8px 0 0;
-    background-color: #e774bb;
-    height: rem(116px);
+  .backdrop {
+    background-color: #000000a3;
+    height: 100%;
+    position: fixed;
+  }
+
+  &,
+  .backdrop {
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .task-details {
+    top: 0;
+    left: 0;
+    transform: translate(calc(50vw - 50%));
+    background-color: #fff;
+    border-radius: 8px;
+    margin-block-end: rem(48px);
+    width: rem(768px);
+    display: inline-block;
+    left: 50%;
     position: relative;
+    transform: translate(-50%);
 
-    .cover-btn-container {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: rem(8px);
-      position: absolute;
-      bottom: 0;
-      width: 100%;
+    .cover-color {
+      border-radius: 8px 8px 0 0;
+      background-color: #e774bb;
+      height: rem(116px);
+      position: relative;
 
-      button {
-        background-color: transparent;
-        width: rem(77.61px);
-        height: rem(32px);
+      .cover-btn-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: rem(8px);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
 
-        &:hover {
-          border-radius: 3px;
-          background-color: #091e4224;
+        button {
+          background-color: transparent;
+          width: rem(77.61px);
+          height: rem(32px);
+
+          &:hover {
+            border-radius: 3px;
+            background-color: #091e4224;
+          }
+
+          p {
+            color: $card-title;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+              'Helvetica Neue', sans-serif;
+            font-size: rem(14px);
+          }
+        }
+      }
+    }
+
+    header {
+      padding: rem(23px) rem(40px) rem(8px) rem(16px);
+
+      .title-img {
+        width: rem(32px);
+        display: flex;
+
+        .card-title-img {
+          width: rem(24px);
+          height: rem(25px);
+          padding: rem(3px);
+        }
+      }
+
+      .task-title {
+        display: flex;
+        flex-direction: column;
+        padding-inline-start: rem(5px);
+
+        h1 {
+          line-height: 1.25em;
+          margin-block-end: rem(7px);
+          font-size: rem(20px);
+          font-weight: 500;
         }
 
         p {
-          color: $card-title;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-            'Helvetica Neue', sans-serif;
-          font-size: rem(14px);
-        }
-      }
-    }
-  }
-
-  header {
-    padding: rem(23px) rem(40px) rem(8px) rem(16px);
-
-    .title-img {
-      width: rem(32px);
-      display: flex;
-
-      .card-title-img {
-        width: rem(24px);
-        height: rem(25px);
-        padding: rem(3px);
-      }
-    }
-
-    .task-title {
-      display: flex;
-      flex-direction: column;
-      padding-inline-start: rem(5px);
-
-      h1 {
-        line-height: 1.25em;
-        margin-block-end: rem(7px);
-        font-size: rem(20px);
-        font-weight: 500;
-      }
-
-      p {
-        color: $small-titles;
-        line-height: 1em;
-        padding-inline-start: rem(3px);
-
-        a {
           color: $small-titles;
-          text-decoration: underline;
-        }
-      }
-    }
-  }
+          line-height: 1em;
+          padding-inline-start: rem(3px);
 
-  .task-details-container {
-    padding-block: rem(16px);
-    padding-inline-start: rem(16px);
-    display: grid;
-    grid-template-columns: rem(560px) rem(192px);
-
-    .card-details-container {
-      grid-column: 1;
-
-      .members-labels {
-        padding-inline: rem(40px);
-        padding-block-start: rem(9px);
-        display: flex;
-
-        .members-wrapper {
-          h5 {
-            font-weight: 500;
-            letter-spacing: rem(0.2px);
-          }
-
-          .members {
-            display: flex;
-            padding-block-start: rem(3px);
-            gap: rem(4px);
-
-            img {
-              width: rem(32px);
-              height: rem(32px);
-              border-radius: 50%;
-            }
-
-            .add-member {
-              width: rem(32px);
-              height: rem(32px);
-              border-radius: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background-color: #091e420f;
-
-              svg {
-                width: rem(16px);
-                height: rem(16px);
-                color: $text;
-              }
-            }
-          }
-        }
-
-        .labels-wrapper {
-          margin-inline-start: rem(15px);
-
-          h5 {
-            font-weight: 500;
-            letter-spacing: rem(0.2px);
-            margin-block-end: rem(4px);
-          }
-
-          .labels {
-            display: flex;
-            flex-direction: row;
-            gap: rem(4px);
-
-            .label-btn {
-              width: rem(58px);
-              height: rem(32px);
-              color: $text;
-              background-color: $logic-button-bgc;
-              border-radius: 3px;
-              font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-                'Helvetica Neue', sans-serif;
-              font-size: rem(14px);
-              font-weight: 600;
-            }
-
-            .add-label {
-              width: rem(32px);
-              height: rem(32px);
-              border-radius: 3px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background-color: #091e420f;
-
-              svg {
-                width: rem(16px);
-                height: rem(16px);
-                stroke-width: rem(0.5px);
-                color: $text;
-              }
-            }
+          a {
+            color: $small-titles;
+            text-decoration: underline;
           }
         }
       }
     }
 
-    .add-to-card-container {
-      grid-column: 2;
-      padding: 0 rem(16px) rem(8px) rem(8px);
+    .task-details-container {
+      padding-block: rem(16px);
+      padding-inline-start: rem(16px);
+      display: grid;
+      grid-template-columns: rem(560px) rem(192px);
 
-      h5 {
-        font-weight: 500;
-        letter-spacing: rem(0.2px);
-        margin-block-start: rem(1px);
-        margin-block-end: rem(4px);
-      }
+      .card-details-container {
+        grid-column: 1;
 
-      .add-to-card-btns {
-        display: flex;
-        flex-direction: column;
-        gap: rem(8px);
-
-        .add-btn {
-          width: 100%;
-          height: rem(32px);
-          padding: rem(6px);
-          background-color: #091e420f;
-          border-radius: 3px;
-          color: $text;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-            'Helvetica Neue', sans-serif;
-          font-size: rem(14px);
+        .members-labels {
+          padding-inline: rem(40px);
+          padding-block-start: rem(9px);
           display: flex;
-          justify-content: start;
-          align-items: center;
-          gap: rem(5px);
 
-          .add-to-card-img {
-            width: rem(20px);
-            height: rem(20px);
-            padding: rem(2px);
+          .members-wrapper {
+            h5 {
+              font-weight: 500;
+              letter-spacing: 0.2px;
+            }
+
+            .members {
+              display: flex;
+              padding-block-start: rem(3px);
+              gap: rem(4px);
+
+              img {
+                width: rem(32px);
+                height: rem(32px);
+                border-radius: 50%;
+              }
+
+              .add-member {
+                width: rem(32px);
+                height: rem(32px);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #091e420f;
+
+                svg {
+                  width: rem(16px);
+                  height: rem(16px);
+                  color: $text;
+                }
+              }
+            }
+          }
+
+          .labels-wrapper {
+            margin-inline-start: rem(15px);
+
+            h5 {
+              font-weight: 500;
+              letter-spacing: 0.2px;
+              margin-block-end: rem(4px);
+            }
+
+            .labels {
+              display: flex;
+              flex-direction: row;
+              gap: 4px;
+
+              .label-btn {
+                width: rem(58px);
+                height: rem(32px);
+                color: $text;
+                background-color: $logic-button-bgc;
+                border-radius: 3px;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+                  'Helvetica Neue', sans-serif;
+                font-size: rem(14px);
+                font-weight: 600;
+              }
+
+              .add-label {
+                width: rem(32px);
+                height: rem(32px);
+                border-radius: 3px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #091e420f;
+
+                svg {
+                  width: rem(16px);
+                  height: rem(16px);
+                  stroke-width: 0.5px;
+                  color: $text;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .add-to-card-container {
+        grid-column: 2;
+        padding: 0 rem(16px) rem(8px) rem(8px);
+
+        h5 {
+          font-weight: 500;
+          letter-spacing: 0.2px;
+          margin-block-start: rem(1px);
+          margin-block-end: rem(4px);
+        }
+
+        .add-to-card-btns {
+          display: flex;
+          flex-direction: column;
+          gap: rem(8px);
+
+          .add-btn {
+            width: 100%;
+            height: rem(32px);
+            padding: rem(6px);
+            background-color: #091e420f;
+            border-radius: 3px;
+            color: $text;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+              'Helvetica Neue', sans-serif;
+            font-size: rem(14px);
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: rem(5px);
+
+            .add-to-card-img {
+              width: rem(20px);
+              height: rem(20px);
+              padding: rem(2px);
+            }
           }
         }
       }
