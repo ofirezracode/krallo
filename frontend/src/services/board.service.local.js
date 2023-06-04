@@ -355,6 +355,7 @@ export const boardService = {
   getBoardById,
   getGroupByTaskId,
   toggleMemberOnTask,
+  getEmptyTask,
 }
 window.bs = boardService
 
@@ -472,7 +473,7 @@ function getGroupByTaskId(board, taskId) {
 }
 
 function getTaskById(board, taskId) {
-  if (board.length > 0) {
+  if (board && board.groups) {
     for (let i = 0; i < board.groups.length; i++) {
       for (let j = 0; j < board.groups[i].tasks.length; j++) {
         if (board.groups[i].tasks[j]._id === taskId) {
@@ -515,6 +516,12 @@ function getEmptyBoard() {
       type: 'bgColor',
       bgColor: utilService.getRandomColor(),
     },
+  }
+}
+
+function getEmptyTask() {
+  return {
+    title: 'Loading...',
   }
 }
 

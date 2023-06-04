@@ -20,7 +20,7 @@ export function TaskDetails() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const board = useSelector((storeState) => storeState.boardModule.board)
   const { taskId, boardId } = useParams()
-  const [task, setTask] = useState(boardService.getTaskById(board ? board : [], taskId))
+  const [task, setTask] = useState(boardService.getEmptyTask())
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
 
   const [addedProps, setAddedProps] = useState({})
@@ -32,7 +32,10 @@ export function TaskDetails() {
   useEffect(() => {
     if (boards.length !== 0) {
       // setBoard(...boards.filter((board) => board._id === boardId))
-      setTask(boardService.getTaskById(board ? board : [], taskId))
+      const tmp = boardService.getTaskById(board ? board : [], taskId)
+      console.log('board', board)
+      console.log('tmp', tmp)
+      setTask(tmp)
     }
   }, [boards])
 
@@ -42,16 +45,17 @@ export function TaskDetails() {
     onTogglePopover(e, type, title)
   }
 
-  async function onHandleTaskMembers(activityType, member){
-    try{
+  async function onHandleTaskMembers(activityType, member) {
+    try {
       let activity = activityService.createActivity(activityType, member, task)
       const updatedTask = boardService.toggleMemberOnTask(task, member, activityType)
       await saveTask(board, updatedTask, activity)
-
-    }catch(err){
-      console.log('err',err)
+    } catch (err) {
+      console.log('err', err)
     }
   }
+
+  console.log('task', task)
 
   return (
     <section className="task-details-screen">
@@ -67,7 +71,7 @@ export function TaskDetails() {
             <ShowMembersLabels task={task} />
             <TaskAttachments task={task} />
           </section>
-          <ActionsList task={task} onHandleTaskMembers = {onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} />
+          <ActionsList task={task} onHandleTaskMembers={onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
       </article>
