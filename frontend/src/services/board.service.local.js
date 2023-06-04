@@ -92,7 +92,7 @@ const boards = [
                 },
               },
             ],
-            members:[{
+            members: [{
               _id: 'u103',
               imgUrl: '../assets/img/members/etai-pic.jpg',
             },
@@ -172,6 +172,9 @@ const boards = [
                 ],
               },
             ],
+            attachments: [{
+              url: '../assets/img/members/tamar-pic.jpg'
+            }],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l101', 'l104'],
             dueDate: 16156215211,

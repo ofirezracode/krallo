@@ -13,6 +13,7 @@ import { ActionsList } from './task-details/actions-list'
 import { saveTask } from '../store/board.actions'
 import { activityService, createActivity } from '../services/activity.service'
 
+import { TaskAttachments } from './task-details/task-attachments'
 
 export function TaskDetails() {
   // const [task, setTask] = useState(boardService.getEmptyTask())
@@ -36,10 +37,7 @@ export function TaskDetails() {
   }, [boards])
 
   function onOpenPopover(e, props, type, title) {
-    // const containerRect = e.target.closest('.task-details').getBoundingClientRect()
-    const containerRect = taskDetails.current.getBoundingClientRect()
-    props.xDiff = containerRect.x
-    props.yDiff = containerRect.y
+    props.refElement = taskDetails.current
     setAddedProps(props)
     onTogglePopover(e, type, title)
   }
@@ -67,6 +65,7 @@ export function TaskDetails() {
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} />
+            <TaskAttachments task={task} />
           </section>
           <ActionsList task={task} onHandleTaskMembers = {onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} />
         </section>
