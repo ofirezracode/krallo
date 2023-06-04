@@ -5,7 +5,7 @@ export function ActionsList({ task, onOpenPopover, board }) {
         <section className="add-to-card-container">
             <h5>Add to card</h5>
             <section className="add-to-card-btns">
-                <button onClick={(e) => onOpenPopover(e, { members: board.members }, 'members', 'Members')} title="Members">
+            <button onClick={(e) => onOpenPopover(e, { members: board.members, taskMembers: task.members }, 'members', 'Members')} title="Members">
                     <BsPerson />
                     <p>Members</p>
                 </button>
