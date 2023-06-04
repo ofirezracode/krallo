@@ -78,7 +78,7 @@ const boards = [
         // "archivedAt": 1589983468418,
         tasks: [
           {
-            _id: 'c101',
+            _id: 'aa101',
             title: 'Adding a task recording feature',
             description: 'Let the user to record a task instead of writing it. Also, it will be more productive and comfortable',
             comments: [
@@ -106,15 +106,15 @@ const boards = [
             },
           },
           {
-            _id: 'c102',
+            _id: 'aa102',
             title: 'Implement user authentication feature',
           },
           {
-            _id: 'c103',
+            _id: 'aa103',
             title: 'Optimize database queries',
           },
           {
-            _id: 'c104',
+            _id: 'aa104',
             title: 'Implement responsive design',
           },
         ],
@@ -125,12 +125,12 @@ const boards = [
         title: 'Design',
         tasks: [
           {
-            _id: 'd103',
+            _id: 'bb103',
             title: 'Create wireframes for homepage',
             // "archivedAt": 1589983468418,
           },
           {
-            _id: 'd104',
+            _id: 'bb104',
             title: 'Create grid template for the board',
             description:
               'Develop the HTML and CSS structure for the homepage. Implement the layout according to the wireframes provided in the Design group.',
@@ -201,14 +201,14 @@ const boards = [
         title: 'To Do',
         tasks: [
           {
-            _id: 'c105',
+            _id: 'cc105',
             title: 'Create GIT repository',
             description:
               'Create a new Git repository for the project. Initialize the repository with the initial project structure and configure branch protection rules.',
             // "archivedAt": 1589983468418,
           },
           {
-            _id: 'c106',
+            _id: 'cc106',
             title: 'Create grid template for the board',
             description:
               'Develop the HTML and CSS structure for the homepage. Implement the layout according to the wireframes provided in the Design group.',
@@ -406,6 +406,7 @@ async function saveTask(board, updatedTask, activity) {
       }
     }
   }
+
   if (task) {
     // if (task && Object.keys(task).length > 0) {
     task = { ...updatedTask }
@@ -414,9 +415,12 @@ async function saveTask(board, updatedTask, activity) {
     group.tasks.push(updatedTask)
   }
 
-  board.activities.unshift(activity)
-  save(board)
-  return board
+  if (activity) {
+    board.activities.unshift(activity)
+  }
+
+  const newBoard = await save(board)
+  return newBoard
 }
 
 function move(type, board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
@@ -448,11 +452,11 @@ function toggleMemberOnTask(task, member, activityType) {
   if (activityType === 'add-member') {
     task.members.push(member)
   } else if (activityType === 'remove-member') {
-    const memberIdx = task.members.findIndex((m) => m._id === member._id);
-      task.members.splice(memberIdx, 1)
+    const memberIdx = task.members.findIndex((m) => m._id === member._id)
+    task.members.splice(memberIdx, 1)
   }
 
-  return task;
+  return task
 }
 
 function createBoardFromTemplate() {}
@@ -520,6 +524,7 @@ function getEmptyBoard() {
     isStarred: false,
     createdAt: Date.now(),
     groups: [createGroup('New group')],
+    tasks: [],
     style: {
       type: 'bgColor',
       bgColor: utilService.getRandomColor(),

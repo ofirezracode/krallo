@@ -16,8 +16,7 @@ import { activityService, createActivity } from '../services/activity.service'
 import { TaskAttachments } from './task-details/task-attachments'
 
 export function TaskDetails() {
-  // const [task, setTask] = useState(boardService.getEmptyTask())
-  const boards = useSelector((storeState) => storeState.boardModule.boards)
+  // const boards = useSelector((storeState) => storeState.boardModule.boards)
   const board = useSelector((storeState) => storeState.boardModule.board)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
@@ -30,11 +29,19 @@ export function TaskDetails() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (boards.length !== 0) {
-      // setBoard(...boards.filter((board) => board._id === boardId))
+    if (board) {
       setTask(boardService.getTaskById(board ? board : [], taskId))
     }
-  }, [boards])
+  }, [board])
+
+  // useEffect(() => {
+  //   console.log('reload')
+  //   if (boards.length !== 0) {
+  //     // setBoard(...boards.filter((board) => board._id === boardId))
+  //     console.log('boardService.getTaskById(board ? board : [], taskId)', boardService.getTaskById(board ? board : [], taskId))
+  //     setTask(boardService.getTaskById(board ? board : [], taskId))
+  //   }
+  // }, [boards])
 
   function onOpenPopover(e, props, type, title) {
     props.refElement = taskDetails.current
@@ -60,7 +67,8 @@ export function TaskDetails() {
       console.log('err', err)
     }
   }
-
+  console.log('task', task)
+  console.log('board', board)
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
