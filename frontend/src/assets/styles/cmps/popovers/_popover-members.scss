@@ -2,11 +2,12 @@
   input {
     padding: rem(8px) rem(12px);
     width: 100%;
+    margin: rem(4px) 0 rem(12px);
 
     color: $text;
     font-size: rem(14px);
     line-height: rem(20px);
-
+    box-shadow: inset 0 0 0 2px var(--ds-border-input, $button-board-header);
     transition-property: background-color, border-color, box-shadow;
     transition-duration: 85ms;
     transition-timing-function: ease;
@@ -18,6 +19,15 @@
     &:focus {
       box-shadow: inset 0 0 0 2px $input-focus;
     }
+
+  }
+
+  .members-title {
+    color: #44546F, #5e6c84;
+    font-size: rem(12px);
+    font-weight: 600;
+    line-height: rem(16px);
+    margin: 0 0 rem(8px);
   }
 
   .members-list {
@@ -35,12 +45,27 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+
+
+
+
         p {
+          margin-left: rem(8px);
           color: $text-subtle;
-          font-size: rem(12px);
-          font-weight: 600;
-          line-height: rem(16px);
-          margin-top: rem(12px);
+        }
+
+        span {
+          height: rem(42px);
+          width: rem(42px);
+          padding: rem(11px);
+          width: rem(16px);
+          line-height: 20px;
+
+          svg {
+            height: rem(16px);
+            width: rem(16px);
+          }
+
         }
       }
     }
