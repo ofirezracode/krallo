@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export function LoginSignup() {
     const [credentials, setCredentials] = useState({ email: '', password: '' })
-    const [isSignup, setIsSignup] = useState(true)
+    const [isSignup, setIsSignup] = useState(false)
     const users = useSelector((storeState) => storeState.userModule.users)
     const navigate = useNavigate()
 

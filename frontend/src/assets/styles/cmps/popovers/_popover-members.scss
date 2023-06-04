@@ -20,6 +20,10 @@
       box-shadow: inset 0 0 0 2px $input-focus;
     }
 
+    &::placeholder{
+      color: $text;
+    }
+
   }
 
   .members-title {
@@ -46,20 +50,17 @@
         text-overflow: ellipsis;
         white-space: nowrap;
 
-
-
-
         p {
           margin-left: rem(8px);
           color: $text-subtle;
         }
 
         span {
-          height: rem(42px);
-          width: rem(42px);
+          display: flex;
+          align-items: center;
           padding: rem(11px);
-          width: rem(16px);
-          line-height: 20px;
+          width: rem(42px);
+          height: rem(42px);
 
           svg {
             height: rem(16px);
