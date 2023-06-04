@@ -92,11 +92,11 @@ const boards = [
                 },
               },
             ],
-            members:[{
-              _id: 'u103',
-              imgUrl: '../assets/img/members/etai-pic.jpg',
-            },
-
+            members: [
+              {
+                _id: 'u103',
+                imgUrl: '../assets/img/members/etai-pic.jpg',
+              },
             ],
             byMember: {
               _id: 'u102',
@@ -178,6 +178,7 @@ const boards = [
             },
             style: {
               bgColor: '#faa53d',
+              type: 'half',
             },
           },
         ],
@@ -264,6 +265,7 @@ const boards = [
             },
             style: {
               bgColor: '#579dff',
+              type: 'half',
             },
           },
         ],
@@ -410,15 +412,15 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
   return newBoard
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
     _id: utilService.makeId(),
     title: title,
     style: {
-      bgColor: ''
-    }
+      bgColor: '',
+    },
   }
 
   return task

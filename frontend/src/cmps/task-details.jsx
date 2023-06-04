@@ -46,7 +46,7 @@ export function TaskDetails() {
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
           <HiXMark className="close-icon" />
         </button>
-        <TaskCover task={task} />
+        <TaskCover task={task} taskDetails={taskDetails} />
         <TaskDetailsHeader task={task} />
         <section className="task-details-container">
           <section className="card-details-container">
