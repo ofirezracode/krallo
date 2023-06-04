@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import AddCloseButtons from './add-close-buttons'
+import { AddCloseButtons } from './add-close-buttons'
 import { BsPlusLg } from 'react-icons/bs'
 import { boardService } from '../services/board.service.local'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'

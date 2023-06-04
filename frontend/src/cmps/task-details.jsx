@@ -8,7 +8,7 @@ import Ofir from '../assets/img/members/ofir-pic.jpg'
 import Etai from '../assets/img/members/etai-pic.jpg'
 import Tamar from '../assets/img/members/tamar-pic.jpg'
 import { usePopover } from '../customHooks/usePopover'
-import Popover from './popover'
+import { Popover } from './popover'
 
 export function TaskDetails() {
   // const [task, setTask] = useState(boardService.getEmptyTask())

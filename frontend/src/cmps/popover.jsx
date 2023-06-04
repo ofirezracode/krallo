@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { useState } from 'react'
-import PopoverDummy from './popovers/popover-dummy'
+import { PopoverDummy } from './popovers/popover-dummy'
 import { HiXMark } from 'react-icons/hi2'
-import PopoverLabels from './popovers/popover-labels'
-import PopoverMembers from './popovers/popover-members'
+import { PopoverLabels } from './popovers/popover-labels'
+import { PopoverMembers } from './popovers/popover-members'
 
 export function Popover({ isShown, title, type, parentRect, onClose, addedProps }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>

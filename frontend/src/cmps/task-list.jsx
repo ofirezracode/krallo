@@ -1,5 +1,5 @@
 import React from 'react'
-import TaskPreview from './task-preview'
+import { TaskPreview } from './task-preview'
 import { Draggable } from 'react-beautiful-dnd'
 
 export function TaskList({ boardId, tasks, provided }) {

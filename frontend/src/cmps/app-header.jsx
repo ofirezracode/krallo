@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { BsCircleHalf, BsTrello, BsFillPersonXFill } from "react-icons/bs";
-import UserImg from "./user-img"
+import { UserImg } from "./user-img"
 import { logout } from "../store/user.actions.js";
 import { useNavigate } from "react-router-dom";
 import userImg from "../assets/img/members/ofir-pic.jpg"

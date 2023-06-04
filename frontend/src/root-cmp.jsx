@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 import { AppHeaderHome } from './cmps/app-header-home'
 import { AppFooter } from './cmps/app-footer'
-import AppHeader from './cmps/app-header'
+import { AppHeader } from './cmps/app-header'
 
 export function RootCmp() {
   const user = useSelector((storeState) => storeState.userModule.user)

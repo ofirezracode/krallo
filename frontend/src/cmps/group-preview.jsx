@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom'
 
 import { BsThreeDots, BsPlusLg, BsWindowStack } from 'react-icons/bs'
 
-import TaskList from './task-list'
+import { TaskList } from './task-list'
 import { saveTask } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import { activityService } from '../services/activity.service'
-import AddCloseButtons from './add-close-buttons'
+import { AddCloseButtons } from './add-close-buttons'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
 export function GroupPreview({ group, onUpdateGroupTitle, provided }) {

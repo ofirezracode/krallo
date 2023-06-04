@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useParams } from 'react-router-dom'
 
-import GroupList from '../cmps/group-list'
+import { GroupList } from '../cmps/group-list'
+import { BoardHeader } from '../cmps/board-header'
 import { loadBoards, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
-import BoardHeader from '../cmps/board-header'
 
 export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)

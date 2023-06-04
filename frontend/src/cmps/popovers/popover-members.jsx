@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BsPencil } from 'react-icons/bs'
-import UserImg from '../user-img'
+import { UserImg } from '../user-img'
 
 export function PopoverMembers({ members }) {
   const [searchTerm, setSearchTerm] = useState('')

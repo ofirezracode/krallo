@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import GroupPreview from './group-preview'
-import AddGroup from './add-group'
+import { GroupPreview } from './group-preview'
+import { AddGroup } from './add-group'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { loadBoards } from '../store/board.actions'
 

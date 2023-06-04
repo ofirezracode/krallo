@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { BsPeople, BsStar, BsStarFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-import UserImg from './user-img'
+import { UserImg } from './user-img'
 import Ofir from "../assets/img/members/ofir-pic.jpg"
 import Etai from "../assets/img/members/etai-pic.jpg"
 import Tamar from "../assets/img/members/tamar-pic.jpg"
 import { updateBoard } from '../store/board.actions'
-import Popover from './popover'
+import { Popover } from './popover'
 import { usePopover } from '../customHooks/usePopover'
 
 export function BoardHeader({ board }) {
