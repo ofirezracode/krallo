@@ -52,6 +52,15 @@ export function TaskDetails() {
     }
   }
 
+  async function onStyleChange(newStyle) {
+    try {
+      const updatedTask = { ...task, style: newStyle }
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
@@ -59,7 +68,7 @@ export function TaskDetails() {
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
           <HiXMark className="close-icon" />
         </button>
-        <TaskCover task={task} taskDetails={taskDetails} />
+        <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
         <TaskDetailsHeader task={task} />
         <section className="task-details-container">
           <section className="card-details-container">

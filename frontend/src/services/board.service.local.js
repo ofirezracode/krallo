@@ -440,6 +440,7 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
 }
 
 function toggleMemberOnTask(task, member, activityType) {
+  console.log('member', member)
   if (activityType === 'add-member') {
     return task.members.push(member)
   } else if (activityType === 'remove-member') {

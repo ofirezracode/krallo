@@ -17,13 +17,16 @@
 
     li {
       width: 100%;
-      height: 62px;
-      background-color: red;
 
-      border-radius: 3px;
+      button {
+        width: 100%;
+        height: 62px;
+        background-color: red;
 
-      &.active {
-        box-shadow: 0 0 0 2px var(--ds-border-inverse, #ffffff), 0 0 0 4px var(--ds-border-brand, #0079bf);
+        border-radius: 3px;
+        &.active {
+          box-shadow: 0 0 0 2px var(--ds-border-inverse, #ffffff), 0 0 0 4px var(--ds-border-brand, #0079bf);
+        }
       }
     }
   }
