@@ -7,6 +7,7 @@ import {
   SET_BOARDS,
   //   UNDO_REMOVE_BOARD,
   UPDATE_BOARD,
+  SET_BOARD,
 } from './board.reducer.js'
 import { async } from 'q'
 
@@ -44,6 +45,18 @@ export async function loadBoards() {
   }
 }
 
+export async function setCurrBoard(board) {
+  try {
+    store.dispatch({
+      type: SET_BOARD,
+      board,
+    })
+  } catch (err) {
+    console.log('Cannot set board', err)
+    throw err
+  }
+}
+
 export async function removeBoard(boardId) {
   try {
     await boardService.remove(boardId)
@@ -69,12 +82,12 @@ export async function addBoard(board) {
 export async function updateBoard(board) {
   try {
     const savedBoard = await boardService.save(board)
-    console.log('Updated Board:', savedBoard);
-    store.dispatch(getActionUpdateBoard(savedBoard));
-    return savedBoard;
+    console.log('Updated Board:', savedBoard)
+    store.dispatch(getActionUpdateBoard(savedBoard))
+    return savedBoard
   } catch (err) {
-    console.log('Cannot save board', err);
-    throw err;
+    console.log('Cannot save board', err)
+    throw err
   }
 }
 

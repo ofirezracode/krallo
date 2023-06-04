@@ -4,20 +4,21 @@ import { Outlet, useParams } from 'react-router-dom'
 
 import { GroupList } from '../cmps/group-list'
 import { BoardHeader } from '../cmps/board-header'
-import { loadBoards, updateBoard } from '../store/board.actions'
+import { loadBoards, setCurrBoard, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 
 export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const board = useSelector((storeState) => storeState.boardModule.board)
   const { boardId } = useParams()
-  const [board, setBoard] = useState(boardService.getEmptyBoard())
+  // const [board, setBoard] = useState(boardService.getEmptyBoard())
 
   useEffect(() => {
     loadBoards()
   }, [])
 
   useEffect(() => {
-    if (boards.length !== 0) setBoard(...boards.filter((board) => board._id === boardId))
+    if (boards.length !== 0) setCurrBoard(...boards.filter((board) => board._id === boardId))
   }, [boards])
 
   async function onUpdateGroupTitle(groupId, newTitle) {
@@ -27,7 +28,7 @@ export function BoardIndex() {
     newGroups[groupIdx].title = newTitle
 
     const newBoard = { ...board, groups: newGroups }
-    setBoard(newBoard)
+    // setBoard(newBoard)
 
     try {
       await updateBoard(newBoard)
@@ -38,7 +39,7 @@ export function BoardIndex() {
 
   async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
     const newBoard = boardService.move('task', board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
-    setBoard(newBoard)
+    // setBoard(newBoard)
     try {
       await updateBoard(newBoard)
     } catch (err) {
@@ -48,7 +49,7 @@ export function BoardIndex() {
 
   async function onMoveGroup(sourceGroupId, destGroupId) {
     const newBoard = boardService.move('group', board, sourceGroupId, destGroupId)
-    setBoard(newBoard)
+    // setBoard(newBoard)
     try {
       await updateBoard(newBoard)
     } catch (err) {
@@ -59,7 +60,7 @@ export function BoardIndex() {
   async function onAddGroup(group) {
     const newBoard = { ...board }
     newBoard.groups.push(group)
-    setBoard(newBoard)
+    // setBoard(newBoard)
 
     try {
       await updateBoard(newBoard)
@@ -69,7 +70,7 @@ export function BoardIndex() {
   }
 
   let boardStyle = {}
-  if (board.style) {
+  if (board && board.style) {
     if (board.style.type === 'bgColor') {
       boardStyle = { backgroundColor: board.style.bgColor }
     } else if (board.style.type === 'img') {
