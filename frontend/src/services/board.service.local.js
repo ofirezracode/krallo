@@ -145,6 +145,10 @@ const boards = [
                 },
               },
             ],
+            members:[{
+              _id: 'u103',
+              imgUrl: '../assets/img/members/etai-pic.jpg',
+            }],
             checklists: [
               {
                 _id: 'YEhmF',
@@ -231,6 +235,10 @@ const boards = [
                 },
               },
             ],
+            members:[{
+              _id: 'u103',
+              imgUrl: '../assets/img/members/etai-pic.jpg',
+            }],
             checklists: [
               {
                 _id: 'YEhmF',
@@ -334,6 +342,8 @@ export const boardService = {
   createBoardFromTemplate,
   move,
   getBoardById,
+  getGroupByTaskId,
+  toggleMemberOnTask,
 }
 window.bs = boardService
 
@@ -370,10 +380,18 @@ async function save(board) {
   return savedBoard
 }
 
-async function saveTask(boardId, groupId, updatedTask, activity) {
-  const board = await getById(boardId)
-  const group = board.groups.find((group) => group._id === groupId)
-  let task = group.tasks.find((task) => task._id === updatedTask._id)
+async function saveTask(board, updatedTask, activity) {
+  let group
+  let task
+  for (let i = 0; i < board.groups.length; i++) {
+    for (let j = 0; j < board.groups[i].tasks.length; j++) {
+      if (board.groups[i].tasks[j]._id === updatedTask._id) {
+        
+      group = board.groups[i]
+      task = board.groups[i].tasks[j]
+      }
+    }
+  }
   if (task) {
     // if (task && Object.keys(task).length > 0) {
     task = { ...updatedTask }
@@ -410,6 +428,14 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
   return newBoard
 }
 
+function toggleMemberOnTask(task, member, activityType){
+  if(activityType === 'add-member') {
+    return task.members.push(member)
+  }else if(activityType === 'remove-member') {
+    return task.members.splice(member, 1)
+  }
+}
+
 function createBoardFromTemplate() { }
 
 function createTask(title) {
@@ -424,19 +450,28 @@ function createTask(title) {
   return task
 }
 
-function getTaskById(boards, boardId, taskId) {
-  const board = getBoardById(boards, boardId)
-  if (!board) return {}
-  let task
-  for (let i = 0; i < board.groups.length && !task; i++) {
+function getGroupByTaskId(board, taskId) {
+  for (let i = 0; i < board.groups.length; i++) {
     for (let j = 0; j < board.groups[i].tasks.length; j++) {
       if (board.groups[i].tasks[j]._id === taskId) {
-        task = board.groups[i].tasks[j]
-        break
+        return board.groups[i]
       }
     }
   }
-  return task
+  return null
+}
+
+function getTaskById(board, taskId) {
+  if(board.length > 0){
+    for (let i = 0; i < board.groups.length; i++) {
+      for (let j = 0; j < board.groups[i].tasks.length; j++) {
+        if (board.groups[i].tasks[j]._id === taskId) {
+         return board.groups[i].tasks[j]
+        }
+      }
+    }
+  }
+  return null
 }
 
 function getBoardById(boards, boardId) {

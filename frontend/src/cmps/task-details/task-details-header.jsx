@@ -2,6 +2,7 @@ import { BsFillCreditCardFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 export function TaskDetailsHeader({ task }) {
+    if(!task)return <div></div>
     return (
         <header className="task-header flex">
             <div className="title-img">
