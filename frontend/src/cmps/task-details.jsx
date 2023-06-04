@@ -3,12 +3,10 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { boardService } from '../services/board.service.local'
 import { Link } from 'react-router-dom'
-import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsPlusLg, BsTag } from 'react-icons/bs'
-import Ofir from '../assets/img/members/ofir-pic.jpg'
-import Etai from '../assets/img/members/etai-pic.jpg'
-import Tamar from '../assets/img/members/tamar-pic.jpg'
+import { BsCheck2Square, BsClock, BsFillCreditCardFill, BsPaperclip, BsPerson, BsTag } from 'react-icons/bs'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
+import { ShowMembersLabels } from './task-details/show-members-labels'
 
 export function TaskDetails() {
   // const [task, setTask] = useState(boardService.getEmptyTask())
@@ -65,28 +63,7 @@ export function TaskDetails() {
         </header>
         <section className="task-details-container">
           <section className="card-details-container">
-            <section className="members-labels">
-              <div className="members-wrapper">
-                <h5>Members</h5>
-                <div className="members">
-                  <img src={Ofir} className="member-img" alt="" />
-                  <img src={Etai} className="member-img" alt="" />
-                  <img src={Tamar} className="member-img" alt="" />
-                  <button className="add-member">
-                    <BsPlusLg />
-                  </button>
-                </div>
-              </div>
-              <div className="labels-wrapper">
-                <h5>Labels</h5>
-                <div className="labels">
-                  <button className="label-btn">Logic</button>
-                  <button className="add-label">
-                    <BsPlusLg />
-                  </button>
-                </div>
-              </div>
-            </section>
+            <ShowMembersLabels task={task} />
           </section>
           <section className="add-to-card-container">
             <h5>Add to card</h5>
