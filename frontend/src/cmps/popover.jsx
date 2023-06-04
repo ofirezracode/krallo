@@ -6,6 +6,7 @@ import { HiXMark } from 'react-icons/hi2'
 import { PopoverLabels } from './popovers/popover-labels'
 import { PopoverMembers } from './popovers/popover-members'
 import { PopoverCover } from './popovers/popover-cover'
+import { PopoverAttachment } from './popovers/popover-attachment'
 
 export function Popover({ isShown, title, type, parentRect, onClose, addedProps }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
@@ -48,6 +49,8 @@ function DynamicCmp({ type, addedProps }) {
       return <PopoverLabels {...addedProps} />
     case 'members':
       return <PopoverMembers {...addedProps} />
+    case 'attachment':
+      return <PopoverAttachment {...addedProps} />
     case 'cover':
       return <PopoverCover {...addedProps} />
     default:
