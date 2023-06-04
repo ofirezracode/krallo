@@ -16,8 +16,7 @@ import { activityService, createActivity } from '../services/activity.service'
 import { TaskAttachments } from './task-details/task-attachments'
 
 export function TaskDetails() {
-  // const [task, setTask] = useState(boardService.getEmptyTask())
-  const boards = useSelector((storeState) => storeState.boardModule.boards)
+  // const boards = useSelector((storeState) => storeState.boardModule.boards)
   const board = useSelector((storeState) => storeState.boardModule.board)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
@@ -30,11 +29,19 @@ export function TaskDetails() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (boards.length !== 0) {
-      // setBoard(...boards.filter((board) => board._id === boardId))
+    if (board) {
       setTask(boardService.getTaskById(board ? board : [], taskId))
     }
-  }, [boards])
+  }, [board])
+
+  // useEffect(() => {
+  //   console.log('reload')
+  //   if (boards.length !== 0) {
+  //     // setBoard(...boards.filter((board) => board._id === boardId))
+  //     console.log('boardService.getTaskById(board ? board : [], taskId)', boardService.getTaskById(board ? board : [], taskId))
+  //     setTask(boardService.getTaskById(board ? board : [], taskId))
+  //   }
+  // }, [boards])
 
   function onOpenPopover(e, props, type, title) {
     props.refElement = taskDetails.current
@@ -52,6 +59,16 @@ export function TaskDetails() {
     }
   }
 
+  async function onStyleChange(newStyle) {
+    try {
+      const updatedTask = { ...task, style: newStyle }
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+  console.log('task', task)
+  console.log('board', board)
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
@@ -59,7 +76,7 @@ export function TaskDetails() {
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-button">
           <HiXMark className="close-icon" />
         </button>
-        <TaskCover task={task} taskDetails={taskDetails} />
+        <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
         <TaskDetailsHeader task={task} />
         <section className="task-details-container">
           <section className="card-details-container">
