@@ -392,13 +392,13 @@ async function save(board) {
   return savedBoard
 }
 
-async function saveTask(board, updatedTask, activity) {
+async function saveTask(board, updatedTask, groupId, activity) {
   let group
   let task
   for (let i = 0; i < board.groups.length; i++) {
+    group = board.groups[i]
     for (let j = 0; j < board.groups[i].tasks.length; j++) {
       if (board.groups[i].tasks[j]._id === updatedTask._id) {
-        group = board.groups[i]
         task = board.groups[i].tasks[j]
       }
     }
