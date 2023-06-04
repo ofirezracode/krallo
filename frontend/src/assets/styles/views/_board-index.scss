@@ -1,6 +1,6 @@
 .board-index {
   position: relative;
   height: calc(100vh - 48px);
-  font-size: 14px;
+  font-size: rem(14px);
   color: $card-title;
 }

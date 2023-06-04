@@ -1,5 +1,5 @@
 .task-preview {
-  min-height: 20px;
+  min-height: rem(20px);
   box-shadow: $card-shadow;
 
   border-radius: 8px;
@@ -7,11 +7,11 @@
   overflow: hidden;
 
   .preview-cover {
-    height: 32px;
+    height: rem(32px);
   }
 
   .preview-container {
-    padding: 8px 8px 4px 12px;
+    padding: rem(8px) rem(8px) rem(4px) rem(12px);
     background-color: #fff;
     &:hover {
       background-color: $card-preview;
@@ -20,6 +20,6 @@
 
   h4 {
     font-weight: 400;
-    margin-block-end: 4px;
+    margin-block-end: rem(4px);
   }
 }
