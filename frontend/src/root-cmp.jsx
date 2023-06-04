@@ -1,19 +1,19 @@
 import { Routes, Route } from 'react-router'
 import React, { useState } from 'react';
 import routes from './routes'
+import { useSelector } from "react-redux";
 
-//remove line
-import { boardService } from './services/board.service.local'
+
 import { AppHeaderHome } from './cmps/app-header-home'
 import { AppFooter } from './cmps/app-footer'
 import AppHeader from './cmps/app-header'
 
 export function RootCmp() {
-  const [loggedIn, setLoggedIn] = useState(true)
+  const user = useSelector((storeState) => storeState.userModule.user)
 
   return (
     <div>
-      {loggedIn ? <AppHeader /> : <AppHeaderHome />}
+      {user ? <AppHeader /> : <AppHeaderHome />}
       <main>
         <Routes>{_getRoutes(routes)}</Routes>
       </main>

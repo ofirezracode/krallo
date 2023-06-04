@@ -21,24 +21,27 @@
   }
 
   .members-list {
-    .user-button {
-      height: 32px;
-      margin-bottom: 2px;
-      padding: 4px;
+    li {
+      .user-button {
+        height: 40px;
+        width: 280px;
+        margin-bottom: 2px;
+        padding: 4px;
 
-      border-radius: 3px;
-      color: $text;
-      line-height: 32px;
+        border-radius: 3px;
+        color: $text;
+        line-height: 32px;
 
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      p {
-        color: $text-subtle;
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 16px;
-        margin-top: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        p {
+          color: $text-subtle;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 16px;
+          margin-top: 12px;
+        }
       }
     }
   }

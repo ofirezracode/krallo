@@ -1,5 +1,4 @@
 .login-page {
-    // background-color: #f9fafc;
 
     .login-logo-img {
         display: block;
@@ -58,6 +57,14 @@
                         transition: background-color .2s ease-in-out 0s, border-color .2s ease-in-out 0s;
                         padding: rem(7px);
                         margin: 0 0 rem(16.8px);
+
+                        &.signup-input{
+
+                            &:focus{
+                                outline: rgb(9, 30, 66) solid 2px;
+                                border: none;
+                            }
+                        }
                     }
 
                     .continue-btn {
@@ -70,11 +77,15 @@
                         border-radius: 4.2px;
                         font-family: inherit;
                         font-weight: bold;
+
+                        &:hover{
+                            background: #61BD4F;
+                        }
                     }
 
                     .continue-btn-gray {
                         border: 0px;
-                        cursor: not-allowed;
+                        // cursor: not-allowed;
                         background-color: rgb(235, 236, 250) !important;
                         color: rgb(122, 134, 154) !important;
                         padding: rem(8px) rem(18px);
@@ -118,6 +129,10 @@
                         display: block;
                         text-decoration: none;
 
+                        &:hover{
+                            background-color: #f9fafc;
+                        }
+
                         .login-icon {
                             width: 18px;
                             height: 18px;
@@ -143,7 +158,6 @@
                                 vertical-align: -5px;
                             }
                         }
-
 
                         .login-label {
                             display: inline-block;
