@@ -32,10 +32,7 @@ export function TaskDetails() {
   useEffect(() => {
     if (boards.length !== 0) {
       // setBoard(...boards.filter((board) => board._id === boardId))
-      const tmp = boardService.getTaskById(board ? board : [], taskId)
-      console.log('board', board)
-      console.log('tmp', tmp)
-      setTask(tmp)
+      setTask(boardService.getTaskById(board ? board : [], taskId))
     }
   }, [boards])
 
@@ -54,8 +51,6 @@ export function TaskDetails() {
       console.log('err', err)
     }
   }
-
-  console.log('task', task)
 
   return (
     <section className="task-details-screen">
