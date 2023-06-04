@@ -431,10 +431,10 @@ function getBoardById(boards, boardId) {
   return boards.find((board) => board._id === boardId)
 }
 
-function createGroup(groupTitle) {
+function createGroup(Title) {
   const group = {
     _id: utilService.makeId(),
-    title: groupTitle,
+    title: Title,
     style: {},
     tasks: [],
   }
