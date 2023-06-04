@@ -89,23 +89,23 @@ export function TaskDetails() {
           <section className="add-to-card-container">
             <h5>Add to card</h5>
             <section className="add-to-card-btns">
-              <button onClick={(e) => onOpenPopover(e, { members: board.members })} className="add-btn flex justify-center">
+              <button onClick={(e) => onOpenPopover(e, { members: board.members })} className="add-btn flex justify-center" title='Members'>
                 <BsPerson className="add-to-card-img" />
                 <p>Members</p>
               </button>
-              <button className="add-btn flex justify-center">
+              <button className="add-btn flex justify-center" title='Labels'>
                 <BsTag className="add-to-card-img" />
                 <p>Labels</p>
               </button>
-              <button className="add-btn flex justify-center">
+              <button className="add-btn flex justify-center" title='Checklist'>
                 <BsCheck2Square className="add-to-card-img" />
                 <p>Checklist</p>
               </button>
-              <button className="add-btn flex justify-center">
+              <button className="add-btn flex justify-center" title='Dates'>
                 <BsClock />
                 <p>Dates</p>
               </button>
-              <button className="add-btn flex justify-center">
+              <button className="add-btn flex justify-center" title='Attachment'>
                 <BsPaperclip className="add-to-card-img" />
                 <p>Attachment</p>
               </button>
