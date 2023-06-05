@@ -8,11 +8,12 @@ export function BoardPreview({ board, toggleIsStarred }) {
             <Link to={`/board/${board._id}`}>
                 <h4>{board.title}</h4>
                 {board.isStarred ? (
-                    <BsStarFill className="star-fill" onClick={(ev) => toggleIsStarred(ev, board)} />
+                    <BsStarFill className="star-fill" strokeWidth={'1px'} onClick={(ev) => toggleIsStarred(ev, board)} />
                 ) : (
                     <BsStar className="star-empty" strokeWidth={'1px'} onClick={(ev) => toggleIsStarred(ev, board)} />
                 )}
             </Link>
+            <div className='screen'></div>
         </article>
     )
 }
