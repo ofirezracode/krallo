@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BsPencil, BsCheck2 } from 'react-icons/bs'
 
 export function PopoverLabels({ task, labels, onLabelChange }) {
-  const [searchTerm, setSearchTerm] = useState('')
+  // const [searchTerm, setSearchTerm] = useState('')
   const [taskLabels, setTaskLabels] = useState([...task.labelIds])
 
   function onClickLabel(e, labelId) {
@@ -22,7 +22,7 @@ export function PopoverLabels({ task, labels, onLabelChange }) {
 
   return (
     <div className="popover-labels">
-      <input type="text" value={searchTerm} onChange={setSearchTerm} />
+      {/* <input type="text" value={searchTerm} onChange={setSearchTerm} /> */}
       <p>Labels</p>
       <ul className="labels-list flex column">
         {labels.map((label) => {
@@ -38,9 +38,9 @@ export function PopoverLabels({ task, labels, onLabelChange }) {
               <button onClick={(e) => onClickLabel(e, label._id)} className="label-color" style={labelStyle}>
                 {label.title ? label.title : ''}
               </button>
-              <button className="edit-icon-btn">
+              {/* <button className="edit-icon-btn">
                 <BsPencil className="edit-icon" />
-              </button>
+              </button> */}
             </li>
           )
         })}
