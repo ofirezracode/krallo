@@ -18,7 +18,7 @@ import UploadAndDisplayImage from './task-details/test'
 
 export function TaskDetails() {
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
-  const board = useSelector((storeState) => storeState.boardModule.board)
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
@@ -68,8 +68,7 @@ export function TaskDetails() {
       console.log('err', err)
     }
   }
-  console.log('task', task)
-  console.log('board', board)
+
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>

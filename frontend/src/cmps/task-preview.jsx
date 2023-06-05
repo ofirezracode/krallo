@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
 
 export function TaskPreview({ boardId, task }) {
-
   const navigate = useNavigate()
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
+
+  const [boardLabels, setBoardLabels] = useState(board.labels)
+
+  useEffect(() => setBoardLabels(board.labels), [board])
 
   let previewStyle = {}
   if (task.style) {
@@ -18,8 +23,23 @@ export function TaskPreview({ boardId, task }) {
 
   return (
     <article className="task-preview" onClick={onOpenTaskDetails}>
-      {Object.keys(previewStyle).length > 0 && <div className="preview-cover" style={previewStyle}></div>}
+      {previewStyle.backgroundColor && <div className="preview-cover" style={previewStyle}></div>}
       <section className="preview-container">
+        {task.labelIds && boardLabels.length > 0 && (
+          <ul className="labels flex clean-list">
+            {task.labelIds.map((labelId, i) => {
+              const label = boardLabels.find((boardLabel) => boardLabel._id === labelId)
+              let labelStyle = {}
+              labelStyle = { backgroundColor: label.color }
+              return (
+                <li className="flex center" key={i}>
+                  <button className="" style={labelStyle}></button>
+                </li>
+              )
+            })}
+          </ul>
+        )}
+
         <h4>{task.title}</h4>
       </section>
     </article>

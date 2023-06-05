@@ -16,6 +16,29 @@
     &:hover {
       background-color: $card-preview;
     }
+
+    .labels {
+      flex-wrap: wrap;
+      gap: rem(4px);
+      margin-bottom: rem(4px);
+      li {
+        height: rem(8px);
+        button {
+          font-weight: 500;
+          width: rem(40px);
+          height: rem(8px);
+          font-size: rem(12px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          border-radius: 4px;
+
+          &:hover {
+            filter: saturate(85%) brightness(85%);
+          }
+        }
+      }
+    }
   }
 
   h4 {
