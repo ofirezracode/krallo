@@ -7,11 +7,12 @@ export function TaskDetailsHeader({ board, task }) {
   const [group, setGroup] = useState()
 
   useEffect(() => {
-    if (board) {
+    if (board && task) {
       setGroup(boardService.getGroupByTaskId(board, task._id))
     }
   }, [task])
 
+  if (!task) return <div></div>
   return (
     <header className="task-header flex">
       <div className="title-img">

@@ -118,5 +118,14 @@ export async function saveTask(board, updatedTask, activity) {
     console.log('Cannot save task', err)
     throw err
   }
-  // commit(ACTION) // dispatch(ACTION)
+}
+
+export async function saveNewTask(board, groupId, updatedTask, activity) {
+  try {
+    const savedBoard = await boardService.saveNewTask(board, groupId, updatedTask, activity)
+    store.dispatch(getActionUpdateBoard(savedBoard))
+  } catch (err) {
+    console.log('Cannot save task', err)
+    throw err
+  }
 }

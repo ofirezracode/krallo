@@ -4,7 +4,7 @@ import { usePopover } from '../../customHooks/usePopover'
 import { Popover } from '../popover'
 
 export function TaskCover({ task, taskDetails, onStyleChange }) {
-  const coverColor = task.style && task.style.bgColor ? { backgroundColor: task.style.bgColor } : null
+  const coverColor = task && task.style && task.style.bgColor ? { backgroundColor: task.style.bgColor } : null
   const possibleCoverColors = ['#4bce97', '#e2b203', '#faa53d', '#f87462', '#9f8fef', '#579dff', '#60c6d2', '#94c748', '#e774bb', '#8590a2']
 
   const coverChangeBtnRef = useRef()
