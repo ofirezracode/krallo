@@ -20,7 +20,7 @@
       box-shadow: inset 0 0 0 2px $input-focus;
     }
 
-    &::placeholder{
+    &::placeholder {
       color: $text;
     }
 
@@ -37,10 +37,12 @@
   .members-list {
     li {
       .user-button {
+        position: relative;
         height: rem(40px);
         width: rem(280px);
         margin-bottom: rem(2px);
         padding: rem(4px);
+        background-color: transparent;
 
         border-radius: 3px;
         color: $text;
@@ -50,17 +52,29 @@
         text-overflow: ellipsis;
         white-space: nowrap;
 
+        &:hover {
+          background-color: #091E4224;
+        }
+
         p {
           margin-left: rem(8px);
           color: $text-subtle;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         span {
+          position: absolute;
+          right: 0;
+          top: 0;
           display: flex;
           align-items: center;
           padding: rem(11px);
           width: rem(42px);
           height: rem(42px);
+          
+
 
           svg {
             height: rem(16px);
