@@ -3,9 +3,14 @@ import Etai from '../../assets/img/members/etai-pic.jpg'
 import Tamar from '../../assets/img/members/tamar-pic.jpg'
 import { BsPlusLg } from 'react-icons/bs'
 
-export function ShowMembersLabels({ task }) {
-  if (!task) return <div></div>
+export function ShowMembersLabels({ task, board }) {
+  if (!task || !board) return <div></div>
   const { members } = task
+
+  const taskLabels = task.labelIds.map((labelId, i) => {
+    const label = board.labels.find((boardLabel) => boardLabel._id === labelId)
+    return { bgColor: label.color, title: label.title }
+  })
 
   return (
     <section className="members-labels">
@@ -24,8 +29,16 @@ export function ShowMembersLabels({ task }) {
       </div>
       <div className="labels-wrapper">
         <h5>Labels</h5>
-        <div className="labels">
-          <button className="label-btn">Logic</button>
+        <div className="labels-container flex">
+          <ul className="labels-list flex clean-list">
+            {taskLabels.map((label) => (
+              <li key={label.bgColor}>
+                <button style={{ backgroundColor: label.bgColor }} className="label-btn">
+                  {label.title}
+                </button>
+              </li>
+            ))}
+          </ul>
           <button className="add-label">
             <BsPlusLg />
           </button>

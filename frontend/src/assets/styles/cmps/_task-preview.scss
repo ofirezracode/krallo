@@ -24,9 +24,11 @@
       li {
         height: max-content;
         button {
-          font-weight: 500;
-          width: rem(40px);
+          min-width: rem(40px);
           height: rem(8px);
+          padding-inline: rem(8px);
+
+          font-weight: 500;
           font-size: rem(12px);
           font-family: inherit;
           overflow: hidden;
@@ -46,6 +48,9 @@
         &.open {
           button {
             padding-block-end: rem(2px);
+            min-width: rem(56px);
+            max-width: rem(88px);
+            height: 18px;
           }
         }
       }
