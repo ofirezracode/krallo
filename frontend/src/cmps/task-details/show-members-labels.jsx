@@ -3,16 +3,21 @@ import Etai from '../../assets/img/members/etai-pic.jpg'
 import Tamar from '../../assets/img/members/tamar-pic.jpg'
 import { BsPlusLg } from 'react-icons/bs'
 
-export function ShowMembersLabels() {
-
+export function ShowMembersLabels({ task }) {
+    const { members } = task
+    console.log('members', members)
     return (
         <section className="members-labels">
             <div className="members-wrapper">
                 <h5>Members</h5>
                 <div className="members">
-                    <img src={Ofir} className="member-img" alt="" />
-                    <img src={Etai} className="member-img" alt="" />
-                    <img src={Tamar} className="member-img" alt="" />
+                    {/* {members && members.map(member =>
+                        <img src={`../${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} />
+                    )} */}
+                    <img src={Ofir} className="member-img" alt="Ofir Ezra photo" />
+                    <img src={Etai} className="member-img" alt="Etai Levi photo" />
+                    <img src={Tamar} className="member-img" alt="Tamar Millgram photo" />
+
                     <button className="add-member">
                         <BsPlusLg />
                     </button>
