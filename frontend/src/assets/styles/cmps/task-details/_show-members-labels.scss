@@ -64,6 +64,7 @@
 
       .labels-list {
         gap: 4px;
+        flex-wrap: wrap;
         .label-btn {
           min-width: rem(68px);
           max-width: rem(122px);

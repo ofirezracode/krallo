@@ -39,10 +39,12 @@ export function ShowMembersLabels({ task, board }) {
                 </button>
               </li>
             ))}
+            <li>
+              <button className="add-label">
+                <BsPlusLg />
+              </button>
+            </li>
           </ul>
-          <button className="add-label">
-            <BsPlusLg />
-          </button>
         </div>
       </div>
     </section>
