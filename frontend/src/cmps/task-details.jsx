@@ -29,6 +29,7 @@ export function TaskDetails() {
 
   useEffect(() => {
     if (board) {
+      console.log('reload')
       setTask(boardService.getTaskById(board ? board : [], taskId))
     }
   }, [board])
@@ -80,6 +81,16 @@ export function TaskDetails() {
     }
   }
 
+  async function onLabelChange(newLabelIds) {
+    try {
+      console.log('newLabelIds', newLabelIds)
+      const updatedTask = { ...task, labelIds: newLabelIds }
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
@@ -101,6 +112,7 @@ export function TaskDetails() {
             onOpenPopover={onOpenPopover}
             board={board}
             onAttachmentAdded={onAttachmentAdded}
+            onLabelChange={onLabelChange}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />

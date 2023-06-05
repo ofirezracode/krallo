@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { PopoverDummy } from './popovers/popover-dummy'
 import { HiXMark } from 'react-icons/hi2'
+import { PopoverDummy } from './popovers/popover-dummy'
 import { PopoverLabels } from './popovers/popover-labels'
 import { PopoverMembers } from './popovers/popover-members'
 import { PopoverCover } from './popovers/popover-cover'
