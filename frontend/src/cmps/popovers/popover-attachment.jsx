@@ -2,16 +2,13 @@ import { useState } from "react";
 import { uploadService } from "../../services/upload.service";
 
 export function PopoverAttachment({ onAttachmentAdded }) {
-    // const [img, setImg] = useState('')
-    function onAddAttachment(e) {
-        // addAttachment()
-        uploadService.loadImageFromInput(e, onImg)
-    }
-
     function onImg(img) {
         if (!img) return
-        // setImg(img)
         onAttachmentAdded(img)
+    }
+
+    function onAddAttachment(e) {
+        uploadService.uploadImg(e, onImg)
     }
 
     return (
@@ -21,6 +18,11 @@ export function PopoverAttachment({ onAttachmentAdded }) {
                 Computer
                 <input type="file" id="img-input" name="image" onChange={onAddAttachment} />
             </label>
+            {/* <h5>Attach a link</h5>
+            <form onSubmit={onAddAttachment}>
+                <input type="text" placeholder="Place any link here..." />
+                <button>Attach</button>
+            </form> */}
         </section>
     )
 }
