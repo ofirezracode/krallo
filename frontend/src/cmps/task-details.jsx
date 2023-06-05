@@ -68,8 +68,7 @@ export function TaskDetails() {
       console.log('err', err)
     }
   }
-  console.log('task', task)
-  console.log('board', board)
+
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
