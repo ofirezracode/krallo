@@ -1,5 +1,5 @@
 import React from 'react'
-import userImg2 from '../assets/img/members/ofir-pic.jpg'
+
 
 export function UserImg({ size, hover, userImg }) {
   let imgClasses = ''
@@ -14,5 +14,5 @@ export function UserImg({ size, hover, userImg }) {
     imgClasses += ' hover'
   }
 
-  return <img className={`user-img ${imgClasses}`} src={userImg2} alt="" title="Ofir Ezra (ofirezra)" />
+  return <img className={`user-img ${imgClasses}`} src={userImg} alt="" title="Ofir Ezra (ofirezra)" />
 }

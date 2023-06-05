@@ -55,7 +55,7 @@ async function login(userCred) {
   }
 }
 async function signup(userCred) {
-  // if (!userCred.imgUrl) userCred.imgUrl = ''
+  if (!userCred.imgUrl) userCred.imgUrl = 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png'
   const user = await storageService.post('user', userCred)
   // const user = await httpService.post('auth/signup', userCred)
   return saveLocalUser(user)
