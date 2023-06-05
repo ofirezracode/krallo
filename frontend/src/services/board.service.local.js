@@ -49,6 +49,21 @@ const boards = [
         title: 'Backend',
         color: '#60c6d2',
       },
+      {
+        _id: 'l107',
+        title: 'Frontend',
+        color: '#94c748',
+      },
+      {
+        _id: 'l108',
+        title: 'Feature',
+        color: '#e774bb',
+      },
+      {
+        _id: 'l109',
+        title: 'Important',
+        color: '#8590a2',
+      },
     ],
     members: [
       {
@@ -1107,7 +1122,7 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {
@@ -1197,7 +1212,7 @@ function getEmptyAttachment() {
   }
 }
 
-;(async () => {
+; (async () => {
   const boards = await query()
   if (boards.length === 0) await _createBoards()
 })()
