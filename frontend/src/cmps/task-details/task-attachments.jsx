@@ -1,14 +1,12 @@
-import { BsPaperclip } from "react-icons/bs"
 import ClipIcon from "../../assets/img/svg/clip-icon.svg"
 
 export function TaskAttachments({ task }) {
     const { title, attachments } = task
     console.log(attachments)
-    // if (!attachments) return
+    if (!attachments) return <div></div>
     return (
         <section className="task-attachments">
             <div className="attachment-title flex align-center">
-                {/* <BsPaperclip /> */}
                 <img src={ClipIcon} alt="clip-icon" />
                 <h3>Attachments</h3>
             </div>
