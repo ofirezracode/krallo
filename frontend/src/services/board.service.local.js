@@ -362,7 +362,7 @@ export const boardService = {
   getGroupByTaskId,
   toggleMemberOnTask,
   getEmptyTask,
-  getEmptyAttachment
+  getEmptyAttachment,
 }
 window.bs = boardService
 
@@ -466,7 +466,7 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
@@ -552,11 +552,11 @@ function getEmptyTask() {
 function getEmptyAttachment() {
   return {
     id: utilService.makeId(),
-    imgUrl: ''
+    imgUrl: '',
   }
 }
 
-; (async () => {
+;(async () => {
   const boards = await query()
   if (boards.length === 0) await _createBoards()
 })()
