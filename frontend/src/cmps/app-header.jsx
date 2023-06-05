@@ -5,6 +5,8 @@ import { UserImg } from "./user-img"
 import { logout } from "../store/user.actions.js";
 import { useNavigate } from "react-router-dom";
 import userImg from "../assets/img/members/ofir-pic.jpg"
+import { addBoard, loadBoards, updateBoard } from '../store/board.actions'
+import { boardService } from '../services/board.service.local';
 
 export function AppHeader() {
   const navigate = useNavigate()
@@ -17,6 +19,17 @@ export function AppHeader() {
     }
   }
 
+  async function onCreateBoard(ev) {
+    ev.preventDefault()
+    try {
+      const boardToSave = boardService.getEmptyBoard()
+      const savedBoard = await addBoard(boardToSave)
+      navigate(`/board/${savedBoard._id}`)
+    } catch (err) {
+      console.error('Error:', err)
+    }
+  }
+
   return (
     <ul className="app-header flex between clean-list">
       <li className="gray-logo flex">
@@ -26,7 +39,7 @@ export function AppHeader() {
             Krallo
           </label>
         </Link>
-        <button className='create-btn' title='Create new board'>Create</button>
+        <button className='create-btn' title='Create new board' onClick={onCreateBoard}>Create</button>
       </li>
       <li>
         <ul className="app-header-links flex">

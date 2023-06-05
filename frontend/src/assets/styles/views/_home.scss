@@ -1,6 +1,5 @@
-.home {
-  background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center
-      bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
+.home-first-container {
+  background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
     linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
   font-family: charlie-regular;
 
@@ -10,6 +9,7 @@
     padding-block-start: rem(21px);
     flex-wrap: wrap;
     justify-content: center;
+    gap: rem(30px);
 
     .home-txt {
       width: rem(500px);
@@ -34,6 +34,7 @@
 
     .home-img {
       padding: rem(113px) rem(0px) rem(0px);
+      
 
       img {
         width: rem(528px);
@@ -56,14 +57,62 @@
       color: #fff;
 
       &:hover {
-        background-color:  $default-blue;
-        border-color:  $default-blue;
+        background-color: $default-blue;
+        border-color: $default-blue;
       }
 
       a {
         color: #fff;
         text-decoration: none;
         font-family: inherit;
+      }
+    }
+  }
+}
+
+
+
+
+
+.productivity-container {
+  font-family: charlie-regular;
+  // margin: 0 rem(16px);
+  width: 100%;
+  color: rgb(9, 30, 66);margin-left: auto;
+  margin-inline: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1140px;
+
+  .productivity-text-container {
+    padding: 0 rem(16px);
+    order: 1;
+    flex: 0 0 auto;
+    max-width: rem(664px);
+
+    .productivity-header {
+
+      .krallo-101 {
+        font-family: charlie-semibold;
+        margin: 0 0 rem(8px);
+        font-size: rem(16px);
+        color: #091E42;
+      }
+
+      h2 {
+        font-size: rem(36px);
+        font-family: charlie-semibold;
+        margin: 0 0 rem(8px);
+        padding: 0 0 rem(16px);
+        color: #091E42;
+      }
+    }
+
+    .productivity-text {
+      p {
+        font-family: inherit;
+        font-size: rem(20px);
+        color: #091E42;
       }
     }
   }
