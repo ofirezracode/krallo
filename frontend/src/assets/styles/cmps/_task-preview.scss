@@ -22,19 +22,30 @@
       gap: rem(4px);
       margin-bottom: rem(4px);
       li {
-        height: rem(8px);
+        height: max-content;
         button {
           font-weight: 500;
           width: rem(40px);
           height: rem(8px);
           font-size: rem(12px);
+          font-family: inherit;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           border-radius: 4px;
 
+          color: inherit;
+
+          transition: width, height 0.3s;
+
           &:hover {
             filter: saturate(85%) brightness(85%);
+          }
+        }
+
+        &.open {
+          button {
+            padding-block-end: 2px;
           }
         }
       }

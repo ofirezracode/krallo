@@ -17,11 +17,9 @@ import { TaskAttachments } from './task-details/task-attachments'
 import UploadAndDisplayImage from './task-details/test'
 
 export function TaskDetails() {
-  // const boards = useSelector((storeState) => storeState.boardModule.boards)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
-  // const [board, setBoard] = useState(boardService.getEmptyBoard())
 
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
@@ -68,6 +66,7 @@ export function TaskDetails() {
       console.log('err', err)
     }
   }
+
   async function onAttachmentAdded(attachment) {
     try {
       let updatedAttachment = [attachment]
@@ -81,9 +80,6 @@ export function TaskDetails() {
     }
   }
 
-
-  console.log('task', task)
-  console.log('board', board)
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
@@ -99,7 +95,13 @@ export function TaskDetails() {
             {/* <UploadAndDisplayImage /> */}
             <TaskAttachments task={task} />
           </section>
-          <ActionsList task={task} onHandleTaskMembers={onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} onAttachmentAdded={onAttachmentAdded} />
+          <ActionsList
+            task={task}
+            onHandleTaskMembers={onHandleTaskMembers}
+            onOpenPopover={onOpenPopover}
+            board={board}
+            onAttachmentAdded={onAttachmentAdded}
+          />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
       </article>

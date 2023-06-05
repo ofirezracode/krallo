@@ -12,8 +12,6 @@ export function TaskDetailsHeader({ board, task }) {
     }
   }, [task])
 
-  console.log('task', task)
-
   return (
     <header className="task-header flex">
       <div className="title-img">

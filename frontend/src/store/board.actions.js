@@ -8,6 +8,7 @@ import {
   //   UNDO_REMOVE_BOARD,
   UPDATE_BOARD,
   SET_BOARD,
+  SET_LABELS_OPEN,
 } from './board.reducer.js'
 import { async } from 'q'
 
@@ -18,16 +19,25 @@ export function getActionRemoveBoard(boardId) {
     boardId,
   }
 }
+
 export function getActionAddBoard(board) {
   return {
     type: ADD_BOARD,
     board,
   }
 }
+
 export function getActionUpdateBoard(board) {
   return {
     type: UPDATE_BOARD,
     board,
+  }
+}
+
+export function getActionSetLabelsOpen(labelsOpen) {
+  return {
+    type: SET_LABELS_OPEN,
+    labelsOpen,
   }
 }
 
@@ -85,6 +95,15 @@ export async function updateBoard(board) {
     console.log('Updated Board:', savedBoard)
     store.dispatch(getActionUpdateBoard(savedBoard))
     return savedBoard
+  } catch (err) {
+    console.log('Cannot save board', err)
+    throw err
+  }
+}
+
+export function setLabelsOpen(isOpen) {
+  try {
+    store.dispatch(getActionSetLabelsOpen(isOpen))
   } catch (err) {
     console.log('Cannot save board', err)
     throw err

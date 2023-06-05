@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
+import { setLabelsOpen } from '../store/board.actions'
 
 export function TaskPreview({ boardId, task }) {
   const navigate = useNavigate()
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
 
   const [boardLabels, setBoardLabels] = useState(board.labels)
+
+  const labelsOpen = useSelector((storeState) => storeState.boardModule.labelsOpen)
+
+  function onLabelClick(e) {
+    e.stopPropagation()
+    setLabelsOpen(!labelsOpen)
+  }
 
   useEffect(() => setBoardLabels(board.labels), [board])
 
@@ -29,11 +37,14 @@ export function TaskPreview({ boardId, task }) {
           <ul className="labels flex clean-list">
             {task.labelIds.map((labelId, i) => {
               const label = boardLabels.find((boardLabel) => boardLabel._id === labelId)
-              let labelStyle = {}
-              labelStyle = { backgroundColor: label.color }
+              const labelsOpenStyle = labelsOpen ? { height: '18px', width: '56px' } : {}
+              const labelStyle = { backgroundColor: label.color, ...labelsOpenStyle }
+              const labelText = labelsOpen ? label.title : ''
               return (
-                <li className="flex center" key={i}>
-                  <button className="" style={labelStyle}></button>
+                <li className={`flex center ${labelsOpen ? 'open' : ''}`} key={i}>
+                  <button onClick={(e) => onLabelClick(e)} className="" style={labelStyle}>
+                    {labelText}
+                  </button>
                 </li>
               )
             })}
