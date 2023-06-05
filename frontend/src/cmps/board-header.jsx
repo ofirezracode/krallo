@@ -11,7 +11,7 @@ import { usePopover } from '../customHooks/usePopover'
 
 export function BoardHeader({ board }) {
   const [popoverProps, onTogglePopover] = usePopover()
-
+  const { members } = board
   function toggleIsStarred(ev, board) {
     ev.preventDefault()
     board.isStarred = !board.isStarred
@@ -90,14 +90,14 @@ export function BoardHeader({ board }) {
             <p>Filter</p>
           </button>
           <span>|</span>
-          {/* {board.members.map(member =>
-            < img src={member.imgUrl} alt="" />
-          )} */}
           <div className="members">
-            <img src={Ofir} className="member-img" alt="" />
-            <img src={Etai} className="member-img" alt="" />
-            <img src={Tamar} className="member-img" alt="" />
+            {members?.length && members.map(member =>
+              < img className='member-img' src={member.imgUrl} key={member._id} alt="" />
+            )}
           </div>
+          {/* <img src={Ofir} className="member-img" alt="" />
+            <img src={Etai} className="member-img" alt="" />
+            <img src={Tamar} className="member-img" alt="" /> */}
           {/* <UserImg className="board-members" /> */}
           <button className="btn-fill" title="Share board">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

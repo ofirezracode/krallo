@@ -12,7 +12,7 @@ const boards = [
     createdBy: {
       _id: 'u101',
       fullname: 'Ofir Ezra',
-      imgUrl: '../assets/img/members/ofir-pic.jpg',
+      imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956854/ofir-pic_niswho.jpg',
     },
     style: {
       type: 'img',
@@ -56,19 +56,19 @@ const boards = [
         _id: 'u101',
         fullname: 'Ofir Ezra',
         email: 'ofir@krallo.com',
-        imgUrl: '../assets/img/members/ofir-pic.jpg',
+        imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956854/ofir-pic_niswho.jpg',
       },
       {
         _id: 'u102',
         fullname: 'Tamar Millgram',
         email: 'tamar@krallo.com',
-        imgUrl: '../assets/img/members/tamar-pic.jpg',
+        imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg',
       },
       {
         _id: 'u103',
         fullname: 'Etai Levi',
         email: 'etai@krallo.com',
-        imgUrl: '../assets/img/members/etai-pic.jpg',
+        imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
       },
     ],
     groups: [
@@ -89,20 +89,20 @@ const boards = [
                 byMember: {
                   _id: 'u103',
                   fullname: 'Etai Levi',
-                  imgUrl: '../assets/img/members/etai-pic.jpg',
+                  imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
                 },
               },
             ],
             members: [
               {
                 _id: 'u103',
-                imgUrl: '../assets/img/members/etai-pic.jpg',
+                imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
               },
             ],
             byMember: {
               _id: 'u102',
               fullname: 'Tamar Millgram',
-              imgUrl: '../assets/img/members/tamar-pic.jpg',
+              imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg',
             },
           },
           {
@@ -142,14 +142,14 @@ const boards = [
                 byMember: {
                   _id: 'u101',
                   fullname: 'Ofir Ezra',
-                  imgUrl: '../assets/img/members/ofir-pic.jpg',
+                  imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956854/ofir-pic_niswho.jpg',
                 },
               },
             ],
             members: [
               {
                 _id: 'u103',
-                imgUrl: '../assets/img/members/etai-pic.jpg',
+                imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
               },
             ],
             checklists: [
@@ -175,14 +175,14 @@ const boards = [
                 ],
               },
             ],
-            attachments: ['../assets/img/members/tamar-pic.jpg'],
+            attachments: ['https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg'],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l101', 'l104'],
             dueDate: 16156215211,
             byMember: {
               _id: 'u102',
               fullname: 'Tamar Millgram',
-              imgUrl: '../assets/img/members/tamar-pic.jpg',
+              imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg',
             },
             style: {
               bgColor: '#faa53d',
@@ -216,7 +216,7 @@ const boards = [
                 byMember: {
                   _id: 'u101',
                   fullname: 'Ofir Ezra',
-                  imgUrl: '../assets/img/members/ofir-pic.jpg',
+                  imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956854/ofir-pic_niswho.jpg',
                 },
               },
               {
@@ -226,7 +226,7 @@ const boards = [
                 byMember: {
                   _id: 'u102',
                   fullname: 'Tamar Millgram',
-                  imgUrl: '../assets/img/members/tamar-pic.jpg',
+                  imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg',
                 },
               },
               {
@@ -236,14 +236,14 @@ const boards = [
                 byMember: {
                   _id: 'u101',
                   fullname: 'Ofir Ezra',
-                  imgUrl: '../assets/img/members/ofir-pic.jpg',
+                  imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956854/ofir-pic_niswho.jpg',
                 },
               },
             ],
             members: [
               {
                 _id: 'u103',
-                imgUrl: '../assets/img/members/etai-pic.jpg',
+                imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
               },
             ],
             checklists: [
@@ -275,7 +275,7 @@ const boards = [
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
-              imgUrl: '../assets/img/members/etai-pic.jpg',
+              imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
             },
             style: {
               bgColor: '#579dff',
@@ -294,7 +294,7 @@ const boards = [
         byMember: {
           _id: 'u103',
           fullname: 'Etai Levi',
-          imgUrl: '../assets/img/members/etai-pic.jpg',
+          imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
         },
         task: {
           _id: 'c107',
