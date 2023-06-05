@@ -14,6 +14,7 @@ import { saveTask } from '../store/board.actions'
 import { activityService, createActivity } from '../services/activity.service'
 
 import { TaskAttachments } from './task-details/task-attachments'
+import UploadAndDisplayImage from './task-details/test'
 
 export function TaskDetails() {
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -77,10 +78,11 @@ export function TaskDetails() {
           <HiXMark className="close-icon" />
         </button>
         <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
-        <TaskDetailsHeader task={task} />
+        <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} />
+            {/* <UploadAndDisplayImage /> */}
             <TaskAttachments task={task} />
           </section>
           <ActionsList task={task} onHandleTaskMembers={onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} />
