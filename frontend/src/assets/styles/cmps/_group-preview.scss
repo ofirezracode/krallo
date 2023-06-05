@@ -47,6 +47,7 @@
       padding: rem(6px);
       height: rem(32px);
       width: rem(32px);
+      background-color: transparent;
 
       &:hover {
         background-color: $card-input-hover;
@@ -97,6 +98,7 @@
       border-radius: 8px;
       padding: rem(6px);
       transition: .1s ease-out;
+      background-color: transparent;
 
       &:hover {
         background-color: $card-input-hover;
