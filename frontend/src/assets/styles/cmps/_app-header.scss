@@ -9,7 +9,7 @@
     gap: rem(5px);
     color: $icon;
     text-decoration: none;
-    padding-inline: rem(8px);
+    padding-right: rem(8px);
 
     label {
       font-size: rem(20px);
@@ -21,7 +21,7 @@
     font-size: rem(18px);
     font-weight: 700;
     font-family: charlie-bold;
-    margin-inline-start: rem(32px);
+    margin-inline-start: rem(16px);
 
     .logo-link {
       height: rem(32px);
@@ -50,6 +50,7 @@
     justify-content: flex-end;
     position: relative;
     list-style: none;
+    margin-inline-end: rem(4px);
 
     .search-input {
       height: rem(32px);
