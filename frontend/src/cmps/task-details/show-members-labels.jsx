@@ -5,18 +5,15 @@ import { BsPlusLg } from 'react-icons/bs'
 
 export function ShowMembersLabels({ task }) {
     const { members } = task
-    console.log('members', members)
+
     return (
         <section className="members-labels">
             <div className="members-wrapper">
                 <h5>Members</h5>
                 <div className="members">
-                    {/* {members && members.map(member =>
-                        <img src={`../${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} />
-                    )} */}
-                    <img src={Ofir} className="member-img" alt="Ofir Ezra photo" />
-                    <img src={Etai} className="member-img" alt="Etai Levi photo" />
-                    <img src={Tamar} className="member-img" alt="Tamar Millgram photo" />
+                    {members && members.map(member =>
+                        <img key={member._id} src={`../${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} />
+                    )}
 
                     <button className="add-member">
                         <BsPlusLg />

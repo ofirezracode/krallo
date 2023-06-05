@@ -22,7 +22,6 @@ export function LoginSignup() {
         if (ev) ev.preventDefault()
         try {
             const user = await login(credentials)
-            console.log('user', user)
             navigate(`/workspaces`)
             clearState()
         } catch (err) {
