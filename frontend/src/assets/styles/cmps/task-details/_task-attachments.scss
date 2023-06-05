@@ -1,12 +1,19 @@
 .task-attachments {
     .attachment-title {
-
+        height: rem(37px);
+        margin-block-end: rem(4px);
+        gap: rem(12px);
 
         svg {
             rotate: 45deg;
             width: rem(28px);
             height: rem(28px);
             padding: rem(4px);
+        }
+
+        h3 {
+            font-size: rem(16px);
+            font-weight: 600;
         }
     }
 }

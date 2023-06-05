@@ -41,5 +41,9 @@ function loadImageFromInput(ev, onImageReady) {
     // Can also do it this way:
     // img.onload = () => onImageReady(img)
   }
-  reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+  console.log(ev.target)
+  if (ev.target) {
+    reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+
+  }
 }

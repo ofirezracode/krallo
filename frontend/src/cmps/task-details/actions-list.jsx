@@ -1,6 +1,6 @@
 import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsSquareHalf, BsTag } from 'react-icons/bs'
 
-export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers }) {
+export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, onAttachmentAdded }) {
     return (
         <section className="add-to-card-container">
             <h5>Add to card</h5>
@@ -26,7 +26,7 @@ export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers })
                     <BsClock />
                     <p>Dates</p>
                 </button>
-                <button onClick={(e) => onOpenPopover(e, { attachment: task.attachment }, 'attachment', 'Attach from...')} title="Attachment">
+                <button onClick={(e) => onOpenPopover(e, { task, onAttachmentAdded }, 'attachment', 'Attach from...')} title="Attachment">
                     <BsPaperclip className="clip-icon" />
                     <p>Attachment</p>
                 </button>

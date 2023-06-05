@@ -68,6 +68,20 @@ export function TaskDetails() {
       console.log('err', err)
     }
   }
+  async function onAttachmentAdded(attachment) {
+    try {
+      let updatedAttachment = [attachment]
+      if (task.attachments) {
+        updatedAttachment = [...task.attachments, ...updatedAttachment]
+      }
+      const updatedTask = { ...task, attachments: updatedAttachment }
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+
   console.log('task', task)
   console.log('board', board)
   return (
@@ -85,7 +99,7 @@ export function TaskDetails() {
             {/* <UploadAndDisplayImage /> */}
             <TaskAttachments task={task} />
           </section>
-          <ActionsList task={task} onHandleTaskMembers={onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} />
+          <ActionsList task={task} onHandleTaskMembers={onHandleTaskMembers} onOpenPopover={onOpenPopover} board={board} onAttachmentAdded={onAttachmentAdded} />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
       </article>
