@@ -12,7 +12,7 @@ export function ShowMembersLabels({ task }) {
                 <h5>Members</h5>
                 <div className="members">
                     {members && members.map(member =>
-                        <img key={member._id} src={`../${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} />
+                        <img key={member._id} src={`${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} />
                     )}
 
                     <button className="add-member">

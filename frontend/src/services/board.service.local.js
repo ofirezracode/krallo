@@ -96,6 +96,7 @@ const boards = [
             members: [
               {
                 _id: 'u103',
+                fullname: 'Etai Levi',
                 imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
               },
             ],
