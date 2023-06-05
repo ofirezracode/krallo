@@ -11,12 +11,14 @@
     height: rem(12px);
     width: rem(10px);
   }
+
   &::-webkit-scrollbar-track {
     background: #00000026;
     border-radius: 4px;
   }
+
   &::-webkit-scrollbar-thumb {
-    background: $add-card;
+    background: #ffffff68;
     border-radius: 4px;
   }
 
