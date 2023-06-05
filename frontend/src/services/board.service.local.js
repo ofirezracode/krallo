@@ -96,7 +96,6 @@ const boards = [
             members: [
               {
                 _id: 'u103',
-                fullname: 'Etai Levi',
                 imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
               },
             ],
@@ -336,15 +335,15 @@ const boards = [
         'https://images.unsplash.com/photo-1685306893255-b2b6f6272d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1298&q=80',
     },
   },
-  {
-    title: "Krallo La'avod!",
-    isStarred: false,
-    groups: [],
-    style: {
-      type: 'img',
-      imgUrl: 'https://unsplash.it/&auto=format&fit=crop&w=1298&q=80',
-    },
-  },
+  // {
+  //   title: "Krallo La'avod!",
+  //   isStarred: false,
+  //   groups: [],
+  //   style: {
+  //     type: 'img',
+  //     imgUrl: 'https://unsplash.it/&auto=format&fit=crop&w=1298&q=80',
+  //   },
+  // },
 ]
 
 export const boardService = {
