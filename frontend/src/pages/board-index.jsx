@@ -9,7 +9,7 @@ import { boardService } from '../services/board.service.local'
 
 export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
-  const board = useSelector((storeState) => storeState.boardModule.board)
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const { boardId } = useParams()
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
 

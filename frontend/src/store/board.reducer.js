@@ -32,7 +32,7 @@ export function boardReducer(state = initialState, action) {
       newState = { ...state, boards, currBoard: updatedCurrBoard }
       break
     case SET_BOARD:
-      newState = { ...state, board: action.board }
+      newState = { ...state, currBoard: action.board }
       break
     default:
       break

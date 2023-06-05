@@ -18,7 +18,7 @@ import UploadAndDisplayImage from './task-details/test'
 
 export function TaskDetails() {
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
-  const board = useSelector((storeState) => storeState.boardModule.board)
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
   // const [board, setBoard] = useState(boardService.getEmptyBoard())

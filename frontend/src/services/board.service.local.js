@@ -270,7 +270,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l103', 'l107'],
+            labelIds: ['l103', 'l101'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
@@ -539,6 +539,7 @@ function getEmptyBoard() {
       // type: 'img',
       // imgUrl: 'https://source.unsplash.com/random/?city,night',
     },
+    labels: [],
   }
 }
 
