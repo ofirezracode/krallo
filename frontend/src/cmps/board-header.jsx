@@ -11,7 +11,7 @@ import { usePopover } from '../customHooks/usePopover'
 
 export function BoardHeader({ board }) {
   const [popoverProps, onTogglePopover] = usePopover()
-  const { members } = board
+  const members = board ? board.members : []
   function toggleIsStarred(ev, board) {
     ev.preventDefault()
     board.isStarred = !board.isStarred
@@ -91,9 +91,7 @@ export function BoardHeader({ board }) {
           </button>
           <span>|</span>
           <div className="members">
-            {members?.length && members.map(member =>
-              < img className='member-img' src={member.imgUrl} key={member._id} alt="" />
-            )}
+            {members?.length && members.map((member) => <img className="member-img" src={member.imgUrl} key={member._id} alt="" />)}
           </div>
           {/* <img src={Ofir} className="member-img" alt="" />
             <img src={Etai} className="member-img" alt="" />
