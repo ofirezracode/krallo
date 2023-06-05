@@ -107,6 +107,7 @@ const boards = [
                 },
               },
             ],
+            labelIds: ['l108', 'l104', 'l102'],
             style: {
               bgColor: '#579dff',
               type: 'half',
