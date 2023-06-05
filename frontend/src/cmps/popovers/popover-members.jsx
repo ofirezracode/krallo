@@ -13,7 +13,6 @@ export function PopoverMembers({ members, taskMembers, onHandleTaskMembers }) {
   
   function toggleMember({ _id, fullname, imgUrl, isOnBoard }) {
     const activityType = isOnBoard ? 'remove-member' : 'add-member'
-    console.log('activityType',activityType);
     onHandleTaskMembers(activityType, { _id, fullname, imgUrl })
   }
 
