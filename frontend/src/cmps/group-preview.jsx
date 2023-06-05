@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { BsThreeDots, BsPlusLg, BsWindowStack } from 'react-icons/bs'
+import TemplateIcon from "../assets/img/svg/template-icon.svg"
 
 import { TaskList } from './task-list'
 import { saveNewTask } from '../store/board.actions'
@@ -86,7 +87,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
             <label>Add a card</label>
           </div>
           <button className="card-from-template-button flex justify-center align-center">
-            <BsWindowStack className="card-from-template-icon" />
+            <img src={TemplateIcon} className='template-icon' alt="template-icon" />
           </button>
         </section>
       )}
