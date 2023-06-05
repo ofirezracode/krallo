@@ -1,14 +1,21 @@
 .task-attachments {
+    margin-block-end: rem(24px);
+
     .attachment-title {
         height: rem(37px);
         margin-block-end: rem(4px);
         gap: rem(12px);
 
-        svg {
-            rotate: 45deg;
-            width: rem(28px);
-            height: rem(28px);
-            padding: rem(4px);
+        img {
+            width: rem(24px);
+            height: rem(24px);
+            margin-inline-start: rem(2px);
+
+
+            svg {
+                color: $text-subtle;
+
+            }
         }
 
         h3 {

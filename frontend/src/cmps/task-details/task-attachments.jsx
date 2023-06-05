@@ -1,5 +1,5 @@
 import { BsPaperclip } from "react-icons/bs"
-import { UserImg } from "../user-img"
+import ClipIcon from "../../assets/img/svg/clip-icon.svg"
 
 export function TaskAttachments({ task }) {
     const { title, attachments } = task
@@ -8,7 +8,8 @@ export function TaskAttachments({ task }) {
     return (
         <section className="task-attachments">
             <div className="attachment-title flex align-center">
-                <BsPaperclip />
+                {/* <BsPaperclip /> */}
+                <img src={ClipIcon} alt="clip-icon" />
                 <h3>Attachments</h3>
             </div>
             <ul className="flex column clean-list">
