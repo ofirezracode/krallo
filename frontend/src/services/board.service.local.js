@@ -16,8 +16,7 @@ const boards = [
     },
     style: {
       type: 'img',
-      imgUrl:
-        'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965910/photo-1576502200916-3808e07386a5_bhkumw.jpg'
+      imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965910/photo-1576502200916-3808e07386a5_bhkumw.jpg',
     },
     labels: [
       {
@@ -114,7 +113,8 @@ const boards = [
           {
             _id: 'aa102',
             title: 'Implement user authentication feature',
-            description: 'Develop a secure user authentication system for the website using OAuth2.0. Integrate with existing user database and allow login via social media accounts.'
+            description:
+              'Develop a secure user authentication system for the website using OAuth2.0. Integrate with existing user database and allow login via social media accounts.',
           },
           {
             _id: 'aa103',
@@ -127,7 +127,7 @@ const boards = [
           {
             _id: 'aa104',
             title: 'Implement responsive design',
-            labelIds: ['l102']
+            labelIds: ['l102'],
           },
         ],
         style: {},
@@ -141,11 +141,13 @@ const boards = [
             title: 'Create wireframes for homepage',
             // "archivedAt": 1589983468418,
             labelIds: ['l104'],
-            members: [{
-              _id: 'u103',
-              fullname: 'Etai Levi',
-              imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
-            }],
+            members: [
+              {
+                _id: 'u103',
+                fullname: 'Etai Levi',
+                imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
+              },
+            ],
           },
           {
             _id: 'bb104',
@@ -785,7 +787,6 @@ const boards = [
               },
             ],
             members: [
-
               {
                 _id: 'u101',
                 fullname: 'Ofir Ezra',
@@ -911,8 +912,6 @@ const boards = [
         ],
         style: {},
       },
-
-
     ],
     activities: [
       {
@@ -980,6 +979,7 @@ export const boardService = {
   save,
   remove,
   saveTask,
+  saveNewTask,
   getEmptyBoard,
   createTask,
   getTaskById,
@@ -1042,13 +1042,26 @@ async function saveTask(board, updatedTask, activity) {
     }
   }
 
-  if (task) {
-    // if (task && Object.keys(task).length > 0) {
-    task = { ...updatedTask }
-    group.tasks[taskIdx] = task
-  } else {
-    group.tasks.push(updatedTask)
+  task = { ...updatedTask }
+  group.tasks[taskIdx] = task
+
+  if (activity) {
+    board.activities.unshift(activity)
   }
+
+  const newBoard = await save(board)
+  return newBoard
+}
+
+async function saveNewTask(board, groupId, updatedTask, activity) {
+  let group
+  for (let i = 0; i < board.groups.length; i++) {
+    if (groupId === board.groups[i]._id) {
+      group = board.groups[i]
+    }
+  }
+
+  group.tasks.push(updatedTask)
 
   if (activity) {
     board.activities.unshift(activity)
