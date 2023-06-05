@@ -205,7 +205,7 @@ const boards = [
           },
           {
             _id: 'cc106',
-            title: 'Create grid template for the board',
+            title: 'Create something else',
             description:
               'Develop the HTML and CSS structure for the homepage. Implement the layout according to the wireframes provided in the Design group.',
             comments: [
@@ -336,13 +336,12 @@ const boards = [
     },
   },
   {
-    title: 'Krallo La\'avod!',
+    title: "Krallo La'avod!",
     isStarred: false,
     groups: [],
     style: {
       type: 'img',
-      imgUrl:
-        'https://unsplash.it/&auto=format&fit=crop&w=1298&q=80',
+      imgUrl: 'https://unsplash.it/&auto=format&fit=crop&w=1298&q=80',
     },
   },
 ]
@@ -403,12 +402,13 @@ async function saveTask(board, updatedTask, activity) {
   let group
   let task
   let taskIdx
-  for (let i = 0; i < board.groups.length; i++) {
+  for (let i = 0; i < board.groups.length && !task; i++) {
     group = board.groups[i]
     for (let j = 0; j < board.groups[i].tasks.length; j++) {
       if (board.groups[i].tasks[j]._id === updatedTask._id) {
         task = board.groups[i].tasks[j]
         taskIdx = j
+        break
       }
     }
   }
@@ -465,7 +465,7 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
@@ -547,6 +547,7 @@ function getEmptyTask() {
   }
 }
 
-// ; (async () => {
-//   await _createBoards()
-// })()
+;(async () => {
+  const boards = await query()
+  if (boards.length === 0) await _createBoards()
+})()
