@@ -49,6 +49,21 @@ const boards = [
         title: 'Backend',
         color: '#60c6d2',
       },
+      {
+        _id: 'l107',
+        title: 'Frontend',
+        color: '#94c748',
+      },
+      {
+        _id: 'l108',
+        title: 'Feature',
+        color: '#e774bb',
+      },
+      {
+        _id: 'l109',
+        title: 'Important',
+        color: '#8590a2',
+      },
     ],
     members: [
       {
@@ -92,6 +107,7 @@ const boards = [
                 },
               },
             ],
+            labelIds: ['l108', 'l104', 'l102'],
             style: {
               bgColor: '#579dff',
               type: 'half',
@@ -127,7 +143,7 @@ const boards = [
           {
             _id: 'aa104',
             title: 'Implement responsive design',
-            labelIds: ['l102'],
+            labelIds: ['l102', 'l109', 'l107'],
           },
         ],
         style: {},
@@ -140,7 +156,7 @@ const boards = [
             _id: 'bb103',
             title: 'Create wireframes for homepage',
             // "archivedAt": 1589983468418,
-            labelIds: ['l104'],
+            labelIds: ['l104', 'l101'],
             members: [
               {
                 _id: 'u103',
@@ -206,7 +222,7 @@ const boards = [
             ],
             attachments: ['https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg'],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l102', 'l103'],
+            labelIds: ['l102', 'l103', 'l108', 'l106'],
             dueDate: 16156215211,
             byMember: {
               _id: 'u102',
@@ -306,7 +322,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l102', 'l105', 'l106'],
+            labelIds: ['l104', 'l105', 'l106'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
@@ -386,7 +402,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: [],
+            labelIds: ['l109'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
@@ -471,7 +487,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l103'],
+            labelIds: ['l107', 'l103'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
@@ -521,7 +537,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l102', 'l101'],
+            labelIds: ['l102', 'l108', 'l101'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
@@ -1107,7 +1123,7 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {
@@ -1197,7 +1213,7 @@ function getEmptyAttachment() {
   }
 }
 
-;(async () => {
+; (async () => {
   const boards = await query()
   if (boards.length === 0) await _createBoards()
 })()

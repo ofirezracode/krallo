@@ -2,4 +2,26 @@
   gap: rem(7px);
   margin: 0 rem(4px);
   padding: rem(1px) rem(4px);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    height: 100%;
+    width: rem(7px);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #091e4214;
+    border-radius: 2em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $add-card;
+    background-color: #00000024;
+    border-radius: 2em;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: block;
+    height: 100%;
+  }
 }

@@ -37,8 +37,7 @@ export function TaskPreview({ boardId, task }) {
           <ul className="labels flex clean-list">
             {task.labelIds.map((labelId, i) => {
               const label = boardLabels.find((boardLabel) => boardLabel._id === labelId)
-              const labelsOpenStyle = labelsOpen ? { height: '18px', width: '56px' } : {}
-              const labelStyle = { backgroundColor: label.color, ...labelsOpenStyle }
+              const labelStyle = { backgroundColor: label.color }
               const labelText = labelsOpen ? label.title : ''
               return (
                 <li className={`flex center ${labelsOpen ? 'open' : ''}`} key={i}>

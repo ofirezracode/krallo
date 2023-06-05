@@ -1,12 +1,14 @@
 import { BoardPreview } from './board-preview'
 import { BoardListTitle } from './board-list-title'
+import MemberIcon from "../../src/assets/img/svg/member-icon.svg"
+import StarEmpty from "../../src/assets/img/svg/star-empty.svg"
 
 export function BoardList({ boards, toggleIsStarred, isOnlyStarred, onAddBoard }) {
     let filteredBoards = isOnlyStarred ? boards.filter((board) => board.isStarred) : boards
 
     return (
         <section className="board-list-container">
-            {isOnlyStarred ? <BoardListTitle title={'Starred boards'} /> : <BoardListTitle title={'Your boards'} />}
+            {isOnlyStarred ? <BoardListTitle title={'Starred boards'} icon={StarEmpty} /> : <BoardListTitle title={'Your boards'} icon={MemberIcon} />}
             <ul className="board-list clean-list flex wrap">
                 {filteredBoards.map((board) => {
                     let boardStyle = {}

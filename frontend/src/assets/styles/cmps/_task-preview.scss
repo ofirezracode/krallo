@@ -13,6 +13,7 @@
   .preview-container {
     padding: rem(8px) rem(8px) rem(4px) rem(12px);
     background-color: #fff;
+
     &:hover {
       background-color: $card-preview;
     }
@@ -21,17 +22,21 @@
       flex-wrap: wrap;
       gap: rem(4px);
       margin-bottom: rem(4px);
+
       li {
         height: max-content;
+
         button {
-          font-weight: 500;
-          width: rem(40px);
+          min-width: rem(40px);
           height: rem(8px);
+          padding-inline: rem(8px);
+
+          font-weight: 500;
           font-size: rem(12px);
           font-family: inherit;
           overflow: hidden;
           text-overflow: ellipsis;
-          white-space: nowrap;
+          white-space: normal;
           border-radius: 4px;
 
           color: inherit;
@@ -46,6 +51,9 @@
         &.open {
           button {
             padding-block-end: rem(2px);
+            min-width: rem(56px);
+            max-width: rem(88px);
+            height: 18px;
           }
         }
       }

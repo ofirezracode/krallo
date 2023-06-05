@@ -102,7 +102,7 @@ export function TaskDetails() {
         <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
           <section className="card-details-container">
-            <ShowMembersLabels task={task} />
+            <ShowMembersLabels task={task} board={board} />
             {/* <UploadAndDisplayImage /> */}
             <TaskAttachments task={task} />
           </section>
