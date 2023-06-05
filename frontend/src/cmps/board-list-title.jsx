@@ -1,9 +1,7 @@
-import { BsPerson } from 'react-icons/bs'
-
-export function BoardListTitle({ title }) {
+export function BoardListTitle({ title, icon }) {
   return (
     <header className="board-title-preview flex align-center">
-      <BsPerson className="title-icon" strokeWidth={'.5px'} />
+      <img src={icon} alt="member-icon" className="title-icon" />
       <h2>{title}</h2>
     </header>
   )
