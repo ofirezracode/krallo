@@ -142,7 +142,7 @@ const boards = [
           {
             _id: 'aa104',
             title: 'Implement responsive design',
-            labelIds: ['l102'],
+            labelIds: ['l102', 'l109', 'l107'],
           },
         ],
         style: {},
@@ -155,7 +155,7 @@ const boards = [
             _id: 'bb103',
             title: 'Create wireframes for homepage',
             // "archivedAt": 1589983468418,
-            labelIds: ['l104'],
+            labelIds: ['l104', 'l101'],
             members: [
               {
                 _id: 'u103',
@@ -221,7 +221,7 @@ const boards = [
             ],
             attachments: ['https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg'],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l102', 'l103'],
+            labelIds: ['l102', 'l103', 'l108', 'l106'],
             dueDate: 16156215211,
             byMember: {
               _id: 'u102',
@@ -321,7 +321,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l102', 'l105', 'l106'],
+            labelIds: ['l104', 'l105', 'l106'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
@@ -401,7 +401,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: [],
+            labelIds: ['l109'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
@@ -486,7 +486,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l103'],
+            labelIds: ['l107', 'l103'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
@@ -536,7 +536,7 @@ const boards = [
               },
             ],
             memberIds: ['u101', 'u102', 'u103'],
-            labelIds: ['l102', 'l101'],
+            labelIds: ['l102', 'l108', 'l101'],
             dueDate: 16156215584,
             byMember: {
               _id: 'u103',
