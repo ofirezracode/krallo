@@ -74,7 +74,7 @@ export function LoginSignup() {
                             </div>
                         </div>}
                         {!isSignup && <div>
-                            <h1 className='sginup-title'>Sing up for your account</h1>
+                            <h1 className='sginup-title'>Sign up for your account</h1>
                             <div className='login-password-container'>
                                 <form className='login-form' onSubmit={(e) => onSignup(e)}>
                                     <input className='email-input signup-input' type="email" placeholder='Enter email' name="email"

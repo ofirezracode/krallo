@@ -1,0 +1,26 @@
+.color-palette {
+  margin-block-end: rem(8px);
+  .color-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: rem(4px);
+    li {
+      height: rem(32px);
+      border-radius: 3px;
+
+      button {
+        height: rem(28px);
+        width: rem(48px);
+        border-radius: 3px;
+
+        &.active {
+          box-shadow: 0 0 0 2px white, 0 0 0 4px $blue-bolder;
+        }
+
+        &:not(.active):hover {
+          filter: saturate(85%) brightness(85%);
+        }
+      }
+    }
+  }
+}

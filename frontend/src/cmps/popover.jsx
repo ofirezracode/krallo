@@ -7,7 +7,7 @@ import { PopoverMembers } from './popovers/popover-members'
 import { PopoverCover } from './popovers/popover-cover'
 import { PopoverAttachment } from './popovers/popover-attachment'
 
-export function Popover({ isShown, title, type, parentRect, onClose, addedProps }) {
+export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
   let popoverStyles = { position: 'fixed' }
 
@@ -29,29 +29,23 @@ export function Popover({ isShown, title, type, parentRect, onClose, addedProps 
 
   return (
     <div className="popover" style={popoverStyles}>
-      <header>
-        <h3>{title}</h3>
-        <HiXMark onClick={onClose} />
-      </header>
-      <section>
-        <DynamicCmp type={type} addedProps={addedProps}></DynamicCmp>
-      </section>
+      <DynamicCmp type={type} addedProps={addedProps} onClose={onClose} />
     </div>
   )
 }
 
-function DynamicCmp({ type, addedProps }) {
+function DynamicCmp({ type, addedProps, onClose }) {
   switch (type) {
     case 'dummy':
       return <PopoverDummy />
     case 'labels':
-      return <PopoverLabels {...addedProps} />
+      return <PopoverLabels {...addedProps} onClose={onClose} />
     case 'members':
-      return <PopoverMembers {...addedProps} />
+      return <PopoverMembers {...addedProps} onClose={onClose} />
     case 'attachment':
-      return <PopoverAttachment {...addedProps} />
+      return <PopoverAttachment {...addedProps} onClose={onClose} />
     case 'cover':
-      return <PopoverCover {...addedProps} />
+      return <PopoverCover {...addedProps} onClose={onClose} />
     default:
       return <PopoverDummy />
   }
