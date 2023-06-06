@@ -1,6 +1,10 @@
 .app-header-home {
     font-family: charlie-regular;
     height: rem(60px);
+    align-items: stretch;
+    height: rem(60px);
+    margin: 0px auto;
+    max-width: rem(1320px);
 
     .logo {
         height: rem(40px);
@@ -50,7 +54,7 @@
 
         .try-btn {
             margin: 0;
-            background-color: $btn-blue;
+            background-color: $btn-blue1;
             color: #fff;
             font-size: rem(19.2px);
             padding: rem(8px) rem(24px);

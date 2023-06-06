@@ -13,6 +13,7 @@
   .preview-container {
     padding: rem(8px) rem(8px) rem(4px) rem(12px);
     background-color: #fff;
+
     &:hover {
       background-color: $card-preview;
     }
@@ -21,8 +22,10 @@
       flex-wrap: wrap;
       gap: rem(4px);
       margin-bottom: rem(4px);
+
       li {
         height: max-content;
+
         button {
           min-width: rem(40px);
           height: rem(8px);
@@ -33,7 +36,7 @@
           font-family: inherit;
           overflow: hidden;
           text-overflow: ellipsis;
-          white-space: nowrap;
+          white-space: normal;
           border-radius: 4px;
 
           color: inherit;

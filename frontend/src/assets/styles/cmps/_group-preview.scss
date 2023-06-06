@@ -5,8 +5,11 @@
   border-radius: 12px;
   background-color: $card-preview;
   box-shadow: $card-shadow;
+  position: relative;
+
   header {
     padding: rem(7px) rem(8px) rem(8px);
+
     h3 {
       padding: rem(4px) rem(8px) rem(4px) rem(12px);
       font-size: inherit;
@@ -16,6 +19,7 @@
 
     form {
       flex-grow: 1;
+
       input {
         margin-block-start: rem(-4px);
         padding: rem(4px) rem(8px) rem(4px) rem(12px);
@@ -43,6 +47,7 @@
       padding: rem(6px);
       height: rem(32px);
       width: rem(32px);
+      background-color: transparent;
 
       &:hover {
         background-color: $card-input-hover;
@@ -51,19 +56,29 @@
   }
 
   .add-card-section {
-    display: grid;
-    grid-template-columns: 1fr max-content;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
+    height: rem(44px);
+    border-radius: rem(12px);
     color: $small-titles;
+    max-height: revert;
+    min-height: revert;
+    position: sticky;
+    background-color: $-gray-subtlest;
+    bottom: 0;
 
     .add-card {
       border-radius: rem(8px);
       margin: rem(8px) 0 rem(8px) rem(8px);
-      padding: rem(4px) rem(8px) rem(4px) rem(6px);
+      padding: rem(3px) rem(8px) rem(3px) rem(9px);
+      flex: 1;
+      transition: .1s ease-out;
       cursor: pointer;
 
       .icon {
-        margin-inline-end: rem(6px);
+        margin-inline-end: rem(9px);
         margin-block-end: rem(1px);
       }
 
@@ -81,11 +96,15 @@
       height: rem(32px);
       width: rem(32px);
       border-radius: 8px;
+      padding: rem(6px);
+      transition: .1s ease-out;
+      background-color: transparent;
+
       &:hover {
         background-color: $card-input-hover;
       }
-      .card-from-template-icon {
-        height: rem(16px);
+
+      img {
         width: rem(16px);
       }
     }
