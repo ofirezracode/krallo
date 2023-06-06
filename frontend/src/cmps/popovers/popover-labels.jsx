@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { BsPencilFill, BsCheck2 } from 'react-icons/bs'
-import { HiXMark } from 'react-icons/hi2'
 import { PopoverCmpHeader } from './popover-cmp-header'
-import { ColorPalette } from '../color-palette'
+import { LabelEditor } from './popover-labels/label-editor'
+import { utilService } from '../../services/util.service'
 
-export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdit }) {
+export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdit, onLabelDelete }) {
   // const [searchTerm, setSearchTerm] = useState('')
-  const [taskLabels, setTaskLabels] = useState([...task.labelIds])
+  const [taskLabels, setTaskLabels] = useState(task.labelIds ? [...task.labelIds] : [])
   const [boardLabels, setBoardLabels] = useState([...labels])
-  const [isEditing, setIsEditing] = useState(false)
-  const [editedLabel, setEditedLabel] = useState({ _id: '', color: { code: '', varName: '', colorTitle: '' }, title: '' })
+  const [popoverState, setPopoverState] = useState('labels')
+  const [chosenLabel, setChosenLabel] = useState({ _id: '', color: { code: '', varName: '', colorTitle: '' }, title: '' })
 
   function onClickLabel(e, labelId) {
     e.stopPropagation()
@@ -26,31 +26,60 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
     onLabelChange(newLabelIds)
   }
 
-  function onClickEditLabel(labelId, label, title) {
-    setIsEditing((prev) => !prev)
-    setEditedLabel({ _id: labelId, color: label?.color, title })
+  function onClickEditLabel(labelId, label, title, target) {
+    console.log('label', label)
+    setChosenLabel({ _id: labelId, color: label?.color, title })
+    navigateToState(target)
   }
 
-  function onLabelEdited(clrEdit) {
-    const color = clrEdit.color ? clrEdit.color : editedLabel.color
-    const title = clrEdit.title ? clrEdit.title : editedLabel.title
-    setEditedLabel((prev) => ({ ...prev, color, title }))
-  }
-
-  function onEditedLabelSave() {
+  function onSave(editedLabel) {
     const newBoardLabels = [...boardLabels]
-    const labelToEditIndex = newBoardLabels.findIndex((boardLabel) => boardLabel._id === editedLabel._id)
+    let labelToEditIndex = newBoardLabels.findIndex((boardLabel) => boardLabel._id === editedLabel._id)
+    if (labelToEditIndex === -1) {
+      editedLabel._id = utilService.makeId()
+      labelToEditIndex = newBoardLabels.length
+    }
     newBoardLabels.splice(labelToEditIndex, 1, editedLabel)
     setBoardLabels(newBoardLabels)
     onLabelEdit(newBoardLabels)
-    setIsEditing(false)
+    navigateToState('labels')
+    setChosenLabel({ _id: '', color: { code: '', varName: '', colorTitle: '' }, title: '' })
+  }
+
+  function onEditedLabelDelete() {
+    const newBoardLabels = [...boardLabels]
+    const labelToDeleteIndex = newBoardLabels.findIndex((boardLabel) => boardLabel._id === chosenLabel._id)
+    const deletedLabel = newBoardLabels.splice(labelToDeleteIndex, 1)[0]
+    setBoardLabels(newBoardLabels)
+    onLabelDelete(newBoardLabels, deletedLabel)
+    navigateToState('labels')
+    setChosenLabel({ _id: '', color: { code: '', varName: '', colorTitle: '' }, title: '' })
+  }
+
+  function navigateToState(target) {
+    setPopoverState(target)
+  }
+
+  let title = ''
+  let returnTarget = ''
+  if (popoverState === 'labels') {
+    title = 'Labels'
+  } else if (popoverState === 'edit') {
+    returnTarget = 'labels'
+    title = 'Edit label'
+  } else if (popoverState === 'add') {
+    returnTarget = 'labels'
+    title = 'Create label'
+  } else if (popoverState === 'delete') {
+    returnTarget = 'edit'
+    title = 'Delete label'
   }
 
   return (
-    <section>
-      <PopoverCmpHeader title={!isEditing ? 'Labels' : 'Edit label'} onClose={onClose} onReturn={isEditing ? onClickEditLabel : ''} />
-      {!isEditing && (
-        <div className="popover-labels">
+    <section className="popover-labels">
+      <PopoverCmpHeader title={title} onClose={onClose} onReturn={popoverState !== 'labels' ? () => navigateToState(returnTarget) : ''} />
+      {popoverState === 'labels' && (
+        <div className="labels">
           {/* <input type="text" value={searchTerm} onChange={setSearchTerm} /> */}
           <p>Labels</p>
           <ul className="labels-list flex column">
@@ -68,45 +97,30 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
                   <button onClick={(e) => onClickLabel(e, label._id)} className="label-color" style={labelStyle}>
                     {labelTitle}
                   </button>
-                  <button onClick={() => onClickEditLabel(label._id, label, labelTitle)} className="edit-icon-btn flex center">
+                  <button onClick={() => onClickEditLabel(label._id, label, labelTitle, 'edit')} className="edit-icon-btn flex center">
                     <BsPencilFill className="edit-icon" />
                   </button>
                 </li>
               )
             })}
           </ul>
+          <button onClick={() => navigateToState('add')} className="btn-add flex center">
+            Create a new label
+          </button>
         </div>
       )}
-      {isEditing && (
-        <div className="edit-labels">
-          <div className="edited-label-preview">
-            <div
-              className={`label-color format-${editedLabel.color.varName.substring(1)}`}
-              style={{ backgroundColor: editedLabel.color.code }}
-            >
-              {editedLabel.title}
-            </div>
-          </div>
-          <h4 className="labels-title">Title</h4>
-          <input
-            type="text"
-            value={editedLabel.title}
-            onChange={(e) => onLabelEdited({ title: e.target.value })}
-            placeholder="Label title"
-          />
-          <h4 className="labels-title">Select a color</h4>
-          <ColorPalette onColorChange={onLabelEdited} activeClr={editedLabel.color.code} />
-          <button className="btn-remove flex center">
-            <HiXMark />
-            Remove color
+      {popoverState === 'edit' && <LabelEditor isAdd={false} chosenLabel={chosenLabel} onSave={onSave} navigateToState={navigateToState} />}
+      {popoverState === 'add' && <LabelEditor isAdd={true} onSave={onSave} navigateToState={navigateToState} />}
+      {popoverState === 'delete' && (
+        <div className="delete-label">
+          <p>
+            This will remove this label from all cards.
+            <br />
+            There is no undo.
+          </p>
+          <button onClick={onEditedLabelDelete} className="btn-delete">
+            Delete
           </button>
-          <hr />
-          <div className="buttons-section flex between">
-            <button onClick={onEditedLabelSave} className="btn-save">
-              Save
-            </button>
-            <button className="btn-delete">Delete</button>
-          </div>
         </div>
       )}
     </section>

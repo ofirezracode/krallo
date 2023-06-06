@@ -132,3 +132,94 @@ $normal-breakpoint: 960px;
 .d8590a2 {
   background-color: darken(#8590a2, 30%);
 }
+
+.format-green-subtler {
+  @include format-green-subtler;
+}
+.format-yellow-subtler {
+  @include format-yellow-subtler;
+}
+.format-orange-subtler {
+  @include format-orange-subtler;
+}
+.format-red-subtler {
+  @include format-red-subtler;
+}
+.format-purple-subtler {
+  @include format-purple-subtler;
+}
+.format-green-subtle {
+  @include format-green-subtle;
+}
+.format-yellow-subtle {
+  @include format-yellow-subtle;
+}
+.format-orange-subtle {
+  @include format-orange-subtle;
+}
+.format-red-subtle {
+  @include format-red-subtle;
+}
+.format-purple-subtle {
+  @include format-purple-subtle;
+}
+.format-green-bolder {
+  @include format-green-bolder;
+}
+.format-yellow-bolder {
+  @include format-yellow-bolder;
+}
+.format-orange-bolder {
+  @include format-orange-bolder;
+}
+.format-red-bolder {
+  @include format-red-bolder;
+}
+.format-purple-bolder {
+  @include format-purple-bolder;
+}
+.format-blue-subtler {
+  @include format-blue-subtler;
+}
+.format-teal-subtler {
+  @include format-teal-subtler;
+}
+.format-lime-subtler {
+  @include format-lime-subtler;
+}
+.format-magenta-subtler {
+  @include format-magenta-subtler;
+}
+.format-gray-subtler {
+  @include format-gray-subtler;
+}
+.format-blue-subtle {
+  @include format-blue-subtle;
+}
+.format-teal-subtle {
+  @include format-teal-subtle;
+}
+.format-lime-subtle {
+  @include format-lime-subtle;
+}
+.format-magenta-subtle {
+  @include format-magenta-subtle;
+}
+.format-gray-subtle {
+  @include format-gray-subtle;
+}
+.format-blue-bolder {
+  @include format-blue-bolder;
+}
+.format-teal-bolder {
+  @include format-teal-bolder;
+}
+.format-lime-bolder {
+  @include format-lime-bolder;
+}
+.format-magenta-bolder {
+  @include format-magenta-bolder;
+}
+.format-gray-bolder {
+  @include format-gray-bolder;
+}

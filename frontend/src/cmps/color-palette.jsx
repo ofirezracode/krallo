@@ -41,7 +41,6 @@ export function ColorPalette({ clrs, activeClr, onColorChange }) {
     onColorChange({ color: clr })
   }
 
-  console.log('palette')
   const colors = clrs ? clrs : DEFAULT_COLORS
   return (
     <div className="color-palette">

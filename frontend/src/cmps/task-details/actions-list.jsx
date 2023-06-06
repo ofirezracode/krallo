@@ -1,6 +1,15 @@
 import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsSquareHalf, BsTag } from 'react-icons/bs'
 
-export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, onAttachmentAdded, onLabelChange, onLabelEdit }) {
+export function ActionsList({
+  task,
+  onOpenPopover,
+  board,
+  onHandleTaskMembers,
+  onAttachmentAdded,
+  onLabelChange,
+  onLabelEdit,
+  onLabelDelete,
+}) {
   return (
     <section className="add-to-card-container">
       <h5>Add to card</h5>
@@ -12,7 +21,10 @@ export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, o
           <BsPerson />
           <p>Members</p>
         </button>
-        <button onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit }, 'labels')} title="Labels">
+        <button
+          onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete }, 'labels')}
+          title="Labels"
+        >
           <BsTag className="label-icon" />
           <p>Labels</p>
         </button>

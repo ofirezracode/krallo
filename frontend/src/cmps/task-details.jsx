@@ -99,6 +99,16 @@ export function TaskDetails() {
     }
   }
 
+  async function onLabelDelete(editedBoardLabels, labelToDelete) {
+    try {
+      let newBoard = { ...board, labels: editedBoardLabels }
+      newBoard = boardService.removeLabelFromTasks(newBoard, labelToDelete._id)
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
@@ -122,6 +132,7 @@ export function TaskDetails() {
             onAttachmentAdded={onAttachmentAdded}
             onLabelChange={onLabelChange}
             onLabelEdit={onLabelEdit}
+            onLabelDelete={onLabelDelete}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
