@@ -43,7 +43,7 @@ export function BoardHeader({ board }) {
               <BsStar className="star-empty" />
             </button>
           )}
-          <button onClick={(e) => onTogglePopover(e, 'dummy', 'Change visibility')} title="Change visibility flex align-center between">
+          {/* <button onClick={(e) => onTogglePopover(e, 'dummy', 'Change visibility')} title="Change visibility flex align-center between">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -53,8 +53,8 @@ export function BoardHeader({ board }) {
               ></path>
             </svg>
             <p>Workspace visible</p>
-          </button>
-          <button className="btn-fill" title="Board">
+          </button> */}
+          {/* <button className="btn-fill" title="Board">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -76,7 +76,7 @@ export function BoardHeader({ board }) {
               ></path>
             </svg>
             <p>Board</p>
-          </button>
+          </button> */}
         </li>
         <li className="flex align-center">
           <button title="Filter cards flex align-center">
