@@ -1,9 +1,10 @@
 import ClipIcon from "../../assets/img/svg/clip-icon.svg"
 
 export function TaskAttachments({ task }) {
+    console.log(task)
     const { title, attachments } = task
     console.log(attachments)
-    if (!attachments) return <div></div>
+    if (!attachments?.length) return <div></div>
     return (
         <section className="task-attachments">
             <div className="attachment-title flex align-center">

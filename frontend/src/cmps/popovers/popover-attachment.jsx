@@ -34,13 +34,16 @@ export function PopoverAttachment({ onAttachmentAdded }) {
     const [url, setUrl] = useState('')
 
     function onImg(img) {
+        console.log(img)
         if (!img) return
-        onAttachmentAdded(img)
     }
 
-    function onAddAttachment(e) {
+    async function onAddAttachment(e) {
         // e.preventDefault()
         uploadService.uploadImg(e, onImg)
+        // onAttachmentAdded(img)
+
+        // use async await to get the url and send it to the task-details func
     }
 
     function onAddAttachmentUrl(e) {
