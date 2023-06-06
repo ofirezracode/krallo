@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsPencilFill, BsCheck2 } from 'react-icons/bs'
 import { PopoverCmpHeader } from './popover-cmp-header'
 import { LabelEditor } from './popover-labels/label-editor'
@@ -8,9 +8,30 @@ import { useSelector } from 'react-redux'
 export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdit, onLabelDelete }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [taskLabels, setTaskLabels] = useState(task.labelIds ? [...task.labelIds] : [])
+  const [searchTerm, setSearchTerm] = useState('')
   const [boardLabels, setBoardLabels] = useState([...labels])
+  const [filteredBoardLabels, setFilteredBoardLabels] = useState([...labels])
   const [popoverState, setPopoverState] = useState('labels')
   const [chosenLabel, setChosenLabel] = useState({ _id: '', color: { code: '', varName: '', colorTitle: '' }, title: '' })
+
+  //This one is for when you add a new label while filtered
+  //With this it will take into account the new label in its filtering
+  useEffect(() => {
+    const filteredLabels = [...boardLabels]
+    setFilteredBoardLabels(filterLabels(filteredLabels))
+  }, [boardLabels])
+
+  useEffect(() => {
+    setFilteredBoardLabels(filterLabels(boardLabels))
+  }, [searchTerm])
+
+  function filterLabels(labels) {
+    console.log('searchTerm', searchTerm)
+    const lowerCaseTerm = searchTerm.toLowerCase()
+    return labels.filter(
+      (label) => label.title.toLowerCase().includes(lowerCaseTerm) || label?.color?.colorTitle.toLowerCase().includes(lowerCaseTerm)
+    )
+  }
 
   function onClickLabel(e, labelId) {
     e.stopPropagation()
@@ -81,10 +102,10 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
       <PopoverCmpHeader title={title} onClose={onClose} onReturn={popoverState !== 'labels' ? () => navigateToState(returnTarget) : ''} />
       {popoverState === 'labels' && (
         <div className="labels">
-          {/* <input type="text" value={searchTerm} onChange={setSearchTerm} /> */}
+          <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search labels..." />
           <p>Labels</p>
           <ul className="labels-list flex column">
-            {boardLabels.map((label) => {
+            {filteredBoardLabels.map((label) => {
               const isLabelChecked = taskLabels ? taskLabels.some((labelId) => labelId === label._id) : false
               let labelStyle = { backgroundColor: '#091e420f' }
               if (label.color) labelStyle = { backgroundColor: label.color.code }

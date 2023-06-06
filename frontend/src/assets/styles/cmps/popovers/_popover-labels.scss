@@ -8,6 +8,7 @@
       font-size: rem(14px);
       line-height: rem(20px);
 
+      box-shadow: inset 0 0 0 2px var(--ds-border-input, $button-board-header);
       transition-property: background-color, border-color, box-shadow;
       transition-duration: 85ms;
       transition-timing-function: ease;
@@ -18,6 +19,10 @@
 
       &:focus {
         box-shadow: inset 0 0 0 2px $input-focus;
+      }
+
+      &::placeholder {
+        color: $text;
       }
     }
 
