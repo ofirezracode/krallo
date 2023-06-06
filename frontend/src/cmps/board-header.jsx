@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsPeople, BsStar, BsStarFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { UserImg } from './user-img'
@@ -8,14 +8,25 @@ import Tamar from '../assets/img/members/tamar-pic.jpg'
 import { updateBoard } from '../store/board.actions'
 import { Popover } from './popover'
 import { usePopover } from '../customHooks/usePopover'
+import { utilService } from '../services/util.service'
 
 export function BoardHeader({ board }) {
+  const [title, setTitle] = useState('')
   const [popoverProps, onTogglePopover] = usePopover()
   const members = board ? board.members : []
+
   function toggleIsStarred(ev, board) {
     ev.preventDefault()
     board.isStarred = !board.isStarred
     updateBoard(board)
+  }
+
+  function handleChange(ev, board) {
+    ev.preventDefault()
+    const { value } = ev.target
+    setTitle(value)
+    const updatedBoard = { ...board, title: value }
+    updateBoard(updatedBoard)
   }
 
   if (!board) return <div></div>
@@ -25,6 +36,7 @@ export function BoardHeader({ board }) {
       <div className='blur-header'></div>
       <ul className="board-header clean-list flex align-center between">
         <li className="flex align-center">
+          <input type="text" onChange={handleChange} value={board.title} />
           <h1 title={board.title}>{board.title}</h1>
           {board.isStarred ? (
             <button
@@ -43,7 +55,7 @@ export function BoardHeader({ board }) {
               <BsStar className="star-empty" />
             </button>
           )}
-          <button onClick={(e) => onTogglePopover(e, 'dummy', 'Change visibility')} title="Change visibility flex align-center between">
+          {/* <button onClick={(e) => onTogglePopover(e, 'dummy', 'Change visibility')} title="Change visibility flex align-center between">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -53,8 +65,8 @@ export function BoardHeader({ board }) {
               ></path>
             </svg>
             <p>Workspace visible</p>
-          </button>
-          <button className="btn-fill" title="Board">
+          </button> */}
+          {/* <button className="btn-fill" title="Board">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -76,7 +88,7 @@ export function BoardHeader({ board }) {
               ></path>
             </svg>
             <p>Board</p>
-          </button>
+          </button> */}
         </li>
         <li className="flex align-center">
           <button title="Filter cards flex align-center">
@@ -126,6 +138,6 @@ export function BoardHeader({ board }) {
         </li>
       </ul>
       <Popover {...popoverProps} onClose={onTogglePopover} />
-    </section>
+    </section >
   )
 }

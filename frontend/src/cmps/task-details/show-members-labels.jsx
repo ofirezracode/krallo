@@ -10,7 +10,7 @@ export function ShowMembersLabels({ task, board }) {
   const taskLabelIds = task.labelIds ? task.labelIds : []
   const taskLabels = taskLabelIds.map((labelId, i) => {
     const label = board.labels.find((boardLabel) => boardLabel._id === labelId)
-    return { bgColor: label.color, title: label.title ? label.title : '' }
+    return { bgColor: label.color.code, title: label.title ? label.title : '' }
   })
 
   return (

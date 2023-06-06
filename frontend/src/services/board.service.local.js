@@ -22,47 +22,47 @@ const boards = [
       {
         _id: 'l101',
         title: 'Done!',
-        color: '#4bce97',
+        color: { code: '#4bce97', varName: '$green-subtle', colorTitle: 'Green' },
       },
       {
         _id: 'l102',
         title: 'In Progress',
-        color: '#faa53d',
+        color: { code: '#faa53d', varName: '$orange-subtle', colorTitle: 'Orange' },
       },
       {
         _id: 'l103',
         title: 'Error',
-        color: '#f87462',
+        color: { code: '#f87462', varName: '$red-subtle', colorTitle: 'Red' },
       },
       {
         _id: 'l104',
         title: 'Design',
-        color: '#9f8fef',
+        color: { code: '#9f8fef', varName: '$purple-subtle', colorTitle: 'Purple' },
       },
       {
         _id: 'l105',
         title: 'React',
-        color: '#579dff',
+        color: { code: '#579dff', varName: '$blue-subtle', colorTitle: 'Blue' },
       },
       {
         _id: 'l106',
         title: 'Backend',
-        color: '#60c6d2',
+        color: { code: '#60c6d2', varName: '$teal-subtle', colorTitle: 'Teal' },
       },
       {
         _id: 'l107',
         title: 'Frontend',
-        color: '#94c748',
+        color: { code: '#94c748', varName: '$lime-subtle', colorTitle: 'Lime' },
       },
       {
         _id: 'l108',
         title: 'Feature',
-        color: '#e774bb',
+        color: { code: '#e774bb', varName: '$magenta-subtle', colorTitle: 'Magenta' },
       },
       {
         _id: 'l109',
         title: 'Important',
-        color: '#8590a2',
+        color: { code: '#8590a2', varName: '$gray-subtle', colorTitle: 'Gray' },
       },
     ],
     members: [
@@ -1112,7 +1112,6 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
 }
 
 function toggleMemberOnTask(task, member, activityType) {
-  console.log('member', member)
   if (activityType === 'add-member') {
     task.members.push(member)
   } else if (activityType === 'remove-member') {
@@ -1123,7 +1122,7 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
@@ -1213,7 +1212,7 @@ function getEmptyAttachment() {
   }
 }
 
-; (async () => {
+;(async () => {
   const boards = await query()
   if (boards.length === 0) await _createBoards()
 })()

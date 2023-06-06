@@ -2,8 +2,6 @@
 $text-subtle: #44546f;
 $text: #172b4d;
 
-// Colors
-
 $blue-button: #0c66e4;
 $blue-bgc: #e9f2ff;
 $input-bgc:  #fafbfc;
@@ -15,10 +13,10 @@ $header-bgc: #594455;
 $btn-blue1: #0065ff; //no
 $btn-blue: #0c66e4;
 $btn-blue-hover: #0055cc;
+$btn-red-hover: #ae2a19;
 $default-blue: #0747a6;
 //board-header
 $button-highlighted: #dfe1e6;
-$button-hover: #091e4224; // opacity 14%
 // $board-header-background-transparent: #684f63;
 $board-header-background-transparent: #0000003d;
 $button-board-header: #dfe1e6;
@@ -32,10 +30,10 @@ $card-preview: #f1f2f4;
 $add-card: #ffffff3d;
 $card-title: #172b4d;
 $input-focus: #388bff;
-$home-text: #091e42; // opacity 14%
-$card-input-hover: rgba(9, 30, 66, 0.14); // opacity 14%
+// $card-input-hover: #091e42;// opacity 14%
 $logic-button-bgc: #579dff;
 $logic-button: #09326c;
+$home-text: #091e42;
 $small-titles: #44546f;
 $icon: #626f86;
 $card-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
@@ -45,6 +43,10 @@ $icon-hover: #091e2426;
 $close-icon-hover: #091e424f;
 $close-icon-hover-light: #091e420f;
 $add-group-hover: #a6c5e229;
+$button-hover: #091e4224; // opacity 14%
+$card-input-hover: rgba(9, 30, 66, 0.14); // opacity 14%
+
+$sunken: #f7f8f9;
 
 //labels
 $red-subtlest: #ffedeb;

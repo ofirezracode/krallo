@@ -12,7 +12,6 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
   const [popoverProps, onTogglePopover] = usePopover()
 
   function onOpenPopover(e, props, type, title) {
-    console.log('here')
     props.refElement = taskDetails.current
     setAddedProps(props)
     onTogglePopover(e, type, title)
@@ -25,7 +24,7 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
           <div className="cover-btn-container">
             <button
               ref={coverChangeBtnRef}
-              onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover', 'Cover')}
+              onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover')}
               className="flex center"
             >
               <BsSquareHalf className="box-icon" />
