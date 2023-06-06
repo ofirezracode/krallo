@@ -80,7 +80,7 @@ export function TaskDetails() {
     }
   }
 
-  async function onLabelChange(newLabelIds) {
+  async function onLabelChange(board, newLabelIds) {
     try {
       console.log('newLabelIds', newLabelIds)
       const updatedTask = { ...task, labelIds: newLabelIds }

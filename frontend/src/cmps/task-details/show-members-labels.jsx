@@ -2,8 +2,10 @@ import Ofir from '../../assets/img/members/ofir-pic.jpg'
 import Etai from '../../assets/img/members/etai-pic.jpg'
 import Tamar from '../../assets/img/members/tamar-pic.jpg'
 import { BsPlusLg } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 
-export function ShowMembersLabels({ task, board }) {
+export function ShowMembersLabels({ task }) {
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   if (!task || !board) return <div></div>
   const { members } = task
 

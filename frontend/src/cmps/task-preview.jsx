@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import { setLabelsOpen } from '../store/board.actions'
 
 export function TaskPreview({ boardId, task }) {
-  const navigate = useNavigate()
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const navigate = useNavigate()
 
   const [boardLabels, setBoardLabels] = useState(board.labels)
 

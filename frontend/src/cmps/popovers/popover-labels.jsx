@@ -3,9 +3,10 @@ import { BsPencilFill, BsCheck2 } from 'react-icons/bs'
 import { PopoverCmpHeader } from './popover-cmp-header'
 import { LabelEditor } from './popover-labels/label-editor'
 import { utilService } from '../../services/util.service'
+import { useSelector } from 'react-redux'
 
 export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdit, onLabelDelete }) {
-  // const [searchTerm, setSearchTerm] = useState('')
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [taskLabels, setTaskLabels] = useState(task.labelIds ? [...task.labelIds] : [])
   const [boardLabels, setBoardLabels] = useState([...labels])
   const [popoverState, setPopoverState] = useState('labels')
@@ -23,7 +24,7 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
       newLabelIds.push(labelId)
     }
     setTaskLabels(newLabelIds)
-    onLabelChange(newLabelIds)
+    onLabelChange(board, newLabelIds)
   }
 
   function onClickEditLabel(labelId, label, title, target) {
