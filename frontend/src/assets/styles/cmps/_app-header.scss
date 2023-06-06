@@ -9,11 +9,17 @@
     gap: rem(5px);
     color: $icon;
     text-decoration: none;
-    padding-right: rem(8px);
+    width: rem(91px);
+    padding-inline: rem(8px);
+    margin-inline-end: rem(8px);
 
     label {
       font-size: rem(20px);
       letter-spacing: 0.03rem;
+    }
+
+    &:hover {
+      background-color: $add-group-hover;
     }
   }
 
@@ -22,6 +28,7 @@
     font-weight: 700;
     font-family: charlie-bold;
     margin-inline-start: rem(16px);
+
 
     .logo-link {
       height: rem(32px);
