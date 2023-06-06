@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsPeople, BsStar, BsStarFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { UserImg } from './user-img'
@@ -8,24 +8,38 @@ import Tamar from '../assets/img/members/tamar-pic.jpg'
 import { updateBoard } from '../store/board.actions'
 import { Popover } from './popover'
 import { usePopover } from '../customHooks/usePopover'
+import { utilService } from '../services/util.service'
+import { Loader } from './loader'
 
 export function BoardHeader({ board }) {
+  const [title, setTitle] = useState(board ? board.title : '')
+  const handleFocus = (ev) => ev.target.select()
   const [popoverProps, onTogglePopover] = usePopover()
   const members = board ? board.members : []
+
   function toggleIsStarred(ev, board) {
     ev.preventDefault()
     board.isStarred = !board.isStarred
     updateBoard(board)
   }
 
-  if (!board) return <div></div>
+  function handleChange(ev) {
+    const { value } = ev.target
+    setTitle(value)
+    const updatedBoard = { ...board, title: value }
+    updateBoard(updatedBoard)
+  }
+
+  if (!board) return <Loader />
 
   return (
     <section className='board-header-container'>
       <div className='blur-header'></div>
       <ul className="board-header clean-list flex align-center between">
         <li className="flex align-center">
-          <h1 title={board.title}>{board.title}</h1>
+          <div className='board-name'>
+            <input type="text" value={title} onChange={handleChange} onFocus={handleFocus} />
+          </div>
           {board.isStarred ? (
             <button
               className="btn-star"
@@ -43,40 +57,6 @@ export function BoardHeader({ board }) {
               <BsStar className="star-empty" />
             </button>
           )}
-          <button onClick={(e) => onTogglePopover(e, 'dummy', 'Change visibility')} title="Change visibility flex align-center between">
-            <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M12.5048 5.67168C11.9099 5.32669 11.2374 5.10082 10.5198 5.0267C11.2076 3.81639 12.5085 3 14 3C16.2092 3 18 4.79086 18 7C18 7.99184 17.639 8.89936 17.0413 9.59835C19.9512 10.7953 22 13.6584 22 17C22 17.5523 21.5523 18 21 18H18.777C18.6179 17.2987 18.3768 16.6285 18.0645 16H19.917C19.4892 13.4497 17.4525 11.445 14.8863 11.065C14.9608 10.7218 15 10.3655 15 10C15 9.58908 14.9504 9.18974 14.857 8.80763C15.5328 8.48668 16 7.79791 16 7C16 5.89543 15.1046 5 14 5C13.4053 5 12.8711 5.25961 12.5048 5.67168ZM10 12C11.1046 12 12 11.1046 12 10C12 8.89543 11.1046 8 10 8C8.89543 8 8 8.89543 8 10C8 11.1046 8.89543 12 10 12ZM14 10C14 10.9918 13.639 11.8994 13.0412 12.5984C15.9512 13.7953 18 16.6584 18 20C18 20.5523 17.5523 21 17 21H3C2.44772 21 2 20.5523 2 20C2 16.6584 4.04879 13.7953 6.95875 12.5984C6.36099 11.8994 6 10.9918 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10ZM9.99999 14C12.973 14 15.441 16.1623 15.917 19H4.08295C4.55902 16.1623 7.02699 14 9.99999 14Z"
-                fill="currentColor"
-              ></path>
-            </svg>
-            <p>Workspace visible</p>
-          </button>
-          <button className="btn-fill" title="Board">
-            <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M2 7V15C2 16.1046 2.89543 17 4 17H6C7.10457 17 8 16.1046 8 15V7C8 5.89543 7.10457 5 6 5H4C2.89543 5 2 5.89543 2 7ZM4 7V15H6V7L4 7Z"
-                fill="currentColor"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M9 7V13C9 14.1046 9.89543 15 11 15H13C14.1046 15 15 14.1046 15 13V7C15 5.89543 14.1046 5 13 5H11C9.89543 5 9 5.89543 9 7ZM11 7V13H13V7L11 7Z"
-                fill="currentColor"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M16 17V7C16 5.89543 16.8954 5 18 5H20C21.1046 5 22 5.89543 22 7V17C22 18.1046 21.1046 19 20 19H18C16.8954 19 16 18.1046 16 17ZM18 17V7L20 7V17H18Z"
-                fill="currentColor"
-              ></path>
-            </svg>
-            <p>Board</p>
-          </button>
         </li>
         <li className="flex align-center">
           <button title="Filter cards flex align-center">
@@ -94,10 +74,6 @@ export function BoardHeader({ board }) {
           <div className="members">
             {members?.length && members.map((member) => <img className="member-img" src={member.imgUrl} key={member._id} alt="" />)}
           </div>
-          {/* <img src={Ofir} className="member-img" alt="" />
-            <img src={Etai} className="member-img" alt="" />
-            <img src={Tamar} className="member-img" alt="" /> */}
-          {/* <UserImg className="board-members" /> */}
           <button className="btn-fill" title="Share board">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -126,6 +102,6 @@ export function BoardHeader({ board }) {
         </li>
       </ul>
       <Popover {...popoverProps} onClose={onTogglePopover} />
-    </section>
+    </section >
   )
 }
