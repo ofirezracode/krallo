@@ -6,7 +6,7 @@
 
   &::-webkit-scrollbar {
     height: 100%;
-    width: rem(7px);
+    width: rem(8px);
   }
 
   &::-webkit-scrollbar-track {
@@ -16,7 +16,7 @@
 
   &::-webkit-scrollbar-thumb {
     background: $add-card;
-    background-color: #00000024;
+    background-color: #cac7d3;
     border-radius: 2em;
   }
 

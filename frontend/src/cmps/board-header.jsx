@@ -21,7 +21,8 @@ export function BoardHeader({ board }) {
   if (!board) return <div></div>
 
   return (
-    <section>
+    <section className='board-header-container'>
+      <div className='blur-header'></div>
       <ul className="board-header clean-list flex align-center between">
         <li className="flex align-center">
           <h1 title={board.title}>{board.title}</h1>
