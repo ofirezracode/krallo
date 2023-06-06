@@ -1,10 +1,18 @@
 // REM Functions
 @function rem($size) {
-    $remSize: calc($size / 16px);
-    @return calc($remSize * 1rem);
+  $remSize: calc($size / 16px);
+  @return calc($remSize * 1rem);
 }
 
 // EM Functions
 @function em($pixels, $context: 16px) {
-    @return calc(($pixels/$context) * 1em);
+  @return calc(($pixels/$context) * 1em);
+}
+
+@function adjust-text-color($--clr) {
+  @if (lightness($--clr) < 50%) {
+    @return white;
+  } @else {
+    @return darken($--clr, 60%);
+  }
 }

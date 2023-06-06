@@ -2,8 +2,6 @@
 $text-subtle: #44546f;
 $text: #172b4d;
 
-// Colors
-
 $blue-button: #0c66e4;
 $blue-bgc: #e9f2ff;
 
@@ -13,10 +11,10 @@ $header-bgc: #594455;
 $btn-blue1: #0065ff; //no
 $btn-blue: #0c66e4;
 $btn-blue-hover: #0055cc;
+$btn-red-hover: #ae2a19;
 $default-blue: #0747a6;
 //board-header
 $button-highlighted: #dfe1e6;
-$button-hover: #091e4224; // opacity 14%
 // $board-header-background-transparent: #684f63;
 $board-header-background-transparent: #0000003d;
 $button-board-header: #dfe1e6;
@@ -31,7 +29,6 @@ $add-card: #ffffff3d;
 $card-title: #172b4d;
 $input-focus: #388bff;
 // $card-input-hover: #091e42;// opacity 14%
-$card-input-hover: rgba(9, 30, 66, 0.14); // opacity 14%
 $logic-button-bgc: #579dff;
 $logic-button: #09326c;
 $small-titles: #44546f;
@@ -43,6 +40,10 @@ $icon-hover: #091e2426;
 $close-icon-hover: #091e424f;
 $close-icon-hover-light: #091e420f;
 $add-group-hover: #a6c5e229;
+$button-hover: #091e4224; // opacity 14%
+$card-input-hover: rgba(9, 30, 66, 0.14); // opacity 14%
+
+$sunken: #f7f8f9;
 
 //labels
 $red-subtlest: #ffedeb;
@@ -120,4 +121,95 @@ $normal-breakpoint: 960px;
 }
 .d8590a2 {
   background-color: darken(#8590a2, 30%);
+}
+
+.format-green-subtler {
+  @include format-green-subtler;
+}
+.format-yellow-subtler {
+  @include format-yellow-subtler;
+}
+.format-orange-subtler {
+  @include format-orange-subtler;
+}
+.format-red-subtler {
+  @include format-red-subtler;
+}
+.format-purple-subtler {
+  @include format-purple-subtler;
+}
+.format-green-subtle {
+  @include format-green-subtle;
+}
+.format-yellow-subtle {
+  @include format-yellow-subtle;
+}
+.format-orange-subtle {
+  @include format-orange-subtle;
+}
+.format-red-subtle {
+  @include format-red-subtle;
+}
+.format-purple-subtle {
+  @include format-purple-subtle;
+}
+.format-green-bolder {
+  @include format-green-bolder;
+}
+.format-yellow-bolder {
+  @include format-yellow-bolder;
+}
+.format-orange-bolder {
+  @include format-orange-bolder;
+}
+.format-red-bolder {
+  @include format-red-bolder;
+}
+.format-purple-bolder {
+  @include format-purple-bolder;
+}
+.format-blue-subtler {
+  @include format-blue-subtler;
+}
+.format-teal-subtler {
+  @include format-teal-subtler;
+}
+.format-lime-subtler {
+  @include format-lime-subtler;
+}
+.format-magenta-subtler {
+  @include format-magenta-subtler;
+}
+.format-gray-subtler {
+  @include format-gray-subtler;
+}
+.format-blue-subtle {
+  @include format-blue-subtle;
+}
+.format-teal-subtle {
+  @include format-teal-subtle;
+}
+.format-lime-subtle {
+  @include format-lime-subtle;
+}
+.format-magenta-subtle {
+  @include format-magenta-subtle;
+}
+.format-gray-subtle {
+  @include format-gray-subtle;
+}
+.format-blue-bolder {
+  @include format-blue-bolder;
+}
+.format-teal-bolder {
+  @include format-teal-bolder;
+}
+.format-lime-bolder {
+  @include format-lime-bolder;
+}
+.format-magenta-bolder {
+  @include format-magenta-bolder;
+}
+.format-gray-bolder {
+  @include format-gray-bolder;
 }

@@ -1,0 +1,32 @@
+.popover-cmp-header {
+  margin-block-end: rem(8px);
+  text-align: center;
+  display: grid;
+  align-items: center;
+  grid-template-columns: rem(12px) 1fr rem(12px);
+  border-bottom: 1px solid $card-input-hover;
+
+  .return-icon {
+    width: rem(12px);
+    height: rem(20px);
+  }
+  h3 {
+    height: rem(40px);
+    padding: 0 rem(32px);
+
+    grid-column: 2;
+
+    color: $small-titles;
+    font-size: rem(14px);
+    font-weight: 400;
+    line-height: rem(40px);
+    overflow: hidden;
+  }
+
+  svg {
+    align-self: center;
+    justify-self: center;
+    font-size: rem(16px);
+    cursor: pointer;
+  }
+}

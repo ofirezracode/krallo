@@ -62,47 +62,21 @@
           &:checked ~ .checkmark {
             background-color: $blue-bolder;
             box-shadow: none;
-            /* Show the checkmark when checked */
-            &:after {
-              display: block;
-            }
           }
         }
 
-        /* On mouse-over, add a grey background color */
         &:hover {
           .checkmark {
             background-color: #ccc;
           }
         }
 
-        /* Create a custom checkbox */
         .checkmark {
-          // position: absolute;
-          // top: 0;
-          // left: 0;
           height: rem(16px);
           width: rem(16px);
           box-shadow: inset 0 0 0 2px $button-hover;
 
           border-radius: rem(2px);
-
-          /* Create the checkmark/indicator (hidden when not checked) */
-          // &:after {
-          //   content: '';
-          //   margin-block-end: 2px;
-          //   // position: absolute;
-          //   display: none;
-          //   // left: rem(9px);
-          //   // top: rem(5px);
-          //   width: rem(3px);
-          //   height: rem(6px);
-          //   border: 1px solid white;
-          //   border-width: 0 3px 3px 0;
-          //   -webkit-transform: rotate(45deg);
-          //   -ms-transform: rotate(45deg);
-          //   transform: rotate(45deg);
-          // }
         }
 
         .check-icon {
@@ -136,9 +110,137 @@
 
       .edit-icon-btn {
         padding: rem(8px);
+        width: rem(32px);
+        height: rem(32px);
+        background-color: inherit;
+        color: $text;
+        border-radius: 3px;
+
+        transition-property: background-color, border-color, box-shadow;
+        transition-duration: 85ms;
+        transition-timing-function: ease;
+
         .edit-icon {
-          width: rem(16px);
-          height: rem(16px);
+          width: rem(12px);
+          height: rem(12px);
+        }
+
+        &:hover {
+          background-color: $button-hover;
+        }
+      }
+    }
+  }
+}
+
+.edit-labels {
+  .edited-label-preview {
+    margin-inline: rem(-12px);
+    // width: 100%;
+    padding: rem(32px);
+    background-color: $sunken;
+
+    .label-color {
+      width: rem(240px);
+      height: rem(32px);
+      padding-inline: rem(12px);
+
+      font-size: rem(14px);
+      font-weight: 500;
+      font-family: inherit;
+      line-height: rem(32px);
+      text-align: left;
+
+      border-radius: 3px;
+
+      overflow: hidden;
+
+      // @include adjust-text-color($--color, 30%);
+    }
+  }
+
+  input {
+    padding: rem(8px) rem(12px);
+    width: 100%;
+
+    color: $text;
+    font-size: rem(14px);
+    line-height: rem(20px);
+    box-shadow: inset 0 0 0 2px var(--ds-border-input, $button-board-header);
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 85ms;
+    transition-timing-function: ease;
+
+    outline: none;
+    border: none;
+    border-radius: 3px;
+
+    &:focus {
+      box-shadow: inset 0 0 0 2px $input-focus;
+    }
+
+    &::placeholder {
+      color: $text;
+    }
+  }
+
+  .labels-title {
+    color: $small-titles;
+    font-size: rem(12px);
+    font-weight: 600;
+    line-height: rem(16px);
+    margin-block: rem(12px) rem(8px);
+  }
+
+  hr {
+    background-color: $close-icon-hover;
+    border: 0;
+    height: rem(1px);
+    margin: rem(16px) 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .btn-remove {
+    width: 100%;
+    padding: 6px 12px;
+    margin-block-end: rem(8px);
+
+    font-size: 14px;
+    line-height: 20px;
+    font-family: inherit;
+    color: $text;
+    border-radius: 3px;
+
+    gap: rem(8px);
+    transition: background-color 85ms ease;
+
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+
+  .buttons-section {
+    button {
+      padding: 6px 12px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 20px;
+      font-family: inherit;
+      border-radius: 3px;
+      transition: background-color 85ms ease;
+
+      &.btn-save {
+        background-color: $btn-blue;
+        &:hover {
+          background-color: $btn-blue-hover;
+        }
+      }
+
+      &.btn-delete {
+        background-color: $red-bolder;
+        &:hover {
+          background-color: $btn-red-hover;
         }
       }
     }

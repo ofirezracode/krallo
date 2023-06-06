@@ -10,7 +10,7 @@ import { HiXMark } from 'react-icons/hi2'
 import { TaskCover } from './task-details/task-cover'
 import { TaskDetailsHeader } from './task-details/task-details-header'
 import { ActionsList } from './task-details/actions-list'
-import { saveTask } from '../store/board.actions'
+import { saveTask, updateBoard } from '../store/board.actions'
 import { activityService, createActivity } from '../services/activity.service'
 
 import { TaskAttachments } from './task-details/task-attachments'
@@ -29,7 +29,6 @@ export function TaskDetails() {
 
   useEffect(() => {
     if (board) {
-      console.log('reload')
       setTask(boardService.getTaskById(board ? board : [], taskId))
     }
   }, [board])
@@ -43,10 +42,10 @@ export function TaskDetails() {
   //   }
   // }, [boards])
 
-  function onOpenPopover(e, props, type, title) {
+  function onOpenPopover(e, props, type) {
     props.refElement = taskDetails.current
     setAddedProps(props)
-    onTogglePopover(e, type, title)
+    onTogglePopover(e, type)
   }
 
   async function onHandleTaskMembers(activityType, member) {
@@ -91,6 +90,15 @@ export function TaskDetails() {
     }
   }
 
+  async function onLabelEdit(editedBoardLabels) {
+    try {
+      const newBoard = { ...board, labels: editedBoardLabels }
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   return (
     <section className="task-details-screen">
       <div className="backdrop"></div>
@@ -113,6 +121,7 @@ export function TaskDetails() {
             board={board}
             onAttachmentAdded={onAttachmentAdded}
             onLabelChange={onLabelChange}
+            onLabelEdit={onLabelEdit}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
