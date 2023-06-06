@@ -18,7 +18,10 @@ export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, o
           <BsTag className="label-icon" />
           <p>Labels</p>
         </button>
-        <button title="Checklist">
+        <button title="Checklist"
+                onClick={(e) =>
+                  onOpenPopover(e, {task}, 'checklist', 'Add checklist')
+                }>
           <BsCheck2Square />
           <p>Checklist</p>
         </button>
