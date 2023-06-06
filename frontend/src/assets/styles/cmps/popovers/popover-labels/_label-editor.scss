@@ -20,7 +20,9 @@
 
       overflow: hidden;
 
-      // @include adjust-text-color($--color, 30%);
+      &.no-color {
+        background-color: $no-color;
+      }
     }
   }
 
@@ -82,6 +84,11 @@
 
     &:hover {
       background-color: $button-hover;
+    }
+    &.disabled {
+      cursor: not-allowed;
+      color: $close-icon-hover;
+      background-color: $disabled;
     }
   }
 

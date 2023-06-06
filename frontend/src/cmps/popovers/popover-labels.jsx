@@ -85,7 +85,8 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
           <ul className="labels-list flex column">
             {boardLabels.map((label) => {
               const isLabelChecked = taskLabels ? taskLabels.some((labelId) => labelId === label._id) : false
-              const labelStyle = { backgroundColor: label.color.code }
+              let labelStyle = { backgroundColor: '#091e420f' }
+              if (label.color) labelStyle = { backgroundColor: label.color.code }
               const labelTitle = label.title ? label.title : ''
               return (
                 <li key={label._id}>

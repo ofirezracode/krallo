@@ -4,8 +4,8 @@ $text: #172b4d;
 
 $blue-button: #0c66e4;
 $blue-bgc: #e9f2ff;
-$input-bgc:  #fafbfc;
-$input-hover: #F7F8F9;
+$input-bgc: #fafbfc;
+$input-hover: #f7f8f9;
 
 //board
 //header
@@ -38,6 +38,8 @@ $small-titles: #44546f;
 $icon: #626f86;
 $card-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
 
+$disabled: #091e4208;
+
 //Hover
 $icon-hover: #091e2426;
 $close-icon-hover: #091e424f;
@@ -49,6 +51,7 @@ $card-input-hover: rgba(9, 30, 66, 0.14); // opacity 14%
 $sunken: #f7f8f9;
 
 //labels
+$no-color: rgba(9, 30, 66, 0.06);
 $red-subtlest: #ffedeb;
 $red-subtler: #ffd2cc;
 $red-subtle: #f87462;

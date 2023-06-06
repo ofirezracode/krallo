@@ -20,10 +20,16 @@ export function LabelEditor({ isAdd, onSave, navigateToState, chosenLabel }) {
     setEditedLabel((prev) => ({ ...prev, color, title }))
   }
 
+  function onRemoveColor() {
+    setEditedLabel((prev) => ({ ...prev, color: null }))
+  }
+
+  const previewFormatClass = editedLabel.color ? `format-${editedLabel.color.varName.substring(1)}` : 'no-color'
+  const previewStyle = editedLabel.color ? { backgroundColor: editedLabel.color.code } : {}
   return (
     <div className="label-editor">
       <div className="edited-label-preview">
-        <div className={`label-color format-${editedLabel.color.varName.substring(1)}`} style={{ backgroundColor: editedLabel.color.code }}>
+        <div className={`label-color ${previewFormatClass}`} style={previewStyle}>
           {editedLabel.title}
         </div>
       </div>
@@ -31,7 +37,7 @@ export function LabelEditor({ isAdd, onSave, navigateToState, chosenLabel }) {
       <input type="text" value={editedLabel.title} onChange={(e) => onLabelEdited({ title: e.target.value })} />
       <h4 className="labels-title">Select a color</h4>
       <ColorPalette onColorChange={onLabelEdited} activeClr={editedLabel.color} />
-      <button className="btn-remove flex center">
+      <button onClick={onRemoveColor} className={`btn-remove flex center ${editedLabel.color ? '' : 'disabled'}`}>
         <HiXMark />
         Remove color
       </button>
