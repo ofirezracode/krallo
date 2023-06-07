@@ -113,6 +113,7 @@ export function TaskDetails() {
     }
   }
 
+
   async function onLabelDelete(editedBoardLabels, labelToDelete) {
     try {
       let newBoard = { ...board, labels: editedBoardLabels }
