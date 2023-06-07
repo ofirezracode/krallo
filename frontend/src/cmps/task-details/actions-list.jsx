@@ -1,4 +1,6 @@
-import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsSquareHalf, BsTag } from 'react-icons/bs'
+import { BsCheck2Square, BsClock, BsPaperclip, BsSquareHalf, BsTag } from 'react-icons/bs'
+import ClipIcon from '../../assets/img/svg/clip-icon.svg'
+import MemberIcon from "../../assets/img/svg/member-icon.svg"
 
 export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, onAttachmentAdded, onLabelChange, onLabelEdit }) {
   return (
@@ -7,9 +9,8 @@ export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, o
       <section className="add-to-card-btns">
         <button
           onClick={(e) => onOpenPopover(e, { members: board.members, taskMembers: task.members, onHandleTaskMembers }, 'members')}
-          title="Members"
-        >
-          <BsPerson />
+          title="Members">
+          <img src={MemberIcon} className='member-icon' alt="member-icon" />
           <p>Members</p>
         </button>
         <button onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit }, 'labels')} title="Labels">
@@ -17,9 +18,9 @@ export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, o
           <p>Labels</p>
         </button>
         <button title="Checklist"
-                onClick={(e) =>
-                  onOpenPopover(e, {task}, 'checklist')
-                }>
+          onClick={(e) =>
+            onOpenPopover(e, { task }, 'checklist')
+          }>
           <BsCheck2Square />
           <p>Checklist</p>
         </button>
@@ -28,7 +29,7 @@ export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, o
           <p>Dates</p>
         </button>
         <button onClick={(e) => onOpenPopover(e, { task, onAttachmentAdded }, 'attachment')} title="Attachment">
-          <BsPaperclip className="clip-icon" />
+          <img src={ClipIcon} alt="clip-icon" />
           <p>Attachment</p>
         </button>
         <button

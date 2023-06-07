@@ -67,13 +67,10 @@ export function TaskDetails() {
     }
   }
 
-  async function onAttachmentAdded(attachment) {
+  async function onAttachmentAdded(attachments) {
     try {
-      let updatedAttachment = [attachment]
-      if (task.attachments) {
-        updatedAttachment = [...task.attachments, ...updatedAttachment]
-      }
-      const updatedTask = { ...task, attachments: updatedAttachment }
+      const updatedTask = { ...task, attachments }
+      console.log(task)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.log('err', err)

@@ -8,7 +8,7 @@ export function ShowMembersLabels({ task, board }) {
   const { members } = task
 
   const taskLabelIds = task.labelIds ? task.labelIds : []
-  const taskLabels = taskLabelIds.map((labelId, i) => {
+  const taskLabels = taskLabelIds.map((labelId) => {
     const label = board.labels.find((boardLabel) => boardLabel._id === labelId)
     return { bgColor: label.color.code, title: label.title ? label.title : '' }
   })
