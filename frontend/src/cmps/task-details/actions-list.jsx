@@ -11,6 +11,7 @@ export function ActionsList({
   onLabelChange,
   onLabelEdit,
   onLabelDelete,
+  onAddChecklist,
 }) {
   return (
     <section className="add-to-card-container">
@@ -30,7 +31,7 @@ export function ActionsList({
           <BsTag className="label-icon" />
           <p>Labels</p>
         </button>
-        <button title="Checklist" onClick={(e) => onOpenPopover(e, { task }, 'checklist')}>
+        <button title="Checklist" onClick={(e) => onOpenPopover(e, { task, onAddChecklist }, 'checklist')}>
           <BsCheck2Square />
           <p>Checklist</p>
         </button>

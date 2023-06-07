@@ -3,10 +3,8 @@ import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
 
 export function TaskAttachments({ task }) {
-    console.log(task)
     if (!task) return <Loader />
     const { attachments } = task
-    console.log(attachments)
     if (!attachments) return <div></div>
     return (
         <section className="task-attachments">
