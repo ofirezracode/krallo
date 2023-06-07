@@ -3,7 +3,7 @@ import { BoardListTitle } from './board-list-title'
 import MemberIcon from "../../src/assets/img/svg/member-icon.svg"
 import StarEmpty from "../../src/assets/img/svg/star-empty.svg"
 
-export function BoardList({ boards, toggleIsStarred: onToggleIsStarred, isOnlyStarred, onAddBoard }) {
+export function BoardList({ boards, onToggleIsStarred, isOnlyStarred, onAddBoard }) {
     let filteredBoards = isOnlyStarred ? boards.filter((board) => board.isStarred) : boards
 
     return (
