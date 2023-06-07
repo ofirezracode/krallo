@@ -1,6 +1,6 @@
 .popover {
   padding: 0 rem(12px) rem(12px);
-
+  z-index: 999;
   background-color: #fff;
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
   // box-shadow: $card-shadow;
