@@ -119,7 +119,7 @@ export function TaskDetails() {
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} board={board} />
-            <ChecklistIndex checklists={task.checklists} />
+            {/* <ChecklistIndex checklists={task.checklists} /> */}
             {/* <UploadAndDisplayImage /> */}
             <TaskAttachments task={task} />
             {/* <TaskChecklist checklists={task.checklists} /> */}
