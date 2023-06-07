@@ -17,7 +17,7 @@ export function TaskDetailsHeader({ board, task }) {
   return (
     <header className="task-header flex">
       <div className="title-img">
-        <CardIcon className="card-title-img" />
+        <img src={CardIcon} className="card-title-img" alt="card-icon" />
       </div>
       <div className="task-title">
         <h1>{task.title}</h1>
