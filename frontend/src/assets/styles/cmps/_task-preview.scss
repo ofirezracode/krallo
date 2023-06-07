@@ -75,6 +75,7 @@
       flex-wrap: wrap;
       justify-content: space-between;
       row-gap: rem(4px);
+      margin-block-end: rem(4px);
 
       .task-indicators {
         .indicators {

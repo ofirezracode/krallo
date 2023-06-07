@@ -1,3 +1,6 @@
 .users-list {
   gap: rem(4px);
+  li {
+    height: fit-content;
+  }
 }
