@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import { BsPeople, BsStar, BsStarFill } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
-import { UserImg } from './user-img'
-import Ofir from '../assets/img/members/ofir-pic.jpg'
-import Etai from '../assets/img/members/etai-pic.jpg'
-import Tamar from '../assets/img/members/tamar-pic.jpg'
+import React, { useState } from 'react'
+import { BsStar, BsStarFill } from 'react-icons/bs'
 import { updateBoard } from '../store/board.actions'
 import { Popover } from './popover'
 import { usePopover } from '../customHooks/usePopover'
-import { utilService } from '../services/util.service'
 import { Loader } from './loader'
 
 export function BoardHeader({ board }) {
   const [title, setTitle] = useState(board ? board.title : '')
   const handleFocus = (ev) => ev.target.select()
+
   const [popoverProps, onTogglePopover] = usePopover()
   const members = board ? board.members : []
 
-  function toggleIsStarred(ev, board) {
-    ev.preventDefault()
-    board.isStarred = !board.isStarred
-    updateBoard(board)
+  async function onToggleIsStarred(ev, board) {
+    try {
+      ev.preventDefault()
+      const boardToToggle = await { ...board, isStarred: !board.isStarred }
+      updateBoard(boardToToggle)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
 
   function handleChange(ev) {
@@ -38,13 +37,20 @@ export function BoardHeader({ board }) {
       <ul className="board-header clean-list flex align-center between">
         <li className="flex align-center">
           <div className='board-name'>
-            <input type="text" value={title} onChange={handleChange} onFocus={handleFocus} />
+            <form onSubmit={handleChange}>
+              <input
+                type="text"
+                value={title}
+                onChange={handleChange}
+                style={{ width: `${title.length * 15}px` }} // Set the width dynamically
+                onFocus={handleFocus} />
+            </form>
           </div>
           {board.isStarred ? (
             <button
               className="btn-star"
               title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
-              onClick={(ev) => toggleIsStarred(ev, board)}
+              onClick={(ev) => onToggleIsStarred(ev, board)}
             >
               <BsStarFill className="star-fill" />
             </button>
@@ -52,7 +58,7 @@ export function BoardHeader({ board }) {
             <button
               className="btn-star"
               title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
-              onClick={(ev) => toggleIsStarred(ev, board)}
+              onClick={(ev) => onToggleIsStarred(ev, board)}
             >
               <BsStar className="star-empty" />
             </button>
