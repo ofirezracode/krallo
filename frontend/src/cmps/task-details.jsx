@@ -94,6 +94,26 @@ export function TaskDetails() {
     }
   }
 
+  async function onDeleteAttachment(attachId) {
+    try {
+      const attachIdx = task.attachments.findIndex(attament => attachId === attament._id)
+      const updatedTask = task.attachments.splice(attachIdx, 1)
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.error('err', err)
+    }
+  }
+
+  async function onLabelDelete(editedBoardLabels, labelToDelete) {
+    try {
+      let newBoard = { ...board, labels: editedBoardLabels }
+      newBoard = boardService.removeLabelFromTasks(newBoard, labelToDelete._id)
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   async function onLabelChange(board, newLabelIds) {
     try {
       console.log('newLabelIds', newLabelIds)
@@ -136,7 +156,7 @@ export function TaskDetails() {
           <section className="card-details-container">
             <ShowMembersLabels task={task} board={board} />
 
-            <TaskAttachments task={task} />
+            <TaskAttachments task={task} onDeleteAttachment={onDeleteAttachment} />
             <ChecklistIndex task={task} />
           </section>
           <ActionsList
