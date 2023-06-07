@@ -1,0 +1,96 @@
+.checklist {
+    margin-block-end: rem(24px);
+
+    .checklist-title-container {
+        margin: 0 0 rem(4px) rem(40px);
+        padding-block: rem(8px);
+        position: relative;
+
+        span {
+            left: rem(-33px);
+            position: absolute;
+            top: rem(14px);
+
+            svg {
+                width: rem(20px);
+                height: rem(21px);
+            }
+        }
+
+        .checklist-title {
+            align-items: center;
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+            h3 {
+                margin-block: rem(6px);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: inline-block;
+                font-size: 16px;
+                line-height: rem(20px);
+                font-weight: 500;
+            }
+
+            .checklist-title-btns {
+                margin: 0 rem(2px) 0 auto;
+
+                .btns {
+                    align-items: center;
+                    background-color: #091E420F;
+                    border: none;
+                    border-radius: 3px;
+                    color: $text;
+                    display: inline-flex;
+                    font-size: rem(14px);
+                    font-weight: 400;
+                    justify-content: center;
+                    line-height: rem(20px);
+                    padding: rem(6px) rem(12px);
+                    text-decoration: none;
+                    transition-duration: 85ms;
+                    transition-property: background-color, border-color, box-shadow;
+                    transition-timing-function: ease;
+                    white-space: normal;
+
+                    &:hover {
+                        background-color: #091E4224;
+                        color: inherit;
+                    }
+
+                    &.hide-checked-btn {
+                        margin-inline-end: rem(8px);
+                    }
+
+                    &.delete {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .checklist-add-btn {
+        margin-inline-start: rem(40px);
+        margin-block-start: rem(12px);
+        background-color: #091E420F;
+        border: none;
+        border-radius: 3px;
+        color: $text;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+        font-size: rem(14px);
+        line-height: rem(20px);
+        padding: rem(6px) rem(12px);
+        transition-duration: 85ms;
+        transition-property: background-color, border-color, box-shadow;
+        transition-timing-function: ease;
+        white-space: normal;
+
+        &:hover {
+            background-color: #091E4224;
+            color: $text;
+        }
+    }
+
+}

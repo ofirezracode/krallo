@@ -1,0 +1,37 @@
+.checklist-progress {
+    margin-block-end: rem(6px);
+    position: relative;
+
+    span {
+        color: $text-subtle;
+        font-size: rem(11px);
+        left: 0;
+        line-height: rem(10px);
+        position: absolute;
+        text-align: center;
+        top: rem(-1px);
+        width: rem(32px);
+    }
+
+    .progress-bar {
+        background: #091E420F;
+        border-radius: 4px;
+        clear: both;
+        height: 8px;
+        margin: 0 0 0 40px;
+        overflow: hidden;
+        position: relative;
+
+        .progress-bar-current {
+            background-color: #579DFF;
+            width: 50%;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            top: 0;
+            transition-duration: .14s;
+            transition-property: width, background-color;
+            transition-timing-function: ease-in;
+        }
+    }
+}
