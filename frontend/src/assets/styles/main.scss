@@ -52,5 +52,11 @@
 @import 'cmps/task-details/_show-members-labels.scss';
 @import 'cmps/task-details/_task-details-header.scss';
 @import 'cmps/task-details/_actions-list.scss';
-@import 'cmps/task-details/task-checklist';
-@import 'cmps/task-details/checklist-todos-preview';
+
+//Checklist
+@import 'cmps/task-details/checklist/checklist-index';
+@import 'cmps/task-details/checklist/checklist-list';
+@import 'cmps/task-details/checklist/checklist-preview';
+@import 'cmps/task-details/checklist/progress-ber';
+@import 'cmps/task-details/checklist/todo-list';
+@import 'cmps/task-details/checklist/todo-preview';
