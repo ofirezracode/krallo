@@ -2,7 +2,7 @@
   padding-inline: rem(40px);
   padding-block-start: rem(9px);
   display: flex;
-  height: rem(72px);
+  min-height: rem(72px);
 
   .members-wrapper {
     h5 {
@@ -65,6 +65,7 @@
       .labels-list {
         gap: 4px;
         flex-wrap: wrap;
+
         .label-btn {
           min-width: rem(68px);
           max-width: rem(122px);

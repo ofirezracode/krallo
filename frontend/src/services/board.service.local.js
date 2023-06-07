@@ -1016,6 +1016,7 @@ export const boardService = {
   toggleMemberOnTask,
   getEmptyTask,
   getEmptyAttachment,
+  removeLabelFromTasks,
 }
 window.bs = boardService
 
@@ -1131,7 +1132,7 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {
@@ -1168,6 +1169,18 @@ function getTaskById(board, taskId) {
     }
   }
   return null
+}
+
+function removeLabelFromTasks(board, labelId) {
+  const updatedBoard = { ...board }
+  updatedBoard.groups.forEach((group) => {
+    group.tasks.forEach((task) => {
+      if (task.labelIds) {
+        task.labelIds = task.labelIds.filter((id) => id !== labelId)
+      }
+    })
+  })
+  return updatedBoard
 }
 
 function getBoardById(boards, boardId) {
@@ -1216,12 +1229,14 @@ function getEmptyTask() {
 
 function getEmptyAttachment() {
   return {
-    id: utilService.makeId(),
-    imgUrl: '',
+    _id: utilService.makeId(),
+    title: '',
+    url: '',
+    uploadedAt: Date.now(),
   }
 }
 
-;(async () => {
+; (async () => {
   const boards = await query()
   if (boards.length === 0) await _createBoards()
 })()

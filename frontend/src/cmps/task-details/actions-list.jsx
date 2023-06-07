@@ -1,25 +1,38 @@
-import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsSquareHalf, BsTag } from 'react-icons/bs'
+import { BsCheck2Square, BsClock, BsPaperclip, BsSquareHalf, BsTag } from 'react-icons/bs'
+import ClipIcon from '../../assets/img/svg/clip-icon.svg'
+import MemberIcon from "../../assets/img/svg/member-icon.svg"
 
-export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, onAttachmentAdded, onLabelChange, onLabelEdit }) {
+export function ActionsList({
+  task,
+  onOpenPopover,
+  board,
+  onHandleTaskMembers,
+  onAttachmentAdded,
+  onLabelChange,
+  onLabelEdit,
+  onLabelDelete,
+}) {
   return (
     <section className="add-to-card-container">
       <h5>Add to card</h5>
       <section className="add-to-card-btns">
         <button
           onClick={(e) => onOpenPopover(e, { members: board.members, taskMembers: task.members, onHandleTaskMembers }, 'members')}
-          title="Members"
-        >
-          <BsPerson />
+          title="Members">
+          <img src={MemberIcon} className='member-icon' alt="member-icon" />
           <p>Members</p>
         </button>
-        <button onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit }, 'labels')} title="Labels">
+        <button
+          onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete }, 'labels')}
+          title="Labels"
+        >
           <BsTag className="label-icon" />
           <p>Labels</p>
         </button>
         <button title="Checklist"
-                onClick={(e) =>
-                  onOpenPopover(e, {task}, 'checklist')
-                }>
+          onClick={(e) =>
+            onOpenPopover(e, { task }, 'checklist')
+          }>
           <BsCheck2Square />
           <p>Checklist</p>
         </button>
@@ -28,7 +41,7 @@ export function ActionsList({ task, onOpenPopover, board, onHandleTaskMembers, o
           <p>Dates</p>
         </button>
         <button onClick={(e) => onOpenPopover(e, { task, onAttachmentAdded }, 'attachment')} title="Attachment">
-          <BsPaperclip className="clip-icon" />
+          <img src={ClipIcon} alt="clip-icon" />
           <p>Attachment</p>
         </button>
         <button

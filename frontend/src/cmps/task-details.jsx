@@ -68,20 +68,17 @@ export function TaskDetails() {
     }
   }
 
-  async function onAttachmentAdded(attachment) {
+  async function onAttachmentAdded(attachments) {
     try {
-      let updatedAttachment = [attachment]
-      if (task.attachments) {
-        updatedAttachment = [...task.attachments, ...updatedAttachment]
-      }
-      const updatedTask = { ...task, attachments: updatedAttachment }
+      const updatedTask = { ...task, attachments }
+      console.log(task)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.log('err', err)
     }
   }
 
-  async function onLabelChange(newLabelIds) {
+  async function onLabelChange(board, newLabelIds) {
     try {
       console.log('newLabelIds', newLabelIds)
       const updatedTask = { ...task, labelIds: newLabelIds }
@@ -94,6 +91,16 @@ export function TaskDetails() {
   async function onLabelEdit(editedBoardLabels) {
     try {
       const newBoard = { ...board, labels: editedBoardLabels }
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async function onLabelDelete(editedBoardLabels, labelToDelete) {
+    try {
+      let newBoard = { ...board, labels: editedBoardLabels }
+      newBoard = boardService.removeLabelFromTasks(newBoard, labelToDelete._id)
       await updateBoard(newBoard)
     } catch (err) {
       console.log('err', err)
@@ -124,6 +131,7 @@ export function TaskDetails() {
             onAttachmentAdded={onAttachmentAdded}
             onLabelChange={onLabelChange}
             onLabelEdit={onLabelEdit}
+            onLabelDelete={onLabelDelete}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
