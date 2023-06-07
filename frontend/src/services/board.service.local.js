@@ -231,7 +231,7 @@ const boards = [
             attachments: ['https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg'],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l102', 'l103', 'l108', 'l106'],
-            dueDate: 16156215211,
+            dueDate: { timestamp: 1688891995000, isCompleted: false },
             byMember: {
               _id: 'u102',
               fullname: 'Tamar Millgram',
@@ -332,7 +332,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l104', 'l105', 'l106'],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1689854872000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -412,7 +412,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l109'],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1688677756000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -497,7 +497,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l107', 'l103'],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1687736076000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -547,7 +547,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l102', 'l108', 'l101'],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1690569812000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -624,7 +624,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l106'],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1685913144000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -674,7 +674,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l102'],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1686800948000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -756,7 +756,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: [],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1687161660000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -843,7 +843,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l105'],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1689924019000, isCompleted: true },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -923,7 +923,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l104', 'l102'],
-            dueDate: 16156215584,
+            dueDate: { timestamp: 1685689069000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
