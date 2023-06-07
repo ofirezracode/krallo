@@ -14,7 +14,8 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
 
     function onSubmit(ev) {
         ev.preventDefault()
-        onEditChecklist(checklist._id,checklistTitle)
+        if(checklistTitle) return
+        onEditChecklist(checklist._id, checklistTitle)
     }
 
 

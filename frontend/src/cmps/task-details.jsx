@@ -89,11 +89,8 @@ export function TaskDetails() {
   async function onEditChecklist(checklistId, title) {
     try {
       const checklistIdx = task.checklists.findIndex(checklist => checklistId === checklist._id)
-      console.log('checklistIdx',checklistIdx);
       const updatedChecklist = { ...task.checklists[checklistIdx],title }
-      console.log('updatedChecklist',updatedChecklist);
       const updatedChecklists = [...task.checklists]
-      console.log('updatedChecklists',updatedChecklists);
       updatedChecklists[checklistIdx] = updatedChecklist
       const updatedTask = { ...task, checklists: updatedChecklists }
       console.log(updatedTask)
