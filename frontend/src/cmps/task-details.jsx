@@ -23,7 +23,7 @@ export function TaskDetails() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
-
+  const { attachments } = task
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
@@ -88,7 +88,8 @@ export function TaskDetails() {
     try {
       const updatedTask = { ...task, attachments }
       console.log(task)
-      await saveTask(board, updatedTask)
+      const activity = activityService.createActivity('add-attachment', user, task)
+      await saveTask(board, updatedTask, activity)
     } catch (err) {
       console.log('err', err)
     }
@@ -96,8 +97,25 @@ export function TaskDetails() {
 
   async function onDeleteAttachment(attachId) {
     try {
-      const attachIdx = task.attachments.findIndex(attament => attachId === attament._id)
-      const updatedTask = task.attachments.splice(attachIdx, 1)
+      const attachIdx = attachments.findIndex(attachment => attachId === attachment._id)
+      const updatedTask = attachments.splice(attachIdx, 1)
+      const activity = activityService.createActivity('delete-attachment', user, task)
+      await saveTask(board, updatedTask, activity)
+    } catch (err) {
+      console.error('err', err)
+    }
+  }
+
+  async function onEditAttachment(attachId, title) {
+    try {
+      const attachmentIdx = attachments.findIndex(attachment => attachId === attachment._id)
+      if (attachments[attachmentIdx].title === title) return
+      const updatedAttachment = { ...attachments[attachmentIdx], title }
+      const updatedAttachments = [...attachments]
+      updatedAttachments[attachmentIdx] = updatedAttachment
+      const updatedTask = { ...task, attachments: updatedAttachments }
+
+      console.log(updatedTask)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.error('err', err)
@@ -156,7 +174,7 @@ export function TaskDetails() {
           <section className="card-details-container">
             <ShowMembersLabels task={task} board={board} />
 
-            <TaskAttachments task={task} onDeleteAttachment={onDeleteAttachment} />
+            <TaskAttachments task={task} onDeleteAttachment={onDeleteAttachment} onEditAttachment={onEditAttachment} onOpenPopover={onOpenPopover} />
             <ChecklistIndex task={task} />
           </section>
           <ActionsList

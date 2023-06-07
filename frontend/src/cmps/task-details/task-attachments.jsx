@@ -2,7 +2,7 @@ import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
 
-export function TaskAttachments({ task, onDeleteAttachment }) {
+export function TaskAttachments({ task, onDeleteAttachment, onEditAttachment, onOpenPopover }) {
     if (!task) return <Loader />
     const { attachments } = task
 
@@ -29,8 +29,13 @@ export function TaskAttachments({ task, onDeleteAttachment }) {
                                 <div className='attach-actions flex'>
                                     <span>Added {utilService.formatTime(attachment.uploadedAt)}</span>
                                     <span><button>Comment</button></span>
-                                    <span><button onClick={() => { onDeleteAttachment(attachment._id) }}>Delete</button></span>
-                                    <span><button>Edit</button></span>
+                                    {/* <span><button onClick={() => { onDeleteAttachment(attachment._id) }}>Delete</button></span> */}
+                                    <span><button onClick={(e) => onOpenPopover(e, { attachment, onDeleteAttachment }, 'delete-attachment')}>
+                                        Delete
+                                    </button></span>
+                                    <span><button onClick={(e) => onOpenPopover(e, { attachment, onEditAttachment }, 'edit-attachment')}>
+                                        Edit
+                                    </button></span>
 
                                 </div>
                             </div>
