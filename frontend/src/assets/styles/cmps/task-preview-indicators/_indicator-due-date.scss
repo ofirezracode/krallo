@@ -1,0 +1,52 @@
+.indicator-due-date {
+  display: flex;
+  margin-block-end: rem(4px);
+  align-items: start;
+  border-radius: 3px;
+
+  span {
+    min-height: rem(20px);
+    padding: rem(3px) rem(6px);
+    gap: rem(4px);
+    align-items: center;
+
+    .indicator-icon {
+      display: block;
+      box-sizing: content-box;
+      min-width: rem(16px);
+      // margin-block-end: rem(1px);
+
+      &.square {
+        font-size: rem(18px);
+      }
+
+      &.clock {
+        padding-inline: rem(1px);
+      }
+    }
+
+    label {
+      font-size: rem(12px);
+    }
+  }
+
+  &:hover {
+    background-color: $close-icon-hover-light;
+    &.overdue {
+      background-color: $red-subtler;
+    }
+    &.complete {
+      background-color: $green-boldest;
+    }
+  }
+
+  &.overdue {
+    background-color: $red-subtlest;
+    color: $red-bolder;
+  }
+
+  &.complete {
+    background-color: $green-bolder;
+    color: #fff;
+  }
+}

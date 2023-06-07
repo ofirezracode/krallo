@@ -3,7 +3,6 @@ import { TaskPreview } from './task-preview'
 import { Draggable } from 'react-beautiful-dnd'
 
 export function TaskList({ boardId, tasks, provided }) {
-
   return (
     <ul className="task-list clean-list flex column">
       {tasks.map((task, idx) => (
@@ -19,7 +18,7 @@ export function TaskList({ boardId, tasks, provided }) {
                 opacity: snapshot.isDragging ? '0.5' : '1',
               }}
             >
-              <TaskPreview boardId={boardId} task={task} />
+              <TaskPreview boardId={boardId} taskToPrev={task} />
             </li>
           )}
         </Draggable>

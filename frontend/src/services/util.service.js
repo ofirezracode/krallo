@@ -6,6 +6,8 @@ export const utilService = {
   randomPastTime,
   saveToStorage,
   loadFromStorage,
+  formatDate,
+  hasTimestampPassed,
 }
 
 function makeId(length = 8) {
@@ -60,4 +62,21 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
   const data = localStorage.getItem(key)
   return data ? JSON.parse(data) : undefined
+}
+
+function formatDate(timestamp) {
+  const date = new Date(timestamp)
+  const month = date.toLocaleString('default', { month: 'short' })
+  const day = date.getDate()
+
+  let year = ''
+  if (date.getFullYear() !== new Date().getFullYear()) {
+    year = `, ${date.getFullYear()}`
+  }
+
+  return `${month} ${day}${year}`
+}
+
+function hasTimestampPassed(timestamp) {
+  return Date.now() >= timestamp
 }

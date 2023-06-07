@@ -26,7 +26,6 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
   }, [searchTerm])
 
   function filterLabels(labels) {
-    console.log('searchTerm', searchTerm)
     const lowerCaseTerm = searchTerm.toLowerCase()
     return labels.filter(
       (label) => label.title.toLowerCase().includes(lowerCaseTerm) || label?.color?.colorTitle.toLowerCase().includes(lowerCaseTerm)
