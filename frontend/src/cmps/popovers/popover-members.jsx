@@ -22,7 +22,7 @@ export function PopoverMembers({ members, taskMembers, onHandleTaskMembers, onCl
       <PopoverCmpHeader title="Members" onClose={onClose} />
 
       <div className="popover-members">
-        <input type="text" value={searchTerm} onChange={setSearchTerm} placeholder="Search members" />
+        <input className='input' type="text" value={searchTerm} onChange={setSearchTerm} placeholder="Search members" />
         <h4 className="members-title">Board members</h4>
         <ul className="members-list clean-list">
           {updatedMembers.map((member) => {

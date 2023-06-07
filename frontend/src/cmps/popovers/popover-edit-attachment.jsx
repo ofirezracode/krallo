@@ -23,8 +23,10 @@ export function PopoverEditAttachment({ attachment, onEditAttachment, onClose })
 
             <section className="popover-edit-attachment">
                 <form onSubmit={onSubmit}>
-                    <h5>Link name</h5>
-                    <input type="text" value={title} onChange={(ev) => handleChange(ev)} onFocus={handleFocus} />
+                    <div className='edit-container'>
+                        <h5>Link name</h5>
+                        <input className='input' type="text" value={title} onChange={(ev) => handleChange(ev)} onFocus={handleFocus} />
+                    </div>
                     <button className='btn' type="submit">Update</button>
                 </form>
             </section>
