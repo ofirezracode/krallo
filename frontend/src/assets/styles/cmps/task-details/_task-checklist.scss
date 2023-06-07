@@ -1,0 +1,138 @@
+.task-checklist-container {
+    margin-block-end: rem(24px);
+
+    .checklist {
+        margin-block-end: rem(24px);
+
+        .checklist-title-container {
+            margin: 0 0 rem(4px) rem(40px);
+            padding-block: rem(8px);
+            position: relative;
+
+            span {
+                left: rem(-33px);
+                position: absolute;
+                top: rem(14px);
+
+                svg {
+                    width: rem(20px);
+                    height: rem(21px);
+                }
+            }
+
+            .checklist-title {
+                align-items: center;
+                flex-flow: row wrap;
+                justify-content: space-between;
+
+                h3 {
+                    margin-block: rem(6px);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: inline-block;
+                    font-size: 16px;
+                    line-height: rem(20px);
+                    font-weight: 500;
+                }
+
+                .checklist-title-btns {
+                    margin: 0 rem(2px) 0 auto;
+
+                    .btns {
+                        align-items: center;
+                        background-color: #091E420F;
+                        border: none;
+                        border-radius: 3px;
+                        color: $text;
+                        display: inline-flex;
+                        font-size: rem(14px);
+                        font-weight: 400;
+                        justify-content: center;
+                        line-height: rem(20px);
+                        padding: rem(6px) rem(12px);
+                        text-decoration: none;
+                        transition-duration: 85ms;
+                        transition-property: background-color, border-color, box-shadow;
+                        transition-timing-function: ease;
+                        white-space: normal;
+
+                        &:hover {
+                            background-color: #091E4224;
+                            color: inherit;
+                        }
+
+                        &.hide-checked-btn {
+                            margin-inline-end: rem(8px);
+                        }
+
+                        &.delete {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .checklist-progress {
+            margin-block-end: rem(6px);
+            position: relative;
+
+            span {
+                color: $text-subtle;
+                font-size: rem(11px);
+                left: 0;
+                line-height: rem(10px);
+                position: absolute;
+                text-align: center;
+                top: rem(-1px);
+                width: rem(32px);
+            }
+
+            .progress-bar {
+                background: #091E420F;
+                border-radius: 4px;
+                clear: both;
+                height: 8px;
+                margin: 0 0 0 40px;
+                overflow: hidden;
+                position: relative;
+
+                .progress-bar-current {
+                    background-color: #579DFF;
+                    width: 50%;
+                    bottom: 0;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    transition-duration: .14s;
+                    transition-property: width, background-color;
+                    transition-timing-function: ease-in;
+                }
+            }
+        }
+
+        .checklist-add-btn {
+            margin-block-start: rem(8px);
+            background-color: #091E420F;
+            ;
+            border: none;
+            border-radius: 3px;
+            color: $text;
+            ;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+            font-size: rem(14px);
+            line-height: rem(20px);
+            padding: rem(6px) rem(12px);
+            transition-duration: 85ms;
+            transition-property: background-color, border-color, box-shadow;
+            transition-timing-function: ease;
+            white-space: normal;
+
+            &:hover {
+                background-color: #091E4224;
+                color: #172B4D;
+            }
+        }
+
+    }
+}

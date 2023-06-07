@@ -125,12 +125,15 @@ const boards = [
               fullname: 'Tamar Millgram',
               imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg',
             },
+            checklists:[],  
           },
           {
             _id: 'aa102',
             title: 'Implement user authentication feature',
             description:
               'Develop a secure user authentication system for the website using OAuth2.0. Integrate with existing user database and allow login via social media accounts.',
+              checklists:[],  
+              members: [],   
           },
           {
             _id: 'aa103',
@@ -139,11 +142,15 @@ const boards = [
               bgColor: '#9f8fef',
               type: 'half',
             },
+            checklists:[],  
+            members: [], 
           },
           {
             _id: 'aa104',
             title: 'Implement responsive design',
             labelIds: ['l102', 'l109', 'l107'],
+            checklists:[],  
+            members: [], 
           },
         ],
         style: {},
@@ -164,6 +171,7 @@ const boards = [
                 imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
               },
             ],
+            checklists:[], 
           },
           {
             _id: 'bb104',
@@ -253,6 +261,7 @@ const boards = [
             },
             labelIds: ['l105'],
             members: [],
+            checklists:[], 
           },
           {
             _id: 'tt8527',
@@ -300,21 +309,21 @@ const boards = [
             ],
             checklists: [
               {
-                _id: 'YEhmF',
+                _id: 'c5757',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
-                    _id: '635gW',
+                    _id: 'c949393',
                     title: 'Start by replay the lesson of Stav',
                     isDone: true,
                   },
                   {
-                    _id: '989lA',
+                    _id: 'c945',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    _id: '147Vj',
+                    _id: 'c0275',
                     title: 'Check the DevTools',
                     isDone: false,
                   },
@@ -380,21 +389,21 @@ const boards = [
             ],
             checklists: [
               {
-                _id: 'YEhmF',
+                _id: 'c403',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
-                    _id: '635gW',
+                    _id: 'c9472',
                     title: 'Start by replay the lesson of Stav',
                     isDone: true,
                   },
                   {
-                    _id: '989lA',
+                    _id: 'c9385',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    _id: '147Vj',
+                    _id: 'c92845',
                     title: 'Check the DevTools',
                     isDone: false,
                   },
@@ -465,21 +474,21 @@ const boards = [
             ],
             checklists: [
               {
-                _id: 'YEhmF',
+                _id: 'c244',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
-                    _id: '635gW',
+                    _id: 'c4663',
                     title: 'Start by replay the lesson of Stav',
                     isDone: true,
                   },
                   {
-                    _id: '989lA',
+                    _id: 'c2436',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    _id: '147Vj',
+                    _id: 'c2355',
                     title: 'Check the DevTools',
                     isDone: false,
                   },
@@ -515,21 +524,21 @@ const boards = [
             members: [],
             checklists: [
               {
-                _id: 'YEhmF',
+                _id: 'c3355',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
-                    _id: '635gW',
+                    _id: 'c2466',
                     title: 'Start by replay the lesson of Stav',
                     isDone: true,
                   },
                   {
-                    _id: '989lA',
+                    _id: 'c0985',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    _id: '147Vj',
+                    _id: 'c24552',
                     title: 'Check the DevTools',
                     isDone: false,
                   },
@@ -592,7 +601,7 @@ const boards = [
             ],
             checklists: [
               {
-                _id: 'YEhmF',
+                _id: 'c2345543',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
@@ -601,12 +610,12 @@ const boards = [
                     isDone: true,
                   },
                   {
-                    _id: '989lA',
+                    _id: 'c332454',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    _id: '147Vj',
+                    _id: 'c35462',
                     title: 'Check the DevTools',
                     isDone: false,
                   },
@@ -724,21 +733,21 @@ const boards = [
             ],
             checklists: [
               {
-                _id: 'YEhmF',
+                _id: 'c34335',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
-                    _id: '635gW',
+                    _id: 'c45465',
                     title: 'Start by replay the lesson of Stav',
                     isDone: true,
                   },
                   {
-                    _id: '989lA',
+                    _id: 'c24367',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    _id: '147Vj',
+                    _id: 'c9575',
                     title: 'Check the DevTools',
                     isDone: false,
                   },
@@ -811,21 +820,21 @@ const boards = [
             ],
             checklists: [
               {
-                _id: 'YEhmF',
+                _id: 'c99t67',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
-                    _id: '635gW',
+                    _id: 'c99742',
                     title: 'Start by replay the lesson of Stav',
                     isDone: true,
                   },
                   {
-                    _id: '989lA',
+                    _id: 'c09442',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    _id: '147Vj',
+                    _id: 'c8872478',
                     title: 'Check the DevTools',
                     isDone: false,
                   },
@@ -891,21 +900,21 @@ const boards = [
             ],
             checklists: [
               {
-                _id: 'YEhmF',
+                _id: 'c98377',
                 title: 'Add PWA for our app for offline mode.',
                 todos: [
                   {
-                    _id: '635gW',
+                    _id: 'c87367',
                     title: 'Start by replay the lesson of Stav',
                     isDone: true,
                   },
                   {
-                    _id: '989lA',
+                    _id: 'c9837',
                     title: 'Implement this option step by step',
                     isDone: false,
                   },
                   {
-                    _id: '147Vj',
+                    _id: 'c2774',
                     title: 'Check the DevTools',
                     isDone: false,
                   },

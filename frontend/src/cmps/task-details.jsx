@@ -15,6 +15,7 @@ import { activityService, createActivity } from '../services/activity.service'
 
 import { TaskAttachments } from './task-details/task-attachments'
 import UploadAndDisplayImage from './task-details/test'
+import { TaskChecklist } from './task-details/task-checklist'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -111,6 +112,7 @@ export function TaskDetails() {
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} board={board} />
+            <TaskChecklist checklists={task.checklists}/>
             {/* <UploadAndDisplayImage /> */}
             <TaskAttachments task={task} />
           </section>
