@@ -16,6 +16,7 @@ import { activityService, createActivity } from '../services/activity.service'
 import { TaskAttachments } from './task-details/task-attachments'
 import UploadAndDisplayImage from './task-details/test'
 import { ChecklistIndex } from './task-details/checklist/checklist-index'
+import { async } from 'q'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -78,6 +79,26 @@ export function TaskDetails() {
     }
   }
 
+  async function onDeleteAttachment(attachId) {
+    try {
+      const attachIdx = task.attachments.findIndex(attament => attachId === attament._id)
+      const updatedTask = task.attachments.splice(attachIdx, 1)
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.error('err', err)
+    }
+  }
+
+  async function onLabelDelete(editedBoardLabels, labelToDelete) {
+    try {
+      let newBoard = { ...board, labels: editedBoardLabels }
+      newBoard = boardService.removeLabelFromTasks(newBoard, labelToDelete._id)
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   async function onLabelChange(board, newLabelIds) {
     try {
       console.log('newLabelIds', newLabelIds)
@@ -121,7 +142,7 @@ export function TaskDetails() {
             <ShowMembersLabels task={task} board={board} />
             <ChecklistIndex checklists={task.checklists} />
             {/* <UploadAndDisplayImage /> */}
-            <TaskAttachments task={task} />
+            <TaskAttachments task={task} onDeleteAttachment={onDeleteAttachment} />
             {/* <TaskChecklist checklists={task.checklists} /> */}
           </section>
           <ActionsList

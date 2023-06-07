@@ -2,11 +2,10 @@ import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
 
-export function TaskAttachments({ task }) {
-    console.log(task)
+export function TaskAttachments({ task, onDeleteAttachment }) {
     if (!task) return <Loader />
     const { attachments } = task
-    console.log(attachments)
+
     if (!attachments) return <div></div>
     return (
         <section className="task-attachments">
@@ -16,8 +15,8 @@ export function TaskAttachments({ task }) {
             </div>}
             {attachments.length > 0 && <ul className="flex column clean-list">
                 {attachments.map((attachment) => {
-                    let modeImgColor = utilService.getAvgColor(attachment.url)
-                    let bgColor = { backgroundColor: modeImgColor }
+                    // let modeImgColor = utilService.getAvgColor(attachment.url)
+                    // let bgColor = { backgroundColor: modeImgColor }
                     let boardStyle = { backgroundImage: `url(${attachment.url})` }
                     return (
                         <li key={attachment._id} className='flex'>
@@ -30,7 +29,7 @@ export function TaskAttachments({ task }) {
                                 <div className='attach-actions flex'>
                                     <span>Added {utilService.formatTime(attachment.uploadedAt)}</span>
                                     <span><button>Comment</button></span>
-                                    <span><button>Delete</button></span>
+                                    <span><button onClick={() => { onDeleteAttachment(attachment._id) }}>Delete</button></span>
                                     <span><button>Edit</button></span>
 
                                 </div>
