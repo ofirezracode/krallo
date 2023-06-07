@@ -2,15 +2,19 @@ import Ofir from '../../assets/img/members/ofir-pic.jpg'
 import Etai from '../../assets/img/members/etai-pic.jpg'
 import Tamar from '../../assets/img/members/tamar-pic.jpg'
 import { BsPlusLg } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 
-export function ShowMembersLabels({ task, board }) {
+export function ShowMembersLabels({ task }) {
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   if (!task || !board) return <div></div>
   const { members } = task
 
   const taskLabelIds = task.labelIds ? task.labelIds : []
   const taskLabels = taskLabelIds.map((labelId) => {
     const label = board.labels.find((boardLabel) => boardLabel._id === labelId)
-    return { bgColor: label.color.code, title: label.title ? label.title : '' }
+    let labelStyle = { backgroundColor: '#091e420f' }
+    if (label.color) labelStyle = { backgroundColor: label.color.code }
+    return { ...labelStyle, title: label.title ? label.title : '' }
   })
 
   return (
@@ -32,9 +36,9 @@ export function ShowMembersLabels({ task, board }) {
         <h5>Labels</h5>
         <div className="labels-container flex">
           <ul className="labels-list flex clean-list">
-            {taskLabels.map((label) => (
-              <li key={label.bgColor}>
-                <button style={{ backgroundColor: label.bgColor }} className="label-btn">
+            {taskLabels.map((label, i) => (
+              <li key={i}>
+                <button style={{ backgroundColor: label.backgroundColor }} className="label-btn">
                   {label.title}
                 </button>
               </li>

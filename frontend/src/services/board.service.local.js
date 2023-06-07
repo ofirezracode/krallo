@@ -1007,6 +1007,7 @@ export const boardService = {
   toggleMemberOnTask,
   getEmptyTask,
   getEmptyAttachment,
+  removeLabelFromTasks,
 }
 window.bs = boardService
 
@@ -1159,6 +1160,18 @@ function getTaskById(board, taskId) {
     }
   }
   return null
+}
+
+function removeLabelFromTasks(board, labelId) {
+  const updatedBoard = { ...board }
+  updatedBoard.groups.forEach((group) => {
+    group.tasks.forEach((task) => {
+      if (task.labelIds) {
+        task.labelIds = task.labelIds.filter((id) => id !== labelId)
+      }
+    })
+  })
+  return updatedBoard
 }
 
 function getBoardById(boards, boardId) {

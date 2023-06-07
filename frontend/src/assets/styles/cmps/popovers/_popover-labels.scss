@@ -1,241 +1,176 @@
 .popover-labels {
-  input {
-    padding: rem(8px) rem(12px);
-    width: 100%;
+  .labels {
+    input {
+      padding: rem(8px) rem(12px);
+      width: 100%;
 
-    color: $text;
-    font-size: rem(14px);
-    line-height: rem(20px);
-
-    transition-property: background-color, border-color, box-shadow;
-    transition-duration: 85ms;
-    transition-timing-function: ease;
-
-    outline: none;
-    border: none;
-    border-radius: 3px;
-
-    &:focus {
-      box-shadow: inset 0 0 0 2px $input-focus;
-    }
-  }
-
-  p {
-    color: $text-subtle;
-    font-size: rem(12px);
-    font-weight: 600;
-    line-height: rem(16px);
-    margin-top: rem(12px);
-  }
-
-  .labels-list {
-    padding-block: rem(4px) rem(8px);
-    gap: rem(4px);
-
-    li {
-      height: rem(32px);
-      padding-inline-start: rem(4px);
-
-      display: grid;
-      grid-template-columns: max-content 1fr max-content;
-      gap: rem(4px);
-
-      .checkbox-container {
-        position: relative;
-        // padding-left: rem(35px);
-        // margin-bottom: rem(12px);
-        cursor: pointer;
-        font-size: rem(22px);
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-
-        input {
-          position: absolute;
-          opacity: 0;
-          cursor: pointer;
-          height: 0;
-          width: 0;
-
-          /* When the checkbox is checked, add a blue background */
-          &:checked ~ .checkmark {
-            background-color: $blue-bolder;
-            box-shadow: none;
-          }
-        }
-
-        &:hover {
-          .checkmark {
-            background-color: #ccc;
-          }
-        }
-
-        .checkmark {
-          height: rem(16px);
-          width: rem(16px);
-          box-shadow: inset 0 0 0 2px $button-hover;
-
-          border-radius: rem(2px);
-        }
-
-        .check-icon {
-          position: absolute;
-          width: 14px;
-          color: white;
-        }
-      }
-
-      .label-color {
-        max-width: 100%;
-        min-width: rem(48px);
-        height: rem(32px);
-        padding-inline: rem(12px);
-        margin-inline-start: rem(12px);
-
-        font-size: rem(14px);
-        font-weight: 500;
-        font-family: inherit;
-        line-height: rem(32px);
-        text-align: left;
-
-        border-radius: 3px;
-
-        overflow: hidden;
-
-        &:hover {
-          filter: saturate(85%) brightness(85%);
-        }
-      }
-
-      .edit-icon-btn {
-        padding: rem(8px);
-        width: rem(32px);
-        height: rem(32px);
-        background-color: inherit;
-        color: $text;
-        border-radius: 3px;
-
-        transition-property: background-color, border-color, box-shadow;
-        transition-duration: 85ms;
-        transition-timing-function: ease;
-
-        .edit-icon {
-          width: rem(12px);
-          height: rem(12px);
-        }
-
-        &:hover {
-          background-color: $button-hover;
-        }
-      }
-    }
-  }
-}
-
-.edit-labels {
-  .edited-label-preview {
-    margin-inline: rem(-12px);
-    // width: 100%;
-    padding: rem(32px);
-    background-color: $sunken;
-
-    .label-color {
-      width: rem(240px);
-      height: rem(32px);
-      padding-inline: rem(12px);
-
+      color: $text;
       font-size: rem(14px);
-      font-weight: 500;
-      font-family: inherit;
-      line-height: rem(32px);
-      text-align: left;
+      line-height: rem(20px);
 
+      box-shadow: inset 0 0 0 2px var(--ds-border-input, $button-board-header);
+      transition-property: background-color, border-color, box-shadow;
+      transition-duration: 85ms;
+      transition-timing-function: ease;
+
+      outline: none;
+      border: none;
       border-radius: 3px;
 
-      overflow: hidden;
+      &:focus {
+        box-shadow: inset 0 0 0 2px $input-focus;
+      }
 
-      // @include adjust-text-color($--color, 30%);
-    }
-  }
-
-  input {
-    padding: rem(8px) rem(12px);
-    width: 100%;
-
-    color: $text;
-    font-size: rem(14px);
-    line-height: rem(20px);
-    box-shadow: inset 0 0 0 2px var(--ds-border-input, $button-board-header);
-    transition-property: background-color, border-color, box-shadow;
-    transition-duration: 85ms;
-    transition-timing-function: ease;
-
-    outline: none;
-    border: none;
-    border-radius: 3px;
-
-    &:focus {
-      box-shadow: inset 0 0 0 2px $input-focus;
+      &::placeholder {
+        color: $text;
+      }
     }
 
-    &::placeholder {
+    p {
+      color: $text-subtle;
+      font-size: rem(12px);
+      font-weight: 600;
+      line-height: rem(16px);
+      margin-block: rem(12px) rem(8px);
+    }
+
+    .labels-list {
+      padding-block: rem(4px) rem(8px);
+      gap: rem(4px);
+
+      li {
+        height: rem(32px);
+        padding-inline-start: rem(4px);
+
+        display: grid;
+        grid-template-columns: max-content 1fr max-content;
+        gap: rem(4px);
+
+        .checkbox-container {
+          position: relative;
+          // padding-left: rem(35px);
+          // margin-bottom: rem(12px);
+          cursor: pointer;
+          font-size: rem(22px);
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+
+          input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+
+            /* When the checkbox is checked, add a blue background */
+            &:checked ~ .checkmark {
+              background-color: $blue-bolder;
+              box-shadow: none;
+            }
+          }
+
+          &:hover {
+            .checkmark {
+              background-color: #ccc;
+            }
+          }
+
+          .checkmark {
+            height: rem(16px);
+            width: rem(16px);
+            box-shadow: inset 0 0 0 2px $button-hover;
+
+            border-radius: rem(2px);
+          }
+
+          .check-icon {
+            position: absolute;
+            width: 14px;
+            color: white;
+          }
+        }
+
+        .label-color {
+          max-width: 100%;
+          min-width: rem(48px);
+          height: rem(32px);
+          padding-inline: rem(12px);
+          margin-inline-start: rem(12px);
+
+          font-size: rem(14px);
+          font-weight: 500;
+          font-family: inherit;
+          line-height: rem(32px);
+          text-align: left;
+
+          border-radius: 3px;
+
+          overflow: hidden;
+
+          &:hover {
+            filter: saturate(85%) brightness(85%);
+          }
+        }
+
+        .edit-icon-btn {
+          padding: rem(8px);
+          width: rem(32px);
+          height: rem(32px);
+          background-color: inherit;
+          color: $text;
+          border-radius: 3px;
+
+          transition-property: background-color, border-color, box-shadow;
+          transition-duration: 85ms;
+          transition-timing-function: ease;
+
+          .edit-icon {
+            width: rem(12px);
+            height: rem(12px);
+          }
+
+          &:hover {
+            background-color: $button-hover;
+          }
+        }
+      }
+    }
+
+    .btn-add {
+      width: 100%;
+      padding: rem(6px) rem(12px);
+      margin-block: rem(4px);
+
+      font-size: rem(14px);
+      line-height: rem(20px);
+      font-family: inherit;
       color: $text;
+      border-radius: 3px;
+
+      gap: rem(8px);
+      transition: background-color 85ms ease;
+
+      &:hover {
+        background-color: $button-hover;
+      }
     }
   }
 
-  .labels-title {
-    color: $small-titles;
-    font-size: rem(12px);
-    font-weight: 600;
-    line-height: rem(16px);
-    margin-block: rem(12px) rem(8px);
-  }
-
-  hr {
-    background-color: $close-icon-hover;
-    border: 0;
-    height: rem(1px);
-    margin: rem(16px) 0;
-    padding: 0;
-    width: 100%;
-  }
-
-  .btn-remove {
-    width: 100%;
-    padding: 6px 12px;
-    margin-block-end: rem(8px);
-
-    font-size: 14px;
-    line-height: 20px;
-    font-family: inherit;
-    color: $text;
-    border-radius: 3px;
-
-    gap: rem(8px);
-    transition: background-color 85ms ease;
-
-    &:hover {
-      background-color: $button-hover;
+  .delete-label {
+    p {
+      margin-block-end: rem(8px);
     }
-  }
-
-  .buttons-section {
     button {
-      padding: 6px 12px;
+      padding: rem(6px) rem(12px);
+      width: 100%;
       color: #fff;
-      font-size: 14px;
-      line-height: 20px;
+      font-size: rem(14px);
+      line-height: rem(20px);
       font-family: inherit;
       border-radius: 3px;
       transition: background-color 85ms ease;
-
-      &.btn-save {
-        background-color: $btn-blue;
-        &:hover {
-          background-color: $btn-blue-hover;
-        }
-      }
 
       &.btn-delete {
         background-color: $red-bolder;

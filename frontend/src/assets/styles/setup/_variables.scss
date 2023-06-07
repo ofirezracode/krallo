@@ -4,8 +4,8 @@ $text: #172b4d;
 
 $blue-button: #0c66e4;
 $blue-bgc: #e9f2ff;
-$input-bgc:  #fafbfc;
-$input-hover: #F7F8F9;
+$input-bgc: #fafbfc;
+$input-hover: #f7f8f9;
 
 //board
 //header
@@ -38,6 +38,8 @@ $small-titles: #44546f;
 $icon: #626f86;
 $card-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
 
+$disabled: #091e4208;
+
 //Hover
 $icon-hover: #091e2426;
 $close-icon-hover: #091e424f;
@@ -49,6 +51,7 @@ $card-input-hover: rgba(9, 30, 66, 0.14); // opacity 14%
 $sunken: #f7f8f9;
 
 //labels
+$no-color: rgba(9, 30, 66, 0.06);
 $red-subtlest: #ffedeb;
 $red-subtler: #ffd2cc;
 $red-subtle: #f87462;
@@ -133,4 +136,95 @@ $normal-breakpoint: 960px;
 
 .d8590a2 {
   background-color: darken(#8590a2, 30%);
+}
+
+.format-green-subtler {
+  @include format-green-subtler;
+}
+.format-yellow-subtler {
+  @include format-yellow-subtler;
+}
+.format-orange-subtler {
+  @include format-orange-subtler;
+}
+.format-red-subtler {
+  @include format-red-subtler;
+}
+.format-purple-subtler {
+  @include format-purple-subtler;
+}
+.format-green-subtle {
+  @include format-green-subtle;
+}
+.format-yellow-subtle {
+  @include format-yellow-subtle;
+}
+.format-orange-subtle {
+  @include format-orange-subtle;
+}
+.format-red-subtle {
+  @include format-red-subtle;
+}
+.format-purple-subtle {
+  @include format-purple-subtle;
+}
+.format-green-bolder {
+  @include format-green-bolder;
+}
+.format-yellow-bolder {
+  @include format-yellow-bolder;
+}
+.format-orange-bolder {
+  @include format-orange-bolder;
+}
+.format-red-bolder {
+  @include format-red-bolder;
+}
+.format-purple-bolder {
+  @include format-purple-bolder;
+}
+.format-blue-subtler {
+  @include format-blue-subtler;
+}
+.format-teal-subtler {
+  @include format-teal-subtler;
+}
+.format-lime-subtler {
+  @include format-lime-subtler;
+}
+.format-magenta-subtler {
+  @include format-magenta-subtler;
+}
+.format-gray-subtler {
+  @include format-gray-subtler;
+}
+.format-blue-subtle {
+  @include format-blue-subtle;
+}
+.format-teal-subtle {
+  @include format-teal-subtle;
+}
+.format-lime-subtle {
+  @include format-lime-subtle;
+}
+.format-magenta-subtle {
+  @include format-magenta-subtle;
+}
+.format-gray-subtle {
+  @include format-gray-subtle;
+}
+.format-blue-bolder {
+  @include format-blue-bolder;
+}
+.format-teal-bolder {
+  @include format-teal-bolder;
+}
+.format-lime-bolder {
+  @include format-lime-bolder;
+}
+.format-magenta-bolder {
+  @include format-magenta-bolder;
+}
+.format-gray-bolder {
+  @include format-gray-bolder;
 }
