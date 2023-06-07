@@ -47,23 +47,14 @@ export function BoardHeader({ board }) {
                 onFocus={handleFocus} />
             </form>
           </div>
-          {board.isStarred ? (
-            <button
-              className="btn-star"
-              title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
-              onClick={(ev) => onToggleIsStarred(ev, board)}
-            >
-              <BsStarFill className="star-fill" />
-            </button>
-          ) : (
-            <button
-              className="btn-star"
-              title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
-              onClick={(ev) => onToggleIsStarred(ev, board)}
-            >
-              <BsStar className="star-empty" />
-            </button>
-          )}
+
+          <button
+            className="btn-star"
+            title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
+            onClick={(ev) => onToggleIsStarred(ev, board)}>
+            {board.isStarred ?
+              (<BsStarFill className="star-fill" />) : (<BsStar className="star-empty" />)}
+          </button>
         </li>
         <li className="flex align-center">
           <button title="Filter cards" className='flex align-center'>
