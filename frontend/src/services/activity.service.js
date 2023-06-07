@@ -38,6 +38,8 @@ function createActivity(activityType, byMember, task, groupName = '') {
     activity.txt = `${byMember.fullname} added Checklist to ${task.title}`
   }else if (activityType === 'delete-checklist') {
     activity.txt = `${byMember.fullname} removed Checklist from ${task.title}`
+  }else if (activityType === 'updated-checklist') {
+    activity.txt = `${byMember.fullname} updated checklist title at ${task.title}`
   }
   return activity
 }
