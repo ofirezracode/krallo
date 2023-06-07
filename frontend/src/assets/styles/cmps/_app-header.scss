@@ -20,7 +20,7 @@
     }
 
     &:hover {
-      background-color: $add-group-hover;
+      background-color: $icon-hover;
     }
   }
 
@@ -48,7 +48,7 @@
       width: rem(69px);
 
       &:hover {
-        background-color: $btn-blue-hover;
+        background-color: $icon-hover;
       }
     }
   }
@@ -62,12 +62,14 @@
 
     .search-input {
       height: rem(32px);
+      width: rem(200px);
       padding: 0 rem(12px) 0 rem(30px);
       border-radius: 5px;
       font-size: rem(14px);
-      border: 2px solid lightgray;
+      border: 1px solid lightgray;
       margin: rem(2px);
-      transition: width 0.3s;
+      // transition: width 0.3s;
+
 
       &::placeholder {
         font-size: rem(17px);
@@ -78,7 +80,7 @@
       }
 
       &:focus {
-        outline: 2px solid $btn-blue;
+        outline: 1px solid $btn-blue;
         width: rem(700px);
         border: none;
       }
@@ -94,11 +96,15 @@
     }
   }
 
-  .btn {
+  .header-btn {
     background-color: transparent;
     border: none;
-    padding: rem(8px);
+    // padding: rem(8px);
+    width: rem(32px);
+    height: rem(32px);
     display: flex;
+    justify-content: center;
+    align-items: center;
 
     svg {
       color: $card-title;
@@ -126,5 +132,8 @@
 
   .user-img-header {
     background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

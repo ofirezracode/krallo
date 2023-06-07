@@ -36,7 +36,7 @@
       text-decoration: none;
       display: block;
       position: absolute;
-      z-index: 10;
+      z-index: 5;
 
       h4 {
         color: #fff;
@@ -98,7 +98,7 @@
 
 .new-board {
   border-radius: 3px;
-  width: rem(190px);
+  width: rem(190.58px);
   height: rem(96px);
   background-color: rgb(244, 244, 244);
   cursor: pointer;

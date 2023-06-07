@@ -45,7 +45,7 @@ function remove(userId) {
 
 async function login(userCred) {
   const users = await storageService.query('user')
-  console.log('services users',users);
+  console.log('services users', users);
   console.log(userCred, 'userCred');
   const user = users.find((user) => user.email === userCred.email)
   console.log(user, 'user');
@@ -75,7 +75,7 @@ function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-// ;(async () => {
+// ; (async () => {
 //   await userService.signup({ fullname: 'Etai', email: 'etai@krallo.com', password: '123', isAdmin: true })
 //   await userService.signup({ fullname: 'Tamar', email: 'tamar@krallo.com', password: '123', isAdmin: true })
 //   await userService.signup({ fullname: 'Ofir', email: 'ofir@krallo.com', password: '123', isAdmin: true })

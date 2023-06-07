@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
-import { setLabelsOpen } from '../store/board.actions'
+import { saveTask, setLabelsOpen } from '../store/board.actions'
 import { BsTextParagraph, BsCheck2Square, BsChat, BsPaperclip, BsClock } from 'react-icons/bs'
 import { utilService } from '../services/util.service'
 import { IndicatorDueDate } from './task-preview-indicators/indicator-due-date'
 import { Indicator } from './task-preview-indicators/indicator'
+import { UsersList } from './users-list'
 
 export function TaskPreview({ boardId, taskToPrev }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -30,8 +31,16 @@ export function TaskPreview({ boardId, taskToPrev }) {
     navigate(`/board/${boardId}/${task._id}`)
   }
 
-  function onDateClick() {
-    const newDueDate = { ...task.dueDate, isCompleted: task.dueDate }
+  async function onDateClick(e) {
+    e.stopPropagation()
+    try {
+      const newDueDate = { ...task.dueDate, isCompleted: !task.dueDate.isCompleted }
+      const updatedTask = { ...task, dueDate: newDueDate }
+      console.log('updatedTask', updatedTask)
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
 
   let previewStyle = {}
@@ -64,6 +73,7 @@ export function TaskPreview({ boardId, taskToPrev }) {
       )}
       {typeClass !== 'full' && (
         <section className="preview-container">
+          {/* labels */}
           {task.labelIds && boardLabels.length > 0 && (
             <ul className="labels flex clean-list">
               {task.labelIds.map((labelId, i) => {
@@ -82,18 +92,26 @@ export function TaskPreview({ boardId, taskToPrev }) {
             </ul>
           )}
           <h4>{task.title}</h4>
-          <div className="task-indicators flex">
-            <ul className="indicators clean-list">
-              {task.dueDate && <IndicatorDueDate dueDate={task.dueDate} />}
-              {task.description && <Indicator type="description" />}
-              {task.comments && task.comments.length > 0 && <Indicator type="comments" txt={task.comments.length} />}
-              {task.attachments && task.attachments.length > 0 && <Indicator type="attachments" txt={task.attachments.length} />}
-              {task.checklists && task.checklists.length > 0 && (
-                <Indicator type="checklists" txt={`${checklistsTodos.finished}/${checklistsTodos.total}`} />
-              )}
-            </ul>
-            <ul className="members"></ul>
-          </div>
+
+          <section className="preview-details flex">
+            {/* indicators */}
+            <div className="task-indicators flex">
+              <ul className="indicators clean-list">
+                {task.dueDate && <IndicatorDueDate dueDate={task.dueDate} onDateClick={onDateClick} />}
+                {task.description && <Indicator type="description" />}
+                {task.comments && task.comments.length > 0 && <Indicator type="comments" txt={task.comments.length} />}
+                {task.attachments && task.attachments.length > 0 && <Indicator type="attachments" txt={task.attachments.length} />}
+                {task.checklists && task.checklists.length > 0 && (
+                  <Indicator type="checklists" txt={`${checklistsTodos.finished}/${checklistsTodos.total}`} />
+                )}
+              </ul>
+            </div>
+
+            {/* users */}
+            <div className="members-list-container">
+              <UsersList users={task.members} size="xsmall" hover="gray" />
+            </div>
+          </section>
         </section>
       )}
     </article>

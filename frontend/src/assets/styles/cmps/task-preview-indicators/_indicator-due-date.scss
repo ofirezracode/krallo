@@ -1,6 +1,5 @@
 .indicator-due-date {
   display: flex;
-  margin-block-end: rem(4px);
   align-items: start;
   border-radius: 3px;
 
@@ -21,6 +20,10 @@
       }
 
       &.clock {
+        padding-inline: rem(1px);
+      }
+
+      &.square-checked {
         padding-inline: rem(1px);
       }
     }

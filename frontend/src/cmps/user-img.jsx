@@ -1,7 +1,6 @@
 import React from 'react'
 
-
-export function UserImg({ size, hover, userImg }) {
+export function UserImg({ size, hover, userImg, padding }) {
   let imgClasses = ''
 
   if (!size) {
@@ -11,8 +10,19 @@ export function UserImg({ size, hover, userImg }) {
   }
 
   if (hover) {
-    imgClasses += ' hover'
+    imgClasses += ` ${hover}`
   }
 
-  return <img className={`user-img ${imgClasses}`} src={userImg} alt="" title="Ofir Ezra (ofirezra)" />
+  if (padding) {
+    imgClasses += ' padding'
+  } else {
+    imgClasses += ' no-padding'
+  }
+
+  console.log('userImg', userImg)
+  return (
+    <div className="img-container">
+      <img className={`user-img ${imgClasses}`} src={userImg} alt="" title="Ofir Ezra (ofirezra)" />
+    </div>
+  )
 }
