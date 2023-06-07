@@ -45,6 +45,8 @@
         font-size: rem(16px);
         line-height: rem(20px);
         padding: rem(8px);
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       .star-fill {
