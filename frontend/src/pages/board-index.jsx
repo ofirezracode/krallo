@@ -70,6 +70,16 @@ export function BoardIndex() {
     }
   }
 
+  async function onChangeTitle(title) {
+    const newBoard = { ...board, title }
+    console.log(newBoard)
+    try {
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   let boardStyle = {}
   if (board && board.style) {
     if (board.style.type === 'bgColor') {
@@ -87,7 +97,7 @@ export function BoardIndex() {
   return (
     <section style={boardStyle} className="board-index flex column">
       <Outlet />
-      <BoardHeader board={board} />
+      <BoardHeader board={board} onChangeTitle={onChangeTitle} />
       <GroupList
         board={board}
         onDndTask={onMoveTask}
