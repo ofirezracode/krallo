@@ -96,6 +96,15 @@
         align-items: center;
         font-size: rem(14px);
 
+        .filter-icon {
+          svg {
+            color: #fff;
+          }
+
+          width: rem(16px);
+        }
+
+
         &:not(.btn-fill) {
           background-color: transparent;
         }

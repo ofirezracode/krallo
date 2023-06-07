@@ -1,0 +1,27 @@
+.indicator {
+  display: flex;
+  margin-block-end: rem(4px);
+  align-items: start;
+  span {
+    min-height: rem(20px);
+    padding: rem(3px) rem(6px);
+    gap: 4px;
+    align-items: center;
+    .indicator-icon {
+      display: block;
+      min-width: rem(16px);
+
+      &.comments {
+        margin-block-end: rem(1px);
+      }
+    }
+
+    .description {
+      align-self: start;
+    }
+
+    label {
+      font-size: rem(12px);
+    }
+  }
+}

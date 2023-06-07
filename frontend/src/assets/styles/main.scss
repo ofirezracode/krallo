@@ -53,6 +53,10 @@
 @import 'cmps/task-details/_task-details-header.scss';
 @import 'cmps/task-details/_actions-list.scss';
 
+//Task Preview Indicators
+@import 'cmps/task-preview-indicators/_indicator-due-date.scss';
+@import 'cmps/task-preview-indicators/_indicator.scss';
+
 //Checklist
 @import 'cmps/task-details/checklist/checklist-index';
 @import 'cmps/task-details/checklist/checklist-list';

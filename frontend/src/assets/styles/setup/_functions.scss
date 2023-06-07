@@ -10,9 +10,13 @@
 }
 
 @function adjust-text-color($--clr) {
-  @if (lightness($--clr) < 50%) {
+  $red: red($--clr);
+  $green: green($--clr);
+  $blue: blue($--clr);
+  $gray: $red * 0.299 + $green * 0.587 + $blue * 0.114;
+  @if ($gray < 128) {
     @return white;
   } @else {
-    @return darken($--clr, 60%);
+    @return darken($--clr, 50%);
   }
 }

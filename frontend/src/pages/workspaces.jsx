@@ -13,10 +13,14 @@ export function Workspaces() {
     loadBoards()
   }, [])
 
-  function toggleIsStarred(ev, board) {
-    ev.preventDefault()
-    board.isStarred = !board.isStarred
-    updateBoard(board)
+  async function onToggleIsStarred(ev, board) {
+    try {
+      ev.preventDefault()
+      const boardToToggle = await { ...board, isStarred: !board.isStarred }
+      updateBoard(boardToToggle)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
 
   async function onAddBoard(ev) {
@@ -33,8 +37,8 @@ export function Workspaces() {
   return (
     <section className="workspaces">
       <section className="all-boards">
-        <BoardList boards={boards} toggleIsStarred={toggleIsStarred} isOnlyStarred={true} />
-        <BoardList boards={boards} toggleIsStarred={toggleIsStarred} isOnlyStarred={false} onAddBoard={onAddBoard} />
+        <BoardList boards={boards} onToggleIsStarred={onToggleIsStarred} isOnlyStarred={true} />
+        <BoardList boards={boards} onToggleIsStarred={onToggleIsStarred} isOnlyStarred={false} onAddBoard={onAddBoard} />
       </section>
     </section>
   )

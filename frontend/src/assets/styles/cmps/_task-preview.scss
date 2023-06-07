@@ -8,6 +8,18 @@
 
   .preview-cover {
     height: rem(32px);
+
+    &.full {
+      min-height: rem(56px);
+    }
+
+    h4 {
+      padding: rem(8px) rem(8px) rem(4px) rem(12px);
+      align-self: flex-end;
+      font-size: rem(16px);
+      font-weight: 500;
+      line-height: rem(20px);
+    }
   }
 
   .preview-container {
@@ -56,6 +68,16 @@
             height: 18px;
           }
         }
+      }
+    }
+
+    .task-indicators {
+      .indicators {
+        min-height: rem(20px);
+        color: $text-subtle;
+
+        display: flex;
+        align-items: center;
       }
     }
   }

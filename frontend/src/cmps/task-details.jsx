@@ -122,6 +122,7 @@ export function TaskDetails() {
             <ChecklistIndex checklists={task.checklists}/>
             {/* <UploadAndDisplayImage /> */}
             <TaskAttachments task={task} />
+            <TaskChecklist checklists={task.checklists} />
           </section>
           <ActionsList
             task={task}
