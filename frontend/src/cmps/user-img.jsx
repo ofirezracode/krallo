@@ -19,7 +19,6 @@ export function UserImg({ size, hover, userImg, padding }) {
     imgClasses += ' no-padding'
   }
 
-  console.log('userImg', userImg)
   return (
     <div className="img-container">
       <img className={`user-img ${imgClasses}`} src={userImg} alt="" title="Ofir Ezra (ofirezra)" />
