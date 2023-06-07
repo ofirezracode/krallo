@@ -71,13 +71,29 @@
       }
     }
 
-    .task-indicators {
-      .indicators {
-        min-height: rem(20px);
-        color: $text-subtle;
+    .preview-details {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: rem(4px);
 
+      .task-indicators {
+        .indicators {
+          min-height: rem(20px);
+          color: $text-subtle;
+
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .members-list-container {
+        flex: 1;
         display: flex;
-        align-items: center;
+        justify-content: end;
+
+        .users-list {
+          justify-self: end;
+        }
       }
     }
   }
