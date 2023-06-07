@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
-import { setLabelsOpen } from '../store/board.actions'
+import { saveTask, setLabelsOpen } from '../store/board.actions'
 import { BsTextParagraph, BsCheck2Square, BsChat, BsPaperclip, BsClock } from 'react-icons/bs'
 import { utilService } from '../services/util.service'
 import { IndicatorDueDate } from './task-preview-indicators/indicator-due-date'
@@ -30,8 +30,16 @@ export function TaskPreview({ boardId, taskToPrev }) {
     navigate(`/board/${boardId}/${task._id}`)
   }
 
-  function onDateClick() {
-    const newDueDate = { ...task.dueDate, isCompleted: task.dueDate }
+  async function onDateClick(e) {
+    e.stopPropagation()
+    try {
+      const newDueDate = { ...task.dueDate, isCompleted: !task.dueDate.isCompleted }
+      const updatedTask = { ...task, dueDate: newDueDate }
+      console.log('updatedTask', updatedTask)
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
 
   let previewStyle = {}
@@ -84,7 +92,7 @@ export function TaskPreview({ boardId, taskToPrev }) {
           <h4>{task.title}</h4>
           <div className="task-indicators flex">
             <ul className="indicators clean-list">
-              {task.dueDate && <IndicatorDueDate dueDate={task.dueDate} />}
+              {task.dueDate && <IndicatorDueDate dueDate={task.dueDate} onDateClick={onDateClick} />}
               {task.description && <Indicator type="description" />}
               {task.comments && task.comments.length > 0 && <Indicator type="comments" txt={task.comments.length} />}
               {task.attachments && task.attachments.length > 0 && <Indicator type="attachments" txt={task.attachments.length} />}
