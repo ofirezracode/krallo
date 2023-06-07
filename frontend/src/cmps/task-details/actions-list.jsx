@@ -1,4 +1,6 @@
-import { BsCheck2Square, BsClock, BsPaperclip, BsPerson, BsSquareHalf, BsTag } from 'react-icons/bs'
+import { BsCheck2Square, BsClock, BsPaperclip, BsSquareHalf, BsTag } from 'react-icons/bs'
+import ClipIcon from '../../assets/img/svg/clip-icon.svg'
+import MemberIcon from "../../assets/img/svg/member-icon.svg"
 
 export function ActionsList({
   task,
@@ -16,9 +18,8 @@ export function ActionsList({
       <section className="add-to-card-btns">
         <button
           onClick={(e) => onOpenPopover(e, { members: board.members, taskMembers: task.members, onHandleTaskMembers }, 'members')}
-          title="Members"
-        >
-          <BsPerson />
+          title="Members">
+          <img src={MemberIcon} className='member-icon' alt="member-icon" />
           <p>Members</p>
         </button>
         <button
@@ -29,9 +30,9 @@ export function ActionsList({
           <p>Labels</p>
         </button>
         <button title="Checklist"
-                onClick={(e) =>
-                  onOpenPopover(e, {task}, 'checklist')
-                }>
+          onClick={(e) =>
+            onOpenPopover(e, { task }, 'checklist')
+          }>
           <BsCheck2Square />
           <p>Checklist</p>
         </button>
@@ -40,7 +41,7 @@ export function ActionsList({
           <p>Dates</p>
         </button>
         <button onClick={(e) => onOpenPopover(e, { task, onAttachmentAdded }, 'attachment')} title="Attachment">
-          <BsPaperclip className="clip-icon" />
+          <img src={ClipIcon} alt="clip-icon" />
           <p>Attachment</p>
         </button>
         <button

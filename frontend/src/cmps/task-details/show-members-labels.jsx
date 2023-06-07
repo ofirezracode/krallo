@@ -10,7 +10,7 @@ export function ShowMembersLabels({ task }) {
   const { members } = task
 
   const taskLabelIds = task.labelIds ? task.labelIds : []
-  const taskLabels = taskLabelIds.map((labelId, i) => {
+  const taskLabels = taskLabelIds.map((labelId) => {
     const label = board.labels.find((boardLabel) => boardLabel._id === labelId)
     let labelStyle = { backgroundColor: '#091e420f' }
     if (label.color) labelStyle = { backgroundColor: label.color.code }

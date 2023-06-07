@@ -30,6 +30,8 @@
             gap: rem(5px);
             transition: .2s ease-in-out;
 
+            .member-icon,
+            img,
             svg {
                 width: rem(20px);
                 height: rem(20px);
@@ -38,10 +40,6 @@
 
             .label-icon {
                 transform: scaleX(-1);
-            }
-
-            .clip-icon {
-                rotate: 45deg;
             }
 
             .box-icon {

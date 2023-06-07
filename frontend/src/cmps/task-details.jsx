@@ -15,6 +15,7 @@ import { activityService, createActivity } from '../services/activity.service'
 
 import { TaskAttachments } from './task-details/task-attachments'
 import UploadAndDisplayImage from './task-details/test'
+import { TaskChecklist } from './task-details/task-checklist'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -67,13 +68,10 @@ export function TaskDetails() {
     }
   }
 
-  async function onAttachmentAdded(attachment) {
+  async function onAttachmentAdded(attachments) {
     try {
-      let updatedAttachment = [attachment]
-      if (task.attachments) {
-        updatedAttachment = [...task.attachments, ...updatedAttachment]
-      }
-      const updatedTask = { ...task, attachments: updatedAttachment }
+      const updatedTask = { ...task, attachments }
+      console.log(task)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.log('err', err)
@@ -123,6 +121,7 @@ export function TaskDetails() {
             <ShowMembersLabels task={task} board={board} />
             {/* <UploadAndDisplayImage /> */}
             <TaskAttachments task={task} />
+            <TaskChecklist checklists={task.checklists} />
           </section>
           <ActionsList
             task={task}

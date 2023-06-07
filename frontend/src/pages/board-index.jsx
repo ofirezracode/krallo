@@ -6,6 +6,7 @@ import { GroupList } from '../cmps/group-list'
 import { BoardHeader } from '../cmps/board-header'
 import { loadBoards, setCurrBoard, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
+import { Loader } from '../cmps/loader'
 
 export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -82,18 +83,18 @@ export function BoardIndex() {
       }
     }
   }
-
+  if (!board) return <Loader />
   return (
     <section style={boardStyle} className="board-index flex column">
       <Outlet />
-      <BoardHeader board={board}></BoardHeader>
+      <BoardHeader board={board} />
       <GroupList
         board={board}
         onDndTask={onMoveTask}
         onDndGroup={onMoveGroup}
         onUpdateGroupTitle={onUpdateGroupTitle}
         onAddGroup={onAddGroup}
-      ></GroupList>
+      />
     </section>
   )
 }

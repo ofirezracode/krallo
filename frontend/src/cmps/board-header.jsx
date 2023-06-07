@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { BsPeople, BsStar, BsStarFill } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
-import { UserImg } from './user-img'
-import Ofir from '../assets/img/members/ofir-pic.jpg'
-import Etai from '../assets/img/members/etai-pic.jpg'
-import Tamar from '../assets/img/members/tamar-pic.jpg'
+import React, { useState } from 'react'
+import { BsStar, BsStarFill } from 'react-icons/bs'
 import { updateBoard } from '../store/board.actions'
 import { Popover } from './popover'
 import { usePopover } from '../customHooks/usePopover'
-import { utilService } from '../services/util.service'
 import { Loader } from './loader'
+import FilterIcon from '../assets/img/svg/filter-icon.svg'
 
 export function BoardHeader({ board }) {
   const [title, setTitle] = useState(board ? board.title : '')
   const handleFocus = (ev) => ev.target.select()
+
   const [popoverProps, onTogglePopover] = usePopover()
   const members = board ? board.members : []
 
-  function toggleIsStarred(ev, board) {
-    ev.preventDefault()
-    board.isStarred = !board.isStarred
-    updateBoard(board)
+  async function onToggleIsStarred(ev, board) {
+    try {
+      ev.preventDefault()
+      const boardToToggle = await { ...board, isStarred: !board.isStarred }
+      updateBoard(boardToToggle)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
 
   function handleChange(ev) {
@@ -38,36 +38,35 @@ export function BoardHeader({ board }) {
       <ul className="board-header clean-list flex align-center between">
         <li className="flex align-center">
           <div className='board-name'>
-            <input type="text" value={title} onChange={handleChange} onFocus={handleFocus} />
+            <form onSubmit={handleChange}>
+              <input
+                type="text"
+                value={title}
+                onChange={handleChange}
+                style={{ width: `${title.length * 15}px` }} // Set the width dynamically
+                onFocus={handleFocus} />
+            </form>
           </div>
-          {board.isStarred ? (
-            <button
-              className="btn-star"
-              title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
-              onClick={(ev) => toggleIsStarred(ev, board)}
-            >
-              <BsStarFill className="star-fill" />
-            </button>
-          ) : (
-            <button
-              className="btn-star"
-              title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
-              onClick={(ev) => toggleIsStarred(ev, board)}
-            >
-              <BsStar className="star-empty" />
-            </button>
-          )}
+
+          <button
+            className="btn-star"
+            title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
+            onClick={(ev) => onToggleIsStarred(ev, board)}>
+            {board.isStarred ?
+              (<BsStarFill className="star-fill" />) : (<BsStar className="star-empty" />)}
+          </button>
         </li>
         <li className="flex align-center">
-          <button title="Filter cards flex align-center">
-            <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <button title="Filter cards" className='flex align-center'>
+            {/* <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M4.61799 6C3.87461 6 3.39111 6.78231 3.72356 7.44721L3.99996 8H20L20.2763 7.44721C20.6088 6.78231 20.1253 6 19.3819 6H4.61799ZM10.8618 17.7236C10.9465 17.893 11.1196 18 11.309 18H12.6909C12.8803 18 13.0535 17.893 13.1382 17.7236L14 16H9.99996L10.8618 17.7236ZM17 13H6.99996L5.99996 11H18L17 13Z"
                 fill="currentColor"
               ></path>
-            </svg>
+            </svg> */}
+            <img src={FilterIcon} className='filter-icon' alt="filter-icon" />
             <p>Filter</p>
           </button>
           <span>|</span>

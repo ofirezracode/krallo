@@ -1,55 +1,37 @@
-// import { useState } from "react";
-// import { uploadService } from "../../services/upload.service";
-
-// export function PopoverAttachment({ onAttachmentAdded }) {
-//     function onImg(img) {
-//         if (!img) return
-//         onAttachmentAdded(img)
-//     }
-
-//     function onAddAttachment(e) {
-//         uploadService.uploadImg(e, onImg)
-//     }
-
-//     return (
-//         <section className="popover-attachment">
-//             {/* {img && <img src={img} />} */}
-//             <label className="file-input flex column" htmlFor="img-input">
-//                 Computer
-//                 <input type="file" id="img-input" name="image" onChange={onAddAttachment} />
-//             </label>
-//             {/* <h5>Attach a link</h5>
-//             <form onSubmit={onAddAttachment}>
-//                 <input type="text" placeholder="Place any link here..." />
-//                 <button>Attach</button>
-//             </form> */}
-//         </section>
-//     )
-// }
-
 import { useState } from 'react'
 import { uploadService } from '../../services/upload.service'
 import { PopoverCmpHeader } from './popover-cmp-header'
+import { boardService } from '../../services/board.service.local'
 
-export function PopoverAttachment({ onAttachmentAdded, onClose }) {
+export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
     const [url, setUrl] = useState('')
+    const [title, setTitle] = useState('')
+    const [attachments, setAttachments] = useState(task.attachments ? task.attachments : [])
 
-    function onImg(img) {
-        console.log(img)
-        if (!img) return
+    async function onAddAttachment(ev) {
+        try {
+            ev.preventDefault()
+            const imgUrl = await uploadService.uploadImg(ev)
+            const newAttach = boardService.getEmptyAttachment()
+            newAttach.url = imgUrl.url
+            newAttach.title = imgUrl.original_filename
+            console.log(newAttach)
+            setAttachments([...attachments, newAttach])
+            onAttachmentAdded([...attachments, newAttach])
+        } catch (err) {
+            console.log('err', err)
+        }
     }
 
-    async function onAddAttachment(e) {
-        // e.preventDefault()
-        uploadService.uploadImg(e, onImg)
-        // onAttachmentAdded(img)
-
-        // use async await to get the url and send it to the task-details func
-    }
-
-    function onAddAttachmentUrl(e) {
-        e.preventDefault()
-        uploadService.uploadImgFromUrl(e, onImg)
+    function onSubmitUrl(ev) {
+        ev.preventDefault()
+        ev.target.value = ''
+        if (!url || !url.trim()) return
+        const newAttach = boardService.getEmptyAttachment()
+        newAttach.url = url
+        if (title) newAttach.title = title
+        setAttachments([...attachments, newAttach])
+        onAttachmentAdded([...attachments, newAttach])
     }
 
     return (
@@ -57,16 +39,20 @@ export function PopoverAttachment({ onAttachmentAdded, onClose }) {
             <PopoverCmpHeader title="Attach from..." onClose={onClose} />
 
             <section className="popover-attachment">
-                {/* {img && <img src={img} />} */}
                 <label className="file-input flex column" htmlFor="img-input">
                     Computer
                     <input type="file" id="img-input" name="image" onChange={onAddAttachment} />
                 </label>
-                <h5>Attach a link</h5>
-                <form onSubmit={onAddAttachmentUrl}>
-                    <input type="text" placeholder="Place any link here..." value={url} onChange={(e) => setUrl(e.target.value)} />
-                    <button type="submit">Attach</button>
-                </form>
+                <div className='url-input'>
+                    <hr />
+                    <form onSubmit={onSubmitUrl}>
+                        <h5>Attach a link</h5>
+                        <input type="text" placeholder="Paste any link here..." value={url} onChange={(ev) => setUrl(ev.target.value)} />
+                        {url.length > 0 && <div><h5>Link name (optional)</h5>
+                            <input type="text" onChange={(ev) => setTitle(ev.target.value)} /></div>}
+                        <button className='btn' type="submit">Attach</button>
+                    </form>
+                </div>
             </section>
         </section>
     )
