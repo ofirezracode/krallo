@@ -10,6 +10,7 @@ import { PopoverChecklist } from './popovers/popover-checklist'
 import { PopoverDates } from './popovers/popover-dates'
 import { PopoverDeleteAttachment } from './popovers/popover-delete-attachment'
 import { PopoverEditAttachment } from './popovers/popover-edit-attachment'
+import { PopverDeleteChecklist } from './popovers/popver-delete-checklist'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
@@ -62,6 +63,8 @@ function DynamicCmp({ type, addedProps, onClose }) {
       return <PopoverChecklist {...addedProps} onClose={onClose} />
     case 'dates':
       return <PopoverDates {...addedProps} onClose={onClose} />
+    case 'delete-checklist':
+      return <PopverDeleteChecklist {...addedProps} onClose={onClose} />
     default:
       return <PopoverDummy />
   }

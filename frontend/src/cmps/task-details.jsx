@@ -75,6 +75,33 @@ export function TaskDetails() {
     }
   }
 
+  async function onDeleteChecklist(checklistId) {
+    try {
+      const checklistIdx = task.checklists.findIndex(checklist => checklistId === checklist._id)
+      const updatedTask = task.checklists.splice(checklistIdx, 1)
+      const activity = activityService.createActivity('delete-checklist', user, task)
+      await saveTask(board, updatedTask, activity)
+    } catch (err) {
+      console.error('err', err)
+    }
+  }
+
+  async function onEditChecklist(checklistId, title) {
+    try {
+      const checklistIdx = task.checklists.findIndex(checklist => checklistId === checklist._id)
+      if (task.checklists[checklistIdx].title === title) return
+      const updatedChecklist = { ...task.checklists[checklistIdx], title }
+      const updatedChecklists = [...task.checklists]
+      updatedChecklists[checklistIdx] = updatedChecklist
+      const updatedTask = { ...task, checklists: updatedChecklists }
+      console.log(updatedTask)
+      const activity = activityService.createActivity('updated-checklist', user, task)
+      await saveTask(board, updatedTask, activity)
+    } catch (err) {
+      console.error('err', err)
+    }
+  }
+
   async function onStyleChange(newStyle) {
     try {
       const updatedTask = { ...task, style: newStyle }
@@ -173,9 +200,8 @@ export function TaskDetails() {
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} board={board} />
-
             <TaskAttachments task={task} onDeleteAttachment={onDeleteAttachment} onEditAttachment={onEditAttachment} onOpenPopover={onOpenPopover} />
-            <ChecklistIndex task={task} />
+            <ChecklistIndex task={task} onDeleteChecklist={onDeleteChecklist} onOpenPopover={onOpenPopover} onEditChecklist={onEditChecklist} />
           </section>
           <ActionsList
             task={task}

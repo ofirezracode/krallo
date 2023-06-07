@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ProgressBar({checklist}) {
+export function ProgressBar({checklist}) {
     return (
         <div className='checklist-progress'>
             <span>0%</span>

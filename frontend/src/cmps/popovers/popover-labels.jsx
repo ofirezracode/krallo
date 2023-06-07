@@ -4,6 +4,7 @@ import { PopoverCmpHeader } from './popover-cmp-header'
 import { LabelEditor } from './popover-labels/label-editor'
 import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
+import { Checkbox } from '../checkbox'
 
 export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdit, onLabelDelete }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -111,11 +112,7 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
               const labelTitle = label.title ? label.title : ''
               return (
                 <li key={label._id}>
-                  <label className="checkbox-container flex center">
-                    <input onChange={(e) => onClickLabel(e, label._id)} type="checkbox" checked={isLabelChecked ? 'checked' : ''} />
-                    <span className="checkmark flex center"></span>
-                    {isLabelChecked && <BsCheck2 className="check-icon" />}
-                  </label>
+                  <Checkbox isChecked={isLabelChecked} onToggle={onClickLabel} onClickProps={label._id} />
                   <button onClick={(e) => onClickLabel(e, label._id)} className="label-color" style={labelStyle}>
                     {labelTitle}
                   </button>
