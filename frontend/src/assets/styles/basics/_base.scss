@@ -66,3 +66,16 @@ label {
     background-color: $button-hover;
   }
 }
+  .delete-btn {
+    background-color: $btn-red;
+    color: #FFFFFF;
+    margin-block-start: rem(8px);
+    padding: rem(6px) rem(12px);
+    text-align: center;
+    width: 100%;
+    
+    &:hover{
+        background-color:$btn-red-hover;
+    }
+
+}

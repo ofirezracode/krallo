@@ -75,6 +75,17 @@ export function TaskDetails() {
     }
   }
 
+  async function onDeleteChecklist(checklistId) {
+    try {
+      const checklistIdx = task.checklists.findIndex(checklist => checklistId === checklist._id)
+      const updatedTask = task.checklists.splice(checklistIdx, 1)
+      const activity = activityService.createActivity('delete-checklist', user, task)
+      await saveTask(board, updatedTask, activity)
+    } catch (err) {
+      console.error('err', err)
+    }
+  }
+
   async function onStyleChange(newStyle) {
     try {
       const updatedTask = { ...task, style: newStyle }
@@ -155,9 +166,8 @@ export function TaskDetails() {
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} board={board} />
-
             <TaskAttachments task={task} onDeleteAttachment={onDeleteAttachment} />
-            <ChecklistIndex task={task} />
+            <ChecklistIndex task={task} onDeleteChecklist={onDeleteChecklist} onOpenPopover={onOpenPopover} />
           </section>
           <ActionsList
             task={task}
