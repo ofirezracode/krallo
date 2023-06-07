@@ -6,7 +6,8 @@ export  function TodoList({ todos }) {
     return (
         <ul className='todos-list clean-list'>
             {todos && todos.map((todo) => (
-                <TodosPreview todo={todo} />
+                <div key={todo._id}><TodosPreview todo={todo}/></div>
+           
             ))}
         </ul>
     )

@@ -1,0 +1,44 @@
+.popover-dates {
+  .date-picker {
+    margin-inline-start: rem(-12px);
+  }
+
+  > button {
+    width: 100%;
+    padding: 6px 12px;
+    margin-block-end: rem(8px);
+
+    font-size: 14px;
+    line-height: 20px;
+    font-family: inherit;
+    color: $text;
+    border-radius: 3px;
+
+    gap: rem(8px);
+    transition: background-color 85ms ease;
+
+    background-color: $close-icon-hover-light;
+
+    &.btn-remove {
+      &:hover {
+        background-color: $button-hover;
+      }
+    }
+
+    &.btn-save {
+      background-color: $btn-blue;
+      color: #fff;
+      &:hover {
+        background-color: $btn-blue-hover;
+      }
+    }
+  }
+
+  .labels-title {
+    color: $small-titles;
+    font-size: rem(12px);
+    font-weight: 600;
+    line-height: rem(16px);
+    margin-block: rem(12px) rem(8px);
+  }
+}

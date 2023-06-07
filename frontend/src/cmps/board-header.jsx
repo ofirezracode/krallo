@@ -38,26 +38,28 @@ export function BoardHeader({ onChangeTitle }) {
     onChangeTitle(title)
   }
 
-  console.log(title)
   let inputWidth = 0
   for (let i = 0; i < title.length; i++) {
     const charCode = title.charCodeAt(i)
-    if (charCode >= 65 && charCode <= 90) { // uppercase character
+    if (charCode >= 65 && charCode <= 90) {
+      // uppercase character
       inputWidth += 13
-    } else if (charCode >= 97 && charCode <= 122) { // lowercase character
+    } else if (charCode >= 97 && charCode <= 122) {
+      // lowercase character
       inputWidth += 10
-    } else { // punctuation, space, and other symbols
+    } else {
+      // punctuation, space, and other symbols
       inputWidth += 5
     }
   }
 
   if (!board) return <Loader />
   return (
-    <section className='board-header-container'>
-      <div className='blur-header'></div>
+    <section className="board-header-container">
+      <div className="blur-header"></div>
       <ul className="board-header clean-list flex align-center between">
         <li className="flex align-center">
-          <div className='board-name'>
+          <div className="board-name">
             <form onSubmit={onSubmit}>
               <input
                 type="text"
@@ -65,20 +67,21 @@ export function BoardHeader({ onChangeTitle }) {
                 onChange={handleChange}
                 style={{ width: `${inputWidth}px` }} // Set the width dynamically
                 // style={{ width: `${title.length * 9}px` }} // Set the width dynamically
-                onFocus={handleFocus} />
+                onFocus={handleFocus}
+              />
             </form>
           </div>
 
           <button
             className="btn-star"
             title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
-            onClick={(ev) => onToggleIsStarred(ev, board)}>
-            {board.isStarred ?
-              (<BsStarFill className="star-fill" />) : (<BsStar className="star-empty" />)}
+            onClick={(ev) => onToggleIsStarred(ev, board)}
+          >
+            {board.isStarred ? <BsStarFill className="star-fill" /> : <BsStar className="star-empty" />}
           </button>
         </li>
         <li className="flex align-center">
-          <button title="Filter cards" className='flex align-center'>
+          <button title="Filter cards" className="flex align-center">
             {/* <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -87,7 +90,7 @@ export function BoardHeader({ onChangeTitle }) {
                 fill="currentColor"
               ></path>
             </svg> */}
-            <img src={FilterIcon} className='filter-icon' alt="filter-icon" />
+            <img src={FilterIcon} className="filter-icon" alt="filter-icon" />
             <p>Filter</p>
           </button>
           <span>|</span>
@@ -122,6 +125,6 @@ export function BoardHeader({ onChangeTitle }) {
         </li>
       </ul>
       <Popover {...popoverProps} onClose={onTogglePopover} />
-    </section >
+    </section>
   )
 }
