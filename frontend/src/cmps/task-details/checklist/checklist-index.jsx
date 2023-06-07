@@ -2,11 +2,11 @@ import React from 'react'
 import { ChecklistList } from './checklist-list';
 
 
-export function ChecklistIndex({ checklists }) {
-    if (!checklists) return <div></div>
+export function ChecklistIndex({ task, onAddChecklist }) {
+    if (!task) return <div></div>
     return (
         <div className='task-checklist-container'>
-            <ChecklistList checklists = {checklists}/>
+            <ChecklistList checklists = {task.checklists} />
         </div>
     )
 }

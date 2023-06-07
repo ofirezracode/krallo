@@ -5,7 +5,7 @@ export  function ChecklistList({checklists}) {
   return (
     <ul className='checklist-list'>
     {checklists && checklists.map((checklist) => (
-        <ChecklistPreview checklist={checklist}/>
+        <div  key={checklist._id}><ChecklistPreview checklist={checklist}/></div>
     ))}
 </ul>
   )

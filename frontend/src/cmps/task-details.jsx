@@ -16,9 +16,11 @@ import { activityService, createActivity } from '../services/activity.service'
 import { TaskAttachments } from './task-details/task-attachments'
 import UploadAndDisplayImage from './task-details/test'
 import { ChecklistIndex } from './task-details/checklist/checklist-index'
+import { utilService } from '../services/util.service'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const user = useSelector((storeState) => storeState.userModule.user)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
 
@@ -51,8 +53,22 @@ export function TaskDetails() {
 
   async function onHandleTaskMembers(activityType, member) {
     try {
-      let activity = activityService.createActivity(activityType, member, task)
+      let activity = activityService.createActivity(activityType, user,member, task)
       const updatedTask = boardService.toggleMemberOnTask(task, member, activityType)
+      await saveTask(board, updatedTask, activity)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async function onAddChecklist(title) {
+    console.log('title@@@@',title);
+
+    try {
+      const activity = activityService.createActivity('add-checklist' ,user,task)
+      const newChecklist = {_id: utilService.makeId(),title, todos:[]}
+      const newChecklists = [...task.checklists, newChecklist]
+      const updatedTask = { ...task, checklists: newChecklists  }
       await saveTask(board, updatedTask, activity)
     } catch (err) {
       console.log('err', err)
@@ -119,10 +135,9 @@ export function TaskDetails() {
         <section className="task-details-container">
           <section className="card-details-container">
             <ShowMembersLabels task={task} board={board} />
-            <ChecklistIndex checklists={task.checklists}/>
-            {/* <UploadAndDisplayImage /> */}
+            <UploadAndDisplayImage />
             <TaskAttachments task={task} />
-            <TaskChecklist checklists={task.checklists} />
+            <ChecklistIndex task={task} />
           </section>
           <ActionsList
             task={task}
@@ -133,6 +148,7 @@ export function TaskDetails() {
             onLabelChange={onLabelChange}
             onLabelEdit={onLabelEdit}
             onLabelDelete={onLabelDelete}
+            onAddChecklist={onAddChecklist}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />

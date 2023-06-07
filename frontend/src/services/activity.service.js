@@ -34,6 +34,8 @@ function createActivity(activityType, byMember, task, groupName = '') {
     activity.txt = `${byMember.fullname} left ${task.title}`
   } else if (activityType === 'add-attachment') {
     activity.txt = `${byMember.fullname} attached an image to ${task.title}`
+  }else if (activityType === 'add-checklist') {
+    activity.txt = `${byMember.fullname} added Checklist to ${task.title}`
   }
   return activity
 }
