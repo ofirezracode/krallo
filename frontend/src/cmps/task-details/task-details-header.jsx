@@ -1,4 +1,5 @@
-import { BsFillCreditCardFill } from 'react-icons/bs'
+
+import CardIcon from '../../assets/img/svg/card-icon.svg'
 import { Link } from 'react-router-dom'
 import { boardService } from '../../services/board.service.local'
 import { useEffect, useState } from 'react'
@@ -16,7 +17,7 @@ export function TaskDetailsHeader({ board, task }) {
   return (
     <header className="task-header flex">
       <div className="title-img">
-        <BsFillCreditCardFill className="card-title-img" />
+        <CardIcon className="card-title-img" />
       </div>
       <div className="task-title">
         <h1>{task.title}</h1>
