@@ -10,8 +10,8 @@
     .home-container {
       max-width: rem(1137px);
       margin: auto;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
 
       .home-txt {
         width: rem(500px);
@@ -73,6 +73,10 @@
         }
       }
 
+      @include for-wide-layout {
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
     }
   }
