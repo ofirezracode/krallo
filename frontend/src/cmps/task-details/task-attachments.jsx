@@ -23,7 +23,6 @@ export function TaskAttachments({ task }) {
                         <li key={attachment._id} className='flex'>
                             <div className='attach-img flex center' style={boardStyle}>
                                 <div className='blur-bg-img'></div>
-                                {/* <div className='attach-img flex center' style={{ backgroundColor: task.style.bgColor }}> */}
                                 <img src={attachment.url} alt={attachment.title} />
                             </div>
                             <div className='attach-details'>
