@@ -1,5 +1,6 @@
 import { BsCheck2Square, BsClock, BsPaperclip, BsSquareHalf, BsTag } from 'react-icons/bs'
 import ClipIcon from '../../assets/img/svg/clip-icon.svg'
+import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import MemberIcon from '../../assets/img/svg/member-icon.svg'
 
 export function ActionsList({
@@ -52,7 +53,7 @@ export function ActionsList({
           // onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover', 'Cover')}
           className="flex center"
         >
-          <BsSquareHalf className="box-icon" />
+          <img src={CoverIcon} className="box-icon" alt="cover-icon" />
           <p>Cover</p>
         </button>
       </section>

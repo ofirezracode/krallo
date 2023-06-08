@@ -198,7 +198,7 @@ export function TaskDetails() {
         <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
         <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
-          <section className="card-details-container">
+          <section className="card-details-container flex column">
             <ShowMembersLabels task={task} board={board} onOpenPopover={onOpenPopover} onLabelChange={onLabelChange} onLabelEdit={onLabelEdit} onLabelDelete={onLabelDelete} />
             <TaskAttachments task={task} onAttachmentAdded={onAttachmentAdded} onDeleteAttachment={onDeleteAttachment} onEditAttachment={onEditAttachment} onOpenPopover={onOpenPopover} />
             <ChecklistIndex task={task} onDeleteChecklist={onDeleteChecklist} onOpenPopover={onOpenPopover} onEditChecklist={onEditChecklist} />

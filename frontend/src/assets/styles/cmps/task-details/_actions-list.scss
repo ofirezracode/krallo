@@ -43,10 +43,10 @@
             }
 
             .box-icon {
-                rotate: -90deg;
                 width: rem(20px);
                 height: rem(20px);
                 padding: rem(4px);
+                color: $text;
             }
 
             &:hover {
