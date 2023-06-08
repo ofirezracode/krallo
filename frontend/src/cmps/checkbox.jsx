@@ -12,7 +12,6 @@ export function Checkbox({ isChecked, onToggle, onClickProps }) {
     onToggle(e, onClickProps)
   }
 
-  console.log('isChecked', isChecked)
   return (
     <label className="checkbox flex center">
       <input onChange={onClick} type="checkbox" checked={checked ? 'checked' : ''} />

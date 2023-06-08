@@ -1,42 +1,28 @@
 .task-details-screen {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   overflow-y: auto;
   z-index: 100;
-
-  .backdrop {
-    background-color: #000000a3;
-    height: 100%;
-    position: fixed;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-  }
-
-  &,
-  .backdrop {
-    left: 0;
-    right: 0;
-    top: 0;
-  }
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, .6);
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  padding: rem(48px) 0 rem(80px);
 
   .task-details {
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transform: translate(calc(50vw - 50%));
+    // top: 0;
+    // left: 0;
+    // z-index: 1;
+    // transform: translate(calc(50vw - 50%));
     background-color: #f0f2f4;
     border-radius: 8px;
-    margin-block-end: rem(48px);
+    // margin-block-end: rem(48px);
     width: rem(768px);
     min-height: rem(600px);
-    display: inline-block;
-    left: 50%;
     position: relative;
-    transform: translate(-50%);
 
     .close-btn {
       position: absolute;
@@ -81,7 +67,7 @@
 
       .card-details-container {
         grid-column: 1;
-
+        gap: rem(6px);
 
       }
 

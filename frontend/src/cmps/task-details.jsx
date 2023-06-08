@@ -23,7 +23,6 @@ export function TaskDetails() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
-  const { attachments } = task
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
@@ -62,7 +61,6 @@ export function TaskDetails() {
   }
 
   async function onAddChecklist(title) {
-
     try {
       const activity = activityService.createActivity('add-checklist', user, task)
       const newChecklist = { _id: utilService.makeId(), title, todos: [] }
@@ -76,7 +74,7 @@ export function TaskDetails() {
 
   async function onDeleteChecklist(checklistId) {
     try {
-      const checklistIdx = task.checklists.findIndex(checklist => checklistId === checklist._id)
+      const checklistIdx = task.checklists.findIndex((checklist) => checklistId === checklist._id)
       const updatedTask = task.checklists.splice(checklistIdx, 1)
       const activity = activityService.createActivity('delete-checklist', user, task)
       await saveTask(board, updatedTask, activity)
@@ -87,7 +85,7 @@ export function TaskDetails() {
 
   async function onEditChecklist(checklistId, title) {
     try {
-      const checklistIdx = task.checklists.findIndex(checklist => checklistId === checklist._id)
+      const checklistIdx = task.checklists.findIndex((checklist) => checklistId === checklist._id)
       if (task.checklists[checklistIdx].title === title) return
       const updatedChecklist = { ...task.checklists[checklistIdx], title }
       const updatedChecklists = [...task.checklists]
@@ -113,7 +111,6 @@ export function TaskDetails() {
   async function onAttachmentAdded(attachments) {
     try {
       const updatedTask = { ...task, attachments }
-      console.log(task)
       const activity = activityService.createActivity('add-attachment', user, task)
       await saveTask(board, updatedTask, activity)
     } catch (err) {
@@ -121,10 +118,20 @@ export function TaskDetails() {
     }
   }
 
+  async function onDueDateSave(dueDate) {
+    try {
+      const updatedTask = { ...task, dueDate }
+      console.log(updatedTask)
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   async function onDeleteAttachment(attachId) {
     try {
-      const attachIdx = attachments.findIndex(attachment => attachId === attachment._id)
-      const updatedTask = attachments.splice(attachIdx, 1)
+      const attachIdx = task.attachments.findIndex(attachment => attachId === attachment._id)
+      const updatedTask = task.attachments.splice(attachIdx, 1)
       const activity = activityService.createActivity('delete-attachment', user, task)
       await saveTask(board, updatedTask, activity)
     } catch (err) {
@@ -134,10 +141,10 @@ export function TaskDetails() {
 
   async function onEditAttachment(attachId, title) {
     try {
-      const attachmentIdx = attachments.findIndex(attachment => attachId === attachment._id)
-      if (attachments[attachmentIdx].title === title) return
-      const updatedAttachment = { ...attachments[attachmentIdx], title }
-      const updatedAttachments = [...attachments]
+      const attachmentIdx = task.attachments.findIndex(attachment => attachId === attachment._id)
+      if (task.attachments[attachmentIdx].title === title) return
+      const updatedAttachment = { ...task.attachments[attachmentIdx], title }
+      const updatedAttachments = [...task.attachments]
       updatedAttachments[attachmentIdx] = updatedAttachment
       const updatedTask = { ...task, attachments: updatedAttachments }
 
@@ -189,7 +196,7 @@ export function TaskDetails() {
 
   return (
     <section className="task-details-screen">
-      <div className="backdrop"></div>
+      {/* <div className="backdrop"></div> */}
       <article ref={taskDetails} className="task-details">
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
           <HiXMark className="close-icon" />
@@ -197,10 +204,28 @@ export function TaskDetails() {
         <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
         <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
-          <section className="card-details-container">
-            <ShowMembersLabels task={task} board={board} onOpenPopover={onOpenPopover} onLabelChange={onLabelChange} onLabelEdit={onLabelEdit} onLabelDelete={onLabelDelete} />
-            <TaskAttachments task={task} onAttachmentAdded={onAttachmentAdded} onDeleteAttachment={onDeleteAttachment} onEditAttachment={onEditAttachment} onOpenPopover={onOpenPopover} />
-            <ChecklistIndex task={task} onDeleteChecklist={onDeleteChecklist} onOpenPopover={onOpenPopover} onEditChecklist={onEditChecklist} />
+          <section className="card-details-container flex column">
+            <ShowMembersLabels
+              task={task}
+              board={board}
+              onOpenPopover={onOpenPopover}
+              onLabelChange={onLabelChange}
+              onLabelEdit={onLabelEdit}
+              onLabelDelete={onLabelDelete}
+            />
+            <TaskAttachments
+              task={task}
+              onAttachmentAdded={onAttachmentAdded}
+              onDeleteAttachment={onDeleteAttachment}
+              onEditAttachment={onEditAttachment}
+              onOpenPopover={onOpenPopover}
+            />
+            <ChecklistIndex
+              task={task}
+              onDeleteChecklist={onDeleteChecklist}
+              onOpenPopover={onOpenPopover}
+              onEditChecklist={onEditChecklist}
+            />
           </section>
           <ActionsList
             task={task}
@@ -212,9 +237,10 @@ export function TaskDetails() {
             onLabelEdit={onLabelEdit}
             onLabelDelete={onLabelDelete}
             onAddChecklist={onAddChecklist}
-          // colors={colors}
-          // coverStyle={coverStyle}
-          // onStyleChange={onStyleChange}
+            // colors={colors}
+            // coverStyle={coverStyle}
+            // onStyleChange={onStyleChange}
+            onDueDateSave={onDueDateSave}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />

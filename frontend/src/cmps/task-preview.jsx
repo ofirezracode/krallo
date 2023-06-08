@@ -97,7 +97,7 @@ export function TaskPreview({ boardId, taskToPrev }) {
             {/* indicators */}
             <div className="task-indicators flex">
               <ul className="indicators clean-list">
-                {task.dueDate && <IndicatorDueDate dueDate={task.dueDate} onDateClick={onDateClick} />}
+                {task.dueDate && task.dueDate.dueDate && <IndicatorDueDate dueDate={task.dueDate} onDateClick={onDateClick} />}
                 {task.description && <Indicator type="description" />}
                 {task.comments && task.comments.length > 0 && <Indicator type="comments" txt={task.comments.length} />}
                 {task.attachments && task.attachments.length > 0 && <Indicator type="attachments" txt={task.attachments.length} />}

@@ -1,5 +1,6 @@
 import { BsCheck2Square, BsClock, BsPaperclip, BsSquareHalf, BsTag } from 'react-icons/bs'
 import ClipIcon from '../../assets/img/svg/clip-icon.svg'
+import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import MemberIcon from '../../assets/img/svg/member-icon.svg'
 
 export function ActionsList({
@@ -16,6 +17,7 @@ export function ActionsList({
   // colors,
   // coverStyle,
   // onStyleChange
+  onDueDateSave,
 }) {
   return (
     <section className="add-to-card-container">
@@ -39,7 +41,10 @@ export function ActionsList({
           <BsCheck2Square />
           <p>Checklist</p>
         </button>
-        <button onClick={(e) => onOpenPopover(e, { dueDate: task.dueDate, widthOverride: '332px' }, 'dates')} title="Dates">
+        <button
+          onClick={(e) => onOpenPopover(e, { activeDueDate: task.dueDate, widthOverride: '332px', onDueDateSave }, 'dates')}
+          title="Dates"
+        >
           <BsClock />
           <p>Dates</p>
         </button>
@@ -52,7 +57,7 @@ export function ActionsList({
           // onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover', 'Cover')}
           className="flex center"
         >
-          <BsSquareHalf className="box-icon" />
+          <img src={CoverIcon} className="box-icon" alt="cover-icon" />
           <p>Cover</p>
         </button>
       </section>

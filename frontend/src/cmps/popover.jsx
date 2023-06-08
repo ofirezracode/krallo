@@ -14,7 +14,7 @@ import { PopverDeleteChecklist } from './popovers/popver-delete-checklist'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
-  let popoverStyles = { position: 'fixed' }
+  let popoverStyles = { position: 'absolute' }
 
   //todo: check viewport overflow on x
 
@@ -22,6 +22,8 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
 
   let yDiff = 0
   let xDiff = 0
+
+  console.log(addedProps.refElement)
 
   if (addedProps.refElement) {
     const containerRect = addedProps.refElement.getBoundingClientRect()
@@ -31,6 +33,8 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
 
   popoverStyles.top = parentRect.bottom + 5 - yDiff
   popoverStyles.left = parentRect.left - xDiff
+  // popoverStyles.top = parentRect.bottom + 5
+  // popoverStyles.left = parentRect.left
 
   if (addedProps.widthOverride) {
     popoverStyles.width = addedProps.widthOverride
