@@ -10,11 +10,9 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
     const [checklistTitle, setChecklistTitle] = useState(checklist.title)
     const handleFocus = (ev) => ev.target.select()
     const [isEditing, setIsEditing] = useState(false);
-    // const [inputWidth, setInputWidth] = useState('100%')
 
     function handleChange(ev) {
         setChecklistTitle(ev.target.value)
-        // setInputWidth(`${ev.target.value.length * 10}px`)
         onEditChecklist(checklist._id, checklistTitle);
     }
 
@@ -61,10 +59,7 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
                                 <h3>{checklist.title}</h3>
                             </button>
                         )}
-                        {/* <form onSubmit={onSubmit} style={{ width: inputWidth }}
-                        </form> */}
                            {!isEditing && <div className='checklist-title-btns flex'>
-                            {/* <button className='btns hide-checked-btn'>Hide checked items</button> */}
                             <button className='btns delete' onClick={(ev) => onOpenPopover(ev, { checklist, onDeleteChecklist, onClose }, 'delete-checklist')}>Delete</button>
 
                         </div>}
