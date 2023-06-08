@@ -17,6 +17,7 @@ export function ActionsList({
   // colors,
   // coverStyle,
   // onStyleChange
+  onDueDateSave,
 }) {
   return (
     <section className="add-to-card-container">
@@ -40,7 +41,10 @@ export function ActionsList({
           <BsCheck2Square />
           <p>Checklist</p>
         </button>
-        <button onClick={(e) => onOpenPopover(e, { dueDate: task.dueDate, widthOverride: '332px' }, 'dates')} title="Dates">
+        <button
+          onClick={(e) => onOpenPopover(e, { activeDueDate: task.dueDate, widthOverride: '332px', onDueDateSave }, 'dates')}
+          title="Dates"
+        >
           <BsClock />
           <p>Dates</p>
         </button>

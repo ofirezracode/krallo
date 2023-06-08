@@ -4,11 +4,11 @@ import { utilService } from '../../services/util.service'
 
 export function IndicatorDueDate({ dueDate, onDateClick }) {
   const [isHovered, setIsHovered] = useState(false)
-  const [timestamp, setTimestamp] = useState(dueDate.timestamp)
+  const [timestamp, setTimestamp] = useState(dueDate.dueDate)
   const [isCompleted, setIsCompleted] = useState(dueDate.isCompleted)
 
   useEffect(() => {
-    setTimestamp(dueDate.timestamp)
+    setTimestamp(dueDate.dueDate)
     setIsCompleted(dueDate.isCompleted)
   }, [dueDate])
 

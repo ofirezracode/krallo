@@ -61,7 +61,6 @@ export function TaskDetails() {
   }
 
   async function onAddChecklist(title) {
-
     try {
       const activity = activityService.createActivity('add-checklist', user, task)
       const newChecklist = { _id: utilService.makeId(), title, todos: [] }
@@ -75,7 +74,7 @@ export function TaskDetails() {
 
   async function onDeleteChecklist(checklistId) {
     try {
-      const checklistIdx = task.checklists.findIndex(checklist => checklistId === checklist._id)
+      const checklistIdx = task.checklists.findIndex((checklist) => checklistId === checklist._id)
       const updatedTask = task.checklists.splice(checklistIdx, 1)
       const activity = activityService.createActivity('delete-checklist', user, task)
       await saveTask(board, updatedTask, activity)
@@ -86,7 +85,7 @@ export function TaskDetails() {
 
   async function onEditChecklist(checklistId, title) {
     try {
-      const checklistIdx = task.checklists.findIndex(checklist => checklistId === checklist._id)
+      const checklistIdx = task.checklists.findIndex((checklist) => checklistId === checklist._id)
       if (task.checklists[checklistIdx].title === title) return
       const updatedChecklist = { ...task.checklists[checklistIdx], title }
       const updatedChecklists = [...task.checklists]
@@ -114,6 +113,16 @@ export function TaskDetails() {
       const updatedTask = { ...task, attachments }
       const activity = activityService.createActivity('add-attachment', user, task)
       await saveTask(board, updatedTask, activity)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async function onDueDateSave(dueDate) {
+    try {
+      const updatedTask = { ...task, dueDate }
+      console.log(updatedTask)
+      await saveTask(board, updatedTask)
     } catch (err) {
       console.log('err', err)
     }
@@ -196,9 +205,27 @@ export function TaskDetails() {
         <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
           <section className="card-details-container flex column">
-            <ShowMembersLabels task={task} board={board} onOpenPopover={onOpenPopover} onLabelChange={onLabelChange} onLabelEdit={onLabelEdit} onLabelDelete={onLabelDelete} />
-            <TaskAttachments task={task} onAttachmentAdded={onAttachmentAdded} onDeleteAttachment={onDeleteAttachment} onEditAttachment={onEditAttachment} onOpenPopover={onOpenPopover} />
-            <ChecklistIndex task={task} onDeleteChecklist={onDeleteChecklist} onOpenPopover={onOpenPopover} onEditChecklist={onEditChecklist} />
+            <ShowMembersLabels
+              task={task}
+              board={board}
+              onOpenPopover={onOpenPopover}
+              onLabelChange={onLabelChange}
+              onLabelEdit={onLabelEdit}
+              onLabelDelete={onLabelDelete}
+            />
+            <TaskAttachments
+              task={task}
+              onAttachmentAdded={onAttachmentAdded}
+              onDeleteAttachment={onDeleteAttachment}
+              onEditAttachment={onEditAttachment}
+              onOpenPopover={onOpenPopover}
+            />
+            <ChecklistIndex
+              task={task}
+              onDeleteChecklist={onDeleteChecklist}
+              onOpenPopover={onOpenPopover}
+              onEditChecklist={onEditChecklist}
+            />
           </section>
           <ActionsList
             task={task}
@@ -210,9 +237,10 @@ export function TaskDetails() {
             onLabelEdit={onLabelEdit}
             onLabelDelete={onLabelDelete}
             onAddChecklist={onAddChecklist}
-          // colors={colors}
-          // coverStyle={coverStyle}
-          // onStyleChange={onStyleChange}
+            // colors={colors}
+            // coverStyle={coverStyle}
+            // onStyleChange={onStyleChange}
+            onDueDateSave={onDueDateSave}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
