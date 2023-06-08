@@ -94,9 +94,19 @@ export function TaskDetails() {
     }
   }
 
+  async function onDueDateSave(dueDate) {
+    try {
+      const updatedTask = { ...task, dueDate }
+      console.log(updatedTask)
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   async function onDeleteAttachment(attachId) {
     try {
-      const attachIdx = task.attachments.findIndex(attament => attachId === attament._id)
+      const attachIdx = task.attachments.findIndex((attament) => attachId === attament._id)
       const updatedTask = task.attachments.splice(attachIdx, 1)
       await saveTask(board, updatedTask)
     } catch (err) {
@@ -169,6 +179,7 @@ export function TaskDetails() {
             onLabelEdit={onLabelEdit}
             onLabelDelete={onLabelDelete}
             onAddChecklist={onAddChecklist}
+            onDueDateSave={onDueDateSave}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />

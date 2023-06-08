@@ -125,15 +125,15 @@ const boards = [
               fullname: 'Tamar Millgram',
               imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg',
             },
-            checklists:[],  
+            checklists: [],
           },
           {
             _id: 'aa102',
             title: 'Implement user authentication feature',
             description:
               'Develop a secure user authentication system for the website using OAuth2.0. Integrate with existing user database and allow login via social media accounts.',
-              checklists:[],  
-              members: [],   
+            checklists: [],
+            members: [],
           },
           {
             _id: 'aa103',
@@ -142,15 +142,15 @@ const boards = [
               bgColor: '#9f8fef',
               type: 'half',
             },
-            checklists:[],  
-            members: [], 
+            checklists: [],
+            members: [],
           },
           {
             _id: 'aa104',
             title: 'Implement responsive design',
             labelIds: ['l102', 'l109', 'l107'],
-            checklists:[],  
-            members: [], 
+            checklists: [],
+            members: [],
           },
         ],
         style: {},
@@ -171,7 +171,7 @@ const boards = [
                 imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/etai-pic_gxsgfr.jpg',
               },
             ],
-            checklists:[], 
+            checklists: [],
           },
           {
             _id: 'bb104',
@@ -231,7 +231,7 @@ const boards = [
             attachments: ['https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg'],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l102', 'l103', 'l108', 'l106'],
-            dueDate: { timestamp: 1688891995000, isCompleted: false },
+            dueDate: { dueDate: 1688891995000, isCompleted: false },
             byMember: {
               _id: 'u102',
               fullname: 'Tamar Millgram',
@@ -261,7 +261,7 @@ const boards = [
             },
             labelIds: ['l105'],
             members: [],
-            checklists:[], 
+            checklists: [],
           },
           {
             _id: 'tt8527',
@@ -332,7 +332,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l104', 'l105', 'l106'],
-            dueDate: { timestamp: 1689854872000, isCompleted: false },
+            dueDate: { dueDate: 1689854872000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -412,7 +412,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l109'],
-            dueDate: { timestamp: 1688677756000, isCompleted: false },
+            dueDate: { dueDate: 1688677756000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -497,7 +497,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l107', 'l103'],
-            dueDate: { timestamp: 1687736076000, isCompleted: false },
+            dueDate: { dueDate: 1687736076000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -547,7 +547,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l102', 'l108', 'l101'],
-            dueDate: { timestamp: 1690569812000, isCompleted: false },
+            dueDate: { dueDate: 1690569812000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -624,7 +624,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l106'],
-            dueDate: { timestamp: 1685913144000, isCompleted: false },
+            dueDate: { dueDate: 1685913144000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -674,7 +674,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l102'],
-            dueDate: { timestamp: 1686800948000, isCompleted: false },
+            dueDate: { dueDate: 1686800948000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -756,7 +756,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: [],
-            dueDate: { timestamp: 1687161660000, isCompleted: false },
+            dueDate: { dueDate: 1687161660000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -843,7 +843,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l105'],
-            dueDate: { timestamp: 1689924019000, isCompleted: true },
+            dueDate: { dueDate: 1689924019000, isCompleted: true },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -923,7 +923,7 @@ const boards = [
             ],
             memberIds: ['u101', 'u102', 'u103'],
             labelIds: ['l104', 'l102'],
-            dueDate: { timestamp: 1685689069000, isCompleted: false },
+            dueDate: { dueDate: 1685689069000, isCompleted: false },
             byMember: {
               _id: 'u103',
               fullname: 'Etai Levi',
@@ -1132,7 +1132,7 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
@@ -1236,7 +1236,7 @@ function getEmptyAttachment() {
   }
 }
 
-; (async () => {
+;(async () => {
   const boards = await query()
   if (boards.length === 0) await _createBoards()
 })()
