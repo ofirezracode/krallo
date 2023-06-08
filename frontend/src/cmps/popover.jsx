@@ -8,6 +8,9 @@ import { PopoverCover } from './popovers/popover-cover'
 import { PopoverAttachment } from './popovers/popover-attachment'
 import { PopoverChecklist } from './popovers/popover-checklist'
 import { PopoverDates } from './popovers/popover-dates'
+import { PopoverDeleteAttachment } from './popovers/popover-delete-attachment'
+import { PopoverEditAttachment } from './popovers/popover-edit-attachment'
+import { PopverDeleteChecklist } from './popovers/popver-delete-checklist'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
@@ -50,12 +53,18 @@ function DynamicCmp({ type, addedProps, onClose }) {
       return <PopoverMembers {...addedProps} onClose={onClose} />
     case 'attachment':
       return <PopoverAttachment {...addedProps} onClose={onClose} />
+    case 'delete-attachment':
+      return <PopoverDeleteAttachment {...addedProps} onClose={onClose} />
+    case 'edit-attachment':
+      return <PopoverEditAttachment {...addedProps} onClose={onClose} />
     case 'cover':
       return <PopoverCover {...addedProps} onClose={onClose} />
     case 'checklist':
       return <PopoverChecklist {...addedProps} onClose={onClose} />
     case 'dates':
       return <PopoverDates {...addedProps} onClose={onClose} />
+    case 'delete-checklist':
+      return <PopverDeleteChecklist {...addedProps} onClose={onClose} />
     default:
       return <PopoverDummy />
   }

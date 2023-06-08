@@ -8,11 +8,12 @@
     top: 0;
     left: 0;
     z-index: 0;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(3px);
     background-color: #8f8f8f7d;
   }
 
   .board-header {
+
     padding: rem(12px) rem(8px) rem(12px) rem(16px);
     background-color: $board-header-background-transparent;
     flex-wrap: wrap;
@@ -63,7 +64,6 @@
 
     li {
       gap: rem(4px);
-
 
       svg {
         color: #fff;

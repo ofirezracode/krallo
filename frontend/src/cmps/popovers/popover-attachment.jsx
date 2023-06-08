@@ -18,6 +18,7 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
             console.log(newAttach)
             setAttachments([...attachments, newAttach])
             onAttachmentAdded([...attachments, newAttach])
+            onClose()
         } catch (err) {
             console.log('err', err)
         }
@@ -32,6 +33,7 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
         if (title) newAttach.title = title
         setAttachments([...attachments, newAttach])
         onAttachmentAdded([...attachments, newAttach])
+        onClose()
     }
 
     return (

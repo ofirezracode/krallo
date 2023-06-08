@@ -46,7 +46,7 @@ export function BoardHeader({ onChangeTitle }) {
       inputWidth += 13
     } else if (charCode >= 97 && charCode <= 122) {
       // lowercase character
-      inputWidth += 10
+      inputWidth += 13
     } else {
       // punctuation, space, and other symbols
       inputWidth += 5
@@ -95,7 +95,7 @@ export function BoardHeader({ onChangeTitle }) {
           </button>
           <span>|</span>
           <div className="members">
-            {members?.length && members.map((member) => <img className="member-img" src={member.imgUrl} key={member._id} alt="" />)}
+            {members?.length && members.map((member, idx) => <div key={member._id} style={{ zIndex: { idx } }}><img className="member-img" src={member.imgUrl} key={member._id} alt="" /></div>)}
           </div>
           <button className="btn-fill" title="Share board">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -125,6 +125,6 @@ export function BoardHeader({ onChangeTitle }) {
         </li>
       </ul>
       <Popover {...popoverProps} onClose={onTogglePopover} />
-    </section>
+    </section >
   )
 }

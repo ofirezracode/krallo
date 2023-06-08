@@ -1,0 +1,24 @@
+.popover-edit-attachment {
+    height: rem(100px);
+
+    .edit-container {
+        height: rem(56px);
+        margin-block: rem(4px);
+
+        .input {
+            margin-block-start: rem(4px);
+        }
+
+        margin-block-end: rem(12px);
+    }
+
+    button {
+        width: rem(93.28px);
+        background-color: $btn-blue-hover;
+        color: #fff;
+
+        &:hover {
+            background-color: $btn-blue-hover;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { BsSquareHalf } from 'react-icons/bs'
+import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import { usePopover } from '../../customHooks/usePopover'
 import { Popover } from '../popover'
 
@@ -27,7 +27,7 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
               onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover')}
               className="flex center"
             >
-              <BsSquareHalf className="box-icon" />
+              <img src={CoverIcon} className="box-icon" alt="cover-icon" />
               <p>Cover</p>
             </button>
           </div>

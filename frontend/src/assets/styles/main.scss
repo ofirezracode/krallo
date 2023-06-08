@@ -44,10 +44,13 @@
 @import 'cmps/popovers/popover-labels/_label-editor.scss';
 @import 'cmps/popovers/_popover-members.scss';
 @import 'cmps/popovers/_popover-attachment.scss';
+@import 'cmps/popovers/_popover-delete-attachment.scss';
+@import 'cmps/popovers/_popover-edit-attachment.scss';
 @import 'cmps/popovers/_popover-cover.scss';
 @import 'cmps/popovers/_popover-cmp-header.scss';
 @import 'cmps/popovers/_popover-checklist';
 @import 'cmps/popovers/_popover-dates.scss';
+@import 'cmps/popovers/popover-delete-checklist';
 
 //Task Details
 @import 'cmps/task-details/_task-cover.scss';

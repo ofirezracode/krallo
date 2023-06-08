@@ -2,9 +2,10 @@ import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
 
-export function TaskAttachments({ task, onDeleteAttachment }) {
+export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, onEditAttachment, onOpenPopover }) {
     if (!task) return <Loader />
     const { attachments } = task
+    const handleFocus = (ev) => ev.target.select()
 
     if (!attachments) return <div></div>
     return (
@@ -17,6 +18,7 @@ export function TaskAttachments({ task, onDeleteAttachment }) {
                 {attachments.map((attachment) => {
                     // let modeImgColor = utilService.getAvgColor(attachment.url)
                     // let bgColor = { backgroundColor: modeImgColor }
+                    <div key={attachment._id}></div>
                     let boardStyle = { backgroundImage: `url(${attachment.url})` }
                     return (
                         <li key={attachment._id} className='flex'>
@@ -29,8 +31,13 @@ export function TaskAttachments({ task, onDeleteAttachment }) {
                                 <div className='attach-actions flex'>
                                     <span>Added {utilService.formatTime(attachment.uploadedAt)}</span>
                                     <span><button>Comment</button></span>
-                                    <span><button onClick={() => { onDeleteAttachment(attachment._id) }}>Delete</button></span>
-                                    <span><button>Edit</button></span>
+                                    {/* <span><button onClick={() => { onDeleteAttachment(attachment._id) }}>Delete</button></span> */}
+                                    <span><button onClick={(e) => onOpenPopover(e, { attachment, onDeleteAttachment }, 'delete-attachment')}>
+                                        Delete
+                                    </button></span>
+                                    <span><button onClick={(e) => onOpenPopover(e, { attachment, onEditAttachment, handleFocus }, 'edit-attachment')}>
+                                        Edit
+                                    </button></span>
 
                                 </div>
                             </div>
@@ -38,6 +45,11 @@ export function TaskAttachments({ task, onDeleteAttachment }) {
                     )
                 })}
             </ul >}
+            {attachments.length > 0 && <div>
+                <button className='btn' onClick={(e) => onOpenPopover(e, { task, onAttachmentAdded }, 'attachment')}>
+                    Add an attachment
+                </button>
+            </div>}
         </section >
     )
 }

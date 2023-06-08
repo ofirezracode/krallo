@@ -89,12 +89,20 @@
                             background-color: transparent;
                         }
                     }
-
-
                 }
             }
         }
-
-
     }
+
+    .btn {
+        width: rem(142.41px);
+        margin-inline-start: rem(40px);
+        margin-block-start: rem(8px);
+        margin-block-end: rem(16px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: rem(14px);
+    }
+
 }
