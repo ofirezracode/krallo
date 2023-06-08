@@ -2,9 +2,10 @@ import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
 
-export function TaskAttachments({ task, onDeleteAttachment, onEditAttachment, onOpenPopover }) {
+export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, onEditAttachment, onOpenPopover }) {
     if (!task) return <Loader />
     const { attachments } = task
+    const handleFocus = (ev) => ev.target.select()
 
     if (!attachments) return <div></div>
     return (
@@ -33,7 +34,7 @@ export function TaskAttachments({ task, onDeleteAttachment, onEditAttachment, on
                                     <span><button onClick={(e) => onOpenPopover(e, { attachment, onDeleteAttachment }, 'delete-attachment')}>
                                         Delete
                                     </button></span>
-                                    <span><button onClick={(e) => onOpenPopover(e, { attachment, onEditAttachment }, 'edit-attachment')}>
+                                    <span><button onClick={(e) => onOpenPopover(e, { attachment, onEditAttachment, handleFocus }, 'edit-attachment')}>
                                         Edit
                                     </button></span>
 
@@ -43,6 +44,11 @@ export function TaskAttachments({ task, onDeleteAttachment, onEditAttachment, on
                     )
                 })}
             </ul >}
+            {attachments.length > 0 && <div>
+                <button className='btn' onClick={(e) => onOpenPopover(e, { task, onAttachmentAdded }, 'attachment')}>
+                    Add an attachment
+                </button>
+            </div>}
         </section >
     )
 }

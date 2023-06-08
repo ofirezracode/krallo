@@ -199,8 +199,8 @@ export function TaskDetails() {
         <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
           <section className="card-details-container">
-            <ShowMembersLabels task={task} board={board} />
-            <TaskAttachments task={task} onDeleteAttachment={onDeleteAttachment} onEditAttachment={onEditAttachment} onOpenPopover={onOpenPopover} />
+            <ShowMembersLabels task={task} board={board} onOpenPopover={onOpenPopover} onLabelChange={onLabelChange} onLabelEdit={onLabelEdit} onLabelDelete={onLabelDelete} />
+            <TaskAttachments task={task} onAttachmentAdded={onAttachmentAdded} onDeleteAttachment={onDeleteAttachment} onEditAttachment={onEditAttachment} onOpenPopover={onOpenPopover} />
             <ChecklistIndex task={task} onDeleteChecklist={onDeleteChecklist} onOpenPopover={onOpenPopover} onEditChecklist={onEditChecklist} />
           </section>
           <ActionsList
@@ -213,6 +213,9 @@ export function TaskDetails() {
             onLabelEdit={onLabelEdit}
             onLabelDelete={onLabelDelete}
             onAddChecklist={onAddChecklist}
+          // colors={colors}
+          // coverStyle={coverStyle}
+          // onStyleChange={onStyleChange}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />

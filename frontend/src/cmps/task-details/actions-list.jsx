@@ -13,6 +13,9 @@ export function ActionsList({
   onLabelDelete,
   onAddChecklist,
   onDeleteChecklist,
+  // colors,
+  // coverStyle,
+  // onStyleChange
 }) {
   return (
     <section className="add-to-card-container">

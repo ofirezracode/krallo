@@ -1,11 +1,13 @@
 .indicator {
   display: flex;
   align-items: start;
+
   span {
     min-height: rem(20px);
     padding: rem(3px) rem(6px);
     gap: 4px;
     align-items: center;
+
     .indicator-icon {
       display: block;
       min-width: rem(16px);
@@ -13,6 +15,15 @@
       &.comments {
         margin-block-end: rem(1px);
       }
+    }
+
+    .clip-icon {
+      svg {
+        color: $icon;
+        stroke-width: 0;
+      }
+
+      width: rem(16px);
     }
 
     .description {

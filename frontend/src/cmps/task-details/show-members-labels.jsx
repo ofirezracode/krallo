@@ -4,7 +4,7 @@ import Tamar from '../../assets/img/members/tamar-pic.jpg'
 import { BsPlusLg } from 'react-icons/bs'
 import { useSelector } from 'react-redux'
 
-export function ShowMembersLabels({ task }) {
+export function ShowMembersLabels({ task, onOpenPopover, onLabelChange, onLabelEdit, onLabelDelete }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   if (!task || !board) return <div></div>
   const { members } = task
@@ -38,13 +38,16 @@ export function ShowMembersLabels({ task }) {
           <ul className="labels-list flex clean-list">
             {taskLabels.map((label, i) => (
               <li key={i}>
-                <button style={{ backgroundColor: label.backgroundColor }} className="label-btn">
+                <button
+                  style={{ backgroundColor: label.backgroundColor }} className="label-btn"
+                  onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete }, 'labels')}>
                   {label.title}
                 </button>
               </li>
             ))}
             <li>
-              <button className="add-label">
+              <button className="add-label"
+                onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete }, 'labels')}>
                 <BsPlusLg />
               </button>
             </li>
