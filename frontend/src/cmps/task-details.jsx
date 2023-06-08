@@ -62,7 +62,6 @@ export function TaskDetails() {
   }
 
   async function onAddChecklist(title) {
-    console.log('title@@@@', title)
 
     try {
       const activity = activityService.createActivity('add-checklist', user, task)

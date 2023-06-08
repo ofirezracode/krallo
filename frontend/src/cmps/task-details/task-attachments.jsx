@@ -18,6 +18,7 @@ export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, o
                 {attachments.map((attachment) => {
                     // let modeImgColor = utilService.getAvgColor(attachment.url)
                     // let bgColor = { backgroundColor: modeImgColor }
+                    <div key={attachment._id}></div>
                     let boardStyle = { backgroundImage: `url(${attachment.url})` }
                     return (
                         <li key={attachment._id} className='flex'>
