@@ -23,7 +23,6 @@ export function TaskDetails() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
-  const { attachments } = task
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, onTogglePopover] = usePopover()
   const taskDetails = useRef()
@@ -113,7 +112,6 @@ export function TaskDetails() {
   async function onAttachmentAdded(attachments) {
     try {
       const updatedTask = { ...task, attachments }
-      console.log(task)
       const activity = activityService.createActivity('add-attachment', user, task)
       await saveTask(board, updatedTask, activity)
     } catch (err) {
@@ -123,8 +121,8 @@ export function TaskDetails() {
 
   async function onDeleteAttachment(attachId) {
     try {
-      const attachIdx = attachments.findIndex(attachment => attachId === attachment._id)
-      const updatedTask = attachments.splice(attachIdx, 1)
+      const attachIdx = task.attachments.findIndex(attachment => attachId === attachment._id)
+      const updatedTask = task.attachments.splice(attachIdx, 1)
       const activity = activityService.createActivity('delete-attachment', user, task)
       await saveTask(board, updatedTask, activity)
     } catch (err) {
@@ -134,10 +132,10 @@ export function TaskDetails() {
 
   async function onEditAttachment(attachId, title) {
     try {
-      const attachmentIdx = attachments.findIndex(attachment => attachId === attachment._id)
-      if (attachments[attachmentIdx].title === title) return
-      const updatedAttachment = { ...attachments[attachmentIdx], title }
-      const updatedAttachments = [...attachments]
+      const attachmentIdx = task.attachments.findIndex(attachment => attachId === attachment._id)
+      if (task.attachments[attachmentIdx].title === title) return
+      const updatedAttachment = { ...task.attachments[attachmentIdx], title }
+      const updatedAttachments = [...task.attachments]
       updatedAttachments[attachmentIdx] = updatedAttachment
       const updatedTask = { ...task, attachments: updatedAttachments }
 
@@ -189,7 +187,7 @@ export function TaskDetails() {
 
   return (
     <section className="task-details-screen">
-      <div className="backdrop"></div>
+      {/* <div className="backdrop"></div> */}
       <article ref={taskDetails} className="task-details">
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
           <HiXMark className="close-icon" />
