@@ -22,44 +22,92 @@
             flex-flow: row wrap;
             justify-content: space-between;
 
-            form {
+            h3 {
+                min-height: 18px;
+                min-width: 40px;
+                width: auto;
+                color: $text;
 
-                input{
-                    background-color: #f0f2f4;
+                cursor: pointer;
+                
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                line-height: 20px;
+                font-size: 16px;
+                font-weight: 600;
+                font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+            }
+
+            form {
+                width: 100%;
+
+                textarea {
+                    background-color: #ffff;
                     color: $text;
-                    margin-block: rem(6px);
+                    height: 54px;
+                    resize: none;
+                    padding: rem(8px) rem(12px);
+                    overflow: hidden;
+                    overflow-wrap: break-word;
 
                     font-size: 16px;
-                    line-height: rem(20px);
+                    line-height: rem(19px);
                     font-weight: 500;
-                    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+                    font-weight: 700;
 
+                    box-shadow: inset 0 0 0 1px #091E4224;
                     border: none;
                     cursor: pointer;
+                    width: 100%
+                }
 
-                    // position: relative;
-                    // z-index: 2;
-                    // overflow: hidden;
-                    // text-overflow: ellipsis;
-                    // white-space: nowrap;
+                .textarea-btns {
+                    gap: rem(8px);
+
+                    .save {
+                        background-color: $btn-blue;
+                        color: #fff;
+
+                        &:hover {
+                            background-color: $btn-blue-hover;
+                        }
+                    }
+
+                    .x-btn {
+                        display: flex;
+                        align-items: center;
+                        color: #44546F;
+                        font-size: 24px;
+                        line-height: 32px;
+
+                        path {
+                            stroke-width: 0.4px;
+                        }
+                    }
                 }
             }
 
             .checklist-title-btns {
-                margin: 0 rem(2px) 0 auto;
+                flex: 1;
+                justify-content: end;
 
                 .btns {
+                    display: inline-flex;
+                    justify-content: center;
                     align-items: center;
+                    padding: rem(6px) rem(12px);
+
                     background-color: #091E420F;
+                    color: $text;
+
                     border: none;
                     border-radius: 3px;
-                    color: $text;
-                    display: inline-flex;
+
                     font-size: rem(14px);
                     font-weight: 400;
-                    justify-content: center;
                     line-height: rem(20px);
-                    padding: rem(6px) rem(12px);
                     text-decoration: none;
                     transition-duration: 85ms;
                     transition-property: background-color, border-color, box-shadow;
