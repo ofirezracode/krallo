@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { HiXMark } from 'react-icons/hi2'
 
-export function TodosPreview({ todo, onDeleteTodo, checklist, onEditTodo, onClose }) {
+export function TodosPreview({ todo, onDeleteTodo, checklist, onEditTodo }) {
     const [isEditing, setIsEditing] = useState(false)
     const handleFocus = (ev) => ev.target.select()
     const [todoTitle, setTodoTitle] = useState(todo.title)
@@ -28,21 +28,24 @@ export function TodosPreview({ todo, onDeleteTodo, checklist, onEditTodo, onClos
 
     return (
         <div>
-            <div className='checkbox'></div>
+
             {isEditing &&
-                <form onSubmit={onSubmit}>
-                    <textarea
-                        rows="2"
-                        value={todoTitle}
-                        onChange={handleChange}
-                        onFocus={handleFocus}
-                        onKeyPress={handleKeyPress}
-                    ></textarea>
-                    <div className='textarea-btns flex'>
-                        <button className='btn save'>add</button>
-                        <button className='x-btn'>Cancel</button>
-                    </div>
-                </form>}
+                <div className='todo-container-form'>
+                    <div className='checkbox'></div>
+                    <form onSubmit={onSubmit}>
+                        <textarea
+                            rows="2"
+                            value={todoTitle}
+                            onChange={handleChange}
+                            onFocus={handleFocus}
+                            onKeyPress={handleKeyPress}
+                        ></textarea>
+                        <div className='textarea-btns flex'>
+                            <button className='btn save'>Save</button>
+                            <button className='x-btn' onClick={toggleEditing}><HiXMark /></button>
+                        </div>
+                    </form>
+                </div>}
             {!isEditing &&
                 <div className="todo-container">
                     <div className='checkbox'></div>

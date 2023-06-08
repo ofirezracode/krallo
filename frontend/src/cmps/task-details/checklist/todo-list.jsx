@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TodosPreview } from './todos-preview';
 
-export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo, onClose}) {
+export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo}) {
     const [isAdding, setIsAdding] = useState(false);
     const handleFocus = (ev) => ev.target.select();
     const [todoTitle, setTodoTitle] = useState('');
@@ -28,10 +28,10 @@ export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo
 
     if (!todos) return <div></div>
     return (
-        <div>
-            <ul className='todos-list clean-list'>
+        <div className='todos-list '>
+            <ul className='clean-list'>
                 {todos && todos.map((todo) => (
-                    <li key={todo._id}><TodosPreview todo={todo} checklist={checklist} onDeleteTodo={onDeleteTodo} onEditTodo={onEditTodo} onClose={onClose}/>
+                    <li key={todo._id}><TodosPreview todo={todo} checklist={checklist} onDeleteTodo={onDeleteTodo} onEditTodo={onEditTodo} />
                     </li>
                 ))}
             </ul>
@@ -45,8 +45,8 @@ export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo
                         onKeyPress={handleKeyPress}
                     ></textarea>
                     <div className='textarea-btns flex'>
-                        <button className='btn save'>add</button>
-                        <button className='x-btn' onClick={onClose}>Cancel</button>
+                        <button className='btn save'>Add</button>
+                        <button className='close-area-btn' type="button" onClick={toggleAdding}>Cancel</button>
                     </div>
                 </form>}
             {!isAdding &&
