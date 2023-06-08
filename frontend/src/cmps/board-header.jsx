@@ -46,7 +46,7 @@ export function BoardHeader({ onChangeTitle }) {
       inputWidth += 13
     } else if (charCode >= 97 && charCode <= 122) {
       // lowercase character
-      inputWidth += 10
+      inputWidth += 13
     } else {
       // punctuation, space, and other symbols
       inputWidth += 5
