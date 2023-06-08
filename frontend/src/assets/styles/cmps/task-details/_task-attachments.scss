@@ -69,7 +69,24 @@
                 h4 {
                     margin-block-end: rem(2px);
                     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: rem(14px);
                     font-weight: 700;
+                    word-wrap: break-word;
+
+                    a {
+                        width: rem(23px);
+                        height: rem(19px);
+                        padding-inline-start: rem(3px);
+
+                        svg {
+                            height: rem(8px);
+
+                            path {
+                                stroke-width: rem(1.5px);
+                                color: $small-titles;
+                            }
+                        }
+                    }
                 }
 
                 .attach-actions {
