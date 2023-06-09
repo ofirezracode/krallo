@@ -1,0 +1,30 @@
+[
+  {
+    "fullname": "Etai",
+    "email": "etai@krallo.com",
+    "password": "123",
+    "isAdmin": true,
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+  },
+  {
+    "fullname": "Tamar",
+    "email": "tamar@krallo.com",
+    "password": "123",
+    "isAdmin": true,
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+  },
+  {
+    "fullname": "Ofir",
+    "email": "ofir@krallo.com",
+    "password": "123",
+    "isAdmin": true,
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+  },
+  {
+    "fullname": "User",
+    "email": "user@krallo.com",
+    "password": "123",
+    "isAdmin": false,
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+  }
+]
