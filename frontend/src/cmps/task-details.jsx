@@ -33,15 +33,6 @@ export function TaskDetails() {
     }
   }, [board])
 
-  // useEffect(() => {
-  //   console.log('reload')
-  //   if (boards.length !== 0) {
-  //     // setBoard(...boards.filter((board) => board._id === boardId))
-  //     console.log('boardService.getTaskById(board ? board : [], taskId)', boardService.getTaskById(board ? board : [], taskId))
-  //     setTask(boardService.getTaskById(board ? board : [], taskId))
-  //   }
-  // }, [boards])
-
   function onOpenPopover(e, props, type) {
     props.refElement = taskDetails.current
     setAddedProps(props)
@@ -80,6 +71,7 @@ async function onAddChecklist(title) {
     console.log('err', err)
   }
 }
+
 
 async function onStyleChange(newStyle) {
   try {
@@ -204,12 +196,9 @@ return (
           />
           <ChecklistIndex
             task={task}
-            // checklists={task.checklists}
-            // onDeleteChecklist={onDeleteChecklist}
             onOpenPopover={onOpenPopover}
             onUpdateChecklists={onUpdateChecklists}
-            // onEditChecklist={onEditChecklist}
-            // onDeleteTodo={onDeleteTodo}
+
           />
         </section>
         <ActionsList

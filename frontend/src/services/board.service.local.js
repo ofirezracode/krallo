@@ -954,8 +954,6 @@ const boards = [
         },
       },
     ],
-
-    cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
   },
   {
     title: 'Another project',
