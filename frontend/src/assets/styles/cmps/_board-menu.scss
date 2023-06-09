@@ -35,14 +35,24 @@
             position: absolute;
             right: 0;
             top: rem(6px);
+            color: $text-subtle;
         }
     }
 
-    .change-background {
-        .board-bg-img {
-            width: rem(20px);
-            height: rem(20px);
-            border-radius: 3px;
+    .menu-content {
+        button {
+            img {
+                width: rem(20px);
+                height: rem(20px);
+            }
+        }
+
+        .change-background {
+            .board-bg-img {
+                width: rem(20px);
+                height: rem(20px);
+                border-radius: 3px;
+            }
         }
     }
 }
