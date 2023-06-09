@@ -1,31 +1,31 @@
 [
   {
-    "fullname": "Etai",
+    "fullname": "Etai Levi",
     "email": "etai@krallo.com",
     "password": "123",
     "isAdmin": true,
-    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686183408/kowh8jqccgjywovvpedq.jpg"
   },
   {
-    "fullname": "Tamar",
+    "fullname": "Tamar Millgram",
     "email": "tamar@krallo.com",
     "password": "123",
     "isAdmin": true,
-    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956855/tamar-pic_ou0jnk.jpg"
   },
   {
-    "fullname": "Ofir",
+    "fullname": "Ofir Ezra",
     "email": "ofir@krallo.com",
     "password": "123",
     "isAdmin": true,
-    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956854/ofir-pic_niswho.jpg"
   },
   {
     "fullname": "User",
     "email": "user@krallo.com",
     "password": "123",
     "isAdmin": false,
-    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+    "imgUrl": ""
   },
   {
     "fullname": "Guest",
