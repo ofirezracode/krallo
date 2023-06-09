@@ -1,21 +1,21 @@
 // Setup
-@import 'setup/functions';
-@import 'setup/mixins';
-@import 'setup/typography';
-@import 'setup/variables';
+@import 'setup/_functions.scss';
+@import 'setup/_mixins.scss';
+@import 'setup/_typography.scss';
+@import 'setup/_variables.scss';
 
 // Basics
-@import 'basics/helpers';
-@import 'basics/layout';
-@import 'basics/base';
-@import 'basics/links';
-@import 'basics/forms';
+@import 'basics/_helpers.scss';
+@import 'basics/_layout.scss';
+@import 'basics/_base.scss';
+@import 'basics/_links.scss';
+@import 'basics/_forms.scss';
 
 // Views
 @import 'views/_home.scss';
 @import 'views/_workspaces.scss';
 @import 'views/_board-index.scss';
-@import 'views/login-signin';
+@import 'views/_login-signin.scss';
 
 // Components
 @import 'cmps/_app-header-home.scss';
@@ -28,7 +28,7 @@
 @import 'cmps/_board-menu.scss';
 @import 'cmps/_board-header.scss';
 @import 'cmps/_app-header.scss';
-@import 'cmps/user-img';
+@import 'cmps/_user-img.scss';
 @import 'cmps/_add-group.scss';
 @import 'cmps/_add-close-buttons.scss';
 @import 'cmps/_popover.scss';
@@ -64,9 +64,12 @@
 @import 'cmps/task-preview-indicators/_indicator.scss';
 
 //Checklist
-@import 'cmps/task-details/checklist/checklist-index';
-@import 'cmps/task-details/checklist/checklist-list';
-@import 'cmps/task-details/checklist/checklist-preview';
-@import 'cmps/task-details/checklist/progress-ber';
-@import 'cmps/task-details/checklist/todo-list';
-@import 'cmps/task-details/checklist/todo-preview';
+@import 'cmps/task-details/checklist/_checklist-index.scss';
+@import 'cmps/task-details/checklist/_checklist-list.scss';
+@import 'cmps/task-details/checklist/_checklist-preview.scss';
+@import 'cmps/task-details/checklist/_progress-ber.scss';
+@import 'cmps/task-details/checklist/_todo-list.scss';
+@import 'cmps/task-details/checklist/_todo-preview.scss';
+
+//Board Menu
+@import 'cmps/board-menu/_board-menu-title.scss';
