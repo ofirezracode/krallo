@@ -24,7 +24,9 @@ export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
         onUpdateChecklists(updatedChecklists, activity)
     }
 
-    function onDeleteTodo(todoId, checklistId) {
+    function onDeleteTodo(todoId, checklistId, e) {
+        e.preventDefault()
+        e.stopPropagation()
         const checklistIdx = localChecklists.findIndex((checklist) => checklistId === checklist._id)
         const todoIdx = localChecklists[checklistIdx].todos.findIndex((todo) => todoId === todo._id)
         const updatedChecklists = [...localChecklists]
@@ -42,13 +44,13 @@ export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
         onUpdateChecklists(updatedChecklists, activity)
     }
 
-    function onEditTodo(checklistId, title, todoId){
+    function onEditTodo(checklistId, todo) {
         const checklistIdx = localChecklists.findIndex((checklist) => checklistId === checklist._id)
-        const todoIdx = localChecklists[checklistIdx].todos.findIndex((todo) => todoId === todo._id)
-        if (localChecklists[checklistIdx].todos[todoIdx].title === title) return
-        const updatedTodo = { ...localChecklists[checklistIdx].todos[todoIdx],title: title}
-          const updatedChecklists = [...localChecklists]
-          updatedChecklists[checklistIdx].todos[todoIdx] = updatedTodo
+        const todoIdx = localChecklists[checklistIdx].todos.findIndex((t) => t._id === todo._id)
+        if (localChecklists[checklistIdx].todos[todoIdx].title === todo.title) return
+        const updatedTodo = { ...localChecklists[checklistIdx].todos[todoIdx], ...todo }
+        const updatedChecklists = [...localChecklists]
+        updatedChecklists[checklistIdx].todos[todoIdx] = updatedTodo
         const activity = ''
         onUpdateChecklists(updatedChecklists, activity)
     }
@@ -63,6 +65,7 @@ export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
         onUpdateChecklists(updatedChecklists, activity)
     }
 
+
     return (
         <div className='task-checklist-container'>
             <ChecklistList
@@ -73,7 +76,7 @@ export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
                 onAddTodo={onAddTodo}
                 onDeleteTodo={onDeleteTodo}
                 onEditTodo={onEditTodo}
-                 />
+            />
         </div>
     )
 }

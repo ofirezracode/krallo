@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { TodosPreview } from './todos-preview'
 
-export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo }) {
+export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo, calculateProgress }) {
   const [isAdding, setIsAdding] = useState(false)
   const handleFocus = (ev) => ev.target.select()
-  const [todoTitle, setTodoTitle] = useState('')
+  const [todoTitle, setTodoTitle] = useState('Add an item')
 
   function handleChange(ev) {
     setTodoTitle(ev.target.value)
@@ -48,7 +48,11 @@ export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo
           </div>
         </form>
       )}
-      {!isAdding && <button onClick={toggleAdding}>{/* <button className='checklist-add-btn'>Add an item</button> */}</button>}
+      {!isAdding && (
+        <button onClick={toggleAdding}>
+          <button className="checklist-add-btn">Add an item</button>
+        </button>
+      )}
     </div>
   )
 }

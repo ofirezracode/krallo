@@ -11,48 +11,61 @@
 
     transition: .1s ease-in;
 
-    box-shadow: 0px 8px 12px #091E4226, 0px 0px 0 #091E424F;
+    box-shadow: 0px 8px 12px #091e4264, 0px 0px 0 #091e4264;
 
     &.is-show-menu {
         right: 0;
     }
 
-    .menu-header {
-        height: rem(48px);
-        margin: 0 rem(6px) 0 rem(12px);
-        position: relative;
-        border-block-end: 1px solid $card-input-hover;
-
-        h3 {
-            font-size: rem(16px);
-            font-weight: 600;
-        }
-
-        svg {
-            width: rem(32px);
-            height: rem(32px);
-            padding: rem(6px);
-            position: absolute;
-            right: 0;
-            top: rem(6px);
-            color: $text-subtle;
-        }
+    button {
+        background-color: transparent;
     }
 
     .menu-content {
-        button {
-            img {
-                width: rem(20px);
-                height: rem(20px);
+        padding: rem(12px) rem(6px) rem(8px) rem(12px);
+
+        li {
+            flex-direction: row;
+            padding-inline: rem(12px) rem(6px);
+            border-radius: 3px;
+            cursor: pointer;
+
+            &>* {
+                font-family: $font-input;
+                font-weight: 600;
+                font-size: rem(14px);
+                color: $text-subtle;
+                display: flex;
+                flex-direction: row;
+                height: rem(32px);
+                align-items: center;
+                gap: rem(12px);
+
+                .board-about {
+                    height: rem(32px);
+                    gap: rem(5px);
+
+                    button {
+                        width: 100%;
+                        margin-inline-start: rem(10px);
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: $close-icon-hover-light;
             }
         }
 
-        .change-background {
+        button {
+
+            img,
             .board-bg-img {
                 width: rem(20px);
                 height: rem(20px);
                 border-radius: 3px;
             }
+
         }
     }
 }

@@ -1,0 +1,49 @@
+.menu-header {
+    height: rem(48px);
+    margin: 0 rem(6px) 0 rem(12px);
+    position: relative;
+    border-block-end: 1px solid $card-input-hover;
+
+    .arrow-left {
+        position: absolute;
+        left: 0;
+        top: rem(10px);
+
+        svg {
+            width: rem(28px);
+            height: rem(28px);
+            padding: rem(6px);
+            stroke-width: rem(.5px);
+            color: $text-subtle;
+
+            &:hover {
+                color: $blue-bolder;
+            }
+        }
+
+        transition: .2s ease-in-out;
+    }
+
+    .go-back {
+        left: rem(-32px);
+    }
+
+    h3 {
+        font-size: rem(16px);
+        font-weight: 600;
+    }
+
+    .x-icon {
+        position: absolute;
+        right: 0;
+        top: rem(6px);
+
+        svg {
+            width: rem(32px);
+            height: rem(32px);
+            padding: rem(6px);
+            stroke-width: rem(.5px);
+            color: $text-subtle;
+        }
+    }
+}

@@ -1,8 +1,17 @@
-import React from "react";
-import { HiXMark } from 'react-icons/hi2'
+import React, { useState } from "react";
 import KralloIcon from '../assets/img/svg/krallo-icon.svg'
+import { MenuTitle } from "./board-menu/board-menu-title";
+import { utilService } from "../services/util.service";
 
 export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
+  const [isOn, setIsOn] = useState(false)
+  const [title, setTitle] = useState('Menu')
+  const goBackClass = isOn ? 'go-back' : ''
+
+  function onChangeSettings(currTitle) {
+    setIsOn(prevIsOn => !prevIsOn)
+    setTitle(currTitle)
+  }
 
   let boardStyle = {}
   if (board.style) {
@@ -14,25 +23,34 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
   }
   return (
     <section className={`board-menu ${showMenuClass}`}>
-      <section className="menu-header flex center">
-        <h3>Menu</h3>
-        <button
-          title="Close the board menu" onClick={() => setIsMenuHidden(prevIsMenuHidden => !prevIsMenuHidden)}>
-          <HiXMark />
-        </button>
-      </section>
-      <section className="menu-content">
-        <button>
-          <h4>About this board</h4>
-          <img src={KralloIcon} alt="krallo-icon" />
-        </button>
-        <button className="change-background flex">
-          <div className="board-bg-img" style={boardStyle}></div>
-          <h4>Change background</h4>
-        </button>
+      <MenuTitle title={title} setIsMenuHidden={setIsMenuHidden} setIsOn={setIsOn} goBackClass={goBackClass} setTitle={setTitle} />
+      {isOn && <ul className="menu-content clean-list flex column">
+        <li className='board-about' onClick={() => onChangeSettings('About this board')}>
+          <button className=" align-center">
+            <img src={KralloIcon} alt="krallo-icon" />
+            <p>About this board</p>
+          </button>
+        </li>
+        <li className="change-background" onClick={() => onChangeSettings('Change background')}>
+          <button >
+            <div className="board-bg-img" style={boardStyle}></div>
+            <p>Change background</p>
+          </button>
+        </li>
+        {board.activities.map(activity =>
 
-      </section>
+          <li className="flex">
+            <img src={activity.byMember.imgUrl} alt={activity} />
+            <div>
 
-    </section>
+              <h4>{activity.byMember.fullname}</h4>
+              <p>{activity.txt}</p>
+              <p>{utilService.formatDate(activity.createdAt)}</p>
+            </div>
+          </li>)}
+      </ul>
+      }
+
+    </section >
   )
 }
