@@ -17,6 +17,7 @@ export function PopoverChecklist({ task, onClose, onAddChecklist }) {
     function onSubmit(ev) {
         ev.preventDefault()
         onAddChecklist(checklistTitle)
+        onClose()
     }
 
     return (

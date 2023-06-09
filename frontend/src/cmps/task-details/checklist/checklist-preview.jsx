@@ -6,10 +6,11 @@ import { ProgressBar } from './progress-bar';
 import { HiXMark } from 'react-icons/hi2'
 
 
-export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, onClose, onEditChecklist }) {
+export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, onClose, onEditChecklist, onDeleteTodo, onAddTodo, onEditTodo }) {
     const [checklistTitle, setChecklistTitle] = useState(checklist.title)
     const handleFocus = (ev) => ev.target.select()
     const [isEditing, setIsEditing] = useState(false);
+
 
     function handleChange(ev) {
         setChecklistTitle(ev.target.value)
@@ -33,6 +34,7 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
         setIsEditing(!isEditing);
     }
 
+
     return (
         <div>
             <div className="checklist" key={checklist._id}>
@@ -52,7 +54,6 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
                                     <button className='btn save'>Save</button>
                                     <button className='x-btn'><HiXMark /></button>
                                 </div>
-
                             </form>
                         ) : (
                             <button onClick={toggleEditing}>
@@ -66,8 +67,7 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
                     </div>
                 </div>
                 <ProgressBar checklist={checklist} />
-                <TodoList todos={checklist.todos} />
-                <button className='checklist-add-btn'>Add an item</button>
+                <TodoList todos={checklist.todos} checklist={checklist} onDeleteTodo={onDeleteTodo} onAddTodo={onAddTodo} onClose={onClose} onEditTodo={onEditTodo}/>
             </div>
         </div>
     )

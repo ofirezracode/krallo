@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { BsStar, BsStarFill } from 'react-icons/bs'
 import { updateBoard } from '../store/board.actions'
+import { BoardMenu } from './board-menu'
 import { Popover } from './popover'
 import { usePopover } from '../customHooks/usePopover'
 import { Loader } from './loader'
 import FilterIcon from '../assets/img/svg/filter-icon.svg'
 import { useSelector } from 'react-redux'
 
-export function BoardHeader({ onChangeTitle }) {
+export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [title, setTitle] = useState(board ? board.title : '')
+
   const handleFocus = (ev) => ev.target.select()
 
   const [popoverProps, onTogglePopover] = usePopover()
@@ -55,9 +57,9 @@ export function BoardHeader({ onChangeTitle }) {
 
   if (!board) return <Loader />
   return (
-    <section className="board-header-container">
+    <section className='board-header-container'>
       <div className="blur-header"></div>
-      <ul className="board-header clean-list flex align-center between">
+      <ul className={`board-header ${showMenuClass} clean-list flex align-center between `}>
         <li className="flex align-center">
           <div className="board-name">
             <form onSubmit={onSubmit}>
@@ -80,7 +82,7 @@ export function BoardHeader({ onChangeTitle }) {
             {board.isStarred ? <BsStarFill className="star-fill" /> : <BsStar className="star-empty" />}
           </button>
         </li>
-        <li className="flex align-center">
+        <li className="board-header-actions flex align-center">
           <button title="Filter cards" className="flex align-center">
             {/* <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -95,7 +97,7 @@ export function BoardHeader({ onChangeTitle }) {
           </button>
           <span>|</span>
           <div className="members">
-            {members?.length && members.map((member, idx) => <div key={member._id} style={{ zIndex: { idx } }}><img className="member-img" src={member.imgUrl} key={member._id} alt="" /></div>)}
+            {members?.length && members.map(member => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)}
           </div>
           <button className="btn-fill" title="Share board">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +114,7 @@ export function BoardHeader({ onChangeTitle }) {
             </svg>
             <p>Share</p>
           </button>
-          <button className="btn-more" title="Open the board menu">
+          <button className={`btn-more ${showMenuClass}`} title="Open the board menu" onClick={() => setIsMenuHidden(prevIsMenuHidden => !prevIsMenuHidden)}>
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -124,6 +126,7 @@ export function BoardHeader({ onChangeTitle }) {
           </button>
         </li>
       </ul>
+
       <Popover {...popoverProps} onClose={onTogglePopover} />
     </section >
   )

@@ -1,3 +1,4 @@
+import { BsArrowUpRight } from 'react-icons/bs'
 import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
@@ -27,7 +28,9 @@ export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, o
                                 <img src={attachment.url} alt={attachment.title} />
                             </div>
                             <div className='attach-details'>
-                                <h4>{attachment.title}</h4>
+                                <h4>{attachment.title}
+                                    <a href={attachment.url} target="_blank"><BsArrowUpRight /></a>
+                                </h4>
                                 <div className='attach-actions flex'>
                                     <span>Added {utilService.formatTime(attachment.uploadedAt)}</span>
                                     <span><button>Comment</button></span>

@@ -7,12 +7,15 @@ import { BoardHeader } from '../cmps/board-header'
 import { loadBoards, setCurrBoard, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service.local'
 import { Loader } from '../cmps/loader'
+import { BoardMenu } from '../cmps/board-menu'
 
 export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const { boardId } = useParams()
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
+  const [isMenuHidden, setIsMenuHidden] = useState(false)
+  const showMenuClass = isMenuHidden ? 'is-show-menu' : ''
 
   useEffect(() => {
     loadBoards()
@@ -97,14 +100,21 @@ export function BoardIndex() {
   return (
     <section style={boardStyle} className="board-index flex column">
       <Outlet />
-      <BoardHeader board={board} onChangeTitle={onChangeTitle} />
+      <BoardHeader
+        board={board}
+        onChangeTitle={onChangeTitle}
+        showMenuClass={showMenuClass}
+        setIsMenuHidden={setIsMenuHidden}
+      />
       <GroupList
         board={board}
         onDndTask={onMoveTask}
         onDndGroup={onMoveGroup}
         onUpdateGroupTitle={onUpdateGroupTitle}
         onAddGroup={onAddGroup}
+        showMenuClass={showMenuClass}
       />
+      <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} />
     </section>
   )
 }

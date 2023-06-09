@@ -1,2 +1,58 @@
 .board-menu {
+    position: fixed;
+    right: rem(-339px);
+    top: rem(48px);
+    width: rem(339px);
+    height: 100%;
+    background-color: $menu-bgc;
+    z-index: 80;
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+
+    transition: .1s ease-in;
+
+    box-shadow: 0px 8px 12px #091E4226, 0px 0px 0 #091E424F;
+
+    &.is-show-menu {
+        right: 0;
+    }
+
+    .menu-header {
+        height: rem(48px);
+        margin: 0 rem(6px) 0 rem(12px);
+        position: relative;
+        border-block-end: 1px solid $card-input-hover;
+
+        h3 {
+            font-size: rem(16px);
+            font-weight: 600;
+        }
+
+        svg {
+            width: rem(32px);
+            height: rem(32px);
+            padding: rem(6px);
+            position: absolute;
+            right: 0;
+            top: rem(6px);
+            color: $text-subtle;
+        }
+    }
+
+    .menu-content {
+        button {
+            img {
+                width: rem(20px);
+                height: rem(20px);
+            }
+        }
+
+        .change-background {
+            .board-bg-img {
+                width: rem(20px);
+                height: rem(20px);
+                border-radius: 3px;
+            }
+        }
+    }
 }
