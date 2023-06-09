@@ -28,7 +28,6 @@ export function BoardIndex() {
       const newBoard = boards.filter((board) => board._id === boardId)[0]
 
       setCurrBoard(newBoard)
-      console.log('{ boardId: newBoard._id }', { boardId: newBoard._id })
       loadActivities({ boardId: newBoard._id })
     }
   }, [boards])
@@ -106,7 +105,6 @@ export function BoardIndex() {
   }
   if (!board) return <Loader />
 
-  console.log('activities', activities)
   return (
     <section style={boardStyle} className="board-index flex column">
       <Outlet />

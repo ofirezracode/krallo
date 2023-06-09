@@ -5,14 +5,15 @@ import { utilService } from '../../../services/util.service'
 
 export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
 
-    const [localChecklists, setLocalChecklists] = useState(task.checklists ? [...task.checklists] : [])
+    const [localChecklists, setLocalChecklists] = useState(task && task.checklists ? [...task.checklists] : [])
 
 
     useEffect(() => {
-        if (task.checklists) setLocalChecklists(task.checklists)
+        if (task && task.checklists) setLocalChecklists(task.checklists)
     }, [task])
 
-    if (!task.checklists) return <div></div>
+    if (task && task.checklists) return <div></div>
+    // if (Object.keys(task).length > 0 && !task.checklists) return <div></div>
 
     function onDeleteChecklist(checklistId) {
         const checklistIdx = localChecklists.findIndex((checklist) => checklistId === checklist._id)
@@ -47,7 +48,7 @@ export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
     function onEditTodo(checklistId, todo) {
         const checklistIdx = localChecklists.findIndex((checklist) => checklistId === checklist._id)
         const todoIdx = localChecklists[checklistIdx].todos.findIndex((t) => t._id === todo._id)
-        if (localChecklists[checklistIdx].todos[todoIdx].title === todo.title) return
+        // if (localChecklists[checklistIdx].todos[todoIdx].title === todo.title) return
         const updatedTodo = { ...localChecklists[checklistIdx].todos[todoIdx], ...todo }
         const updatedChecklists = [...localChecklists]
         updatedChecklists[checklistIdx].todos[todoIdx] = updatedTodo
