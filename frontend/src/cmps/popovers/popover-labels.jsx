@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { BsPencilFill, BsCheck2 } from 'react-icons/bs'
+import { colorService } from '../../services/color.service'
+import { utilService } from '../../services/util.service'
 import { PopoverCmpHeader } from './popover-cmp-header'
 import { LabelEditor } from './popover-labels/label-editor'
-import { utilService } from '../../services/util.service'
-import { useSelector } from 'react-redux'
 import { Checkbox } from '../checkbox'
 
 export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdit, onLabelDelete }) {
@@ -107,14 +108,20 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
           <ul className="labels-list flex column">
             {filteredBoardLabels.map((label) => {
               const isLabelChecked = taskLabels ? taskLabels.some((labelId) => labelId === label._id) : false
+
               let labelStyle = { backgroundColor: '#091e420f' }
               if (label.color) labelStyle = { backgroundColor: label.color.code }
+
+              let colorClass = 'light-background'
+              if (colorService.isColorDark(labelStyle.backgroundColor)) colorClass = 'dark-background'
+
               const labelTitle = label.title ? label.title : ''
+
               return (
                 <li key={label._id}>
                   <Checkbox isChecked={isLabelChecked} onToggle={onClickLabel} onClickProps={label._id} />
-                  <button onClick={(e) => onClickLabel(e, label._id)} className="label-color" style={labelStyle}>
-                    {labelTitle}
+                  <button onClick={(e) => onClickLabel(e, label._id)} className={`label-color ${colorClass}`} style={labelStyle}>
+                    <label>{labelTitle}</label>
                   </button>
                   <button onClick={() => onClickEditLabel(label._id, label, labelTitle, 'edit')} className="edit-icon-btn flex center">
                     <BsPencilFill className="edit-icon" />

@@ -13,7 +13,7 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
   const goBackClass = isOn ? 'go-back' : ''
   const activities = useSelector((storeState) => storeState.activityModule.activities)
   const [setting, setSetting] = useState('')
-
+  console.log('activities', activities)
   function onChangeSettings(currTitle, settingName) {
     setIsOn(prevIsOn => !prevIsOn)
     setTitle(currTitle)
@@ -46,17 +46,21 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
               <p>Change background</p>
             </button>
           </li>
-          {/* {activities.map(activity =>
+          {activities.map(activity =>
 
-          <li className="flex">
-            {activity.byMember.imgUrl && <img src={activity.byMember.imgUrl} alt={activity} />}
-            <div>
+            <li className='activities flex' key={activity.fromUser._id}>
+              {activity.fromUser.imgUrl ?
+                <img src={activity.fromUser.imgUrl} alt={activity.fromUser.fullname} /> :
+                <div style={{ backgroundColor: utilService.getRandomColor() }}>
+                  {activity.fromUser.fullname.charAt(0).toUpperCase()}
+                </div>}
+              <div>
 
-              <h4>{activity.byMember.fullname}</h4>
-              <p>{activity.txt}</p>
-              <p>{utilService.formatDate(activity.createdAt)}</p>
-            </div>
-          </li>)} */}
+                <h4>{activity.fromUser.fullname}</h4>
+                <p>{activity.txt}</p>
+                <p>{utilService.formatDate(activity.createdAt)}</p>
+              </div>
+            </li>)}
         </ul>
       )}
       {setting === 'about' && <MenuAbout board={board} />}
