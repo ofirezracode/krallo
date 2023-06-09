@@ -26,5 +26,12 @@
     "password": "123",
     "isAdmin": false,
     "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+  },
+  {
+    "fullname": "Guest",
+    "email": "guest@krallo.com",
+    "password": "123",
+    "isAdmin": false,
+    "imgUrl": ""
   }
 ]
