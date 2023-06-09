@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TodosPreview } from './todos-preview'
+import { TodoPreview } from './todo-preview'
 
 export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo, calculateProgress }) {
   const [isAdding, setIsAdding] = useState(false)
@@ -33,7 +33,7 @@ export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo
         {todos &&
           todos.map((todo) => (
             <li key={todo._id}>
-              <TodosPreview todo={todo} checklist={checklist} onDeleteTodo={onDeleteTodo} onEditTodo={onEditTodo} />
+              <TodoPreview todo={todo} checklist={checklist} onDeleteTodo={onDeleteTodo} onEditTodo={onEditTodo} />
             </li>
           ))}
       </ul>
