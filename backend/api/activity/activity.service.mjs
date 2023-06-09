@@ -15,26 +15,35 @@ async function query(filterBy = {}) {
         {
           $match: criteria,
         },
-        // {
-        //   $lookup: {
-        //     localField: 'boardId',
-        //     from: 'boards',
-        //     foreignField: '_id',
-        //     as: 'fromBoard',
-        //   },
-        // },
-        // {
-        //   $unwind: '$fromBoard',
-        // },
+        {
+          $lookup: {
+            localField: 'byMemberId',
+            from: 'users',
+            foreignField: '_id',
+            as: 'fromUser',
+          },
+        },
+        {
+          $unwind: '$fromUser',
+        },
+        {
+          $project: {
+            _id: 1,
+            taskId: 1,
+            txt: 1,
+            'fromUser._id': 1,
+            'fromUser.fullname': 1,
+            'fromUser.imgUrl': 1,
+          },
+        },
       ])
       .toArray()
 
-    // logger.debug(activities)
-    // activities = activities.map((activity) => {
-    //   activity.byMember = { _id: activity.byUser._id, fullname: activity.byUser.fullname, imgUrl: activity.byUser.imgUrl }
-    //   delete activity.byMemberId
-    //   return activity
-    // })
+    activities = activities.map((activity) => {
+      activity.createdAt = activity._id.getTimestamp().getTime()
+      delete activity.byMemberId
+      return activity
+    })
 
     return activities
   } catch (err) {
