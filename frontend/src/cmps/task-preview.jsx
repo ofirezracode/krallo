@@ -7,6 +7,7 @@ import { utilService } from '../services/util.service'
 import { IndicatorDueDate } from './task-preview-indicators/indicator-due-date'
 import { Indicator } from './task-preview-indicators/indicator'
 import { UsersList } from './users-list'
+import { colorService } from '../services/color.service'
 
 export function TaskPreview({ boardId, taskToPrev }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -64,11 +65,18 @@ export function TaskPreview({ boardId, taskToPrev }) {
     { total: 0, finished: 0 }
   )
 
+  let colorClass = 'light-background'
+  if (previewStyle.backgroundColor) {
+    if (colorService.isColorDark(previewStyle.backgroundColor)) colorClass = 'dark-background'
+  } else {
+    colorClass = ''
+  }
+
   return (
     <article className="task-preview" onClick={onOpenTaskDetails}>
       {previewStyle.backgroundColor && (
-        <div className={`preview-cover flex ${typeClass}`} style={previewStyle}>
-          {typeClass === 'full' && <h4 className={`f${previewStyle.backgroundColor.substring(1)}`}>{task.title}</h4>}
+        <div className={`preview-cover flex ${typeClass} ${colorClass}`} style={previewStyle}>
+          {typeClass === 'full' && <h4>{task.title}</h4>}
         </div>
       )}
       {typeClass !== 'full' && (
