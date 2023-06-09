@@ -1,34 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 export function ProgressBar({ checklist }) {
-    const [progress, setProgress] = useState(0)
-  
+  const [progress, setProgress] = useState(0)
 
-    console.log('checklist',checklist);
-    useEffect(() => {
-      calculateProgress()
-    }, [checklist])
-  
-    function calculateProgress() {
-      if (!checklist || !checklist.todos || checklist.todos.length === 0) {
-        setProgress(0)
-        return
-      }
-  
-      const completedTodos = checklist.todos.filter((todo) => todo.isDone)
-      const progress = (completedTodos.length / checklist.todos.length) * 100
-      setProgress(Math.round(progress))
+  useEffect(() => {
+    calculateProgress()
+  }, [checklist])
+
+  function calculateProgress() {
+    if (!checklist || !checklist.todos || checklist.todos.length === 0) {
+      setProgress(0)
+      return
     }
-  
-    return (
-      <div className='checklist-progress'>
-        <span>{`${progress}%`}</span>
-        <div className='checklist-progress-bar'>
-          <div className='progress-bar'>
-            <div className='progress-bar-current' style={{ width: `${progress}%` }}></div>
-          </div>
+
+    const completedTodos = checklist.todos.filter((todo) => todo.isDone)
+    const progress = (completedTodos.length / checklist.todos.length) * 100
+    setProgress(Math.round(progress))
+  }
+
+  return (
+    <div className="checklist-progress">
+      <span>{`${progress}%`}</span>
+      <div className="checklist-progress-bar">
+        <div className="progress-bar">
+          <div className="progress-bar-current" style={{ width: `${progress}%` }}></div>
         </div>
       </div>
-    )
-  }
-  
+    </div>
+  )
+}

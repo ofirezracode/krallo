@@ -49,8 +49,8 @@ export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo
         </form>
       )}
       {!isAdding && (
-        <button onClick={toggleAdding}>
-          <button className="checklist-add-btn">Add an item</button>
+        <button className="checklist-add-btn" onClick={toggleAdding}>
+          Add an item
         </button>
       )}
     </div>

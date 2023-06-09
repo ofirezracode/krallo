@@ -1,11 +1,12 @@
 import { BsChevronLeft } from "react-icons/bs";
 import { HiXMark } from "react-icons/hi2";
 
-export function MenuTitle({ title, setIsMenuHidden, setIsOn, goBackClass, setTitle }) {
+export function MenuTitle({ title, setIsMenuHidden, setIsOn, goBackClass, setTitle, setSetting }) {
 
     function onGoBack() {
         setIsOn(prevIsOn => !prevIsOn)
         setTitle('Menu')
+        setSetting('')
     }
 
     function onCloseMenu() {
@@ -13,6 +14,7 @@ export function MenuTitle({ title, setIsMenuHidden, setIsOn, goBackClass, setTit
         setIsMenuHidden(prevIsMenuHidden => !prevIsMenuHidden)
         setTitle('Menu')
         setIsOn(true)
+        setSetting('')
     }
 
     return (

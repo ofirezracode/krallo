@@ -29,21 +29,21 @@ function createActivity(boardId, activityType, byMember, task, groupName = '') {
   }
 
   if (activityType === 'add') {
-    activity.txt = `${byMember.fullname ? byMember.fullname : 'Ghost'} added ${task.title} to ${groupName}`
+    activity.txt = ` added ${task.title} to ${groupName}`
   } else if (activityType === 'add-member') {
-    activity.txt = `${byMember.fullname} joined ${task.title}`
+    activity.txt = ` joined ${task.title}`
   } else if (activityType === 'remove-member') {
-    activity.txt = `${byMember.fullname} left ${task.title}`
+    activity.txt = ` left ${task.title}`
   } else if (activityType === 'add-attachment') {
-    activity.txt = `${byMember.fullname} attached to ${task.title}`
+    activity.txt = ` attached to ${task.title}`
   } else if (activityType === 'delete-attachment') {
-    activity.txt = `${byMember.fullname} deleted an attachment from ${task.title}`
+    activity.txt = ` deleted an attachment from ${task.title}`
   } else if (activityType === 'add-checklist') {
-    activity.txt = `${byMember.fullname} added Checklist to ${task.title}`
+    activity.txt = ` added Checklist to ${task.title}`
   } else if (activityType === 'delete-checklist') {
-    activity.txt = `${byMember.fullname} removed Checklist from ${task.title}`
+    activity.txt = ` removed Checklist from ${task.title}`
   } else if (activityType === 'updated-checklist') {
-    activity.txt = `${byMember.fullname} updated checklist title at ${task.title}`
+    activity.txt = ` updated checklist title at ${task.title}`
   }
   return activity
 }
