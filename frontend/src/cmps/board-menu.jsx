@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import KralloIcon from '../assets/img/svg/krallo-icon.svg'
 import { MenuTitle } from "./board-menu/board-menu-title";
 import { utilService } from "../services/util.service";
+import { useSelector } from "react-redux";
 
 export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
-  const [isOn, setIsOn] = useState(false)
+  const [isOn, setIsOn] = useState(true)
   const [title, setTitle] = useState('Menu')
   const goBackClass = isOn ? 'go-back' : ''
+  const activities = useSelector((storeState) => storeState.activityModule.activities)
 
   function onChangeSettings(currTitle) {
     setIsOn(prevIsOn => !prevIsOn)
@@ -37,17 +39,17 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
             <p>Change background</p>
           </button>
         </li>
-        {board.activities.map(activity =>
+        {/* {activities.map(activity =>
 
           <li className="flex">
-            <img src={activity.byMember.imgUrl} alt={activity} />
+            {activity.byMember.imgUrl && <img src={activity.byMember.imgUrl} alt={activity} />}
             <div>
 
               <h4>{activity.byMember.fullname}</h4>
               <p>{activity.txt}</p>
               <p>{utilService.formatDate(activity.createdAt)}</p>
             </div>
-          </li>)}
+          </li>)} */}
       </ul>
       }
 
