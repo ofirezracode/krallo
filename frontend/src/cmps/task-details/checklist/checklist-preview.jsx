@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BsCheck2Square } from "react-icons/bs";
 import { TodoList } from './todo-list';
 import { useState } from 'react'
@@ -10,7 +10,14 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
     const [checklistTitle, setChecklistTitle] = useState(checklist.title)
     const handleFocus = (ev) => ev.target.select()
     const [isEditing, setIsEditing] = useState(false);
+    console.log(checklist, 'checklist')
+    const [currChecklist, setCurrChecklist] = useState(checklist ? {...checklist} : {})
 
+    useEffect(()=>{
+        if(checklist) {
+            setCurrChecklist({...checklist})
+        }
+    },[checklist])
 
     function handleChange(ev) {
         setChecklistTitle(ev.target.value)
@@ -32,6 +39,15 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
 
     function toggleEditing() {
         setIsEditing(!isEditing);
+    }
+
+    function onTodoEdited(checklistId, newTodo) {
+        // const todoIdx = currChecklist.todos.findIndex((t) => t._id === todo._id)
+        // if (currChecklist.todos[todoIdx].title === todo.title) return
+        // const updatedTodo = { ...currChecklist.todos[todoIdx], ...todo }
+        // const updatedChecklists = [...localChecklists]
+        // updatedChecklists[checklistIdx].todos[todoIdx] = updatedTodo
+        onEditTodo(checklistId, newTodo)
     }
 
 
@@ -66,8 +82,8 @@ export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, 
                         </div>}
                     </div>
                 </div>
-                <ProgressBar checklist={checklist} />
-                <TodoList todos={checklist.todos} checklist={checklist} onDeleteTodo={onDeleteTodo} onAddTodo={onAddTodo} onClose={onClose} onEditTodo={onEditTodo}/>
+                <ProgressBar checklist={currChecklist} />
+                <TodoList todos={checklist.todos} checklist={checklist} onDeleteTodo={onDeleteTodo} onAddTodo={onAddTodo} onClose={onClose} onEditTodo={onTodoEdited}/>
             </div>
         </div>
     )
