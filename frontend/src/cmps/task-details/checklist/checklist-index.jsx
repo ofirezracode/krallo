@@ -12,6 +12,8 @@ export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
         if (task.checklists) setLocalChecklists(task.checklists)
     }, [task])
 
+    if (!task.checklists) return <div></div>
+
     function onDeleteChecklist(checklistId) {
         const checklistIdx = localChecklists.findIndex((checklist) => checklistId === checklist._id)
         const updatedChecklists = [...localChecklists]
@@ -61,7 +63,6 @@ export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
         onUpdateChecklists(updatedChecklists, activity)
     }
 
-    if (!task.checklists) return <div></div>
     return (
         <div className='task-checklist-container'>
             <ChecklistList
