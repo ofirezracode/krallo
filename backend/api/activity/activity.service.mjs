@@ -6,32 +6,35 @@ const { ObjectId } = mongodb
 
 async function query(filterBy = {}) {
   try {
+    logger.debug(filterBy)
     const criteria = _buildCriteria(filterBy)
+    logger.debug(criteria)
     const collection = await dbService.getCollection('activities')
     let activities = await collection
       .aggregate([
         {
           $match: criteria,
         },
-        {
-          $lookup: {
-            localField: 'byMemberId',
-            from: 'users',
-            foreignField: '_id',
-            as: 'byMember',
-          },
-        },
-        {
-          $unwind: '$byMember',
-        },
+        // {
+        //   $lookup: {
+        //     localField: 'boardId',
+        //     from: 'boards',
+        //     foreignField: '_id',
+        //     as: 'fromBoard',
+        //   },
+        // },
+        // {
+        //   $unwind: '$fromBoard',
+        // },
       ])
       .toArray()
 
-    activities = activities.map((activity) => {
-      activity.byMember = { _id: activity.byUser._id, fullname: activity.byUser.fullname, imgUrl: activity.byUser.imgUrl }
-      delete activity.byMemberId
-      return activity
-    })
+    // logger.debug(activities)
+    // activities = activities.map((activity) => {
+    //   activity.byMember = { _id: activity.byUser._id, fullname: activity.byUser.fullname, imgUrl: activity.byUser.imgUrl }
+    //   delete activity.byMemberId
+    //   return activity
+    // })
 
     return activities
   } catch (err) {
@@ -61,6 +64,7 @@ async function add(activity) {
     logger.debug('activity', activity)
     const activityToAdd = {
       ...activity,
+      boardId: ObjectId(activity.boardId),
       byMemberId: ObjectId(activity.byMemberId),
     }
     logger.debug('activityToAdd', activityToAdd)
@@ -75,7 +79,7 @@ async function add(activity) {
 
 function _buildCriteria(filterBy) {
   const criteria = {}
-  if (filterBy.boardId) criteria.boardId = filterBy.boardId
+  if (filterBy.boardId) criteria.boardId = new ObjectId(filterBy.boardId)
   return criteria
 }
 

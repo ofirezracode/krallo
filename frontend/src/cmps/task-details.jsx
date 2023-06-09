@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { useNavigate } from 'react-router-dom'
-import { boardService } from '../services/board.service.local'
+import { boardService } from '../services/board.service'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
 import { ShowMembersLabels } from './task-details/show-members-labels'
@@ -15,6 +15,7 @@ import { activityService, createActivity } from '../services/activity.service'
 import { TaskAttachments } from './task-details/task-attachments'
 import { ChecklistIndex } from './task-details/checklist/checklist-index'
 import { utilService } from '../services/util.service'
+import { addActivity } from '../store/activity.actions'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -50,9 +51,10 @@ export function TaskDetails() {
 
   async function onHandleTaskMembers(activityType, member) {
     try {
-      let activity = activityService.createActivity(activityType, user, member, task)
+      let activity = activityService.createActivity(board._id, activityType, user, member, task)
       const updatedTask = boardService.toggleMemberOnTask(task, member, activityType)
       await saveTask(board, updatedTask, activity)
+      await addActivity(activity)
     } catch (err) {
       console.log('err', err)
     }
@@ -61,175 +63,178 @@ export function TaskDetails() {
   async function onUpdateChecklists(updatedChecklists, activityType) {
     try {
       const updatedTask = { ...task, checklists: updatedChecklists }
-      const activity = activityService.createActivity(activityType, user, task)
+      const activity = activityService.createActivity(board._id, activityType, user, task)
       await saveTask(board, updatedTask, activity)
+      await addActivity(activity)
     } catch (err) {
       console.log('err', err)
     }
   }
 
-
-async function onAddChecklist(title) {
-  try {
-    const activity = activityService.createActivity('add-checklist', user, task)
-    const newChecklist = { _id: utilService.makeId(), title, todos: [] }
-    const newChecklists = [...task.checklists, newChecklist]
-    const updatedTask = { ...task, checklists: newChecklists }
-    await saveTask(board, updatedTask, activity)
-  } catch (err) {
-    console.log('err', err)
+  async function onAddChecklist(title) {
+    try {
+      const activity = activityService.createActivity(board._id, 'add-checklist', user, task)
+      const newChecklist = { _id: utilService.makeId(), title, todos: [] }
+      const newChecklists = [...task.checklists, newChecklist]
+      const updatedTask = { ...task, checklists: newChecklists }
+      await saveTask(board, updatedTask, activity)
+      await addActivity(activity)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
-}
 
-async function onStyleChange(newStyle) {
-  try {
-    const updatedTask = { ...task, style: newStyle }
-    await saveTask(board, updatedTask)
-  } catch (err) {
-    console.log('err', err)
+  async function onStyleChange(newStyle) {
+    try {
+      const updatedTask = { ...task, style: newStyle }
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
-}
 
-async function onAttachmentAdded(attachments) {
-  try {
-    const updatedTask = { ...task, attachments }
-    const activity = activityService.createActivity('add-attachment', user, task)
-    await saveTask(board, updatedTask, activity)
-  } catch (err) {
-    console.log('err', err)
+  async function onAttachmentAdded(attachments) {
+    try {
+      const updatedTask = { ...task, attachments }
+      const activity = activityService.createActivity(board._id, 'add-attachment', user, task)
+      await saveTask(board, updatedTask, activity)
+      await addActivity(activity)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
-}
 
-async function onDueDateSave(dueDate) {
-  try {
-    const updatedTask = { ...task, dueDate }
-    console.log(updatedTask)
-    await saveTask(board, updatedTask)
-  } catch (err) {
-    console.log('err', err)
+  async function onDueDateSave(dueDate) {
+    try {
+      const updatedTask = { ...task, dueDate }
+      console.log(updatedTask)
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
-}
 
-async function onDeleteAttachment(attachId) {
-  try {
-    const attachIdx = task.attachments.findIndex(attachment => attachId === attachment._id)
-    const updatedTask = task.attachments.splice(attachIdx, 1)
-    const activity = activityService.createActivity('delete-attachment', user, task)
-    await saveTask(board, updatedTask, activity)
-  } catch (err) {
-    console.error('err', err)
+  async function onDeleteAttachment(attachId) {
+    try {
+      const attachIdx = task.attachments.findIndex((attachment) => attachId === attachment._id)
+      const updatedTask = task.attachments.splice(attachIdx, 1)
+      const activity = activityService.createActivity(board._id, 'delete-attachment', user, task)
+      await saveTask(board, updatedTask, activity)
+      await addActivity(activity)
+    } catch (err) {
+      console.error('err', err)
+    }
   }
-}
 
-async function onEditAttachment(attachId, title) {
-  try {
-    const attachmentIdx = task.attachments.findIndex(attachment => attachId === attachment._id)
-    if (task.attachments[attachmentIdx].title === title) return
-    const updatedAttachment = { ...task.attachments[attachmentIdx], title }
-    const updatedAttachments = [...task.attachments]
-    updatedAttachments[attachmentIdx] = updatedAttachment
-    const updatedTask = { ...task, attachments: updatedAttachments }
+  async function onEditAttachment(attachId, title) {
+    try {
+      const attachmentIdx = task.attachments.findIndex((attachment) => attachId === attachment._id)
+      if (task.attachments[attachmentIdx].title === title) return
+      const updatedAttachment = { ...task.attachments[attachmentIdx], title }
+      const updatedAttachments = [...task.attachments]
+      updatedAttachments[attachmentIdx] = updatedAttachment
+      const updatedTask = { ...task, attachments: updatedAttachments }
 
-    console.log(updatedTask)
-    await saveTask(board, updatedTask)
-  } catch (err) {
-    console.error('err', err)
+      console.log(updatedTask)
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.error('err', err)
+    }
   }
-}
 
-async function onLabelDelete(editedBoardLabels, labelToDelete) {
-  try {
-    let newBoard = { ...board, labels: editedBoardLabels }
-    newBoard = boardService.removeLabelFromTasks(newBoard, labelToDelete._id)
-    await updateBoard(newBoard)
-  } catch (err) {
-    console.log('err', err)
+  async function onLabelDelete(editedBoardLabels, labelToDelete) {
+    try {
+      let newBoard = { ...board, labels: editedBoardLabels }
+      newBoard = boardService.removeLabelFromTasks(newBoard, labelToDelete._id)
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
-}
 
-async function onLabelChange(board, newLabelIds) {
-  try {
-    console.log('newLabelIds', newLabelIds)
-    const updatedTask = { ...task, labelIds: newLabelIds }
-    await saveTask(board, updatedTask)
-  } catch (err) {
-    console.log('err', err)
+  async function onLabelChange(board, newLabelIds) {
+    try {
+      console.log('newLabelIds', newLabelIds)
+      const updatedTask = { ...task, labelIds: newLabelIds }
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
-}
 
-async function onLabelEdit(editedBoardLabels) {
-  try {
-    const newBoard = { ...board, labels: editedBoardLabels }
-    await updateBoard(newBoard)
-  } catch (err) {
-    console.log('err', err)
+  async function onLabelEdit(editedBoardLabels) {
+    try {
+      const newBoard = { ...board, labels: editedBoardLabels }
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
-}
 
-async function onLabelDelete(editedBoardLabels, labelToDelete) {
-  try {
-    let newBoard = { ...board, labels: editedBoardLabels }
-    newBoard = boardService.removeLabelFromTasks(newBoard, labelToDelete._id)
-    await updateBoard(newBoard)
-  } catch (err) {
-    console.log('err', err)
+  async function onLabelDelete(editedBoardLabels, labelToDelete) {
+    try {
+      let newBoard = { ...board, labels: editedBoardLabels }
+      newBoard = boardService.removeLabelFromTasks(newBoard, labelToDelete._id)
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
-}
 
-return (
-  <section className="task-details-screen">
-    {/* <div className="backdrop"></div> */}
-    <article ref={taskDetails} className="task-details">
-      <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
-        <HiXMark className="close-icon" />
-      </button>
-      <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
-      <TaskDetailsHeader task={task} board={board} />
-      <section className="task-details-container">
-        <section className="card-details-container flex column">
-          <ShowMembersLabels
+  return (
+    <section className="task-details-screen">
+      {/* <div className="backdrop"></div> */}
+      <article ref={taskDetails} className="task-details">
+        <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
+          <HiXMark className="close-icon" />
+        </button>
+        <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
+        <TaskDetailsHeader task={task} board={board} />
+        <section className="task-details-container">
+          <section className="card-details-container flex column">
+            <ShowMembersLabels
+              task={task}
+              board={board}
+              onOpenPopover={onOpenPopover}
+              onLabelChange={onLabelChange}
+              onLabelEdit={onLabelEdit}
+              onLabelDelete={onLabelDelete}
+            />
+            <TaskAttachments
+              task={task}
+              onAttachmentAdded={onAttachmentAdded}
+              onDeleteAttachment={onDeleteAttachment}
+              onEditAttachment={onEditAttachment}
+              onOpenPopover={onOpenPopover}
+            />
+            <ChecklistIndex
+              task={task}
+              // checklists={task.checklists}
+              // onDeleteChecklist={onDeleteChecklist}
+              onOpenPopover={onOpenPopover}
+              onUpdateChecklists={onUpdateChecklists}
+              // onEditChecklist={onEditChecklist}
+              // onDeleteTodo={onDeleteTodo}
+            />
+          </section>
+          <ActionsList
             task={task}
-            board={board}
+            onHandleTaskMembers={onHandleTaskMembers}
             onOpenPopover={onOpenPopover}
+            board={board}
+            onAttachmentAdded={onAttachmentAdded}
             onLabelChange={onLabelChange}
             onLabelEdit={onLabelEdit}
             onLabelDelete={onLabelDelete}
-          />
-          <TaskAttachments
-            task={task}
-            onAttachmentAdded={onAttachmentAdded}
-            onDeleteAttachment={onDeleteAttachment}
-            onEditAttachment={onEditAttachment}
-            onOpenPopover={onOpenPopover}
-          />
-          <ChecklistIndex
-            task={task}
-            // checklists={task.checklists}
-            // onDeleteChecklist={onDeleteChecklist}
-            onOpenPopover={onOpenPopover}
-            onUpdateChecklists={onUpdateChecklists}
-            // onEditChecklist={onEditChecklist}
-            // onDeleteTodo={onDeleteTodo}
+            onAddChecklist={onAddChecklist}
+            // colors={colors}
+            // coverStyle={coverStyle}
+            // onStyleChange={onStyleChange}
+            onDueDateSave={onDueDateSave}
           />
         </section>
-        <ActionsList
-          task={task}
-          onHandleTaskMembers={onHandleTaskMembers}
-          onOpenPopover={onOpenPopover}
-          board={board}
-          onAttachmentAdded={onAttachmentAdded}
-          onLabelChange={onLabelChange}
-          onLabelEdit={onLabelEdit}
-          onLabelDelete={onLabelDelete}
-          onAddChecklist={onAddChecklist}
-          // colors={colors}
-          // coverStyle={coverStyle}
-          // onStyleChange={onStyleChange}
-          onDueDateSave={onDueDateSave}
-        />
-      </section>
-      <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
-    </article>
-  </section>
-)
+        <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
+      </article>
+    </section>
+  )
 }

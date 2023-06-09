@@ -1,4 +1,4 @@
-import { boardService } from '../services/board.service.local'
+import { boardService } from '../services/board.service'
 
 export const SET_BOARDS = 'SET_BOARDS'
 export const SET_BOARD = 'SET_BOARD'

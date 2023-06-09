@@ -2,14 +2,14 @@ import { createStore, combineReducers } from 'redux'
 
 import { boardReducer } from './board.reducer.js'
 import { userReducer } from './user.reducer.js'
-// import { reviewReducer } from './review.reducer'
+import { activityReducer } from './activity.reducer'
 // import { systemReducer } from './system.reducer'
 
 const rootReducer = combineReducers({
   boardModule: boardReducer,
   userModule: userReducer,
   // systemModule: systemReducer,
-  // reviewModule: reviewReducer,
+  activityModule: activityReducer,
 })
 
 const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : undefined

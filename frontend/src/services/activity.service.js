@@ -1,29 +1,31 @@
-import { utilService } from './util.service'
+import { httpService } from './http.service'
+
+const API_URL = 'activity'
 
 export const activityService = {
+  add,
+  query,
+  remove,
   createActivity,
 }
 
-// {
-//   _id: 'a101',
-//   txt: 'Changed Color',
-//   createdAt: 154514,
-//   byMember: {
-//     _id: 'u103',
-//     fullname: 'Etai Levi',
-//     imgUrl: '../assets/img/members/etai-pic.jpg',
-//   },
-//   task: {
-//     _id: 'c101',
-//     title: 'Replace Logo',
-//   },
-// },
+function query(filterBy) {
+  return httpService.get(`${API_URL}/${filterBy.boardId}`)
+}
 
-function createActivity(activityType, byMember, task, groupName = '') {
+async function remove(reviewId) {
+  await httpService.delete(`${API_URL}/${reviewId}`)
+}
+
+async function add(activity) {
+  return await httpService.post(API_URL, activity)
+}
+
+function createActivity(boardId, activityType, byMember, task, groupName = '') {
   const activity = {
-    _id: utilService.makeId(),
-    byMember,
-    task,
+    boardId,
+    byMemberId: byMember._id,
+    taskId: task._id,
   }
 
   if (activityType === 'add') {
@@ -38,9 +40,9 @@ function createActivity(activityType, byMember, task, groupName = '') {
     activity.txt = `${byMember.fullname} deleted an attachment from ${task.title}`
   } else if (activityType === 'add-checklist') {
     activity.txt = `${byMember.fullname} added Checklist to ${task.title}`
-  }else if (activityType === 'delete-checklist') {
+  } else if (activityType === 'delete-checklist') {
     activity.txt = `${byMember.fullname} removed Checklist from ${task.title}`
-  }else if (activityType === 'updated-checklist') {
+  } else if (activityType === 'updated-checklist') {
     activity.txt = `${byMember.fullname} updated checklist title at ${task.title}`
   }
   return activity

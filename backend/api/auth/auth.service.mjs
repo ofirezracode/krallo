@@ -19,6 +19,8 @@ async function login(email, password) {
   const user = await userService.getByEmail(email)
   if (!user) return Promise.reject('Invalid email or password')
 
+  //remove line when implamenting login with pass
+  password = '123'
   const match = await bcrypt.compare(password, user.password)
   if (!match) return Promise.reject('Invalid email or password')
 
@@ -31,7 +33,9 @@ async function signup({ email, password, fullname, imgUrl }) {
   const saltRounds = 10
 
   logger.debug(`auth.service - signup with email: ${email}, fullname: ${fullname}`)
-  if (!email || !password || !email) return Promise.reject('Missing required signup information')
+  //remove after password is implamented
+  password = password ? password : '123'
+  if (!email || !password) return Promise.reject('Missing required signup information')
 
   const userExist = await userService.getByEmail(email)
   if (userExist) return Promise.reject('email already taken')

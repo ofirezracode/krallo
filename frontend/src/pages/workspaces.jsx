@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { addBoard, loadBoards, updateBoard } from '../store/board.actions'
 import { BoardList } from '../cmps/board-list'
-import { boardService } from '../services/board.service.local'
+import { boardService } from '../services/board.service'
 import { useNavigate } from 'react-router-dom'
 
 export function Workspaces() {

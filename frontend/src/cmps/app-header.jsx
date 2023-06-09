@@ -6,7 +6,7 @@ import { logout } from '../store/user.actions.js'
 import { useNavigate } from 'react-router-dom'
 import userImg from '../assets/img/members/ofir-pic.jpg'
 import { addBoard, loadBoards, updateBoard } from '../store/board.actions'
-import { boardService } from '../services/board.service.local'
+import { boardService } from '../services/board.service'
 
 export function AppHeader() {
   const navigate = useNavigate()

@@ -2,15 +2,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { BsThreeDots, BsPlusLg, BsWindowStack } from 'react-icons/bs'
-import TemplateIcon from "../assets/img/svg/template-icon.svg"
+import TemplateIcon from '../assets/img/svg/template-icon.svg'
 
 import { TaskList } from './task-list'
 import { saveNewTask } from '../store/board.actions'
-import { boardService } from '../services/board.service.local'
+import { boardService } from '../services/board.service'
 import { activityService } from '../services/activity.service'
 import { AddCloseButtons } from './add-close-buttons'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 import { useSelector } from 'react-redux'
+import { addActivity } from '../store/activity.actions'
 
 export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -37,9 +38,10 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
     if (newTaskText.trim().length > 0) {
       const task = boardService.createTask(newTaskText)
       console.log('task', task)
-      const activity = activityService.createActivity('add', {}, task)
+      const activity = activityService.createActivity(board._id, 'add', {}, task)
       try {
         await saveNewTask(board, group._id, task, activity)
+        await addActivity(activity)
       } catch (err) {
         console.log('err', err)
       }
@@ -87,7 +89,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
             <label>Add a card</label>
           </div>
           <button className="card-from-template-button flex justify-center align-center">
-            <img src={TemplateIcon} className='template-icon' alt="template-icon" />
+            <img src={TemplateIcon} className="template-icon" alt="template-icon" />
           </button>
         </section>
       )}

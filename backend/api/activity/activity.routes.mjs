@@ -6,8 +6,8 @@ import { addActivity, getActivities, deleteActivity } from './activity.controlle
 const router = express.Router()
 
 router.get('/:boardId', log, getActivities)
-router.post('/', log, addActivity)
-router.delete('/:id', deleteActivity)
+router.post('/', log, requireAuth, addActivity)
+router.delete('/:id', requireAuth, deleteActivity)
 // router.post('/', log, requireAuth, addActivity)
 // router.delete('/:id', requireAuth, deleteActivity)
 

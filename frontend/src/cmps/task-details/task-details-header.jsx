@@ -1,7 +1,6 @@
-
 import CardIcon from '../../assets/img/svg/card-icon.svg'
 import { Link } from 'react-router-dom'
-import { boardService } from '../../services/board.service.local'
+import { boardService } from '../../services/board.service'
 import { useEffect, useState } from 'react'
 
 export function TaskDetailsHeader({ board, task }) {

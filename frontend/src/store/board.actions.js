@@ -1,4 +1,4 @@
-import { boardService } from '../services/board.service.local.js'
+import { boardService } from '../services/board.service.js'
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import {
@@ -44,7 +44,7 @@ export function getActionSetLabelsOpen(labelsOpen) {
 export async function loadBoards() {
   try {
     const boards = await boardService.query()
-    // console.log('Boards from DB:', boards)
+    console.log('Boards from DB:', boards)
     store.dispatch({
       type: SET_BOARDS,
       boards,
@@ -92,7 +92,6 @@ export async function addBoard(board) {
 export async function updateBoard(board) {
   try {
     const savedBoard = await boardService.save(board)
-    console.log('Updated Board:', savedBoard)
     store.dispatch(getActionUpdateBoard(savedBoard))
     return savedBoard
   } catch (err) {

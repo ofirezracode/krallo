@@ -5,12 +5,14 @@ import { Outlet, useParams } from 'react-router-dom'
 import { GroupList } from '../cmps/group-list'
 import { BoardHeader } from '../cmps/board-header'
 import { loadBoards, setCurrBoard, updateBoard } from '../store/board.actions'
-import { boardService } from '../services/board.service.local'
+import { boardService } from '../services/board.service'
 import { Loader } from '../cmps/loader'
 import { BoardMenu } from '../cmps/board-menu'
+import { loadActivities } from '../store/activity.actions'
 
 export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const activities = useSelector((storeState) => storeState.activityModule.activities)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const { boardId } = useParams()
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
@@ -22,7 +24,13 @@ export function BoardIndex() {
   }, [])
 
   useEffect(() => {
-    if (boards.length !== 0) setCurrBoard(...boards.filter((board) => board._id === boardId))
+    if (boards.length !== 0) {
+      const newBoard = boards.filter((board) => board._id === boardId)[0]
+
+      setCurrBoard(newBoard)
+      console.log('{ boardId: newBoard._id }', { boardId: newBoard._id })
+      loadActivities({ boardId: newBoard._id })
+    }
   }, [boards])
 
   async function onUpdateGroupTitle(groupId, newTitle) {
@@ -97,15 +105,12 @@ export function BoardIndex() {
     }
   }
   if (!board) return <Loader />
+
+  console.log('activities', activities)
   return (
     <section style={boardStyle} className="board-index flex column">
       <Outlet />
-      <BoardHeader
-        board={board}
-        onChangeTitle={onChangeTitle}
-        showMenuClass={showMenuClass}
-        setIsMenuHidden={setIsMenuHidden}
-      />
+      <BoardHeader board={board} onChangeTitle={onChangeTitle} showMenuClass={showMenuClass} setIsMenuHidden={setIsMenuHidden} />
       <GroupList
         board={board}
         onDndTask={onMoveTask}

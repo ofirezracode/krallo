@@ -1,70 +1,68 @@
 .app-header-home {
-    font-family: charlie-regular;
-    height: rem(60px);
-    align-items: stretch;
-    height: rem(60px);
-    margin: 0px auto;
-    max-width: rem(1320px);
+  font-family: charlie-regular;
+  height: rem(60px);
+  align-items: stretch;
+  height: rem(60px);
+  margin: 0px auto;
+  max-width: rem(1320px);
 
-    .logo {
-        height: rem(40px);
-        width: rem(170px);
+  .logo {
+    height: rem(40px);
+    width: rem(170px);
 
-        .logo-img {
-            padding: rem(16px);
-            width: rem(170px);
-        }
+    .logo-img {
+      padding: rem(16px);
+      width: rem(170px);
+    }
+  }
+
+  .nav {
+    flex: 1;
+    gap: rem(4px);
+
+    a,
+    label {
+      align-self: center;
+      font-size: rem(16px);
+      font-family: 600;
+      color: $card-title;
+      padding: rem(20px) rem(16px) rem(16px);
+      text-decoration: none;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        color: $btn-blue1;
+      }
+    }
+  }
+
+  .header-btns {
+    & * {
+      text-decoration: none;
+      letter-spacing: 0.03em;
     }
 
-    .nav {
-        flex: 1;
-        gap: rem(4px);
-
-        a {
-            align-self: center;
-            font-size: rem(16px);
-            font-family: 600;
-            color: $card-title;
-            padding: rem(20px) rem(16px) rem(16px);
-            text-decoration: none;
-            transition: .2s ease-in-out;
-
-            &:hover {
-                color: $btn-blue1;
-            }
-        }
-
+    .login-btn {
+      text-decoration: none;
+      margin: 0;
+      width: rem(101.81px);
+      color: $card-title;
+      background-color: #fff;
+      font-size: rem(19.2px);
+      padding: rem(8px) rem(24px);
     }
 
-    .header-btns {
-        & * {
-            text-decoration: none;
-            letter-spacing: .03em;
-        }
+    .try-btn {
+      margin: 0;
+      background-color: $btn-blue1;
+      color: #fff;
+      font-size: rem(19.2px);
+      padding: rem(8px) rem(24px);
+      width: rem(204px);
 
-        .login-btn {
-            text-decoration: none;
-            margin: 0;
-            width: rem(101.81px);
-            color: $card-title;
-            background-color: #fff;
-            font-size: rem(19.2px);
-            padding: rem(8px) rem(24px);
-        }
-
-        .try-btn {
-            margin: 0;
-            background-color: $btn-blue1;
-            color: #fff;
-            font-size: rem(19.2px);
-            padding: rem(8px) rem(24px);
-            width: rem(204px);
-
-            &:hover {
-                background-color:  $default-blue;
-            }
-        }
-
+      &:hover {
+        background-color: $default-blue;
+      }
     }
-
+  }
 }
