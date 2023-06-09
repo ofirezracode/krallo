@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { HiXMark } from 'react-icons/hi2'
 import { Checkbox } from '../../checkbox'
 
-export function TodosPreview({ todo, onDeleteTodo, checklist, onEditTodo }) {
+export function TodoPreview({ todo, onDeleteTodo, checklist, onEditTodo }) {
   const [isEditing, setIsEditing] = useState(false)
   const handleFocus = (ev) => ev.target.select()
   const [currTodo, setCurrTodo] = useState(todo)
