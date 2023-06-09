@@ -28,7 +28,6 @@
             flex-direction: row;
             padding-inline: rem(12px) rem(6px);
             border-radius: 3px;
-            cursor: pointer;
 
             &>* {
                 font-family: $font-input;
@@ -52,9 +51,14 @@
                 }
             }
 
-            &:hover {
-                background-color: $close-icon-hover-light;
-            }
+        }
+
+        li:not(.activities) {
+            cursor: pointer;
+        }
+
+        li:not(.activities):hover {
+            background-color: $close-icon-hover-light;
         }
 
         button {
@@ -67,5 +71,7 @@
             }
 
         }
+
+        .activities {}
     }
 }
