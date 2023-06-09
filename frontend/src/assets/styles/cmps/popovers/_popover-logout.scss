@@ -1,0 +1,27 @@
+.popover-logout-container {
+padding-block-end: rem(7px);
+align-items: center;
+gap: rem(6px);
+    .fullname {
+        color: $text;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .email {}
+
+}
+.logout {
+    border-top: solid 1px #091E4224;
+    padding: 8px 20px;
+    background-color: transparent;
+    color: $text;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    font-family: $font-input;
+
+    &:hover{
+        background-color:  #091E420F;
+    }
+}
