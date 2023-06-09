@@ -9,6 +9,7 @@ export function MenuTitle({ title, setIsMenuHidden, setIsOn, goBackClass, setTit
     }
 
     function onCloseMenu() {
+        console.log(goBackClass)
         setIsMenuHidden(prevIsMenuHidden => !prevIsMenuHidden)
         setTitle('Menu')
         setIsOn(true)
