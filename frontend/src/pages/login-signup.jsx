@@ -110,7 +110,7 @@ export function LoginSignup() {
                         </ul> */}
             <hr />
             <button className={`account ${!isSignup ? 'signup-account' : 'login-account '} `} onClick={toggleSignup}>
-              {!isSignup ? 'Already have an account? Log In' : 'Sign up for an account'}
+              {!isSignup ? 'Sign up for an account' : 'Already have an account? Log In'}
             </button>
           </div>
         </div>

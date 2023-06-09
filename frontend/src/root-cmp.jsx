@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 
 import { AppHeaderHome } from './cmps/app-header-home'
-import { AppFooter } from './cmps/app-footer'
 import { AppHeader } from './cmps/app-header'
 
 export function RootCmp() {
@@ -17,7 +16,6 @@ export function RootCmp() {
       <main>
         <Routes>{_getRoutes(routes)}</Routes>
       </main>
-      <AppFooter />
     </div>
   )
 }
