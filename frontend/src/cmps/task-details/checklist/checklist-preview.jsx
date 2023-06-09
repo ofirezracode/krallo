@@ -1,90 +1,108 @@
 import React, { useEffect } from 'react'
-import { BsCheck2Square } from "react-icons/bs";
-import { TodoList } from './todo-list';
+import { BsCheck2Square } from 'react-icons/bs'
+import { TodoList } from './todo-list'
 import { useState } from 'react'
-import { ProgressBar } from './progress-bar';
+import { ProgressBar } from './progress-bar'
 import { HiXMark } from 'react-icons/hi2'
 
+export function ChecklistPreview({
+  checklist,
+  onDeleteChecklist,
+  onOpenPopover,
+  onClose,
+  onEditChecklist,
+  onDeleteTodo,
+  onAddTodo,
+  onEditTodo,
+}) {
+  const [checklistTitle, setChecklistTitle] = useState(checklist.title)
+  const handleFocus = (ev) => ev.target.select()
+  const [isEditing, setIsEditing] = useState(false)
+  const [currChecklist, setCurrChecklist] = useState(checklist ? { ...checklist } : {})
 
-export function ChecklistPreview({ checklist, onDeleteChecklist, onOpenPopover, onClose, onEditChecklist, onDeleteTodo, onAddTodo, onEditTodo }) {
-    const [checklistTitle, setChecklistTitle] = useState(checklist.title)
-    const handleFocus = (ev) => ev.target.select()
-    const [isEditing, setIsEditing] = useState(false);
-    console.log(checklist, 'checklist')
-    const [currChecklist, setCurrChecklist] = useState(checklist ? {...checklist} : {})
-
-    useEffect(()=>{
-        if(checklist) {
-            setCurrChecklist({...checklist})
-        }
-    },[checklist])
-
-    function handleChange(ev) {
-        setChecklistTitle(ev.target.value)
-        onEditChecklist(checklist._id, checklistTitle);
+  useEffect(() => {
+    if (checklist) {
+      setCurrChecklist({ ...checklist })
     }
+  }, [checklist])
 
-    function onSubmit(ev) {
-        ev.preventDefault()
-        console.log(checklistTitle);
-        onEditChecklist(checklist._id, checklistTitle)
-        setIsEditing(false)
+  function handleChange(ev) {
+    setChecklistTitle(ev.target.value)
+    onEditChecklist(checklist._id, checklistTitle)
+  }
+
+  function onSubmit(ev) {
+    ev.preventDefault()
+    console.log(checklistTitle)
+    onEditChecklist(checklist._id, checklistTitle)
+    setIsEditing(false)
+  }
+
+  function handleKeyPress(ev) {
+    if (ev.key === 'Enter') {
+      onSubmit(ev)
     }
+  }
 
-    function handleKeyPress(ev) {
-        if (ev.key === 'Enter') {
-            onSubmit(ev)
-        }
-    }
+  function toggleEditing() {
+    setIsEditing(!isEditing)
+  }
 
-    function toggleEditing() {
-        setIsEditing(!isEditing);
-    }
+  //   function onTodoEdited(checklistId, newTodo) {
+  //     onEditTodo(checklistId, newTodo)
+  //   }
 
-    function onTodoEdited(checklistId, newTodo) {
-        // const todoIdx = currChecklist.todos.findIndex((t) => t._id === todo._id)
-        // if (currChecklist.todos[todoIdx].title === todo.title) return
-        // const updatedTodo = { ...currChecklist.todos[todoIdx], ...todo }
-        // const updatedChecklists = [...localChecklists]
-        // updatedChecklists[checklistIdx].todos[todoIdx] = updatedTodo
-        onEditTodo(checklistId, newTodo)
-    }
-
-
-    return (
-        <div>
-            <div className="checklist" key={checklist._id}>
-                <div className="checklist-title-container">
-                    <span><BsCheck2Square /></span>
-                    <div className="checklist-title flex">
-                        {isEditing ? (
-                            <form onSubmit={onSubmit}>
-                                <textarea
-                                    rows="2"
-                                    value={checklistTitle}
-                                    onChange={handleChange}
-                                    onFocus={handleFocus}
-                                    onKeyPress={handleKeyPress}
-                                ></textarea>
-                                <div className='textarea-btns flex'>
-                                    <button className='btn save'>Save</button>
-                                    <button className='x-btn'><HiXMark /></button>
-                                </div>
-                            </form>
-                        ) : (
-                            <button onClick={toggleEditing}>
-                                <h3>{checklist.title}</h3>
-                            </button>
-                        )}
-                           {!isEditing && <div className='checklist-title-btns flex'>
-                            <button className='btns delete' onClick={(ev) => onOpenPopover(ev, { checklist, onDeleteChecklist, onClose }, 'delete-checklist')}>Delete</button>
-
-                        </div>}
-                    </div>
+  return (
+    <div>
+      <div className="checklist" key={checklist._id}>
+        <div className="checklist-title-container">
+          <span>
+            <BsCheck2Square />
+          </span>
+          <div className="checklist-title flex">
+            {isEditing ? (
+              <form onSubmit={onSubmit}>
+                <textarea
+                  rows="2"
+                  value={checklistTitle}
+                  onChange={handleChange}
+                  onFocus={handleFocus}
+                  onKeyPress={handleKeyPress}
+                ></textarea>
+                <div className="textarea-btns flex">
+                  <button className="btn save">Save</button>
+                  <button className="x-btn">
+                    <HiXMark />
+                  </button>
                 </div>
-                <ProgressBar checklist={currChecklist} />
-                <TodoList todos={checklist.todos} checklist={checklist} onDeleteTodo={onDeleteTodo} onAddTodo={onAddTodo} onClose={onClose} onEditTodo={onTodoEdited}/>
-            </div>
+              </form>
+            ) : (
+              <button onClick={toggleEditing}>
+                <h3>{checklist.title}</h3>
+              </button>
+            )}
+            {!isEditing && (
+              <div className="checklist-title-btns flex">
+                <button
+                  className="btns delete"
+                  onClick={(ev) => onOpenPopover(ev, { checklist, onDeleteChecklist, onClose }, 'delete-checklist')}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-    )
+        <ProgressBar checklist={currChecklist} />
+        <TodoList
+          todos={checklist.todos}
+          checklist={checklist}
+          onDeleteTodo={onDeleteTodo}
+          onAddTodo={onAddTodo}
+          onClose={onClose}
+          onEditTodo={onEditTodo}
+        />
+      </div>
+    </div>
+  )
 }
