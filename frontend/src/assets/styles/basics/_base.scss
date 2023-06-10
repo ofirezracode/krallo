@@ -8,27 +8,27 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
 
-  &::-webkit-scrollbar {
-    height: 100%;
-    width: rem(12px);
-    border-radius: 2em;
-  }
+  // &::-webkit-scrollbar {
+  //   height: 100%;
+  //   width: rem(12px);
+  //   border-radius: 2em;
+  // }
 
-  &::-webkit-scrollbar-track {
-    background: #091e4214;
-    border-radius: 2em;
-  }
+  // &::-webkit-scrollbar-track {
+  //   background: #091e4214;
+  //   border-radius: 2em;
+  // }
 
-  &::-webkit-scrollbar-thumb {
-    background: $add-card;
-    background-color: #cac7d3;
-    border-radius: 2em;
-  }
+  // &::-webkit-scrollbar-thumb {
+  //   background: $add-card;
+  //   background-color: #cac7d3;
+  //   border-radius: 2em;
+  // }
 
-  &::-webkit-scrollbar-button {
-    display: block;
-    height: 100%;
-  }
+  // &::-webkit-scrollbar-button {
+  //   display: block;
+  //   height: 100%;
+  // }
 }
 
 body {

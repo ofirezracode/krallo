@@ -80,7 +80,7 @@ export function PopoverCover({ coverStyle, onStyleChange, onClose }) {
         Remove Cover
       </button>
       <h4 className="popover-title">Colors</h4>
-      <ul className="colors-list clean-list">
+      <ul className="cover-colors-list clean-list">
         {colorService.possibleCoverColors.map((color, index) => {
           return (
             <li className={`${activeColor === color ? 'active' : ''}`} key={index}>
