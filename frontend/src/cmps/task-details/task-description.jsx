@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import DescIcon from '../../assets/img/svg/desc-icon.svg'
 
 export function TaskDescription({ task }) {
