@@ -43,7 +43,6 @@ function remove(userId) {
 
 async function login(userCred) {
   const user = await httpService.post(`${API_AUTH_ROUTE}/login`, userCred)
-  console.log('user', user)
   if (user) {
     return saveLocalUser(user)
   }

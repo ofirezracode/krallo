@@ -32,8 +32,6 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
     onClose()
   }
 
-  const debugObj = { parentRect, innerHeight: window.innerHeight, innerWidth: window.innerWidth }
-
   let popoverStyles = { position: 'absolute' }
 
   // let isSmallScreen = false
@@ -55,14 +53,10 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
 
   // Check viewport overflow on the Y axis
   if (popoverRef.current) {
-    debugObj.firstIf = true
     if (window.innerHeight - parentRect.bottom < popoverRef.current.getBoundingClientRect().height) {
-      debugObj.secondIf = true
       if (window.innerHeight - parentRect.bottom < popoverRef.current.getBoundingClientRect().height / 2) {
-        debugObj.thirdIf = true
         isAlignTop = true
       } else {
-        debugObj.thirdElse = true
         isAlignCenter = true
       }
     }
@@ -73,7 +67,6 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
 
   if (addedProps.refElement) {
     const containerRect = addedProps.refElement.getBoundingClientRect()
-    console.log('containerRect', containerRect)
     xDiff = containerRect.x
     yDiff = containerRect.y
   }
@@ -115,11 +108,8 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   if (!popoverRef.current) {
     popoverStyles.opacity = 0
   } else {
-    debugObj.current = popoverRef.current
     popoverStyles.opacity = 1
   }
-
-  console.log('debugObj', debugObj)
 
   return (
     <>
