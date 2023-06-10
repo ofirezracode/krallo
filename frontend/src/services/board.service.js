@@ -192,18 +192,16 @@ function createGroup(title) {
   return group
 }
 
-function getEmptyBoard() {
+function getEmptyBoard(title,imgUrl) {
   return {
-    title: 'New board',
+    title,
     isStarred: false,
     createdAt: Date.now(),
     groups: [createGroup('New group')],
     tasks: [],
     style: {
-      type: 'bgColor',
-      bgColor: colorService.getRandomColor(),
-      // type: 'img',
-      // imgUrl: 'https://source.unsplash.com/random/?city,night',
+      type: 'img',
+      imgUrl,
     },
     labels: [],
   }
