@@ -23,7 +23,7 @@ export function TaskDetails() {
   const { taskId, boardId } = useParams()
   const [task, setTask] = useState(boardService.getEmptyTask())
   const [addedProps, setAddedProps] = useState({})
-  const [popoverProps, onTogglePopover] = usePopover()
+  const [popoverProps, closePopover, openPopover] = usePopover()
   const taskDetails = useRef()
 
   const navigate = useNavigate()
@@ -35,9 +35,10 @@ export function TaskDetails() {
   }, [board])
 
   function onOpenPopover(e, props, type) {
+    closePopover()
     props.refElement = taskDetails.current
     setAddedProps(props)
-    onTogglePopover(e, type)
+    openPopover(e, type)
   }
 
   async function onHandleTaskMembers(activityType, member) {
@@ -220,7 +221,7 @@ export function TaskDetails() {
             onDueDateSave={onDueDateSave}
           />
         </section>
-        <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
+        <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
       </article>
     </section>
   )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export const useCloseOnOutsideClick = (action, currStateElementClass, prevStateElementClass = '') => {
-  const [isEditing, setIsEditing] = useState(false)
+  const [isListening, setIsListening] = useState(false)
   const [requiresAction, setRequiresAction] = useState(false)
 
   useEffect(() => {
@@ -11,14 +11,14 @@ export const useCloseOnOutsideClick = (action, currStateElementClass, prevStateE
       }
     }
 
-    if (isEditing) {
+    if (isListening) {
       document.addEventListener('click', handleDocumentClick)
     }
 
     return () => {
       document.removeEventListener('click', handleDocumentClick)
     }
-  }, [isEditing])
+  }, [isListening])
 
   useEffect(() => {
     if (requiresAction) {
@@ -29,5 +29,5 @@ export const useCloseOnOutsideClick = (action, currStateElementClass, prevStateE
     }
   }, [requiresAction])
 
-  return [isEditing, setIsEditing]
+  return [isListening, setIsListening]
 }

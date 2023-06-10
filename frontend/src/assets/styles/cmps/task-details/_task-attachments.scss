@@ -48,8 +48,8 @@
                     left: 0;
                     z-index: 1;
                     backdrop-filter: blur(50px);
-                    filter: brightness(80%);
-                    filter: sepia(-20%);
+                    filter: contrast(90%);
+                    // filter: sepia(-20%);
                     border-radius: 3px;
                 }
 

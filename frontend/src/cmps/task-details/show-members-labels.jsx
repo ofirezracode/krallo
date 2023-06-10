@@ -39,15 +39,21 @@ export function ShowMembersLabels({ task, onOpenPopover, onLabelChange, onLabelE
             {taskLabels.map((label, i) => (
               <li key={i}>
                 <button
-                  style={{ backgroundColor: label.backgroundColor }} className="label-btn"
-                  onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete }, 'labels')}>
+                  style={{ backgroundColor: label.backgroundColor }}
+                  className="label-btn"
+                  onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete }, 'labels')}
+                >
                   {label.title}
                 </button>
               </li>
             ))}
             <li>
-              <button className="add-label"
-                onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete }, 'labels')}>
+              <button
+                className="add-label"
+                onClick={(e) =>
+                  onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete, height: 'l' }, 'labels')
+                }
+              >
                 <BsPlusLg />
               </button>
             </li>

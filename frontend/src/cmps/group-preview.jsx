@@ -18,13 +18,13 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
   const [isAddingTask, setIsAddingTask] = useState(false)
   const [newTaskText, setNewTaskText] = useState('')
 
-  const [isEditing, setIsEditing] = useCloseOnOutsideClick(onSubmit, '.edit-title-form', 'group-preview-title')
+  const [isListening, setIsListening] = useCloseOnOutsideClick(onSubmit, '.edit-title-form', 'group-preview-title')
   const [editedTitle, setEditedTitle] = useState(group.title)
 
   const { boardId } = useParams()
 
   function toggleForm(status) {
-    setIsEditing(status)
+    setIsListening(status)
   }
 
   function onCloseAddCard(e) {
@@ -65,12 +65,12 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
   return (
     <article className="group-preview flex column">
       <header className="flex between">
-        {!isEditing && (
+        {!isListening && (
           <h3 className="group-preview-title" onClick={() => toggleForm(true)}>
             {group.title}
           </h3>
         )}
-        {isEditing && (
+        {isListening && (
           <form className="edit-title-form flex align-center" onSubmit={onSubmit}>
             <input value={editedTitle} onChange={(e) => onTitleChange(e)} autoFocus></input>
           </form>
