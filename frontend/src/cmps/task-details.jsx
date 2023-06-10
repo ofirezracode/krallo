@@ -16,6 +16,7 @@ import { TaskAttachments } from './task-details/task-attachments'
 import { ChecklistIndex } from './task-details/checklist/checklist-index'
 import { utilService } from '../services/util.service'
 import { addActivity } from '../store/activity.actions'
+import { TaskDescription } from './task-details/task-description'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -192,6 +193,7 @@ export function TaskDetails() {
               onLabelEdit={onLabelEdit}
               onLabelDelete={onLabelDelete}
             />
+            <TaskDescription task={task} />
             <TaskAttachments
               task={task}
               onAttachmentAdded={onAttachmentAdded}

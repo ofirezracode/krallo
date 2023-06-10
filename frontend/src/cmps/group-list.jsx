@@ -22,7 +22,7 @@ export function GroupList({ board, onMoveTask, onMoveGroup, onUpdateGroupTitle, 
     const taskSourceIdx = source.index
     const taskDestIdx = destination.index
     onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
-    onMoveGroup(sourceGroupId, destGroupId) // Not working - need fixes
+    // onMoveGroup(sourceGroupId, destGroupId) // Not working - need fixes
   }
 
   return (

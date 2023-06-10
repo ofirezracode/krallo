@@ -4,8 +4,11 @@ import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
 import { BsCheckLg } from 'react-icons/bs'
 
-export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, onSetBoardBg, setSelectedImg, selectedImg }) {
+export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSelectedImg, selectedImg }) {
     const [imgs, setImgs] = useState([])
+
+    const API_KEY_TAMAR = 'hAwJMEKfBFwvCKiI1MZl5TeXMPkv4tCdr_YPOW3im0g'
+    const API_KEY_ETAI = 'hjp37zjNt0WQ1s8R1MB8eXIvk5PNQigrRyOXgijwwT8'
     const text = 'programming'
     useEffect(() => {
         const amount = resultsAmount ? resultsAmount : 30
@@ -14,7 +17,7 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, onSetBo
                 `https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(
                     1,
                     1000
-                )}&per_page=${amount}&query=${text}&client_id=hjp37zjNt0WQ1s8R1MB8eXIvk5PNQigrRyOXgijwwT8`
+                )}&per_page=${amount}&query=${text}&client_id=${API_KEY_TAMAR}`
             )
             // const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=30&query=pattern&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`)
             const data = await response.json()

@@ -16,7 +16,6 @@ export function MenuBackground({ board, setTitle, onUpdateBoardBg }) {
         ev.stopPropagation()
         onUpdateBoardBg(url)
     }
-
     return (
         <>
             {!isBgClicked && (<ul className='backgrounds clean-list flex justify-center'>
