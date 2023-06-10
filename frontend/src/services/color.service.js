@@ -33,15 +33,19 @@ const DEFAULT_COLORS = [
   { code: '#626f86', varName: '$gray-bolder', colorTitle: 'Bold Gray', isBold: true },
 ]
 
+const possibleCoverColors = ['#4bce97', '#e2b203', '#faa53d', '#f87462', '#9f8fef', '#579dff', '#60c6d2', '#94c748', '#e774bb', '#8590a2']
+
 export const colorService = {
   getRandomColor,
   isColorDark,
+  getAvgColor,
+  possibleCoverColors,
   getBgColors,
   getNewBoardImgs,
-  getNewBoardColors
+  getNewBoardColors,
 }
 
-function getNewBoardImgs(){
+function getNewBoardImgs() {
   return [
     'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686390040/photo-1686019539035-d034ab44a075_vezhjv.jpg',
     'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686390076/photo-1685945899241-38453441f85b_qsohto.jpg',
@@ -50,22 +54,22 @@ function getNewBoardImgs(){
   ]
 }
 
-function getNewBoardColors(){
-  return[
+function getNewBoardColors() {
+  return [
     'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg',
     'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384735/d106776cb297f000b1f4_aixvzg.svg',
     'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384777/8ab3b35f3a786bb6cdac_f6yj4u.svg',
     'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg',
     'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384798/aec98becb6d15a5fc95e_monues.svg',
     'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg',
-  ];
+  ]
 }
 
 function getRandomColor() {
   const index = utilService.getRandomIntInclusive(0, DEFAULT_COLORS.length - 1)
   return DEFAULT_COLORS[index].code
 }
- 
+
 function _hexToRgb(hex) {
   const r = parseInt(hex.substring(1, 3), 16)
   const g = parseInt(hex.substring(3, 5), 16)
@@ -89,43 +93,84 @@ function isColorDark(hex) {
   return luminance <= threshold
 }
 
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const image = new Image()
+    image.crossOrigin = 'Anonymous'
+    image.onload = () => resolve(image)
+    image.onerror = reject
+    image.src = url
+  })
+}
+
+async function getAvgColor(url) {
+  const image = await loadImage(url)
+  // create a canvas element with the same dimensions as the image
+  const canvas = document.createElement('canvas')
+  canvas.width = image.width
+  canvas.height = image.height
+
+  // draw the image onto the canvas
+  const context = canvas.getContext('2d')
+  context.drawImage(image, 0, 0)
+
+  // get the image data
+  const imageData = context.getImageData(0, 0, canvas.width, canvas.height).data
+
+  // calculate the average color
+  const colors = { r: 0, g: 0, b: 0 }
+
+  for (let i = 0; i < imageData.length; i += 4) {
+    colors.r += imageData[i]
+    colors.g += imageData[i + 1]
+    colors.b += imageData[i + 2]
+  }
+
+  const pixelCount = imageData.length / 4
+  colors.r /= pixelCount
+  colors.g /= pixelCount
+  colors.b /= pixelCount
+
+  return `rgb(${Math.round(colors.r)}, ${Math.round(colors.g)}, ${Math.round(colors.b)})`
+}
+
 function getBgColors() {
   return [
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg',
-      emoji: '❄️'
+      emoji: '❄️',
     },
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384735/d106776cb297f000b1f4_aixvzg.svg',
-      emoji: '🌊'
+      emoji: '🌊',
     },
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384777/8ab3b35f3a786bb6cdac_f6yj4u.svg',
-      emoji: '🔮'
+      emoji: '🔮',
     },
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg',
-      emoji: '🌈'
+      emoji: '🌈',
     },
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384798/aec98becb6d15a5fc95e_monues.svg',
-      emoji: '🍑'
+      emoji: '🍑',
     },
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389848/b75536d1afb40980ca57_ftydw5.svg',
-      emoji: '🌸'
+      emoji: '🌸',
     },
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg',
-      emoji: '🌎'
+      emoji: '🌎',
     },
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389863/941e9fef7b1b1129b904_nm94td.svg',
-      emoji: '👽'
+      emoji: '👽',
     },
     {
       imgUrl: 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389871/1cbae06b1a428ad6234a_rhmbqu.svg',
-      emoji: '🌋'
+      emoji: '🌋',
     },
   ]
 }

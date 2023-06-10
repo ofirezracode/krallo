@@ -199,11 +199,7 @@ export function TaskDetails() {
               onEditAttachment={onEditAttachment}
               onOpenPopover={onOpenPopover}
             />
-            <ChecklistIndex
-              task={task}
-              onOpenPopover={onOpenPopover}
-              onUpdateChecklists={onUpdateChecklists}
-            />
+            <ChecklistIndex task={task} onOpenPopover={onOpenPopover} onUpdateChecklists={onUpdateChecklists} />
           </section>
           <ActionsList
             task={task}
@@ -215,9 +211,7 @@ export function TaskDetails() {
             onLabelEdit={onLabelEdit}
             onLabelDelete={onLabelDelete}
             onAddChecklist={onAddChecklist}
-            // colors={colors}
-            // coverStyle={coverStyle}
-            // onStyleChange={onStyleChange}
+            onStyleChange={onStyleChange}
             onDueDateSave={onDueDateSave}
           />
         </section>

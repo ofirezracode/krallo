@@ -2,6 +2,7 @@ import { BsCheck2Square, BsClock, BsPaperclip, BsSquareHalf, BsTag } from 'react
 import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import MemberIcon from '../../assets/img/svg/member-icon.svg'
+import { useEffect, useState } from 'react'
 
 export function ActionsList({
   task,
@@ -14,11 +15,15 @@ export function ActionsList({
   onLabelDelete,
   onAddChecklist,
   onDeleteChecklist,
-  // colors,
-  // coverStyle,
-  // onStyleChange
+  onStyleChange,
   onDueDateSave,
 }) {
+  const [isCover, setIsCover] = useState(false)
+
+  useEffect(() => {
+    setIsCover(task && task.style && task.style.type ? true : false)
+  }, [task])
+
   return (
     <section className="add-to-card-container">
       <h5>Add to card</h5>
@@ -52,14 +57,12 @@ export function ActionsList({
           <img src={ClipIcon} alt="clip-icon" />
           <p>Attachment</p>
         </button>
-        <button
-          // ref={coverChangeBtnRef}
-          // onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover', 'Cover')}
-          className="flex center"
-        >
-          <img src={CoverIcon} className="box-icon" alt="cover-icon" />
-          <p>Cover</p>
-        </button>
+        {!isCover && (
+          <button onClick={(e) => onOpenPopover(e, { coverStyle: task?.style, onStyleChange }, 'cover')} className="flex center">
+            <img src={CoverIcon} className="box-icon" alt="cover-icon" />
+            <p>Cover</p>
+          </button>
+        )}
       </section>
     </section>
   )

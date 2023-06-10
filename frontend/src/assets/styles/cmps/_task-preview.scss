@@ -20,6 +20,15 @@
       font-weight: 500;
       line-height: rem(20px);
     }
+
+    &.dark-background-header {
+      h4 {
+        overflow: visible;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0), #000);
+        color: #fff;
+        padding-block-end: rem(8px);
+      }
+    }
   }
 
   .preview-container {
@@ -28,6 +37,11 @@
 
     &:hover {
       background-color: $card-preview;
+    }
+
+    h4 {
+      font-weight: 400;
+      margin-block-end: rem(4px);
     }
 
     .labels {
@@ -97,10 +111,5 @@
         }
       }
     }
-  }
-
-  h4 {
-    font-weight: 400;
-    margin-block-end: rem(4px);
   }
 }

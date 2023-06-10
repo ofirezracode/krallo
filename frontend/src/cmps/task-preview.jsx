@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { saveTask, setLabelsOpen } from '../store/board.actions'
-import { BsTextParagraph, BsCheck2Square, BsChat, BsPaperclip, BsClock } from 'react-icons/bs'
 import { utilService } from '../services/util.service'
 import { IndicatorDueDate } from './task-preview-indicators/indicator-due-date'
 import { Indicator } from './task-preview-indicators/indicator'
@@ -50,6 +49,15 @@ export function TaskPreview({ boardId, taskToPrev }) {
     if (task.style.bgColor) {
       previewStyle = { backgroundColor: task.style.bgColor }
       typeClass = task.style.type === 'full' ? 'full' : 'half'
+    } else if (task.style.imgUrl) {
+      previewStyle = {
+        backgroundImage: `url(${task.style.imgUrl})`,
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no-repeat',
+        minHeight: '163.333px',
+      }
+      typeClass = task.style.type === 'full' ? 'full' : 'half'
     }
   }
 
@@ -65,17 +73,30 @@ export function TaskPreview({ boardId, taskToPrev }) {
     { total: 0, finished: 0 }
   )
 
-  let colorClass = 'light-background'
+  let addedClass = 'light-background'
   if (previewStyle.backgroundColor) {
-    if (colorService.isColorDark(previewStyle.backgroundColor)) colorClass = 'dark-background'
-  } else {
-    colorClass = ''
+    if (colorService.isColorDark(previewStyle.backgroundColor)) addedClass = 'dark-background'
+  } else if (previewStyle.backgroundImage) {
+    if (typeClass === 'full') {
+      addedClass = 'dark-background-header'
+    }
   }
+
+  // if (previewStyle.backgroundColor) {
+  //   if (colorService.isColorDark(previewStyle.backgroundColor)) colorClass = 'dark-background'
+  // } else {
+  //   colorClass = ''
+  // }
 
   return (
     <article className="task-preview" onClick={onOpenTaskDetails}>
       {previewStyle.backgroundColor && (
-        <div className={`preview-cover flex ${typeClass} ${colorClass}`} style={previewStyle}>
+        <div className={`preview-cover flex ${typeClass} ${addedClass}`} style={previewStyle}>
+          {typeClass === 'full' && <h4>{task.title}</h4>}
+        </div>
+      )}
+      {previewStyle.backgroundImage && (
+        <div className={`preview-cover flex ${typeClass} ${addedClass}`} style={previewStyle}>
           {typeClass === 'full' && <h4>{task.title}</h4>}
         </div>
       )}

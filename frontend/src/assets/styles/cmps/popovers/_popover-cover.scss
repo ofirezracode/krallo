@@ -5,6 +5,10 @@
     font-weight: 600;
     line-height: rem(16px);
     margin: 0 0 rem(8px);
+
+    &.unsplash {
+      margin-block: rem(16px) rem(4px);
+    }
   }
 
   .sizes-list {
