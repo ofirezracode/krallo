@@ -12,8 +12,6 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [title, setTitle] = useState(board ? board.title : '')
 
-  const handleFocus = (ev) => ev.target.select()
-
   const members = board ? board.members : []
 
   useEffect(() => {
@@ -34,13 +32,18 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
     setTitle(ev.target.value)
   }
 
+  function handleFocus(ev) {
+    ev.preventDefault()
+    ev.target.select()
+  }
+
   function onSubmit(ev) {
     ev.preventDefault()
     onChangeTitle(title)
   }
 
-  let inputWidth = 0
-  if(!title) return
+  let inputWidth = 1
+  if (!title) return
   for (let i = 0; i < title.length; i++) {
     const charCode = title.charCodeAt(i)
     if (charCode >= 65 && charCode <= 90) {

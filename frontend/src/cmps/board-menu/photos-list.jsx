@@ -25,6 +25,7 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, onSetBo
 
     function handleChange(img, ev) {
         let url = img.urls.full
+        setSelectedImg(url)
         if (returnSize) url = img.urls[returnSize]
         ev.stopPropagation()
         onUpdateBoardBg(url)
