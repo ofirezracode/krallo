@@ -124,8 +124,8 @@ export function BoardIndex() {
       />
       <GroupList
         board={board}
-        onDndTask={onMoveTask}
-        onDndGroup={onMoveGroup}
+        onMoveTask={onMoveTask}
+        onMoveGroup={onMoveGroup}
         onUpdateGroupTitle={onUpdateGroupTitle}
         onAddGroup={onAddGroup}
         showMenuClass={showMenuClass}
