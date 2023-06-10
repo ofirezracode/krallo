@@ -8,7 +8,7 @@ export const userService = {
   login,
   logout,
   signup,
-  getLoggedinUser,
+  getLoggedInUser,
   saveLocalUser,
   getUsers,
   getById,
@@ -65,6 +65,6 @@ function saveLocalUser(user) {
   return user
 }
 
-function getLoggedinUser() {
+function getLoggedInUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }

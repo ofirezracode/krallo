@@ -1,23 +1,12 @@
 import React, { useState } from 'react';
 import { PopoverCmpHeader } from './popover-cmp-header';
 import { BsCheckLg } from "react-icons/bs";
+import { colorService } from '../../services/color.service';
 
 export function PopoverCreateBoard({ onAddBoard, onClose }) {
-  const imgUrls = [
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg',
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384735/d106776cb297f000b1f4_aixvzg.svg',
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384777/8ab3b35f3a786bb6cdac_f6yj4u.svg',
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg',
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384798/aec98becb6d15a5fc95e_monues.svg',
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg',
-  ];
-
-  const unslpashImgs = [
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686390040/photo-1686019539035-d034ab44a075_vezhjv.jpg',
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686390076/photo-1685945899241-38453441f85b_qsohto.jpg',
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686390136/photo-1686080186823-f61c47ded839_up1jco.jpg',
-    'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686390156/photo-1685472065771-f57d15b4c585_zof94q.jpg',
-  ]
+  
+  const imgUrls = colorService.getNewBoardColors()
+  const unslpashImgs = colorService.getNewBoardImgs()
   const [boardTitle, setBoardTitle] = useState('')
   const [selectedImg, setSelectedImg] = useState('https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686390040/photo-1686019539035-d034ab44a075_vezhjv.jpg');
 

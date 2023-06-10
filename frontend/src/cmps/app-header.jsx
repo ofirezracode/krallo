@@ -14,12 +14,25 @@ export function AppHeader() {
   const navigate = useNavigate()
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const user = useSelector((storeState) => storeState.userModule.user)
 
   function onOpenPopover(e, props, type) {
     closePopover()
     setAddedProps(props)
     openPopover(e, type)
+  }
+
+  async function onAddBoard(title, imgUrl) {
+    try {
+      const boardToSave = boardService.getEmptyBoard(title, imgUrl)
+      boardToSave.createdBy = loggedInUser
+      const savedBoard = await addBoard(boardToSave)
+      navigate(`/workspaces`) // refactor
+      navigate(`/board/${savedBoard._id}`)
+    } catch (err) {
+      console.error('Error:', err)
+    }
   }
 
   async function onLogout() {
@@ -48,7 +61,7 @@ export function AppHeader() {
             <BsTrello />
             <label>Krallo</label>
           </Link>
-          <button className="create-btn" title="Create new board" onClick={onCreateBoard}>
+          <button className="create-btn" title="Create new board"  onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}>
             Create
           </button>
         </li>
