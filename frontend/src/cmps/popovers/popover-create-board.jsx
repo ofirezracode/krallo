@@ -2,6 +2,8 @@ import React from 'react';
 import { PopoverCmpHeader } from './popover-cmp-header';
 
 export function PopoverCreateBoard({ onClose }) {
+  const backgroundImageUrl = 'https://images.unsplash.com/photo-1686019539035-d034ab44a075?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjg2MzM1OTY3fA&ixlib=rb-4.0.3&q=80&w=400';
+
   return (
     <div className='popover-create-board'>
       <PopoverCmpHeader title="Create board" onClose={onClose} />
@@ -15,7 +17,7 @@ export function PopoverCreateBoard({ onClose }) {
             <button title='Custom image'></button>
           </li>
           <li>
-            <button title="Custom image" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1686019539035-d034ab44a075?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjg2MzM1OTY3fA&ixlib=rb-4.0.3&q=80&w=400")' }}><span></span></button>
+            <button title="Custom image" style={{ backgroundImage: `url("${backgroundImageUrl}")` }}><span></span></button>
           </li>
           <li>
             <button title='Custom image'></button>
@@ -29,7 +31,7 @@ export function PopoverCreateBoard({ onClose }) {
             <button title='Custom image'></button>
           </li>
           <li>
-            <button title="Custom image" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1686019539035-d034ab44a075?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjg2MzM1OTY3fA&ixlib=rb-4.0.3&q=80&w=400")' }}><span></span></button>
+            <button title="Custom image" style={{ backgroundImage: `url("${backgroundImageUrl}")` }}><span></span></button>
           </li>
           <li>
             <button title='Custom image'></button>
@@ -53,4 +55,5 @@ export function PopoverCreateBoard({ onClose }) {
     </div>
   );
 }
+
 

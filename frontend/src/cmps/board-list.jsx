@@ -9,12 +9,13 @@ import { Popover } from './popover'
 export function BoardList({ boards, onToggleIsStarred, isOnlyStarred, onAddBoard }) {
     let filteredBoards = isOnlyStarred ? boards.filter((board) => board.isStarred) : boards
     const [addedProps, setAddedProps] = useState({})
-    const [popoverProps, onTogglePopover] = usePopover()
+    const [popoverProps, closePopover, openPopover] = usePopover()
 
     function onOpenPopover(e, props, type) {
+        closePopover()
         setAddedProps(props)
-        onTogglePopover(e, type)
-    }
+        openPopover(e, type)
+      }
 
     return (
         <section className="board-list-container">
@@ -44,7 +45,7 @@ export function BoardList({ boards, onToggleIsStarred, isOnlyStarred, onAddBoard
                     </li>
                 )}
             </ul>
-            <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
+            <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
         </section>
     )
 }
