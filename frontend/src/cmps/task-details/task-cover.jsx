@@ -22,9 +22,12 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
               backgroundRepeat: 'no-repeat',
               backgroundColor: avgClr,
             })
+          } else {
+            setCover(null)
           }
         }
       }
+      console.log('task', task)
       getAvgColor()
     },
     [task]
