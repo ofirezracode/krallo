@@ -2,9 +2,19 @@ import { BoardPreview } from './board-preview'
 import { BoardListTitle } from './board-list-title'
 import MemberIcon from "../../src/assets/img/svg/member-icon.svg"
 import StarEmpty from "../../src/assets/img/svg/star-empty.svg"
+import { useState } from 'react'
+import { usePopover } from '../customHooks/usePopover'
+import { Popover } from './popover'
 
 export function BoardList({ boards, onToggleIsStarred, isOnlyStarred, onAddBoard }) {
     let filteredBoards = isOnlyStarred ? boards.filter((board) => board.isStarred) : boards
+    const [addedProps, setAddedProps] = useState({})
+    const [popoverProps, onTogglePopover] = usePopover()
+
+    function onOpenPopover(e, props, type) {
+        setAddedProps(props)
+        onTogglePopover(e, type)
+    }
 
     return (
         <section className="board-list-container">
@@ -26,13 +36,15 @@ export function BoardList({ boards, onToggleIsStarred, isOnlyStarred, onAddBoard
                     )
                 })}
                 {!isOnlyStarred && (
-                    <li className="new-board" onClick={onAddBoard}>
+                    <li className="new-board" onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}
+                            title="Create board">
                         <article className="flex align-center justify-center">
                             <p>Create new board</p>
                         </article>
                     </li>
                 )}
             </ul>
+            <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
         </section>
     )
 }
