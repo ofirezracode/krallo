@@ -14,7 +14,6 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
 
   const handleFocus = (ev) => ev.target.select()
 
-  const [popoverProps, onTogglePopover] = usePopover()
   const members = board ? board.members : []
 
   useEffect(() => {
@@ -57,7 +56,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
 
   if (!board) return <Loader />
   return (
-    <section className='board-header-container'>
+    <section className="board-header-container">
       <div className="blur-header"></div>
       <ul className={`board-header ${showMenuClass} clean-list flex align-center between `}>
         <li className="flex align-center">
@@ -97,7 +96,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           </button>
           <span>|</span>
           <div className="members">
-            {members?.length && members.map(member => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)}
+            {members?.length && members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)}
           </div>
           <button className="btn-fill" title="Share board">
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -114,7 +113,11 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
             </svg>
             <p>Share</p>
           </button>
-          <button className={`btn-more ${showMenuClass}`} title="Open the board menu" onClick={() => setIsMenuHidden(prevIsMenuHidden => !prevIsMenuHidden)}>
+          <button
+            className={`btn-more ${showMenuClass}`}
+            title="Open the board menu"
+            onClick={() => setIsMenuHidden((prevIsMenuHidden) => !prevIsMenuHidden)}
+          >
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -126,8 +129,6 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           </button>
         </li>
       </ul>
-
-      <Popover {...popoverProps} onClose={onTogglePopover} />
-    </section >
+    </section>
   )
 }

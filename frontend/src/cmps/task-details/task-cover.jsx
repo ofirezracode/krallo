@@ -9,12 +9,13 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
 
   const coverChangeBtnRef = useRef()
   const [addedProps, setAddedProps] = useState({})
-  const [popoverProps, onTogglePopover] = usePopover()
+  const [popoverProps, closePopover, openPopover] = usePopover()
 
   function onOpenPopover(e, props, type, title) {
+    closePopover()
     props.refElement = taskDetails.current
     setAddedProps(props)
-    onTogglePopover(e, type, title)
+    openPopover(e, type, title)
   }
 
   return (
@@ -33,7 +34,7 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
           </div>
         </section>
       )}
-      <Popover {...popoverProps} addedProps={addedProps} onClose={onTogglePopover} />
+      <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
     </>
   )
 }
