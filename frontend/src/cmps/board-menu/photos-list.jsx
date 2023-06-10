@@ -40,7 +40,7 @@ export function PhotosList({ board, setTitle, onUpdateBoardBg, onSetBoardBg, set
                                 <a href={img.user.portfolio_url} target="_blank">
                                     {img.user.username}
                                 </a>
-                                {selectedImg === img.urls.full && <span className="selected-img"><BsCheckLg /></span>}
+                                {selectedImg === img.urls.full && <span className="selected-img flex center"><BsCheckLg /></span>}
                             </div>
                         </li>
                     ))}
