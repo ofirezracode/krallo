@@ -1,75 +1,87 @@
 .photos-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: rem(8px);
-    grid-auto-rows: max-content;
-    grid-auto-flow: dense;
-    height: calc(100% - 98px);
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: rem(8px) rem(3px) rem(8px) rem(8px);
-    margin-inline-end: rem(3px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: rem(8px);
+  grid-auto-rows: max-content;
+  grid-auto-flow: dense;
+  height: calc(100% - 98px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: rem(8px) rem(3px) rem(8px) rem(8px);
+  margin-inline-end: rem(3px);
+
+  .cover-photos-list & {
+    padding: 0;
+    padding-block: rem(4px);
+    height: unset;
+    grid-template-columns: repeat(3, 1fr);
 
     li {
-        height: rem(96px);
-        cursor: pointer;
+      height: rem(48px);
+      width: rem(88px);
+    }
+  }
 
-        .bg-img {
-            height: 100%;
-            width: 100%;
-            border-radius: 8px;
-            position: relative;
+  li {
+    height: rem(96px);
+    cursor: pointer;
 
-            a {
-                opacity: 0;
-            }
+    .bg-img {
+      height: 100%;
+      width: 100%;
+      border-radius: 8px;
+      position: relative;
 
-            &:hover {
-                filter: opacity(80%);
+      a {
+        opacity: 0;
+      }
 
-                a {
-                    opacity: 1;
-                    width: 100%;
-                    height: rem(20px);
-                    border-radius: 0 0 8px 8px;
-                    line-height: rem(12px);
-                    padding: rem(2px) rem(4px);
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    color: #fff;
-                    background-color: rgba(0, 0, 0, .5);
-                    text-decoration: underline;
-                    position: absolute;
-                    bottom: 0;
-                    z-index: 10;
+      &:hover {
+        filter: opacity(80%);
 
-                    &:hover {
-                        background-color: rgba(0, 0, 0, .16);
-                    }
-                }
-            }
+        a {
+          opacity: 1;
+          width: 100%;
+          height: rem(20px);
+          border-radius: 0 0 8px 8px;
+          line-height: rem(12px);
+          padding: rem(2px) rem(4px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.5);
+          text-decoration: underline;
+          position: absolute;
+          bottom: 0;
+          z-index: 10;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.16);
+          }
         }
+      }
     }
+  }
 
-    &::-webkit-scrollbar {
-        height: 100%;
-        width: rem(10px);
-    }
+  &::-webkit-scrollbar {
+    height: 100%;
+    width: rem(10px);
+  }
 
-    &::-webkit-scrollbar-track {
-        background: #091e4214;
-        border-radius: 2em;
-    }
+  &::-webkit-scrollbar-track {
+    background: #091e4214;
+    border-radius: 2em;
+  }
 
-    &::-webkit-scrollbar-thumb {
-        background: $add-card;
-        background-color: #cac7d3;
-        border-radius: 2em;
-    }
+  &::-webkit-scrollbar-thumb {
+    background: $add-card;
+    background-color: #cac7d3;
+    border-radius: 2em;
+  }
 
-    &::-webkit-scrollbar-button {
-        display: block;
-        height: 100%;
-    }
+  &::-webkit-scrollbar-button {
+    display: block;
+    height: 100%;
+  }
 }

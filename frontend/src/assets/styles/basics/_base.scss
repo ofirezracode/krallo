@@ -132,9 +132,20 @@ label {
   color: #fff;
 }
 
+.dark-background-bgc {
+  background-color: #fff;
+}
+
 .light-background {
   > * {
     color: rgba(62, 62, 62, 0.85);
+    mix-blend-mode: multiply;
+  }
+}
+
+.light-background-bgc {
+  > * {
+    background-color: rgba(62, 62, 62, 0.85);
     mix-blend-mode: multiply;
   }
 }

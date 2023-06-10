@@ -1,32 +1,57 @@
 import React, { useState } from 'react'
+import PhotosList from '../board-menu/photos-list'
+import { colorService } from '../../services/color.service'
+import { PopoverCmpHeader } from './popover-cmp-header'
 
-export function PopoverCover({ colors, coverStyle, onStyleChange }) {
+export function PopoverCover({ coverStyle, onStyleChange, onClose }) {
   const [activeColor, setActiveColor] = useState(coverStyle ? coverStyle.bgColor : '')
+  const [activeImg, setActiveImg] = useState(coverStyle ? coverStyle.imgUrl : '')
   const [activeType, setActiveType] = useState(coverStyle ? coverStyle.type : '')
 
   function onColorClick(bgColor) {
     setActiveColor(bgColor)
-    onStyleChange({ bgColor, type: activeType })
+    setActiveImg('')
+    if (!activeType) setActiveType('half')
+    onStyleChange({ bgColor, type: activeType ? activeType : 'half' })
+  }
+
+  function onImgClick(imgUrl) {
+    setActiveColor('')
+    setActiveImg(imgUrl)
+    if (!activeType) setActiveType('half')
+    onStyleChange({ imgUrl, type: activeType ? activeType : 'half' })
   }
 
   function onTypeClick(type) {
     setActiveType(type)
-    onStyleChange({ bgColor: activeColor, type })
+    let activeBackground = activeColor ? { bgColor: activeColor } : { imgUrl: activeImg }
+    onStyleChange({ ...activeBackground, type })
   }
 
   function onRemoveCover() {
     onStyleChange({})
   }
 
-  const colorStyle = { backgroundColor: activeColor }
+  let backgroundStyle = {}
+  if (activeColor) {
+    backgroundStyle = { backgroundColor: activeColor }
+  } else if (activeImg) {
+    backgroundStyle = { background: `url(${activeImg}) center center / cover` }
+  }
+
+  let colorClass = 'light-background'
+  if (backgroundStyle.backgroundColor) {
+    if (colorService.isColorDark(backgroundStyle.backgroundColor)) colorClass = 'dark-background'
+  }
 
   return (
     <div className="popover-cover">
+      <PopoverCmpHeader title="Cover" onClose={onClose} />
       <h4 className="popover-title">Size</h4>
       <ul className="sizes-list clean-list">
         <li>
           <button onClick={() => onTypeClick('half')} className={`size-half flex column ${activeType === 'half' ? 'active' : ''}`}>
-            <div className="part-cover" style={colorStyle}></div>
+            <div className="part-cover" style={backgroundStyle}></div>
             <div className="parts-container">
               <div className="part-line-longer"></div>
               <div className="part-line-long"></div>
@@ -39,10 +64,14 @@ export function PopoverCover({ colors, coverStyle, onStyleChange }) {
           </button>
         </li>
         <li>
-          <button onClick={() => onTypeClick('full')} className={`size-full ${activeType === 'full' ? 'active' : ''}`} style={colorStyle}>
-            <div className="parts-container">
-              <div className={`part-line-longer d${activeColor.substring(1)}`}></div>
-              <div className={`part-line-long d${activeColor.substring(1)}`}></div>
+          <button
+            onClick={() => onTypeClick('full')}
+            className={`size-full ${activeType === 'full' ? 'active' : ''}`}
+            style={backgroundStyle}
+          >
+            <div className={`parts-container ${colorClass}`}>
+              <div className={`part-line-longer`}></div>
+              <div className={`part-line-long`}></div>
             </div>
           </button>
         </li>
@@ -52,7 +81,7 @@ export function PopoverCover({ colors, coverStyle, onStyleChange }) {
       </button>
       <h4 className="popover-title">Colors</h4>
       <ul className="colors-list clean-list">
-        {colors.map((color, index) => {
+        {colorService.possibleCoverColors.map((color, index) => {
           return (
             <li className={`${activeColor === color ? 'active' : ''}`} key={index}>
               <button onClick={() => onColorClick(color)} style={{ backgroundColor: color }}></button>
@@ -60,6 +89,10 @@ export function PopoverCover({ colors, coverStyle, onStyleChange }) {
           )
         })}
       </ul>
+      <h4 className="popover-title unsplash">Photos from Unsplash</h4>
+      <div className="cover-photos-list">
+        <PhotosList onUpdateBoardBg={onImgClick} resultsAmount={6} returnSize={'small'} />
+      </div>
     </div>
   )
 }

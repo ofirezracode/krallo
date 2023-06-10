@@ -1,11 +1,38 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import { usePopover } from '../../customHooks/usePopover'
 import { Popover } from '../popover'
+import { colorService } from '../../services/color.service'
 
 export function TaskCover({ task, taskDetails, onStyleChange }) {
-  const coverColor = task && task.style && task.style.bgColor ? { backgroundColor: task.style.bgColor } : null
-  const possibleCoverColors = ['#4bce97', '#e2b203', '#faa53d', '#f87462', '#9f8fef', '#579dff', '#60c6d2', '#94c748', '#e774bb', '#8590a2']
+  const [cover, setCover] = useState(null)
+
+  useEffect(
+    function () {
+      async function getAvgColor() {
+        if (task && task.style) {
+          if (task.style.bgColor) {
+            setCover({ backgroundColor: task.style.bgColor })
+          } else if (task.style.imgUrl) {
+            const avgClr = await colorService.getAvgColor(task.style.imgUrl)
+            setCover({
+              backgroundImage: `url(${task.style.imgUrl})`,
+              backgroundPosition: 'center center',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundColor: avgClr,
+            })
+          }
+        }
+      }
+      getAvgColor()
+    },
+    [task]
+  )
+
+  // ;(async function () {
+
+  // })()
 
   const coverChangeBtnRef = useRef()
   const [addedProps, setAddedProps] = useState({})
@@ -20,12 +47,12 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
 
   return (
     <>
-      {coverColor && (
-        <section className="task-cover" style={coverColor}>
+      {cover && (
+        <section className="task-cover" style={cover}>
           <div className="cover-btn-container">
             <button
               ref={coverChangeBtnRef}
-              onClick={(e) => onOpenPopover(e, { colors: possibleCoverColors, coverStyle: task?.style, onStyleChange }, 'cover')}
+              onClick={(e) => onOpenPopover(e, { coverStyle: task?.style, onStyleChange }, 'cover')}
               className="flex center"
             >
               <img src={CoverIcon} className="box-icon" alt="cover-icon" />

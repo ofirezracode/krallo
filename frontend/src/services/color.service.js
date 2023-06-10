@@ -33,9 +33,13 @@ const DEFAULT_COLORS = [
   { code: '#626f86', varName: '$gray-bolder', colorTitle: 'Bold Gray', isBold: true },
 ]
 
+const possibleCoverColors = ['#4bce97', '#e2b203', '#faa53d', '#f87462', '#9f8fef', '#579dff', '#60c6d2', '#94c748', '#e774bb', '#8590a2']
+
 export const colorService = {
   getRandomColor,
   isColorDark,
+  getAvgColor,
+  possibleCoverColors,
 }
 
 function getRandomColor() {
@@ -64,4 +68,45 @@ function isColorDark(hex) {
   const threshold = 0.25
   const luminance = _getLuminance(...rgb)
   return luminance <= threshold
+}
+
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const image = new Image()
+    image.crossOrigin = 'Anonymous'
+    image.onload = () => resolve(image)
+    image.onerror = reject
+    image.src = url
+  })
+}
+
+async function getAvgColor(url) {
+  const image = await loadImage(url)
+  // create a canvas element with the same dimensions as the image
+  const canvas = document.createElement('canvas')
+  canvas.width = image.width
+  canvas.height = image.height
+
+  // draw the image onto the canvas
+  const context = canvas.getContext('2d')
+  context.drawImage(image, 0, 0)
+
+  // get the image data
+  const imageData = context.getImageData(0, 0, canvas.width, canvas.height).data
+
+  // calculate the average color
+  const colors = { r: 0, g: 0, b: 0 }
+
+  for (let i = 0; i < imageData.length; i += 4) {
+    colors.r += imageData[i]
+    colors.g += imageData[i + 1]
+    colors.b += imageData[i + 2]
+  }
+
+  const pixelCount = imageData.length / 4
+  colors.r /= pixelCount
+  colors.g /= pixelCount
+  colors.b /= pixelCount
+
+  return `rgb(${Math.round(colors.r)}, ${Math.round(colors.g)}, ${Math.round(colors.b)})`
 }
