@@ -116,7 +116,12 @@ export function BoardIndex() {
   return (
     <section style={boardStyle} className="board-index flex column">
       <Outlet />
-      <BoardHeader board={board} onChangeTitle={onChangeTitle} showMenuClass={showMenuClass} setIsMenuHidden={setIsMenuHidden} />
+      <BoardHeader
+        board={board}
+        onChangeTitle={onChangeTitle}
+        showMenuClass={showMenuClass}
+        setIsMenuHidden={setIsMenuHidden}
+      />
       <GroupList
         board={board}
         onDndTask={onMoveTask}
@@ -125,7 +130,12 @@ export function BoardIndex() {
         onAddGroup={onAddGroup}
         showMenuClass={showMenuClass}
       />
-      <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} onUpdateBoardBg={onUpdateBoardBg} />
+      <BoardMenu
+        board={board}
+        setIsMenuHidden={setIsMenuHidden}
+        showMenuClass={showMenuClass}
+        onUpdateBoardBg={onUpdateBoardBg}
+      />
     </section>
   )
 }
