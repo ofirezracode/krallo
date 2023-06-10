@@ -8,8 +8,8 @@ import { Loader } from './loader'
 import FilterIcon from '../assets/img/svg/filter-icon.svg'
 import { useSelector } from 'react-redux'
 
-export function BoardHeader({ board, onChangeTitle, showMenuClass, setIsMenuHidden }) {
-  // const board = useSelector((storeState) => storeState.boardModule.currBoard)
+export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [title, setTitle] = useState(board ? board.title : '')
 
   const handleFocus = (ev) => ev.target.select()
@@ -40,6 +40,7 @@ export function BoardHeader({ board, onChangeTitle, showMenuClass, setIsMenuHidd
   }
 
   let inputWidth = 0
+  if(!title) return
   for (let i = 0; i < title.length; i++) {
     const charCode = title.charCodeAt(i)
     if (charCode >= 65 && charCode <= 90) {
