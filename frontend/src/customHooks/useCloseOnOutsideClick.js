@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
 
-export const useCloseOnOutsideClick = (action, currStateElementClass, prevStateElementClass = '') => {
+export const useCloseOnOutsideClick = (action, currStateElementClass, prevStateElementClass = '', onlyClickOnClassCloses) => {
   const [isListening, setIsListening] = useState(false)
   const [requiresAction, setRequiresAction] = useState(false)
 
   useEffect(() => {
     function handleDocumentClick(e) {
-      if (!e.target.closest(currStateElementClass) && !e.target.classList.contains(prevStateElementClass)) {
+      if (onlyClickOnClassCloses) {
+        if (e.target.closest(onlyClickOnClassCloses)) {
+          setRequiresAction(true)
+        }
+      } else if (!e.target.closest(currStateElementClass) && !e.target.classList.contains(prevStateElementClass)) {
         setRequiresAction(true)
       }
     }

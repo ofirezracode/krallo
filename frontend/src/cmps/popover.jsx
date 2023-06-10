@@ -15,7 +15,7 @@ import { PopoverLogout } from './popovers/popover-logout'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
-  const [isListening, setIsListening] = useCloseOnOutsideClick(onClosePopover, '.popover', 'add-to-card-btn')
+  const [isListening, setIsListening] = useCloseOnOutsideClick(onClosePopover, 'popover', 'add-to-card-btn', '.popover-backdrop')
 
   useEffect(() => {
     if (type) {

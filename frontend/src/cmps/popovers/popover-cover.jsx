@@ -29,6 +29,9 @@ export function PopoverCover({ coverStyle, onStyleChange, onClose }) {
   }
 
   function onRemoveCover() {
+    setActiveColor('')
+    setActiveImg('')
+    setActiveType('')
     onStyleChange({})
   }
 
