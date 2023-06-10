@@ -8,8 +8,8 @@ import { Loader } from './loader'
 import FilterIcon from '../assets/img/svg/filter-icon.svg'
 import { useSelector } from 'react-redux'
 
-export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
-  const board = useSelector((storeState) => storeState.boardModule.currBoard)
+export function BoardHeader({ board, onChangeTitle, showMenuClass, setIsMenuHidden }) {
+  // const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [title, setTitle] = useState(board ? board.title : '')
 
   const handleFocus = (ev) => ev.target.select()
