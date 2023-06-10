@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import PhotosList from '../board-menu/photos-list'
+import { PhotosList } from '../board-menu/photos-list'
 import { colorService } from '../../services/color.service'
 import { PopoverCmpHeader } from './popover-cmp-header'
 

@@ -10,7 +10,6 @@ import {
   SET_BOARD,
   SET_LABELS_OPEN,
 } from './board.reducer.js'
-import { async } from 'q'
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {

@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom'
 
 export function Workspaces() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
-  const loggedInUser = useSelector((storeState) => storeState.userModule.users)
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
+
 
   useEffect(() => {
     loadBoards()
@@ -27,11 +28,9 @@ export function Workspaces() {
     }
   }
 
-  async function onAddBoard(ev) {
-    ev.preventDefault()
+  async function onAddBoard(title, imgUrl) {
     try {
-      const boardToSave = boardService.getEmptyBoard()
-      // if (!loggedInUser.fullname) loggedInUser.fullname = 'Guest'
+      const boardToSave = boardService.getEmptyBoard(title, imgUrl)
       boardToSave.createdBy = loggedInUser
       const savedBoard = await addBoard(boardToSave)
       navigate(`/board/${savedBoard._id}`)

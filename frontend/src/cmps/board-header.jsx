@@ -40,6 +40,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   }
 
   let inputWidth = 0
+  if(!title) return
   for (let i = 0; i < title.length; i++) {
     const charCode = title.charCodeAt(i)
     if (charCode >= 65 && charCode <= 90) {

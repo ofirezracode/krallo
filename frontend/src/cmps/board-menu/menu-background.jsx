@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
-import PhotosList from './photos-list'
-import ColorsList from './colors-list'
+import { PhotosList } from './photos-list'
+import { ColorsList } from './colors-list'
 
 export function MenuBackground({ board, setTitle, onUpdateBoardBg }) {
     const [isBgClicked, setIsBgClicked] = useState(false)
     const [bgType, setBgType] = useState('')
+    const [selectedImg, setSelectedImg] = useState(board.style.imgUrl)
     function handleBackground(title) {
         setTitle(title)
         setIsBgClicked(prev => !prev)
         setBgType(title)
     }
 
+    function onSetBoardBg(url, ev) {
+        ev.stopPropagation()
+        onUpdateBoardBg(url)
+    }
 
     return (
         <>
@@ -24,8 +29,8 @@ export function MenuBackground({ board, setTitle, onUpdateBoardBg }) {
                     <p>Colors</p>
                 </li>
             </ul>)}
-            {bgType === 'Photos' && <PhotosList board={board} setTitle={setTitle} onUpdateBoardBg={onUpdateBoardBg} />}
-            {bgType === 'Colors' && <ColorsList board={board} setTitle={setTitle} />}
+            {bgType === 'Photos' && <PhotosList board={board} setTitle={setTitle} onUpdateBoardBg={onUpdateBoardBg} onSetBoardBg={onSetBoardBg} setSelectedImg={setSelectedImg} selectedImg={selectedImg} />}
+            {bgType === 'Colors' && <ColorsList board={board} setTitle={setTitle} onUpdateBoardBg={onUpdateBoardBg} onSetBoardBg={onSetBoardBg} setSelectedImg={setSelectedImg} selectedImg={selectedImg} />}
         </>
     )
 }

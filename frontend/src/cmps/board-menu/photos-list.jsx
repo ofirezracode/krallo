@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Loader } from '../loader'
 import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
+import { BsCheckLg } from 'react-icons/bs'
 
-export default function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize }) {
+export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, onSetBoardBg, setSelectedImg, selectedImg }) {
   const [imgs, setImgs] = useState([])
+
   useEffect(() => {
     const amount = resultsAmount ? resultsAmount : 30
     const fetchImgs = async () => {
@@ -21,7 +23,7 @@ export default function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize 
     fetchImgs()
   }, [])
 
-  function onSetBoardBg(img, ev) {
+  function handleChange(img, ev) {
     let url = img.urls.full
     if (returnSize) url = img.urls[returnSize]
     ev.stopPropagation()
@@ -37,11 +39,20 @@ export default function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize 
       ) : (
         <ul className="photos-list clean-list">
           {imgs.map((img, idx) => (
-            <li key={idx} className="flex justify-center column" onClick={(ev) => onSetBoardBg(img, ev)}>
+            <li
+              key={idx}
+              className={`flex justify-center column ${selectedImg === img.urls.full ? 'selected' : ''}`}
+              onClick={(ev) => handleChange(img, ev)}
+            >
               <div className="bg-img" style={{ background: `url(${img.urls.small}) center center / cover` }}>
                 <a href={img.user.portfolio_url} target="_blank">
                   {img.user.username}
                 </a>
+                {selectedImg === img.urls.full && (
+                  <span className="selected-img">
+                    <BsCheckLg />
+                  </span>
+                )}
               </div>
             </li>
           ))}
