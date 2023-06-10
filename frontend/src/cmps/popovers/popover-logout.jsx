@@ -6,16 +6,21 @@ import { UserImg } from '../user-img'
 export function PopoverLogout({ onLogout, onClose }) {
   const user = useSelector((storeState) => storeState.userModule.user)
 
-  console.log('user',user);
+  console.log('user', user);
   return (
-    <div>
-      <PopoverCmpHeader title="ACCOUNT" onClose={onClose} />
-      <div>
-      <div className='popover-logout-container flex'>
-      <UserImg size="small" hover="circle" userImg={user.imgUrl} padding={true} />
-        <span className='fullname'>{user.fullname}</span>
-        {/* <span className='email'>{user.email}</span> */}
+    <div className='popover-logout'>
+      {/* <PopoverCmpHeader title="ACCOUNT" onClose={onClose} /> */}
+      <div className='popover-header-logout'>
+        <h5>Account</h5>
       </div>
+      <div>
+        <div className='popover-logout-container flex'>
+          <UserImg size="large" userImg={user.imgUrl} padding={true} />
+          <div className='flex column'>
+            <span className='fullname'>{user.fullname}</span>
+            <span className='email'>{user.email}</span>
+          </div>
+        </div>
       </div>
       <button className='logout' onClick={onLogout}>Log out</button>
 

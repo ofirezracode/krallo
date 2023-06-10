@@ -1,27 +1,49 @@
-.popover-logout-container {
-padding-block-end: rem(7px);
-align-items: center;
-gap: rem(6px);
-    .fullname {
-        color: $text;
-        font-size: 14px;
-        line-height: 20px;
+.popover-logout {
+
+    .popover-header-logout {
+        text-transform: uppercase;
+        font-size: rem(11px);
+        line-height: rem(16px);
+        font-weight: 700;
+        color: var(--ds-text-subtlest, #7A869A);
+        margin: rem(16px) 0 rem(8px);
+        padding-inline-start: rem(5px);
     }
 
-    .email {}
+    .popover-logout-container {
+        padding-block-end: rem(7px);
+        align-items: center;
+        gap: rem(6px);
 
-}
-.logout {
-    border-top: solid 1px #091E4224;
-    padding: 8px 20px;
-    background-color: transparent;
-    color: $text;
-    width: 100%;
-    text-align: left;
-    font-size: 14px;
-    font-family: $font-input;
+        .fullname {
+            color: $text;
+            font-size: rem(14px);
+            line-height: rem(20px);
+        }
 
-    &:hover{
-        background-color:  #091E420F;
+        .email {
+            font-size: rem(12px);
+            color: $text;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: rem(16px);
+        }
+
+    }
+
+    .logout {
+        border-top: solid 1px #091E4224;
+        padding: 8px 20px;
+        background-color: transparent;
+        color: $text;
+        width: 100%;
+        text-align: left;
+        font-size: 14px;
+        font-family: $font-input;
+
+        &:hover {
+            background-color: #091E420F;
+        }
     }
 }

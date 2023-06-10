@@ -31,9 +31,7 @@ export function ActionsList({
           <p>Members</p>
         </button>
         <button
-          onClick={(e) =>
-            onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete, height: 'l' }, 'labels')
-          }
+          onClick={(e) => onOpenPopover(e, { task, labels: board.labels, onLabelChange, onLabelEdit, onLabelDelete }, 'labels')}
           title="Labels"
         >
           <BsTag className="label-icon" />
@@ -44,7 +42,7 @@ export function ActionsList({
           <p>Checklist</p>
         </button>
         <button
-          onClick={(e) => onOpenPopover(e, { activeDueDate: task.dueDate, widthOverride: '332px', onDueDateSave, height: 'xl' }, 'dates')}
+          onClick={(e) => onOpenPopover(e, { activeDueDate: task.dueDate, widthOverride: '332px', onDueDateSave }, 'dates')}
           title="Dates"
         >
           <BsClock />
