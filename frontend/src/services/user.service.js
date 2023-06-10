@@ -43,6 +43,7 @@ function remove(userId) {
 
 async function login(userCred) {
   const user = await httpService.post(`${API_AUTH_ROUTE}/login`, userCred)
+  console.log('user', user)
   if (user) {
     return saveLocalUser(user)
   }
@@ -60,7 +61,7 @@ async function logout() {
 }
 
 function saveLocalUser(user) {
-  user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl }
+  user = { _id: user._id, email: user.email, fullname: user.fullname, imgUrl: user.imgUrl }
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
 }
