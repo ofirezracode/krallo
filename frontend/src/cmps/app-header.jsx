@@ -4,7 +4,7 @@ import { BsCircleHalf, BsTrello, BsFillPersonXFill } from 'react-icons/bs'
 import { UserImg } from './user-img'
 import { logout } from '../store/user.actions.js'
 import { useNavigate } from 'react-router-dom'
-import { addBoard, loadBoards, updateBoard } from '../store/board.actions'
+import { addBoard, loadBoards, setCurrBoard, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
@@ -28,7 +28,7 @@ export function AppHeader() {
       const boardToSave = boardService.getEmptyBoard(title, imgUrl)
       boardToSave.createdBy = loggedInUser
       const savedBoard = await addBoard(boardToSave)
-      navigate(`/workspaces`) // refactor
+      setCurrBoard(savedBoard)
       navigate(`/board/${savedBoard._id}`)
     } catch (err) {
       console.error('Error:', err)
@@ -39,7 +39,7 @@ export function AppHeader() {
     try {
       await logout()
       navigate(`/`)
-    } catch (err) {}
+    } catch (err) { }
   }
 
   async function onCreateBoard(ev) {
@@ -61,7 +61,7 @@ export function AppHeader() {
             <BsTrello />
             <label>Krallo</label>
           </Link>
-          <button className="create-btn" title="Create new board"  onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}>
+          <button className="create-btn" title="Create new board" onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}>
             Create
           </button>
         </li>

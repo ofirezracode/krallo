@@ -16,6 +16,7 @@
       margin: auto;
       flex-direction: column;
       align-items: center;
+      text-align: center;
 
       .home-txt {
         width: rem(500px);
@@ -80,6 +81,7 @@
       @include for-wide-layout {
         flex-direction: row;
         justify-content: space-between;
+        text-align: left;
       }
 
     }
