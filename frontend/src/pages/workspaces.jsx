@@ -27,11 +27,9 @@ export function Workspaces() {
     }
   }
 
-  async function onAddBoard(ev) {
-    ev.preventDefault()
+  async function onAddBoard(title, imgUrl) {
     try {
-      const boardToSave = boardService.getEmptyBoard()
-      // if (!loggedInUser.fullname) loggedInUser.fullname = 'Guest'
+      const boardToSave = boardService.getEmptyBoard(title, imgUrl)
       boardToSave.createdBy = loggedInUser
       const savedBoard = await addBoard(boardToSave)
       navigate(`/board/${savedBoard._id}`)
