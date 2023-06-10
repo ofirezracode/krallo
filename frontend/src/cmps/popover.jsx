@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { PopoverDummy } from './popovers/popover-dummy'
 import { PopoverLabels } from './popovers/popover-labels'
@@ -23,6 +23,8 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
     }
   }, [type])
 
+  const popoverRef = useRef()
+
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
 
   function onClosePopover() {
@@ -30,28 +32,40 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
     onClose()
   }
 
+  const debugObj = { parentRect, innerHeight: window.innerHeight, innerWidth: window.innerWidth }
+
   let popoverStyles = { position: 'absolute' }
 
-  let isSmallScreen = false
+  // let isSmallScreen = false
   let isJustifyRight = false
+  let isPositionRight = false
   let isAlignCenter = false
+  let isAlignTop = false
   let positionX = parentRect.left
   let positionY = parentRect.bottom
 
   // Check viewport overflow on the X axis
-  if (window.innerWidth - 400 < parentRect.left && window.innerWidth < 1100) {
-    if (window.innerWidth < parentRect.right - parentRect.width / 2) {
-      isSmallScreen = true
-    } else {
-      isJustifyRight = true
+  if (window.innerWidth - 400 < parentRect.left) {
+    isJustifyRight = true
+    if (window.innerWidth < parentRect.right) {
+      isJustifyRight = false
+      isPositionRight = true
     }
   }
 
   // Check viewport overflow on the Y axis
-  if (addedProps.height === 'l' && parentRect.bottom > window.innerHeight / 2) {
-    isAlignCenter = true
-  } else if (addedProps.height === 'xl' && parentRect.bottom > window.innerHeight / 2.5) {
-    isAlignCenter = true
+  if (popoverRef.current) {
+    debugObj.firstIf = true
+    if (window.innerHeight - parentRect.bottom < popoverRef.current.getBoundingClientRect().height) {
+      debugObj.secondIf = true
+      if (window.innerHeight - parentRect.bottom < popoverRef.current.getBoundingClientRect().height / 2) {
+        debugObj.thirdIf = true
+        isAlignTop = true
+      } else {
+        debugObj.thirdElse = true
+        isAlignCenter = true
+      }
+    }
   }
 
   let yDiff = 0
@@ -59,6 +73,7 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
 
   if (addedProps.refElement) {
     const containerRect = addedProps.refElement.getBoundingClientRect()
+    console.log('containerRect', containerRect)
     xDiff = containerRect.x
     yDiff = containerRect.y
   }
@@ -66,31 +81,50 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   popoverStyles.top = positionY + 5 - yDiff
   popoverStyles.left = positionX - xDiff
 
+  const scrollTop =
+    window.pageYOffset !== undefined
+      ? window.pageYOffset
+      : (document.documentElement || document.body.parentNode || document.body).scrollTop
   if (isAlignCenter) {
     popoverStyles.top = positionY - yDiff
     popoverStyles.transform = 'translate(0, -50%)'
   }
 
+  if (isAlignTop) {
+    let popoverHeight = 0
+    if (popoverRef.current) popoverHeight = popoverRef.current.getBoundingClientRect().height
+    popoverStyles.top = window.innerHeight - popoverHeight + scrollTop - 20
+  }
+
   if (isJustifyRight) {
-    popoverStyles.left = window.innerWidth - 340 - xDiff
+    let popoverWidth = 0
+    if (popoverRef.current) popoverWidth = popoverRef.current.getBoundingClientRect().width
+    popoverStyles.left = window.innerWidth - popoverWidth - xDiff - (window.innerWidth - parentRect.right)
   }
 
-  if (isSmallScreen) {
-    popoverStyles.left = '50%'
-    popoverStyles.transform = 'translate(-50%, 0)'
+  if (isPositionRight) {
+    let popoverWidth = 0
+    if (popoverRef.current) popoverWidth = popoverRef.current.getBoundingClientRect().width
+    popoverStyles.left = window.innerWidth - popoverWidth - xDiff - 20
   }
-
-  // popoverStyles.top = parentRect.bottom + 5
-  // popoverStyles.left = parentRect.left
 
   if (addedProps.widthOverride) {
     popoverStyles.width = addedProps.widthOverride
   }
 
+  if (!popoverRef.current) {
+    popoverStyles.opacity = 0
+  } else {
+    debugObj.current = popoverRef.current
+    popoverStyles.opacity = 1
+  }
+
+  console.log('debugObj', debugObj)
+
   return (
     <>
       <div className="popover-backdrop" />
-      <div className="popover" style={popoverStyles}>
+      <div ref={popoverRef} className="popover" style={popoverStyles}>
         <DynamicCmp type={type} addedProps={addedProps} onClose={onClosePopover} />
       </div>
     </>
