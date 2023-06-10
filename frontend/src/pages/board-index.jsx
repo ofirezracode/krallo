@@ -48,14 +48,22 @@ export function BoardIndex() {
     }
   }
 
-  async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
-    const newBoard = boardService.move('task', board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
-    // setBoard(newBoard)
+  async function onUpdateBoardBg(url) {
+    const newBoard = { ...board, style: board.style }
+    newBoard.style.type = 'img'
+    newBoard.style.imgUrl = url
     try {
+      console.log(newBoard)
       await updateBoard(newBoard)
     } catch (err) {
       console.log('err', err)
     }
+  }
+
+  async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
+    const newBoard = boardService.move('task', board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
+    // setBoard(newBoard)
+
   }
 
   async function onMoveGroup(sourceGroupId, destGroupId) {
@@ -117,7 +125,7 @@ export function BoardIndex() {
         onAddGroup={onAddGroup}
         showMenuClass={showMenuClass}
       />
-      <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} />
+      <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} onUpdateBoardBg={onUpdateBoardBg} />
     </section>
   )
 }

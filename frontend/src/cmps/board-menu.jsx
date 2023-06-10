@@ -4,16 +4,15 @@ import { MenuTitle } from "./board-menu/board-menu-title"
 import { utilService } from "../services/util.service"
 import { useSelector } from "react-redux"
 import { MenuAbout } from "./board-menu/menu-about"
-import { MenuBackGround } from "./board-menu/menu-background"
+import { MenuBackground } from "./board-menu/menu-background"
 import { MenuActivitiesList } from "./board-menu/menu-activities-list"
 
-export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
+export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg }) {
   const [isOn, setIsOn] = useState(true)
   const [title, setTitle] = useState('Menu')
   const goBackClass = isOn ? 'go-back' : ''
   const activities = useSelector((storeState) => storeState.activityModule.activities)
   const [setting, setSetting] = useState('')
-  console.log('activities', activities)
   function onChangeSettings(currTitle, settingName) {
     setIsOn(prevIsOn => !prevIsOn)
     setTitle(currTitle)
@@ -46,12 +45,12 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
               <p>Change background</p>
             </button>
           </li>
-          {activities.map(activity =>
+          {/* {activities.map(activity => 
 
             <li className='activities flex' key={activity.fromUser._id}>
               {activity.fromUser.imgUrl ?
                 <img src={activity.fromUser.imgUrl} alt={activity.fromUser.fullname} /> :
-                <div style={{ backgroundColor: utilService.getRandomColor() }}>
+                <div className='no-img-url' style={{ backgroundColor: utilService.getRandomColor() }}>
                   {activity.fromUser.fullname.charAt(0).toUpperCase()}
                 </div>}
               <div>
@@ -60,11 +59,11 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass }) {
                 <p>{activity.txt}</p>
                 <p>{utilService.formatDate(activity.createdAt)}</p>
               </div>
-            </li>)}
+            </li>)} */}
         </ul>
       )}
       {setting === 'about' && <MenuAbout board={board} />}
-      {setting === 'background' && <MenuBackGround board={board} />}
+      {setting === 'background' && <MenuBackground board={board} setTitle={setTitle} onUpdateBoardBg={onUpdateBoardBg} />}
       {setting === 'activities' && <MenuActivitiesList board={board} />}
     </section>
   )

@@ -1,0 +1,33 @@
+.backgrounds {
+    padding: rem(12px) rem(6px) rem(8px) rem(12px);
+
+    li {
+        p {
+            text-align: center;
+        }
+
+        .change-bg-img {
+            background-image: url(../../../img/change-background-img.jpg);
+            background-position: center;
+        }
+
+        .change-bg-color {
+            background-image: url(../../../img/change-bg-color.png);
+            background-position-x: right;
+        }
+
+        .change-bg-img,
+        .change-bg-color {
+            background-size: cover;
+            width: rem(152.5px);
+            height: rem(96px);
+            border-radius: 8px;
+
+            &:hover {
+                filter: opacity(80%);
+            }
+        }
+
+        padding-inline: rem(4px);
+    }
+}

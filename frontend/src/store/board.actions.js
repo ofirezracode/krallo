@@ -54,7 +54,7 @@ export async function loadBoards() {
   }
 }
 
-export async function setCurrBoard(board) {
+export function setCurrBoard(board) {
   try {
     store.dispatch({
       type: SET_BOARD,
@@ -75,7 +75,6 @@ export async function removeBoard(boardId) {
     throw err
   }
 }
-
 export async function addBoard(board) {
   try {
     const savedBoard = await boardService.save(board)

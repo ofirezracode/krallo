@@ -72,6 +72,14 @@
 
         }
 
-        .activities {}
+        .activities {
+
+            img,
+            .no-img-url {
+                width: rem(32px);
+                height: rem(32px);
+                border-radius: 50%;
+            }
+        }
     }
 }
