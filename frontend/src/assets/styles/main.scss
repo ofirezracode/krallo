@@ -50,6 +50,7 @@
 @import 'cmps/popovers/_popover-checklist';
 @import 'cmps/popovers/_popover-dates.scss';
 @import 'cmps/popovers/popover-delete-checklist';
+@import 'cmps/popovers/popover-logout';
 
 //Task Details
 @import 'cmps/task-details/_task-cover.scss';
@@ -66,9 +67,13 @@
 @import 'cmps/task-details/checklist/_checklist-index.scss';
 @import 'cmps/task-details/checklist/_checklist-list.scss';
 @import 'cmps/task-details/checklist/_checklist-preview.scss';
-@import 'cmps/task-details/checklist/_progress-ber.scss';
+@import 'cmps/task-details/checklist/_progress-bar.scss';
 @import 'cmps/task-details/checklist/_todo-list.scss';
 @import 'cmps/task-details/checklist/_todo-preview.scss';
 
 //Board Menu
 @import 'cmps/board-menu/_board-menu-title.scss';
+@import 'cmps/board-menu/_menu-about.scss';
+@import 'cmps/board-menu/_menu-background.scss';
+@import 'cmps/board-menu/_photos-list.scss';
+@import 'cmps/board-menu/_menu-activities.scss';

@@ -10,7 +10,8 @@ import { PopoverDates } from './popovers/popover-dates'
 import { PopoverDeleteAttachment } from './popovers/popover-delete-attachment'
 import { PopoverEditAttachment } from './popovers/popover-edit-attachment'
 import { PopoverDeleteChecklist } from './popovers/popover-delete-checklist'
-import { popoverCreateBoard } from './popovers/popover-create-board'
+import { PopoverCreateBoard } from './popovers/popover-create-board'
+import { PopoverLogout } from './popovers/popover-logout'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
@@ -119,7 +120,9 @@ function DynamicCmp({ type, addedProps, onClose }) {
     case 'delete-checklist':
       return <PopoverDeleteChecklist {...addedProps} onClose={onClose} />
     case 'create-board':
-      return <popoverCreateBoard {...addedProps} onClose={onClose} />
+      return <PopoverCreateBoard {...addedProps} onClose={onClose} />
+    case 'logout':
+      return <PopoverLogout {...addedProps} onClose={onClose} />
     default:
       return <PopoverDummy />
   }

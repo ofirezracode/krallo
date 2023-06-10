@@ -18,10 +18,12 @@ export function ProgressBar({ checklist }) {
     setProgress(Math.round(progress))
   }
 
+  const progressClass = progress === 100 ? 'progress-bar-complete' : ''
+
   return (
     <div className="checklist-progress">
       <span>{`${progress}%`}</span>
-      <div className="checklist-progress-bar">
+      <div className={`checklist-progress-bar ${progressClass}`}>
         <div className="progress-bar">
           <div className="progress-bar-current" style={{ width: `${progress}%` }}></div>
         </div>
