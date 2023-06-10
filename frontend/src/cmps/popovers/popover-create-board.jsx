@@ -1,7 +1,10 @@
 import React from 'react'
+import { PopoverCmpHeader } from './popover-cmp-header'
 
-export function popoverCreateBoard() {
+export function PopoverCreateBoard({ onClose}) {
   return (
-    <div>popover-create-bord</div>
+    <div>
+      <PopoverCmpHeader title="Members" onClose={onClose} />
+    </div>
   )
 }

@@ -200,12 +200,8 @@ export function TaskDetails() {
             />
             <ChecklistIndex
               task={task}
-              // checklists={task.checklists}
-              // onDeleteChecklist={onDeleteChecklist}
               onOpenPopover={onOpenPopover}
               onUpdateChecklists={onUpdateChecklists}
-              // onEditChecklist={onEditChecklist}
-              // onDeleteTodo={onDeleteTodo}
             />
           </section>
           <ActionsList

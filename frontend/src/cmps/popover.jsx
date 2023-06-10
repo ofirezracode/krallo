@@ -11,7 +11,8 @@ import { PopoverDates } from './popovers/popover-dates'
 import { PopoverDeleteAttachment } from './popovers/popover-delete-attachment'
 import { PopoverEditAttachment } from './popovers/popover-edit-attachment'
 import { PopoverDeleteChecklist } from './popovers/popover-delete-checklist'
-import { popoverCreateBoard } from './popovers/popover-create-board'
+import { PopoverCreateBoard } from './popovers/popover-create-board'
+import { PopoverLogout } from './popovers/popover-logout'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   if (!isShown || !parentRect || Object.keys(parentRect).length > 0) return <div></div>
@@ -70,8 +71,10 @@ function DynamicCmp({ type, addedProps, onClose }) {
       return <PopoverDates {...addedProps} onClose={onClose} />
     case 'delete-checklist':
       return <PopoverDeleteChecklist {...addedProps} onClose={onClose} />
-      case 'create-board':
-        return <popoverCreateBoard {...addedProps} onClose={onClose} />
+    case 'create-board':
+      return <PopoverCreateBoard {...addedProps} onClose={onClose} />
+      case 'logout':
+      return <PopoverLogout {...addedProps} onClose={onClose} />
     default:
       return <PopoverDummy />
   }

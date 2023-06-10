@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ColorPalette } from '../../color-palette'
 import { HiXMark } from 'react-icons/hi2'
+import { colorService } from '../../../services/color.service'
 
 export function LabelEditor({ isAdd, onSave, navigateToState, chosenLabel }) {
   const [editedLabel, setEditedLabel] = useState({
@@ -16,7 +17,7 @@ export function LabelEditor({ isAdd, onSave, navigateToState, chosenLabel }) {
 
   function onLabelEdited(clrEdit) {
     const color = clrEdit.color ? clrEdit.color : editedLabel.color
-    const title = clrEdit.title ? clrEdit.title : editedLabel.title
+    const title = clrEdit.title !== undefined ? clrEdit.title : editedLabel.title
     setEditedLabel((prev) => ({ ...prev, color, title }))
   }
 
@@ -24,13 +25,20 @@ export function LabelEditor({ isAdd, onSave, navigateToState, chosenLabel }) {
     setEditedLabel((prev) => ({ ...prev, color: null }))
   }
 
-  const previewFormatClass = editedLabel.color ? `format-${editedLabel.color.varName.substring(1)}` : 'no-color'
   const previewStyle = editedLabel.color ? { backgroundColor: editedLabel.color.code } : {}
+
+  let colorClass = 'light-background'
+  if (editedLabel.color) {
+    if (colorService.isColorDark(editedLabel.color.code)) colorClass = 'dark-background'
+  } else {
+    colorClass = ''
+  }
+
   return (
     <div className="label-editor">
       <div className="edited-label-preview">
-        <div className={`label-color ${previewFormatClass}`} style={previewStyle}>
-          {editedLabel.title}
+        <div className={`label-color ${colorClass}`} style={previewStyle}>
+          <label>{editedLabel.title}</label>
         </div>
       </div>
       <h4 className="labels-title">Title</h4>
