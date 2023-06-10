@@ -4,18 +4,19 @@ import { BsCheckLg } from "react-icons/bs";
 import { colorService } from '../../services/color.service';
 
 export function PopoverCreateBoard({ onAddBoard, onClose }) {
-  
+
   const imgUrls = colorService.getNewBoardColors()
   const unslpashImgs = colorService.getNewBoardImgs()
   const [boardTitle, setBoardTitle] = useState('')
   const [selectedImg, setSelectedImg] = useState('https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686390040/photo-1686019539035-d034ab44a075_vezhjv.jpg');
 
-  const required = boardTitle.length > 0 ? 'not-required' :'required'
+  const required = boardTitle.length > 0 ? 'not-required' : 'required'
 
   function onSubmit(ev) {
     ev.preventDefault();
     const title = ev.target[0].value;
     onAddBoard(title, selectedImg);
+    onClose()
   }
 
   return (
