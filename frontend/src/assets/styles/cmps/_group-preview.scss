@@ -48,6 +48,7 @@
       height: rem(32px);
       width: rem(32px);
       background-color: transparent;
+      color: $text-subtle;
 
       &:hover {
         background-color: $card-input-hover;
