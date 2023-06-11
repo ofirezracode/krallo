@@ -8,7 +8,7 @@ export function AppHeaderHome() {
   const navigate = useNavigate()
 
   async function onNavToWorkspaces() {
-    if (!userService.getLoggedinUser()) {
+    if (!userService.getLoggedInUser()) {
       await login({ email: 'guest@krallo.com', password: '123' })
     }
     navigate('/workspaces')
