@@ -6,11 +6,13 @@ export const REMOVE_BOARD = 'REMOVE_BOARD'
 export const ADD_BOARD = 'ADD_BOARD'
 export const UPDATE_BOARD = 'UPDATE_BOARD'
 export const SET_LABELS_OPEN = 'SET_LABELS_OPEN'
+export const SET_FILTER_BY = 'SET_FILTER_BY'
 
 const initialState = {
   boards: [],
   currBoard: boardService.getEmptyBoard(),
   labelsOpen: false,
+  filterBy: boardService.getEmptyFilterBy(),
 }
 
 export function boardReducer(state = initialState, action) {
@@ -38,6 +40,9 @@ export function boardReducer(state = initialState, action) {
       break
     case SET_LABELS_OPEN:
       newState = { ...state, labelsOpen: action.labelsOpen }
+      break
+    case SET_FILTER_BY:
+      newState = { ...state, filterBy: action.filterBy }
       break
     default:
       break

@@ -13,6 +13,7 @@ export function PopoverMembers({ members, taskMembers, onHandleTaskMembers, onCl
   })
 
   function toggleMember({ _id, fullname, imgUrl, isOnBoard }) {
+    console.log('membertask',_id);
     const activityType = isOnBoard ? 'remove-member' : 'add-member'
     onHandleTaskMembers(activityType, { _id, fullname, imgUrl })
   }
@@ -20,7 +21,6 @@ export function PopoverMembers({ members, taskMembers, onHandleTaskMembers, onCl
   return (
     <section>
       <PopoverCmpHeader title="Members" onClose={onClose} />
-
       <div className="popover-members">
         <input className='input' type="text" value={searchTerm} onChange={setSearchTerm} placeholder="Search members" />
         <h4 className="members-title">Board members</h4>
