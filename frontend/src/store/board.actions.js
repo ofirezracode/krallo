@@ -47,14 +47,16 @@ export async function loadBoards() {
       type: SET_BOARDS,
       boards,
     })
+    return boards
   } catch (err) {
     console.log('Cannot load boards', err)
     throw err
   }
 }
 
-export function setCurrBoard(board) {
+export function setCurrBoard(board, filterBy) {
   try {
+    board = boardService.filterBoard(board, filterBy)
     store.dispatch({
       type: SET_BOARD,
       board,

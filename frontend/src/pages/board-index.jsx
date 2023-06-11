@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useParams } from 'react-router-dom'
 
+import { socketService } from '../services/socket.service'
+
 import { GroupList } from '../cmps/group-list'
 import { BoardHeader } from '../cmps/board-header'
 import { loadBoards, setCurrBoard, updateBoard } from '../store/board.actions'
@@ -14,6 +16,7 @@ export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const activities = useSelector((storeState) => storeState.activityModule.activities)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const filterBy = useSelector((storeState) => storeState.boardModule.filterBy)
   const { boardId } = useParams()
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
   const [isMenuHidden, setIsMenuHidden] = useState(false)
@@ -21,16 +24,23 @@ export function BoardIndex() {
 
   useEffect(() => {
     loadBoards()
+    socketService.on('board-update', onUpdatedBoardEmitted)
+    socketService.emit('set-board-id', boardId)
   }, [])
 
   useEffect(() => {
     if (boards.length !== 0) {
       const newBoard = boards.filter((board) => board._id === boardId)[0]
 
-      setCurrBoard(newBoard)
+      setCurrBoard(newBoard, filterBy)
       loadActivities({ boardId: newBoard._id })
     }
   }, [boards])
+
+  function onUpdatedBoardEmitted(updatedBoard) {
+    setCurrBoard(updatedBoard, filterBy)
+    console.log('caught emitted event', updatedBoard)
+  }
 
   async function onUpdateGroupTitle(groupId, newTitle) {
     const groupIdx = board.groups.findIndex((group) => group._id === groupId)
@@ -63,7 +73,6 @@ export function BoardIndex() {
   async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
     const newBoard = boardService.move('task', board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
     // setBoard(newBoard)
-
   }
 
   async function onMoveGroup(sourceGroupId, destGroupId) {
@@ -116,12 +125,7 @@ export function BoardIndex() {
   return (
     <section style={boardStyle} className="board-index flex column">
       <Outlet />
-      <BoardHeader
-        board={board}
-        onChangeTitle={onChangeTitle}
-        showMenuClass={showMenuClass}
-        setIsMenuHidden={setIsMenuHidden}
-      />
+      <BoardHeader board={board} onChangeTitle={onChangeTitle} showMenuClass={showMenuClass} setIsMenuHidden={setIsMenuHidden} />
       <GroupList
         board={board}
         onMoveTask={onMoveTask}
@@ -130,12 +134,7 @@ export function BoardIndex() {
         onAddGroup={onAddGroup}
         showMenuClass={showMenuClass}
       />
-      <BoardMenu
-        board={board}
-        setIsMenuHidden={setIsMenuHidden}
-        showMenuClass={showMenuClass}
-        onUpdateBoardBg={onUpdateBoardBg}
-      />
+      <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} onUpdateBoardBg={onUpdateBoardBg} />
     </section>
   )
 }

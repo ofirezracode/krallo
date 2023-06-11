@@ -22,6 +22,7 @@ export async function loadActivities(filterBy) {
 
 export async function addActivity(activity) {
   try {
+    if (!activity.txt) return
     const addedActivity = await activityService.add(activity)
     store.dispatch(getActionAddActivity(addedActivity))
   } catch (err) {
