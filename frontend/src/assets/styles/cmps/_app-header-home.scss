@@ -1,3 +1,5 @@
+// .headers:not(.app-header) {
+
 .app-header-home {
   font-family: charlie-regular;
   height: rem(60px);
@@ -5,6 +7,15 @@
   height: rem(60px);
   margin: 0px auto;
   max-width: rem(1320px);
+  background-color: #fff;
+  // position: sticky;
+  // top: 0;
+  // z-index: 100;
+  // transition: background-color 0.5s ease 0s, box-shadow 0.5s ease 0s;
+
+  // &:hover {
+  //   box-shadow: rgba(9, 30, 66, 0.15) 0px 0.5rem 1rem 0px;
+  // }
 
   .logo {
     height: rem(40px);
@@ -66,3 +77,5 @@
     }
   }
 }
+
+// }

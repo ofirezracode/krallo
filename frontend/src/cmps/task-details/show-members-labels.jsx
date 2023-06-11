@@ -4,7 +4,7 @@ import Tamar from '../../assets/img/members/tamar-pic.jpg'
 import { BsPlusLg } from 'react-icons/bs'
 import { useSelector } from 'react-redux'
 
-export function ShowMembersLabels({ task, onOpenPopover, onLabelChange, onLabelEdit, onLabelDelete }) {
+export function ShowMembersLabels({ task, onOpenPopover, onLabelChange, onLabelEdit, onLabelDelete, onHandleTaskMembers }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   if (!task || !board) return <div></div>
   const { members } = task
@@ -27,7 +27,9 @@ export function ShowMembersLabels({ task, onOpenPopover, onLabelChange, onLabelE
               <img key={member._id} src={`${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} />
             ))}
 
-          <button className="add-member">
+          <button className="add-member"
+            onClick={(e) => onOpenPopover(e, { members: board.members, taskMembers: task.members, onHandleTaskMembers }, 'members')}
+          >
             <BsPlusLg />
           </button>
         </div>

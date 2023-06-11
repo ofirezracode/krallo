@@ -11,8 +11,10 @@ export function RootCmp() {
   const user = useSelector((storeState) => storeState.userModule.user)
 
   return (
-    <div>
+    <div className='main-routes'>
+      {/* <header className='headers'> */}
       {user ? <AppHeader /> : <AppHeaderHome />}
+      {/* </header> */}
       <main>
         <Routes>{_getRoutes(routes)}</Routes>
       </main>

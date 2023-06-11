@@ -30,7 +30,7 @@ export function PopoverMembers({ members, taskMembers, onHandleTaskMembers, onCl
             return (
               <li key={member._id}>
                 <button className="user-button flex align-center" onClick={() => toggleMember(member)}>
-                  <UserImg userImg={member.imgUrl} size="large" />
+                  <UserImg userImg={member.imgUrl} size="medium" />
                   <p className="user-info">{userInfo}</p>
                   {member.isOnBoard && (
                     <span>

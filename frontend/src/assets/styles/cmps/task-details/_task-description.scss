@@ -1,0 +1,25 @@
+.task-description {
+    margin-block-end: rem(24px);
+
+    .desc-title {
+        height: rem(37px);
+        margin-block-end: rem(4px);
+        gap: rem(12px);
+
+        img {
+            width: rem(24px);
+            height: rem(24px);
+            padding: rem(3px);
+            margin-inline-start: rem(2px);
+        }
+
+        h3 {
+            font-size: rem(16px);
+            font-weight: 600;
+        }
+    }
+
+    p {
+        padding-inline-start: rem(38px);
+    }
+}

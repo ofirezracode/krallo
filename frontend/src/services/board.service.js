@@ -126,7 +126,7 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {
@@ -192,7 +192,7 @@ function createGroup(title) {
   return group
 }
 
-function getEmptyBoard(title,imgUrl) {
+function getEmptyBoard(title, imgUrl) {
   return {
     title,
     isStarred: false,
@@ -207,11 +207,32 @@ function getEmptyBoard(title,imgUrl) {
   }
 }
 
+// function getEmptyTask() {
+//   {
+
+//     title : '',
+//     "style" : {
+//         "bgColor" : "#94c748",
+//         "type" : "full"
+//     },
+//     "checklists" : [
+
+//     ],
+//     "members" : [
+
+//     ],
+//     "labelIds" : [
+
+//     ]
+// }
+// }
 function getEmptyTask() {
   return {
     title: 'Loading...',
   }
 }
+
+
 
 function getEmptyAttachment() {
   return {
