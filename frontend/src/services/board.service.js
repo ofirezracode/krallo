@@ -133,6 +133,8 @@ function createTask(title) {
     _id: utilService.makeId(),
     title: title,
     attachments: [],
+    members: [],
+    checklists: [],
     style: {
       bgColor: '',
     },
