@@ -5,63 +5,63 @@ import { useSelector } from 'react-redux'
 import { BsCheckLg } from 'react-icons/bs'
 
 export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSelectedImg, selectedImg }) {
-    const [imgs, setImgs] = useState([])
+  const [imgs, setImgs] = useState([])
 
-    const API_KEY_TAMAR = 'hAwJMEKfBFwvCKiI1MZl5TeXMPkv4tCdr_YPOW3im0g'
-    const API_KEY_ETAI = 'hjp37zjNt0WQ1s8R1MB8eXIvk5PNQigrRyOXgijwwT8'
-    const text = 'programming'
-    useEffect(() => {
-        const amount = resultsAmount ? resultsAmount : 30
-        const fetchImgs = async () => {
-            const response = await fetch(
-                `https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(
-                    1,
-                    1000
-                )}&per_page=${amount}&query=${text}&client_id=${API_KEY_TAMAR}`
-            )
-            // const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=30&query=pattern&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`)
-            const data = await response.json()
-            setImgs(data)
-        }
-        fetchImgs()
-    }, [])
-
-    function handleChange(img, ev) {
-        let url = img.urls.full
-        setSelectedImg(url)
-        if (returnSize) url = img.urls[returnSize]
-        ev.stopPropagation()
-        onUpdateBoardBg(url)
+  const API_KEY_TAMAR = 'hAwJMEKfBFwvCKiI1MZl5TeXMPkv4tCdr_YPOW3im0g'
+  const API_KEY_ETAI = 'hjp37zjNt0WQ1s8R1MB8eXIvk5PNQigrRyOXgijwwT8'
+  const text = 'programming'
+  useEffect(() => {
+    const amount = resultsAmount ? resultsAmount : 30
+    const fetchImgs = async () => {
+      const response = await fetch(
+        `https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(
+          1,
+          1000
+        )}&per_page=${amount}&query=${text}&client_id=${API_KEY_TAMAR}`
+      )
+      // const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=30&query=pattern&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`)
+      const data = await response.json()
+      setImgs(data)
     }
+    fetchImgs()
+  }, [])
 
-    return (
-        <>
-            {!imgs ? (
-                <div>
-                    <Loader />
-                </div>
-            ) : (
-                <ul className="photos-list clean-list">
-                    {imgs.map((img, idx) => (
-                        <li
-                            key={idx}
-                            className={`flex justify-center column ${selectedImg === img.urls.full ? 'selected' : ''}`}
-                            onClick={(ev) => handleChange(img, ev)}
-                        >
-                            <div className="bg-img" style={{ background: `url(${img.urls.small}) center center / cover` }}>
-                                <a href={img.user.portfolio_url} target="_blank">
-                                    {img.user.username}
-                                </a>
-                                {selectedImg === img.urls.full && (
-                                    <span className="selected-img flex center">
-                                        <BsCheckLg />
-                                    </span>
-                                )}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </>
-    )
+  function handleChange(img, ev) {
+    let url = img.urls.full
+    if (selectedImg) setSelectedImg(url)
+    if (returnSize) url = img.urls[returnSize]
+    ev.stopPropagation()
+    onUpdateBoardBg(url)
+  }
+
+  return (
+    <>
+      {!imgs ? (
+        <div>
+          <Loader />
+        </div>
+      ) : (
+        <ul className="photos-list clean-list">
+          {imgs.map((img, idx) => (
+            <li
+              key={idx}
+              className={`flex justify-center column ${selectedImg === img.urls.full ? 'selected' : ''}`}
+              onClick={(ev) => handleChange(img, ev)}
+            >
+              <div className="bg-img" style={{ background: `url(${img.urls.small}) center center / cover` }}>
+                <a href={img.user.portfolio_url} target="_blank">
+                  {img.user.username}
+                </a>
+                {selectedImg === img.urls.full && (
+                  <span className="selected-img flex center">
+                    <BsCheckLg />
+                  </span>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  )
 }
