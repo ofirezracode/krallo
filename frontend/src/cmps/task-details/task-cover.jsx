@@ -27,7 +27,6 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
           }
         }
       }
-      console.log('task', task)
       getAvgColor()
     },
     [task]
