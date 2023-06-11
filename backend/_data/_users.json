@@ -21,17 +21,24 @@
     "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685956854/ofir-pic_niswho.jpg"
   },
   {
-    "fullname": "User",
-    "email": "user@krallo.com",
+    "fullname": "Jonah",
+    "email": "jonah@krallo.com",
     "password": "123",
     "isAdmin": false,
-    "imgUrl": ""
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686495410/T04KZK1LY91-U04PT3CJ0V9-cc578e482099-512_l0fcly.jpg"
   },
   {
     "fullname": "Guest",
     "email": "guest@krallo.com",
     "password": "123",
     "isAdmin": false,
-    "imgUrl": ""
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png"
+  },
+  {
+    "fullname": "Batel",
+    "email": "batel@krallo.com",
+    "password": "123",
+    "isAdmin": false,
+    "imgUrl": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686496383/T04KZK1LY91-U04SHRSA5N2-3c0632714750-512_g5rjcd.jpg"
   }
 ]

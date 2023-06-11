@@ -26,6 +26,8 @@ export const boardService = {
   getEmptyAttachment,
   removeLabelFromTasks,
   getEmptyFilterBy,
+  toggleMemberOnBoard,
+  removeMemberFromTasks
 }
 
 async function query(filterBy = {}) {
@@ -133,6 +135,16 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
+function toggleMemberOnBoard(board, member, activityType) {
+  if (activityType === 'add-member-board') {
+   board.members.push(member)
+  } else if (activityType === 'remove-member-board') {
+    const memberIdx = board.members.findIndex((m) => m._id === member._id)
+    board.members.splice(memberIdx, 1)
+  }
+  return board
+}
+
 function createBoardFromTemplate() {}
 
 function createTask(title) {
@@ -180,6 +192,19 @@ function removeLabelFromTasks(board, labelId) {
     group.tasks.forEach((task) => {
       if (task.labelIds) {
         task.labelIds = task.labelIds.filter((id) => id !== labelId)
+      }
+    })
+  })
+  return updatedBoard
+}
+
+function removeMemberFromTasks(board, memberId) {
+  console.log('memberId', memberId);
+  const updatedBoard = { ...board }
+  updatedBoard.groups.forEach((group) => {
+    group.tasks.forEach((task) => {
+      if (task.members) {
+        task.members = task.members.filter((member) => member._id !== memberId)
       }
     })
   })
