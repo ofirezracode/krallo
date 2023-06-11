@@ -31,9 +31,9 @@ function createActivity(boardId, activityType, byMember, task, groupName = '') {
   if (activityType === 'add') {
     activity.txt = ` added ${task.title} to ${groupName}`
   } else if (activityType === 'add-member') {
-    activity.txt = ` joined ${task.title}`
+    activity.txt = ` joined ${task.fullname}`
   } else if (activityType === 'remove-member') {
-    activity.txt = ` left ${task.title}`
+    activity.txt = ` left ${task.fullname}`
   } else if (activityType === 'add-attachment') {
     activity.txt = ` attached to ${task.title}`
   } else if (activityType === 'delete-attachment') {
