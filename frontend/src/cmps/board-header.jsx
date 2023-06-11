@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BsStar, BsStarFill } from 'react-icons/bs'
 import { updateBoard } from '../store/board.actions'
 import { BoardMenu } from './board-menu'
@@ -11,12 +11,23 @@ import { useSelector } from 'react-redux'
 export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [title, setTitle] = useState(board ? board.title : '')
+  const [addedProps, setAddedProps] = useState({})
+  const [popoverProps, closePopover, openPopover] = usePopover()
+  const boardHeader = useRef()
+
 
   const members = board ? board.members : []
 
   useEffect(() => {
     setTitle(board.title)
   }, [board])
+
+  function onOpenPopover(e, props, type) {
+    closePopover()
+    props.refElement=boardHeader.current
+    setAddedProps(props)
+    openPopover(e, type)
+  }
 
   async function onToggleIsStarred(ev, board) {
     try {
@@ -60,7 +71,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
 
   if (!board) return <Loader />
   return (
-    <section className="board-header-container">
+    <section className="board-header-container" ref={boardHeader}>
       <div className="blur-header"></div>
       <ul className={`board-header ${showMenuClass} clean-list flex align-center between `}>
         <li className="flex align-center">
@@ -102,7 +113,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           <div className="members">
             {members?.length && members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)}
           </div>
-          <button className="btn-fill" title="Share board">
+          <button className="btn-fill" title="Share board" onClick={(e) => onOpenPopover(e, {board}, 'share')}>
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -133,6 +144,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           </button>
         </li>
       </ul>
+      <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
     </section>
   )
 }
