@@ -65,9 +65,9 @@ async function saveTask(board, updatedTask, activity) {
   task = { ...updatedTask }
   group.tasks[taskIdx] = task
 
-  if (activity) {
-    board.activities.unshift(activity)
-  }
+  // if (activity) {
+  //   board.activities.unshift(activity)
+  // }
 
   const newBoard = await save(board)
   return newBoard
@@ -83,9 +83,9 @@ async function saveNewTask(board, groupId, updatedTask, activity) {
 
   group.tasks.push(updatedTask)
 
-  if (activity) {
-    board.activities.unshift(activity)
-  }
+  // if (activity) {
+  //   board.activities.unshift(activity)
+  // }
 
   const newBoard = await save(board)
   return newBoard
