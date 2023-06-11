@@ -1,5 +1,6 @@
 import { BsArrowUpRight } from 'react-icons/bs'
 import ClipIcon from '../../assets/img/svg/clip-icon.svg'
+import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
 
@@ -42,6 +43,10 @@ export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, o
                                         Edit
                                     </button></span>
 
+                                </div>
+                                <div className='img-to-cover flex align-center'>
+                                    <img src={CoverIcon} alt="cover-icon" />
+                                    <button>Make Cover</button>
                                 </div>
                             </div>
                         </li>
