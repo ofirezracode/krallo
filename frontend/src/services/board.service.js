@@ -126,13 +126,13 @@ function toggleMemberOnTask(task, member, activityType) {
   return task
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
     _id: utilService.makeId(),
     title: title,
-    attachments: [getEmptyAttachment()],
+    attachments: [],
     style: {
       bgColor: '',
     },
@@ -231,8 +231,6 @@ function getEmptyTask() {
     title: 'Loading...',
   }
 }
-
-
 
 function getEmptyAttachment() {
   return {
