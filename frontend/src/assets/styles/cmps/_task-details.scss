@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: grid;
   justify-items: center;
   align-items: start;
@@ -45,19 +45,14 @@
 
         border-radius: 50%;
         color: $small-titles;
-
-
       }
 
-      transition: background-color 85ms,
-      color 85ms;
+      transition: background-color 85ms, color 85ms;
 
       &:hover {
         background-color: $button-hover;
       }
     }
-
-
 
     .task-details-container {
       padding-block: rem(16px);
@@ -66,12 +61,10 @@
       grid-template-columns: rem(560px) rem(192px);
 
       .card-details-container {
+        padding-inline-end: rem(8px);
         grid-column: 1;
         gap: rem(6px);
-
       }
-
-
     }
   }
 }

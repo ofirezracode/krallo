@@ -1,25 +1,90 @@
 .task-description {
-    margin-block-end: rem(24px);
+  margin-block-end: rem(24px);
 
-    .desc-title {
-        height: rem(37px);
-        margin-block-end: rem(4px);
-        gap: rem(12px);
+  .desc-title {
+    height: rem(37px);
+    margin-block-end: rem(12px);
+    gap: rem(12px);
 
-        img {
-            width: rem(24px);
-            height: rem(24px);
-            padding: rem(3px);
-            margin-inline-start: rem(2px);
-        }
-
-        h3 {
-            font-size: rem(16px);
-            font-weight: 600;
-        }
+    img {
+      width: rem(24px);
+      height: rem(24px);
+      padding: rem(3px);
+      margin-inline-start: rem(2px);
     }
 
-    p {
-        padding-inline-start: rem(38px);
+    h3 {
+      font-size: rem(16px);
+      font-weight: 600;
     }
+  }
+
+  > p {
+    padding-inline-start: rem(38px);
+  }
+
+  .add-description {
+    min-height: 40px;
+    height: rem(56px);
+    width: 100%;
+    padding: 8px 12px;
+
+    background-color: $close-icon-hover-light;
+
+    border: none;
+    border-radius: 3px;
+
+    color: $text;
+    font-family: inherit;
+    text-align: left;
+  }
+
+  .enter-description-section {
+    align-self: end;
+    textarea {
+      padding: rem(16px) rem(20px);
+      width: rem(512px);
+      height: rem(223px);
+
+      resize: none;
+
+      border-radius: 3px;
+      border: none;
+
+      line-height: 24px;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+
+      &:focus {
+        outline: none;
+        box-shadow: inset 0 0 0 2px $input-focus;
+      }
+    }
+    button {
+      padding: 6px 12px;
+      margin-block-start: rem(4px);
+      margin-inline-end: rem(4px);
+      font-size: 14px;
+      line-height: 20px;
+      font-family: inherit;
+      border-radius: 3px;
+      transition: background-color 85ms ease;
+
+      &.btn-save {
+        color: #fff;
+        background-color: $btn-blue;
+        &:hover {
+          background-color: $btn-blue-hover;
+        }
+      }
+
+      &.btn-cancel {
+        color: inherit;
+        &:hover {
+          background-color: $button-hover;
+        }
+      }
+    }
+  }
 }

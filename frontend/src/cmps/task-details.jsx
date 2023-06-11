@@ -86,6 +86,15 @@ export function TaskDetails() {
     }
   }
 
+  async function onDescriptionUpdate(description) {
+    try {
+      const updatedTask = { ...task, description }
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   async function onAttachmentAdded(attachments) {
     try {
       const updatedTask = { ...task, attachments }
@@ -193,7 +202,7 @@ export function TaskDetails() {
               onLabelEdit={onLabelEdit}
               onLabelDelete={onLabelDelete}
             />
-            <TaskDescription task={task} />
+            <TaskDescription task={task} onDescriptionUpdate={onDescriptionUpdate} />
             <TaskAttachments
               task={task}
               onAttachmentAdded={onAttachmentAdded}
