@@ -36,6 +36,7 @@
 
       a {
         opacity: 0;
+        max-width: rem(152.5px);
       }
 
       &:hover {
@@ -43,7 +44,7 @@
 
         a {
           opacity: 1;
-          width: 100%;
+          max-width: 100%;
           height: rem(20px);
           border-radius: 0 0 8px 8px;
           line-height: rem(12px);
