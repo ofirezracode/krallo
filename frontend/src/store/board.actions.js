@@ -54,8 +54,9 @@ export async function loadBoards() {
   }
 }
 
-export function setCurrBoard(board) {
+export function setCurrBoard(board, filterBy) {
   try {
+    board = boardService.filterBoard(board, filterBy)
     store.dispatch({
       type: SET_BOARD,
       board,

@@ -17,6 +17,7 @@ export const boardService = {
   getTaskById,
   createGroup,
   createBoardFromTemplate,
+  filterBoard,
   move,
   getBoardById,
   getGroupByTaskId,
@@ -24,6 +25,7 @@ export const boardService = {
   getEmptyTask,
   getEmptyAttachment,
   removeLabelFromTasks,
+  getEmptyFilterBy,
 }
 
 async function query(filterBy = {}) {
@@ -89,6 +91,11 @@ async function saveNewTask(board, groupId, updatedTask, activity) {
 
   const newBoard = await save(board)
   return newBoard
+}
+
+function filterBoard(board, filterBy = {}) {
+  const filteredBoard = { ...board }
+  return filteredBoard
 }
 
 function move(type, board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
@@ -207,6 +214,10 @@ function getEmptyBoard(title, imgUrl) {
     },
     labels: [],
   }
+}
+
+function getEmptyFilterBy() {
+  return { keyword: '', members: [], dueDate: '', labels: [] }
 }
 
 // function getEmptyTask() {

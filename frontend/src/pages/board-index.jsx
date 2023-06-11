@@ -16,6 +16,7 @@ export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const activities = useSelector((storeState) => storeState.activityModule.activities)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const filterBy = useSelector((storeState) => storeState.boardModule.filterBy)
   const { boardId } = useParams()
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
   const [isMenuHidden, setIsMenuHidden] = useState(false)
@@ -31,13 +32,13 @@ export function BoardIndex() {
     if (boards.length !== 0) {
       const newBoard = boards.filter((board) => board._id === boardId)[0]
 
-      setCurrBoard(newBoard)
+      setCurrBoard(newBoard, filterBy)
       loadActivities({ boardId: newBoard._id })
     }
   }, [boards])
 
   function onUpdatedBoardEmitted(updatedBoard) {
-    setCurrBoard(updatedBoard)
+    setCurrBoard(updatedBoard, filterBy)
     console.log('caught emitted event', updatedBoard)
   }
 
