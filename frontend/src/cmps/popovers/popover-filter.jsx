@@ -44,7 +44,7 @@ export function PopoverFilter({ onFilterBy, onClose }) {
       setLoggedinUser(user)
 
       const userIdx = board.members.findIndex((member) => member._id === user._id)
-      let newMembers
+      let newMembers = [...board.members]
       if (userIdx >= 0) {
         let member = newMembers.splice(userIdx, 1)
         newMembers.unshift(member)
@@ -207,8 +207,6 @@ export function PopoverFilter({ onFilterBy, onClose }) {
     filterBy[key] = value
 
     setCurrFilterBy(filterBy)
-
-    console.log('filterBy', filterBy)
     // onFilterBy(filterBy)
   }
 
