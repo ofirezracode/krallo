@@ -26,7 +26,8 @@ export function AddGroup({ onAddGroup }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className={`add-group ${isListening ? 'visible' : ''}`}>
+    <>
+    <form onSubmit={onSubmit} className={`add-group ${isListening ? 'visible' : ''}` }>
       {!isListening && (
         <button onClick={(e) => toggleInput(e)} className="open-form-button flex align-center">
           <BsPlusLg className="icon" />
@@ -42,8 +43,9 @@ export function AddGroup({ onAddGroup }) {
         ></input>
       )}
       <AddCloseButtons btnText={'Add list'} onClose={(e) => toggleInput(e)} isVisible={isListening} />
-      <div ref={groupRef}></div> {/* Empty div to serve as a reference for the group container */}
     </form>
+      <div ref={groupRef}></div> {/* Empty div to serve as a reference for the group container */}
+      </>
   )
 }
 
