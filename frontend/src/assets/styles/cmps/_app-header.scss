@@ -29,6 +29,7 @@
     font-weight: 700;
     font-family: charlie-bold;
     margin-inline-start: rem(16px);
+    align-items: center;
 
 
     .logo-link {
@@ -44,8 +45,8 @@
       color: #ffff;
       border-radius: 4px;
       font-size: rem(16px);
-      height: rem(32px);
-      width: rem(69px);
+      height: rem(25px);
+      width: rem(60px);
 
       &:hover {
         background-color: $btn-blue-hover;
