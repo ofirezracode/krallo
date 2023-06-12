@@ -17,21 +17,25 @@
 
   .board-header {
     height: max-content;
-    padding: rem(12px) rem(12px) rem(12px) rem(16px);
+    gap: rem(6px);
+    padding: rem(6px) rem(6px) rem(6px) rem(6px);
     background-color: $board-header-background-transparent;
     flex-direction: column;
+    justify-content: flex-start;
     z-index: -1;
     transition: .1s ease-in;
 
     @include for-narrow-layout {
+      padding: rem(12px) rem(12px) rem(12px) rem(16px);
       height: rem(56px);
       flex-direction: row;
+      justify-content: space-between;
     }
 
-    @include for-wide-layout {
-      height: rem(56px);
-      flex-direction: row;
-    }
+    // @include for-wide-layout {
+    //   height: rem(56px);
+    //   flex-direction: row;
+    // }
 
     &.is-show-menu {
       margin-inline-end: rem(339px);
