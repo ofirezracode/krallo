@@ -266,7 +266,7 @@ function toggleMemberOnBoard(board, member, activityType) {
   return board
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
@@ -357,7 +357,7 @@ function getEmptyBoard(title, imgUrl) {
       type: 'img',
       imgUrl,
     },
-    labels: [],
+    labels: colorService.baselineBoardLabels,
   }
 }
 

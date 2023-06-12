@@ -35,10 +35,104 @@ const DEFAULT_COLORS = [
 
 const possibleCoverColors = ['#4bce97', '#e2b203', '#faa53d', '#f87462', '#9f8fef', '#579dff', '#60c6d2', '#94c748', '#e774bb', '#8590a2']
 
+const baselineBoardLabels = [
+  {
+    _id: '5k4a2d8h',
+    title: '',
+    color: {
+      code: '#4bce97',
+      varName: '$green-subtle',
+      colorTitle: 'Green',
+    },
+  },
+  {
+    _id: '9j7b6f3c',
+    title: '',
+    color: {
+      code: '#e2b203',
+      varName: '$yellow-subtle',
+      colorTitle: 'Yellow',
+    },
+  },
+  {
+    _id: '1v9t8y2q',
+    title: '',
+    color: {
+      code: '#faa53d',
+      varName: '$orange-subtle',
+      colorTitle: 'Orange',
+    },
+  },
+  {
+    _id: '3e5r2f7g',
+    title: '',
+    color: {
+      code: '#f87462',
+      varName: '$red-subtle',
+      colorTitle: 'Red',
+    },
+  },
+  {
+    _id: '6y8u2i4o',
+    title: '',
+    color: {
+      code: '#9f8fef',
+      varName: '$purple-subtle',
+      colorTitle: 'Purple',
+    },
+  },
+  {
+    _id: '7t6r4e5w',
+    title: '',
+    color: {
+      code: '#579dff',
+      varName: '$blue-subtle',
+      colorTitle: 'Blue',
+    },
+  },
+  {
+    _id: '2q4w6e8r',
+    title: '',
+    color: {
+      code: '#60c6d2',
+      varName: '$teal-subtle',
+      colorTitle: 'Teal',
+    },
+  },
+  {
+    _id: '3r4t5y6u',
+    title: '',
+    color: {
+      code: '#94c748',
+      varName: '$lime-subtle',
+      colorTitle: 'Lime',
+    },
+  },
+  {
+    _id: '8i9o2p4a',
+    title: '',
+    color: {
+      code: '#e774bb',
+      varName: '$magenta-subtle',
+      colorTitle: 'Magenta',
+    },
+  },
+  {
+    _id: '5y3t2r4e',
+    title: '',
+    color: {
+      code: '#8590a2',
+      varName: '$gray-subtle',
+      colorTitle: 'Gray',
+    },
+  },
+]
+
 export const colorService = {
   getRandomColor,
   isColorDark,
   getAvgColor,
+  baselineBoardLabels,
   possibleCoverColors,
   getBgColors,
   getNewBoardImgs,
