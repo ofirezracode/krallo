@@ -1,0 +1,34 @@
+.activity-list {
+    padding: 0 rem(8px) rem(8px) rem(12px);
+
+    .activity-preview {
+        padding-block: rem(8px);
+        gap: rem(8px);
+
+        img,
+        .no-img-url {
+            width: rem(32px);
+            height: rem(32px);
+            border-radius: 50%;
+        }
+
+        line-height: rem(20px);
+
+        .activity-content {
+            word-wrap: break-word;
+
+            .txt {
+                h4 {
+                    display: inline-block;
+                }
+            }
+
+            .date {
+                color: $text-subtle;
+                font-size: rem(12px);
+            }
+
+
+        }
+    }
+}

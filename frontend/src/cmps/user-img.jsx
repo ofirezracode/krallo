@@ -21,7 +21,8 @@ export function UserImg({ size, hover, userImg, padding }) {
 
   return (
     <div className="img-container">
-      <img className={`user-img ${imgClasses}`} src={userImg} alt="" title="Ofir Ezra (ofirezra)" />
+      {userImg && <img className={`user-img ${imgClasses}`} src={userImg} alt="" title="Ofir Ezra (ofirezra)" />}
+      {!userImg && <div className={`user-img ${imgClasses}`} style={{ backgroundColor: '#94c748' }} />}
     </div>
   )
 }

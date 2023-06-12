@@ -137,7 +137,7 @@ function toggleMemberOnTask(task, member, activityType) {
 
 function toggleMemberOnBoard(board, member, activityType) {
   if (activityType === 'add-member-board') {
-   board.members.push(member)
+    board.members.push(member)
   } else if (activityType === 'remove-member-board') {
     const memberIdx = board.members.findIndex((m) => m._id === member._id)
     board.members.splice(memberIdx, 1)
@@ -145,7 +145,7 @@ function toggleMemberOnBoard(board, member, activityType) {
   return board
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {

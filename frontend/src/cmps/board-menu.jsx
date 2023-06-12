@@ -1,11 +1,13 @@
 import React, { useState } from "react"
 import KralloIcon from '../assets/img/svg/krallo-icon.svg'
+import ActivityIcon from '../assets/img/svg/activity-icon.svg'
 import { MenuTitle } from "./board-menu/board-menu-title"
 import { utilService } from "../services/util.service"
 import { useSelector } from "react-redux"
 import { MenuAbout } from "./board-menu/menu-about"
 import { MenuBackground } from "./board-menu/menu-background"
 import { MenuActivitiesList } from "./board-menu/menu-activities-list"
+import { colorService } from "../services/color.service"
 
 export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg }) {
   const [isOn, setIsOn] = useState(true)
@@ -18,6 +20,7 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
     setTitle(currTitle)
     setSetting(settingName)
   }
+  console.log(activities)
 
   let boardStyle = {}
   if (board.style) {
@@ -45,26 +48,24 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
               <p>Change background</p>
             </button>
           </li>
-          {/* {activities.map(activity => 
-
-            <li className='activities flex' key={activity.fromUser._id}>
-              {activity.fromUser.imgUrl ?
-                <img src={activity.fromUser.imgUrl} alt={activity.fromUser.fullname} /> :
-                <div className='no-img-url' style={{ backgroundColor: utilService.getRandomColor() }}>
-                  {activity.fromUser.fullname.charAt(0).toUpperCase()}
-                </div>}
-              <div>
-
-                <h4>{activity.fromUser.fullname}</h4>
-                <p>{activity.txt}</p>
-                <p>{utilService.formatDate(activity.createdAt)}</p>
-              </div>
-            </li>)} */}
+          <hr />
+          <li className='board-activity' onClick={() => onChangeSettings('Activity', 'activities')}>
+            <button className="flex center">
+              <img src={ActivityIcon} alt="activity-icon" />
+              <p>Activity</p>
+            </button>
+          </li>
         </ul>
       )}
+
+      <div className="activity-list">
+        <MenuActivitiesList board={board} activities={activities} />
+      </div>
+
+
       {setting === 'about' && <MenuAbout board={board} />}
       {setting === 'background' && <MenuBackground board={board} setTitle={setTitle} onUpdateBoardBg={onUpdateBoardBg} />}
-      {setting === 'activities' && <MenuActivitiesList board={board} />}
+      {setting === 'activities' && <MenuActivitiesList board={board} activities={activities} />}
     </section>
   )
 }

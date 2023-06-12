@@ -10,7 +10,7 @@
   display: grid;
   justify-items: center;
   align-items: start;
-  padding: rem(48px) 0 24rem;
+  padding: rem(48px) 0 rem(80px);
 
   .task-details {
     // top: 0;
@@ -19,7 +19,6 @@
     // transform: translate(calc(50vw - 50%));
     background-color: $menu-bgc;
     border-radius: 8px;
-    margin-block-end: rem(80px);
     width: rem(768px);
     min-height: rem(600px);
     position: relative;
@@ -47,7 +46,8 @@
         color: $small-titles;
       }
 
-      transition: background-color 85ms, color 85ms;
+      transition: background-color 85ms,
+      color 85ms;
 
       &:hover {
         background-color: $button-hover;

@@ -19,7 +19,6 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   const [popoverProps, closePopover, openPopover] = usePopover()
   const boardHeader = useRef()
 
-
   const members = board ? board.members : []
 
   useEffect(() => {
@@ -28,12 +27,12 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
 
   function onOpenPopover(e, props, type) {
     closePopover()
-    props.refElement=boardHeader.current
+    props.refElement = boardHeader.current
     setAddedProps(props)
     openPopover(e, type)
   }
 
-  async function onHandleBoardMembers( member ,activityType) {
+  async function onHandleBoardMembers(member, activityType) {
     try {
       const updatedBoard = boardService.toggleMemberOnBoard(board, member, activityType)
       let activity = activityService.createActivity(board._id, activityType, user, member, board)
@@ -44,18 +43,16 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
     }
   }
 
-
   async function onMemberDelete(board, member) {
     try {
       let updatedBoard = { ...board }
-       updatedBoard = boardService.removeMemberFromTasks(board, member._id)
-       console.log('updatedBoard',updatedBoard);
+      updatedBoard = boardService.removeMemberFromTasks(board, member._id)
+      console.log('updatedBoard', updatedBoard)
       await updateBoard(updatedBoard)
     } catch (err) {
       console.log('err', err)
     }
   }
-
 
   async function onToggleIsStarred(ev, board) {
     try {
@@ -125,7 +122,11 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           </button>
         </li>
         <li className="board-header-actions flex align-center">
-          <button title="Filter cards" className="flex align-center">
+          <button
+            title="Filter cards"
+            className="flex align-center"
+            onClick={(e) => onOpenPopover(e, { onFilterBy: () => {}, widthOverride: '384px' }, 'filter')}
+          >
             {/* <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
@@ -141,7 +142,11 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           <div className="members">
             {members?.length && members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)}
           </div>
-          <button className="btn-fill" title="Share board" onClick={(e) => onOpenPopover(e, {board, onHandleBoardMembers,onMemberDelete}, 'share')}>
+          <button
+            className="btn-fill"
+            title="Share board"
+            onClick={(e) => onOpenPopover(e, { board, onHandleBoardMembers, onMemberDelete }, 'share')}
+          >
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
