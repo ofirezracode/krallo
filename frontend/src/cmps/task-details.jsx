@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { boardService } from '../services/board.service'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
-import { ShowMembersLabels } from './task-details/show-members-labels'
+import { ShowTaskDetails } from './task-details/show-task-details'
 import { HiXMark } from 'react-icons/hi2'
 import { TaskCover } from './task-details/task-cover'
 import { TaskDetailsHeader } from './task-details/task-details-header'
@@ -197,7 +197,7 @@ export function TaskDetails() {
         <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
           <section className="card-details-container flex column">
-            <ShowMembersLabels
+            <ShowTaskDetails
               task={task}
               board={board}
               onOpenPopover={onOpenPopover}

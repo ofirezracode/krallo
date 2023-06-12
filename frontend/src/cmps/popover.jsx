@@ -36,7 +36,6 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
 
   let popoverStyles = { position: 'absolute' }
 
-  // let isSmallScreen = false
   let isJustifyRight = false
   let isPositionRight = false
   let isAlignCenter = false

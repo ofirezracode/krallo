@@ -1,7 +1,8 @@
-.members-labels {
+.show-task-details {
   padding-inline: rem(40px);
   padding-block-start: rem(9px);
   display: flex;
+  flex-wrap: wrap;
   min-height: rem(72px);
 
   .members-wrapper {
@@ -51,7 +52,7 @@
 
   .labels-wrapper {
     margin-inline-start: rem(15px);
-
+    max-width: 70%;
     h5 {
       font-weight: 500;
       letter-spacing: 0.2px;
@@ -111,6 +112,14 @@
           background-color: $button-hover;
         }
       }
+    }
+  }
+
+  .date-wrapper {
+    h5 {
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      margin-block-end: rem(4px);
     }
   }
 }
