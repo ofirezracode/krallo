@@ -62,6 +62,13 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
     await onUpdateGroupTitle(group._id, editedTitle)
   }
 
+
+  function handleKeyPress(ev) {
+    if (ev.key === 'Enter') {
+      onSubmit(ev)
+    }
+  }
+
   return (
     <article className="group-preview flex column">
       <header className="flex between">
@@ -96,7 +103,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
       {isAddingTask && (
         <form onSubmit={onAddTask} className="add-card-form">
           <div className="text-container">
-            <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText}></textarea>
+            <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText}  onKeyPress={handleKeyPress}></textarea>
           </div>
           <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} />
         </form>
