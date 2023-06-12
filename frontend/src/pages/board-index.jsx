@@ -73,7 +73,6 @@ export function BoardIndex() {
     newBoard.style.type = 'img'
     newBoard.style.imgUrl = url
     try {
-      console.log(newBoard)
       await updateBoard(newBoard)
     } catch (err) {
       console.log('err', err)
@@ -82,7 +81,11 @@ export function BoardIndex() {
 
   async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
     const newBoard = boardService.move('task', board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
-    // setBoard(newBoard)
+    try {
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
 
   async function onMoveGroup(sourceGroupId, destGroupId) {
