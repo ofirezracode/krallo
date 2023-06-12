@@ -7,6 +7,8 @@
     transition-duration: 0.3s;
     transition-property: transform, opacity, height, padding, margin, background-color;
     transition-timing-function: ease-in;
+    display: flex;
+    align-items: center;
 
     &:hover {
         background-color: #091E420F;
@@ -26,7 +28,6 @@
         width: rem(16px);
         margin: rem(6px);
         overflow: hidden;
-        position: relative;
         position: absolute;
         left: 0;
         text-align: center;

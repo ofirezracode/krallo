@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { AddCloseButtons } from './add-close-buttons'
 import { BsPlusLg } from 'react-icons/bs'
 import { boardService } from '../services/board.service'
@@ -6,8 +6,8 @@ import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 
 export function AddGroup({ onAddGroup }) {
   const [newTitle, setNewTitle] = useState('')
-
   const [isListening, setIsListening] = useCloseOnOutsideClick(toggleInput, '.add-group', 'open-form-button')
+  const groupRef = useRef(null) // Ref for the group container element
 
   function toggleInput(e) {
     if (e) {
@@ -21,6 +21,8 @@ export function AddGroup({ onAddGroup }) {
     const newGroup = boardService.createGroup()
     newGroup.title = newTitle
     await onAddGroup(newGroup)
+    setNewTitle('')
+    groupRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
@@ -40,6 +42,8 @@ export function AddGroup({ onAddGroup }) {
         ></input>
       )}
       <AddCloseButtons btnText={'Add list'} onClose={(e) => toggleInput(e)} isVisible={isListening} />
+      <div ref={groupRef}></div> {/* Empty div to serve as a reference for the group container */}
     </form>
   )
 }
+
