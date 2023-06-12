@@ -43,9 +43,10 @@ export function PopoverFilter({ onFilterBy, onClose }) {
       const user = userService.getLoggedInUser()
       setLoggedinUser(user)
 
-      const userIdx = board.members.findIndex((member) => member._id === user._id)
-      let newMembers = [...board.members]
+      const userIdx = board && board.members ? board.members.findIndex((member) => member._id === user._id) : -1
+      let newMembers
       if (userIdx >= 0) {
+        newMembers = [...board.members]
         let member = newMembers.splice(userIdx, 1)
         newMembers.unshift(member)
       }
@@ -229,21 +230,22 @@ export function PopoverFilter({ onFilterBy, onClose }) {
                 <label>No members</label>
               </button>
             </li>
-            {members.map((member) => {
-              console.log('filterMembers', filterMembers)
-              const isLabelChecked = filterMembers ? filterMembers.some((filteredMember) => filteredMember._id === member._id) : false
-              let memberFullname = member.fullname
-              if (member._id === loggedinUser._id) memberFullname = 'Cards assigned to me'
-              return (
-                <li className="flex" key={member._id}>
-                  <Checkbox isChecked={isLabelChecked} onToggle={onClickMember} onClickProps={member} />
-                  <button onClick={(e) => onClickMember(e, member)} className="member-btn flex align-center">
-                    <UserImg userImg={member.imgUrl} size="xsmall" />
-                    <label>{memberFullname}</label>
-                  </button>
-                </li>
-              )
-            })}
+            {members &&
+              members.map((member) => {
+                console.log('filterMembers', filterMembers)
+                const isLabelChecked = filterMembers ? filterMembers.some((filteredMember) => filteredMember._id === member._id) : false
+                let memberFullname = member.fullname
+                if (member._id === loggedinUser._id) memberFullname = 'Cards assigned to me'
+                return (
+                  <li className="flex" key={member._id}>
+                    <Checkbox isChecked={isLabelChecked} onToggle={onClickMember} onClickProps={member} />
+                    <button onClick={(e) => onClickMember(e, member)} className="member-btn flex align-center">
+                      <UserImg userImg={member.imgUrl} size="xsmall" />
+                      <label>{memberFullname}</label>
+                    </button>
+                  </li>
+                )
+              })}
           </ul>
         </div>
         <div className="filter-container filter-date">
