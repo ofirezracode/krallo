@@ -54,7 +54,7 @@ export function AppHeader() {
   }
 
   return (
-    <section className='app-header-wrapper'>
+    <>
       <ul className="app-header flex between clean-list">
         <li className="gray-logo flex">
           <Link className="logo-link flex align-center" to="/workspaces">
@@ -107,6 +107,6 @@ export function AppHeader() {
         </li>
       </ul>
       <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
-    </section>
+    </>
   )
 }
