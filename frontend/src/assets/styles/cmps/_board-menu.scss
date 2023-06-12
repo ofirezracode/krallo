@@ -21,71 +21,98 @@
         background-color: transparent;
     }
 
-    .menu-content {
-        padding: rem(12px) rem(6px) 0 rem(12px);
+    hr {
+        margin-block: rem(12px);
+        border: none;
+        border-block-end: 1px solid $card-input-hover;
+    }
 
-        li {
-            flex-direction: row;
-            padding-inline: rem(12px) rem(6px);
-            border-radius: 3px;
+    .menu-main-content {
+        .menu-content {
 
-            &>* {
-                font-family: $font-input;
-                font-weight: 600;
-                font-size: rem(14px);
-                color: $text-subtle;
-                display: flex;
+            padding: rem(12px) rem(6px) 0 rem(12px);
+
+            li {
                 flex-direction: row;
-                height: rem(32px);
-                align-items: center;
-                gap: rem(12px);
+                padding-inline: rem(12px) rem(6px);
+                border-radius: 3px;
 
-                .board-activity,
-                .board-about {
+                &>* {
+                    font-family: $font-input;
+                    font-weight: 600;
+                    font-size: rem(14px);
+                    color: $text-subtle;
+                    display: flex;
+                    flex-direction: row;
                     height: rem(32px);
-                    gap: rem(5px);
+                    align-items: center;
+                    gap: rem(12px);
 
-                    button {
-                        width: 100%;
-                        margin-inline-start: rem(10px);
+                    .board-activity,
+                    .board-about {
+                        height: rem(32px);
+                        gap: rem(5px);
+
+                        button {
+                            width: 100%;
+                            margin-inline-start: rem(10px);
+                        }
                     }
                 }
+
             }
 
-        }
-
-        li {
-            cursor: pointer;
-        }
-
-        li:hover {
-            background-color: $close-icon-hover-light;
-        }
-
-        button {
-
-            img,
-            .board-bg-img {
-                width: rem(20px);
-                height: rem(20px);
-                border-radius: 3px;
+            li {
+                cursor: pointer;
             }
 
-        }
-
-        .board-activity {
+            li:hover {
+                background-color: $close-icon-hover-light;
+            }
 
             button {
-                img {
-                    width: rem(17px);
+
+                img,
+                .board-bg-img {
+                    width: rem(20px);
+                    height: rem(20px);
+                    border-radius: 3px;
+                }
+
+            }
+
+            .board-activity {
+
+
+                button {
+                    img {
+                        width: rem(17px);
+                    }
                 }
             }
         }
     }
 
-    hr {
-        margin-block: rem(12px);
-        border: none;
-        border-block-end: 1px solid $card-input-hover;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        height: 100%;
+        width: rem(10px);
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #091e4214;
+        border-radius: 2em;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $add-card;
+        background-color: #cac7d3;
+        border-radius: 2em;
+    }
+
+    &::-webkit-scrollbar-button {
+        display: block;
+        height: 100%;
     }
 }
