@@ -1,32 +1,44 @@
-import React from 'react'
-import { PopoverCmpHeader } from './popover-cmp-header'
-import { UserImg } from '../user-img'
-import { BsCheckLg } from 'react-icons/bs'
+import React, { useEffect, useState } from 'react';
+import { PopoverCmpHeader } from './popover-cmp-header';
+import { UserImg } from '../user-img';
+import { BsCheckLg } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
+import { loadUsers } from '../../store/user.actions';
+
+export function PopoverShare({ board,onHandleBoardMembers, onMemberDelete, onClose }) {
+  const users = useSelector((storeState) => storeState.userModule.users)
+  const [members, setMembers] = useState(board.members)
 
 
-export function PopoverShare({ board, onClose }) {
+  const newUsers = users.map((user) => {
+    const isOnBoard = members.some((member) => member._id === user._id)
+    return { ...user, isOnBoard }
+  });
 
+  useEffect(() => {
+    loadUsers()
+  }, [])
 
-  const members = board.members
-
-  function toggleMember({ _id, fullname, imgUrl, isOnBoard }) {
-    const activityType = isOnBoard ? 'remove-member' : 'add-member'
-
+  function toggleMember(user) {
+    const activityType = user.isOnBoard ? 'remove-member-board' : 'add-member-board'
+    onHandleBoardMembers(user, activityType)
+    onMemberDelete(board ,user)
   }
+
 
   return (
     <div>
-      <PopoverCmpHeader title="Share Board" onClose={onClose} />
+      <PopoverCmpHeader title="Share Board" onClose={onClose}/>
       <div className="popover-members">
         <ul className="members-list clean-list">
-          {members.map((member) => {
-            const userInfo = `${member.fullname} (${member.email ? member.email : ''})`
+          {newUsers.map((user) => {
+            const userInfo = `${user.fullname} (${user.email ? user.email : ''})`
             return (
-              <li key={member._id}>
-                <button className="user-button flex align-center" onClick={() => toggleMember(member)}>
-                  <UserImg userImg={member.imgUrl} size="medium" />
+              <li key={user._id}>
+                <button className="user-button flex align-center" onClick={() => toggleMember(user)}>
+                  <UserImg userImg={user.imgUrl} size="medium" />
                   <p className="user-info">{userInfo}</p>
-                  {member.isOnBoard && (
+                  {user.isOnBoard && (
                     <span>
                       <BsCheckLg />
                     </span>

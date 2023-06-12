@@ -7,9 +7,13 @@ import { usePopover } from '../customHooks/usePopover'
 import { Loader } from './loader'
 import FilterIcon from '../assets/img/svg/filter-icon.svg'
 import { useSelector } from 'react-redux'
+import { boardService } from '../services/board.service'
+import { addActivity } from '../store/activity.actions'
+import { activityService } from '../services/activity.service'
 
 export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const user = useSelector((storeState) => storeState.userModule.user)
   const [title, setTitle] = useState(board ? board.title : '')
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
@@ -26,6 +30,28 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
     props.refElement = boardHeader.current
     setAddedProps(props)
     openPopover(e, type)
+  }
+
+  async function onHandleBoardMembers(member, activityType) {
+    try {
+      const updatedBoard = boardService.toggleMemberOnBoard(board, member, activityType)
+      let activity = activityService.createActivity(board._id, activityType, user, member, board)
+      await updateBoard(updatedBoard)
+      await addActivity(activity)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async function onMemberDelete(board, member) {
+    try {
+      let updatedBoard = { ...board }
+      updatedBoard = boardService.removeMemberFromTasks(board, member._id)
+      console.log('updatedBoard', updatedBoard)
+      await updateBoard(updatedBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
 
   async function onToggleIsStarred(ev, board) {
@@ -116,7 +142,11 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           <div className="members">
             {members?.length && members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)}
           </div>
-          <button className="btn-fill" title="Share board" onClick={(e) => onOpenPopover(e, { board }, 'share')}>
+          <button
+            className="btn-fill"
+            title="Share board"
+            onClick={(e) => onOpenPopover(e, { board, onHandleBoardMembers, onMemberDelete }, 'share')}
+          >
             <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
