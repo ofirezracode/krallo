@@ -98,7 +98,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   return (
     <section className="board-header-container" ref={boardHeader}>
       <div className="blur-header"></div>
-      <ul className={`board-header ${showMenuClass} clean-list flex align-center between `}>
+      <ul className={`board-header ${showMenuClass} clean-list flex align-center between`}>
         <li className="flex align-center">
           <div className="board-name">
             <form onSubmit={onSubmit}>
@@ -125,7 +125,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           <button
             title="Filter cards"
             className="flex align-center"
-            onClick={(e) => onOpenPopover(e, { onFilterBy: () => {}, widthOverride: '384px' }, 'filter')}
+            onClick={(e) => onOpenPopover(e, { onFilterBy: () => { }, widthOverride: '384px' }, 'filter')}
           >
             {/* <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path

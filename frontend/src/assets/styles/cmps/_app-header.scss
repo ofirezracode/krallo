@@ -1,140 +1,182 @@
-.app-header {
-  height: rem(48px);
-  padding: rem(8px);
-  align-items: center;
+.app-header-wrapper {
   backdrop-filter: blur(6px);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
-  a {
-    gap: rem(5px);
-    color: $icon;
-    border-radius: 3px;
-    text-decoration: none;
-    width: rem(91px);
-    padding-inline: rem(8px);
-    margin-inline-end: rem(8px);
-
-    label {
-      font-size: rem(20px);
-      letter-spacing: 0.03rem;
-    }
-
-    &:hover {
-      background-color: $icon-hover;
-    }
-  }
-
-  .gray-logo {
-    font-size: rem(18px);
-    font-weight: 700;
-    font-family: charlie-bold;
-    margin-inline-start: rem(16px);
+  .app-header {
+    height: rem(48px);
+    padding: rem(8px);
     align-items: center;
 
+    a {
+      gap: rem(5px);
+      color: $icon;
+      border-radius: 3px;
+      text-decoration: none;
+      width: rem(91px);
+      padding-inline: rem(8px);
+      margin-inline-end: rem(8px);
 
-    .logo-link {
-      height: rem(32px);
-    }
-
-    div {
-      font-size: rem(25px);
-    }
-
-    .create-btn {
-      background-color: $btn-blue;
-      color: #ffff;
-      border-radius: 4px;
-      font-size: rem(16px);
-      height: rem(25px);
-      width: rem(60px);
-
-      &:hover {
-        background-color: $btn-blue-hover;
-      }
-    }
-  }
-
-  .app-header-links {
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-    list-style: none;
-    margin-inline-end: rem(4px);
-
-    .search-input {
-      height: rem(32px);
-      width: rem(200px);
-      padding: 0 rem(12px) 0 rem(30px);
-      border-radius: 5px;
-      font-size: rem(14px);
-      border: 1px solid lightgray;
-      margin: rem(2px);
-      // transition: width 0.3s;
-
-
-      &::placeholder {
-        font-size: rem(17px);
+      label {
+        font-size: rem(20px);
+        letter-spacing: 0.03rem;
       }
 
       &:hover {
-        background-color: #f7f8f9;
-      }
-
-      &:focus {
-        outline: 1px solid $btn-blue;
-        width: rem(700px);
-        border: none;
+        background-color: $icon-hover;
       }
     }
 
-    .btn-search {
-      position: absolute;
-      left: rem(10px);
-      top: rem(8px);
-      background-color: transparent;
-      color: #626f86;
-      outline: none;
-    }
-  }
-
-  .header-btn {
-    background-color: transparent;
-    border: none;
-    // padding: rem(8px);
-    width: rem(32px);
-    height: rem(32px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-      color: $card-title;
-      height: rem(17px);
-      width: rem(17px);
-
-      &.bell {
-        height: rem(24px);
-        width: rem(24px);
-      }
-    }
-
-    .btn-icon {
-      border-radius: 50%;
-      display: flex;
+    .gray-logo {
+      font-size: rem(18px);
+      font-weight: 700;
+      font-family: charlie-bold;
+      margin-inline-start: rem(16px);
       align-items: center;
+
+
+      .logo-link {
+        height: rem(32px);
+      }
+
+      div {
+        font-size: rem(25px);
+      }
+
+      .create-btn {
+        background-color: $btn-blue;
+        color: #fff;
+        border-radius: 4px;
+        font-size: rem(16px);
+        height: rem(25px);
+        padding: rem(6px);
+        display: flex;
+        align-items: center;
+
+        // width: rem(60px);
+
+        .create-mobile {
+          display: block;
+          line-height: rem(10px);
+
+          svg {
+            path {
+              stroke-width: rem(.75px);
+            }
+          }
+        }
+
+        .create-wide {
+          display: none;
+        }
+
+        @include for-narrow-layout {
+          .create-mobile {
+            display: none;
+          }
+
+          .create-wide {
+            display: block;
+            line-height: rem(5px);
+          }
+        }
+
+        &:hover {
+          background-color: $btn-blue-hover;
+        }
+      }
+    }
+
+    .app-header-links {
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      list-style: none;
+      margin-inline-end: rem(4px);
+
+      .search-input {
+        height: rem(32px);
+        width: rem(200px);
+        padding: 0 rem(12px) 0 rem(30px);
+        border-radius: 5px;
+        font-size: rem(14px);
+        border: 1px solid lightgray;
+        margin: rem(2px);
+        // transition: width 0.3s;
+        display: none;
+
+        @include for-narrow-layout {
+          display: block;
+        }
+
+        &::placeholder {
+          font-size: rem(17px);
+        }
+
+        &:hover {
+          background-color: #f7f8f9;
+        }
+
+        &:focus {
+          outline: 1px solid $btn-blue;
+          width: rem(700px);
+          border: none;
+        }
+      }
+
+      .btn-search {
+        position: absolute;
+        left: rem(10px);
+        top: rem(8px);
+        background-color: transparent;
+        color: #626f86;
+        outline: none;
+        display: none;
+
+        @include for-narrow-layout {
+          display: block;
+        }
+      }
+    }
+
+    .header-btn {
+      background-color: transparent;
+      border: none;
+      // padding: rem(8px);
+      width: rem(32px);
+      height: rem(32px);
+      display: flex;
       justify-content: center;
+      align-items: center;
+
+      svg {
+        color: $card-title;
+        height: rem(17px);
+        width: rem(17px);
+
+        &.bell {
+          height: rem(24px);
+          width: rem(24px);
+        }
+      }
+
+      .btn-icon {
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:hover {
+        background-color: $icon-hover;
+        border-radius: 50%;
+      }
     }
 
-    &:hover {
-      background-color: $icon-hover;
-      border-radius: 50%;
+    .user-img-header {
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-  }
-
-  .user-img-header {
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }

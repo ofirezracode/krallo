@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BsCircleHalf, BsTrello, BsFillPersonXFill } from 'react-icons/bs'
+import { BsCircleHalf, BsTrello, BsFillPersonXFill, BsPlusLg } from 'react-icons/bs'
 import { UserImg } from './user-img'
 import { logout } from '../store/user.actions.js'
 import { useNavigate } from 'react-router-dom'
@@ -54,7 +54,7 @@ export function AppHeader() {
   }
 
   return (
-    <>
+    <section className='app-header-wrapper'>
       <ul className="app-header flex between clean-list">
         <li className="gray-logo flex">
           <Link className="logo-link flex align-center" to="/workspaces">
@@ -62,7 +62,8 @@ export function AppHeader() {
             <label>Krallo</label>
           </Link>
           <button className="create-btn" title="Create new board" onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}>
-            Create
+            <p className='create-wide'>Create</p>
+            <p className='create-mobile'><BsPlusLg /></p>
           </button>
         </li>
         <li>
@@ -106,6 +107,6 @@ export function AppHeader() {
         </li>
       </ul>
       <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
-    </>
+    </section>
   )
 }

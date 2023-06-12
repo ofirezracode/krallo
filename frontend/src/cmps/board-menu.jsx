@@ -36,7 +36,7 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
   return (
     <section className={`board-menu ${showMenuClass}`}>
       <MenuTitle title={title} setIsMenuHidden={setIsMenuHidden} setIsOn={setIsOn} goBackClass={goBackClass} setTitle={setTitle} setSetting={setSetting} />
-      {isOn && (<div>
+      {isOn && (<div className="menu-main-content">
         <ul className="menu-content clean-list flex column">
           <li className='board-about' onClick={() => onChangeSettings('About this board', 'about')}>
             <button className=" align-center">
