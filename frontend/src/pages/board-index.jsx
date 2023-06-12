@@ -48,7 +48,8 @@ export function BoardIndex() {
 
   function onUpdatedBoardEmitted(updatedBoard) {
     setCurrBoard(updatedBoard)
-    console.log('caught emitted event', updatedBoard)
+    const newBoard = boardService.filterBoard(updatedBoard, filterBy)
+    setFilteredBoard(newBoard)
   }
 
   async function onUpdateGroupTitle(groupId, newTitle) {
