@@ -266,7 +266,7 @@ function toggleMemberOnBoard(board, member, activityType) {
   return board
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {

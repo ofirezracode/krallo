@@ -57,6 +57,8 @@
         }
 
         p {
+          display: flex;
+          flex: 1;
           margin-left: rem(8px);
           color: $text-subtle;
           overflow: hidden;
@@ -65,14 +67,11 @@
         }
 
         span {
-          right: 0;
-          top: 0;
           display: flex;
           align-items: center;
           padding: rem(11px);
           width: rem(42px);
           height: rem(42px);
-
 
 
           svg {

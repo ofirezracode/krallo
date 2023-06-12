@@ -22,7 +22,7 @@
     }
 
     .menu-content {
-        padding: rem(12px) rem(6px) rem(8px) rem(12px);
+        padding: rem(12px) rem(6px) 0 rem(12px);
 
         li {
             flex-direction: row;
@@ -40,6 +40,7 @@
                 align-items: center;
                 gap: rem(12px);
 
+                .board-activity,
                 .board-about {
                     height: rem(32px);
                     gap: rem(5px);
@@ -53,11 +54,11 @@
 
         }
 
-        li:not(.activities) {
+        li {
             cursor: pointer;
         }
 
-        li:not(.activities):hover {
+        li:hover {
             background-color: $close-icon-hover-light;
         }
 
@@ -72,14 +73,19 @@
 
         }
 
-        .activities {
+        .board-activity {
 
-            img,
-            .no-img-url {
-                width: rem(32px);
-                height: rem(32px);
-                border-radius: 50%;
+            button {
+                img {
+                    width: rem(17px);
+                }
             }
         }
+    }
+
+    hr {
+        margin-block: rem(12px);
+        border: none;
+        border-block-end: 1px solid $card-input-hover;
     }
 }

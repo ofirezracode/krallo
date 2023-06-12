@@ -88,7 +88,7 @@ async function add(activity) {
 
 function _buildCriteria(filterBy) {
   const criteria = {}
-  if (filterBy.boardId) criteria.boardId = new ObjectId(filterBy.boardId)
+  if (filterBy.boardId) criteria.boardId = ObjectId(filterBy.boardId)
   return criteria
 }
 
