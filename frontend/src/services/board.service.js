@@ -2,6 +2,7 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { colorService } from './color.service.js'
+import { dateTimeService } from './dateTimeService.js'
 
 const API_URL = 'board'
 
@@ -27,7 +28,7 @@ export const boardService = {
   removeLabelFromTasks,
   getEmptyFilterBy,
   toggleMemberOnBoard,
-  removeMemberFromTasks
+  removeMemberFromTasks,
 }
 
 async function query(filterBy = {}) {
@@ -96,8 +97,128 @@ async function saveNewTask(board, groupId, updatedTask, activity) {
 }
 
 function filterBoard(board, filterBy = {}) {
-  const filteredBoard = { ...board }
+  let filteredBoard = { ...board }
+
+  if (filterBy.keywords) {
+    filteredBoard.groups = filteredBoard.groups.map((group) => _filterGroupKeywords(group, filterBy.keywords))
+  }
+
+  if (filterBy.members) {
+    filteredBoard.groups = filteredBoard.groups.map((group) => _filterGroupMembers(group, filterBy.members))
+  }
+
+  if (filterBy.dates) {
+    filteredBoard.groups = filteredBoard.groups.map((group) => _filterGroupDates(group, filterBy.dates))
+  }
+
+  if (filterBy.labels) {
+    filteredBoard.groups = filteredBoard.groups.map((group) => _filterGroupLabels(group, filterBy.labels))
+  }
+
   return filteredBoard
+}
+
+function _filterGroupKeywords(group, keywords) {
+  let filteredGroup = { ...group }
+
+  filteredGroup.tasks = filteredGroup.tasks.filter((task) => {
+    return (
+      task.title.includes(keywords) ||
+      (task.description && task.description.includes(keywords)) ||
+      (task.checklists &&
+        task.checklists.filter((checklist) => {
+          if (checklist.title.includes(keywords)) return true
+          else {
+            if (checklist.todos.filter((todo) => todo.title.includes(keywords)).length > 0) return true
+          }
+          return false
+        }).length > 0) ||
+      (task.comments && task.comments.filter((comment) => comment.txt.includes(keywords)).length > 0)
+    )
+  })
+
+  return filteredGroup
+}
+
+function _filterGroupMembers(group, members) {
+  let filteredGroup = { ...group }
+  filteredGroup.tasks = filteredGroup.tasks.filter((task) => {
+    if (members === 'no-members') {
+      return !task.members || task.members.length === 0
+    } else if ((!task.members || task.members.length === 0) && members.length > 0) {
+      return false
+    } else {
+      return members.every((member) => task.members.some((taskMember) => taskMember._id === member._id))
+    }
+  })
+
+  return filteredGroup
+}
+
+function _filterGroupDates(group, dates) {
+  let filteredGroup = { ...group }
+
+  const dateFilters = dates.reduce((acc, dateFilter) => {
+    if (dateFilter.category === 'time') {
+      acc.time = dateFilter.key
+    } else {
+      acc.complete = dateFilter.key
+    }
+    return acc
+  }, {})
+
+  filteredGroup.tasks = filteredGroup.tasks.filter((task) => {
+    if (dateFilters.time === 'no-date') {
+      return !task.dueDate
+    } else if (dateFilters.time === 'overdue') {
+      if (task.dueDate && task.dueDate.dueDate && dateTimeService.hasTimestampPassed(task.dueDate.dueDate)) {
+        if (dateFilters.complete === 'completed') {
+          return task.dueDate.isCompleted
+        } else if (dateFilters.complete === 'not-completed') {
+          return !task.dueDate.isCompleted
+        } else {
+          return true
+        }
+      } else {
+        return false
+      }
+    } else if (dateFilters.time === 'next-day') {
+      if (task.dueDate && task.dueDate.dueDate && dateTimeService.isTimestampNextDay(task.dueDate.dueDate)) {
+        if (dateFilters.complete === 'completed') {
+          return task.dueDate.isCompleted
+        } else if (dateFilters.complete === 'not-completed') {
+          return !task.dueDate.isCompleted
+        } else {
+          return true
+        }
+      } else {
+        return false
+      }
+    } else if (dateFilters.complete === 'completed') {
+      return task.dueDate && task.dueDate.isCompleted
+    } else if (dateFilters.complete === 'not-completed') {
+      return !task.dueDate || (task.dueDate && !task.dueDate.isCompleted)
+    } else {
+      return true
+    }
+  })
+
+  return filteredGroup
+}
+
+function _filterGroupLabels(group, labels) {
+  let filteredGroup = { ...group }
+  filteredGroup.tasks = filteredGroup.tasks.filter((task) => {
+    if (labels === 'no-labels') {
+      return !task.labelIds || task.labelIds.length === 0
+    } else if ((!task.labelIds || task.labelIds.length === 0) && labels.length > 0) {
+      return false
+    } else {
+      return labels.every((label) => task.labelIds.some((taskLabel) => label._id === taskLabel))
+    }
+  })
+
+  return filteredGroup
 }
 
 function move(type, board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
@@ -137,7 +258,7 @@ function toggleMemberOnTask(task, member, activityType) {
 
 function toggleMemberOnBoard(board, member, activityType) {
   if (activityType === 'add-member-board') {
-   board.members.push(member)
+    board.members.push(member)
   } else if (activityType === 'remove-member-board') {
     const memberIdx = board.members.findIndex((m) => m._id === member._id)
     board.members.splice(memberIdx, 1)
@@ -199,7 +320,6 @@ function removeLabelFromTasks(board, labelId) {
 }
 
 function removeMemberFromTasks(board, memberId) {
-  console.log('memberId', memberId);
   const updatedBoard = { ...board }
   updatedBoard.groups.forEach((group) => {
     group.tasks.forEach((task) => {
@@ -242,7 +362,7 @@ function getEmptyBoard(title, imgUrl) {
 }
 
 function getEmptyFilterBy() {
-  return { keyword: '', members: [], dueDate: '', labels: [] }
+  return { keyword: '', members: [], dates: [], labels: [] }
 }
 
 // function getEmptyTask() {
