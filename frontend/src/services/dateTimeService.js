@@ -144,9 +144,11 @@ function isTimestampNextDay(timestamp) {
   const currentDate = new Date()
   const startOfToday = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
   const startOfTomorrow = new Date(startOfToday)
+  const startOfTwoDays = new Date(startOfToday)
   startOfTomorrow.setDate(startOfTomorrow.getDate() + 1)
+  startOfTwoDays.setDate(startOfTomorrow.getDate() + 2)
 
   const inputDate = new Date(timestamp)
 
-  return inputDate >= startOfToday && inputDate < startOfTomorrow
+  return inputDate >= startOfTomorrow && inputDate < startOfTwoDays
 }

@@ -207,8 +207,6 @@ export function PopoverFilter({ onFilterBy, onClose }) {
     filterBy[key] = value
 
     setCurrFilterBy(filterBy)
-
-    console.log('filterBy', filterBy)
     // onFilterBy(filterBy)
   }
 
