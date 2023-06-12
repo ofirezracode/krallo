@@ -1,6 +1,8 @@
 .board-header-container {
   position: relative;
 
+
+
   .blur-header {
     position: absolute;
     width: 100%;
@@ -14,12 +16,22 @@
   }
 
   .board-header {
-    height: rem(56px);
-    padding: rem(12px) rem(12px) rem(12px) rem(22px);
+    height: max-content;
+    padding: rem(12px) rem(12px) rem(12px) rem(16px);
     background-color: $board-header-background-transparent;
-    flex-wrap: wrap;
+    flex-direction: column;
     z-index: -1;
     transition: .1s ease-in;
+
+    @include for-narrow-layout {
+      height: rem(56px);
+      flex-direction: row;
+    }
+
+    @include for-wide-layout {
+      height: rem(56px);
+      flex-direction: row;
+    }
 
     &.is-show-menu {
       margin-inline-end: rem(339px);
@@ -100,10 +112,25 @@
         gap: rem(5px);
         height: rem(32px);
         border-radius: 3px;
-        padding: rem(6px) rem(12px);
+        padding: rem(6px);
         display: flex;
         align-items: center;
         font-size: rem(14px);
+
+        p {
+          display: none;
+        }
+
+        @include for-mobile-layout {
+          padding: rem(6px) rem(12px);
+
+        }
+
+        @include for-narrow-layout {
+          p {
+            display: block;
+          }
+        }
 
         .filter-icon {
           svg {

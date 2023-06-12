@@ -19,8 +19,8 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
     setIsOn(prevIsOn => !prevIsOn)
     setTitle(currTitle)
     setSetting(settingName)
+
   }
-  console.log(activities)
 
   let boardStyle = {}
   if (board.style) {
@@ -31,10 +31,12 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
     }
   }
 
+  console.log('setting', setting)
+
   return (
     <section className={`board-menu ${showMenuClass}`}>
       <MenuTitle title={title} setIsMenuHidden={setIsMenuHidden} setIsOn={setIsOn} goBackClass={goBackClass} setTitle={setTitle} setSetting={setSetting} />
-      {isOn && (
+      {isOn && (<div>
         <ul className="menu-content clean-list flex column">
           <li className='board-about' onClick={() => onChangeSettings('About this board', 'about')}>
             <button className=" align-center">
@@ -56,16 +58,16 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
             </button>
           </li>
         </ul>
-      )}
 
-      <div className="activity-list">
-        <MenuActivitiesList board={board} activities={activities} />
-      </div>
+
+        <div className="activity-list">
+          <MenuActivitiesList board={board} activities={activities} />
+        </div></div>)}
 
 
       {setting === 'about' && <MenuAbout board={board} />}
       {setting === 'background' && <MenuBackground board={board} setTitle={setTitle} onUpdateBoardBg={onUpdateBoardBg} />}
-      {setting === 'activities' && <MenuActivitiesList board={board} activities={activities} />}
+      {setting === 'activities' && <div className="activity-list"><MenuActivitiesList board={board} activities={activities} /></div>}
     </section>
   )
 }

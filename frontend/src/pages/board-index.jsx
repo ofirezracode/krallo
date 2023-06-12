@@ -17,6 +17,7 @@ export function BoardIndex() {
   const activities = useSelector((storeState) => storeState.activityModule.activities)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const filterBy = useSelector((storeState) => storeState.boardModule.filterBy)
+  const [filteredBoard, setFilteredBoard] = useState(board)
   const { boardId } = useParams()
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
   const [isMenuHidden, setIsMenuHidden] = useState(false)
@@ -32,13 +33,21 @@ export function BoardIndex() {
     if (boards.length !== 0) {
       const newBoard = boards.filter((board) => board._id === boardId)[0]
 
-      setCurrBoard(newBoard, filterBy)
+      setCurrBoard(newBoard)
+      setFilteredBoard(newBoard)
       loadActivities({ boardId: newBoard._id })
     }
   }, [boards])
 
+  useEffect(() => {
+    if (board && filterBy) {
+      const newBoard = boardService.filterBoard(board, filterBy)
+      setFilteredBoard(newBoard)
+    }
+  }, [filterBy])
+
   function onUpdatedBoardEmitted(updatedBoard) {
-    setCurrBoard(updatedBoard, filterBy)
+    setCurrBoard(updatedBoard)
     console.log('caught emitted event', updatedBoard)
   }
 
@@ -127,7 +136,7 @@ export function BoardIndex() {
       <Outlet />
       <BoardHeader board={board} onChangeTitle={onChangeTitle} showMenuClass={showMenuClass} setIsMenuHidden={setIsMenuHidden} />
       <GroupList
-        board={board}
+        board={filteredBoard}
         onMoveTask={onMoveTask}
         onMoveGroup={onMoveGroup}
         onUpdateGroupTitle={onUpdateGroupTitle}
