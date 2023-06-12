@@ -32,7 +32,6 @@ export function TaskDescription({ task, onDescriptionUpdate }) {
     toggleEditing()
   }
 
-  console.log('description', description)
   return (
     <section className="task-description flex column">
       <div className="desc-title flex align-center">

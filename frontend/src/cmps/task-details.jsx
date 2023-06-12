@@ -183,6 +183,9 @@ export function TaskDetails() {
     }
   }
 
+  console.log(task)
+  console.log(board)
+
   return (
     <section className="task-details-screen">
       {/* <div className="backdrop"></div> */}

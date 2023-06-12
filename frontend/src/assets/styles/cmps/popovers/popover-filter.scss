@@ -1,0 +1,241 @@
+.popover-filter {
+  .popover-content {
+    padding-inline-end: rem(4px);
+    max-height: rem(750px);
+    overflow-y: scroll;
+
+    .filter-container {
+      margin-block-end: rem(16px);
+
+      .labels-title {
+        color: $small-titles;
+        font-size: rem(12px);
+        font-weight: 600;
+        line-height: rem(16px);
+        margin-block-end: rem(8px);
+      }
+
+      li {
+        padding: rem(8px);
+        .checkbox {
+          margin-inline-end: rem(16px);
+        }
+      }
+
+      &.filter-keywords {
+        padding-inline-end: rem(8px);
+        input {
+          padding: rem(8px) rem(12px);
+          width: 100%;
+
+          color: $text;
+          font-size: rem(14px);
+          font-family: inherit;
+          line-height: rem(20px);
+
+          box-shadow: inset 0 0 0 2px var(--ds-border-input, $button-board-header);
+          transition-property: background-color, border-color, box-shadow;
+          transition-duration: 85ms;
+          transition-timing-function: ease;
+
+          outline: none;
+          border: none;
+          border-radius: 3px;
+
+          &:focus {
+            box-shadow: inset 0 0 0 2px $input-focus;
+          }
+
+          &::placeholder {
+            color: $text;
+          }
+        }
+
+        p {
+          color: $text-subtle;
+          font-size: rem(11px);
+          line-height: rem(14px);
+          margin-block: rem(8px) rem(4px);
+        }
+      }
+
+      &.filter-members {
+        .members-list {
+          li {
+            .member-btn {
+              width: 100%;
+              font-family: inherit;
+              gap: rem(8px);
+              background-color: transparent;
+
+              label {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: $text;
+                font-size: rem(14px);
+                font-weight: normal;
+                line-height: rem(20px);
+              }
+            }
+            &.no-members {
+              .member-btn {
+                margin-inline-start: -2px;
+                font-family: inherit;
+                gap: rem(8px);
+                background-color: transparent;
+
+                .member-img {
+                  overflow: visible;
+                  width: rem(14px);
+                  height: rem(14px);
+                  padding: rem(6px);
+                  box-sizing: content-box;
+                  border-radius: 50%;
+                  color: $icon;
+                  background-color: $close-icon-hover-light;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.filter-date {
+        .dates-list {
+          li {
+            .date-btn {
+              width: 100%;
+              font-family: inherit;
+              gap: rem(8px);
+              background-color: transparent;
+
+              .date-img {
+                overflow: visible;
+                width: rem(14px);
+                height: rem(14px);
+                padding: rem(6px);
+                box-sizing: content-box;
+                border-radius: 50%;
+                &.img-overdue,
+                &.img-next-day {
+                  color: #fff;
+                }
+                &.img-overdue {
+                  background-color: $red-bolder;
+                }
+                &.img-next-day {
+                  background-color: $yellow-subtle;
+                }
+                &.img-no-date {
+                  color: $icon;
+                  background-color: $close-icon-hover-light;
+                }
+              }
+
+              label {
+                color: $text-subtle;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: rem(14px);
+                font-weight: normal;
+                line-height: rem(20px);
+              }
+            }
+          }
+        }
+      }
+
+      &.filter-labels {
+        .labels-list {
+          gap: rem(8px);
+
+          li {
+            height: rem(32px);
+            padding-inline-start: rem(4px);
+
+            display: grid;
+            grid-template-columns: max-content 1fr;
+
+            .checkbox {
+              margin-inline: rem(4px) rem(16px);
+            }
+
+            .label-color {
+              max-width: 100%;
+              min-width: rem(48px);
+              height: rem(32px);
+              padding-inline: rem(12px);
+              margin-inline-end: rem(4px);
+
+              font-size: rem(14px);
+              font-weight: 500;
+              font-family: inherit;
+              line-height: rem(32px);
+              text-align: left;
+
+              border-radius: 3px;
+
+              overflow: hidden;
+
+              &:hover {
+                filter: saturate(85%) brightness(85%);
+              }
+            }
+
+            &.no-labels {
+              .label-btn {
+                font-family: inherit;
+                gap: rem(8px);
+                background-color: transparent;
+
+                .label-img {
+                  overflow: visible;
+                  width: rem(14px);
+                  height: rem(14px);
+                  padding: rem(6px);
+                  box-sizing: content-box;
+                  border-radius: 50%;
+                  color: $icon;
+                  background-color: $close-icon-hover-light;
+                }
+
+                label {
+                  color: $text-subtle;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  font-size: rem(14px);
+                  font-weight: normal;
+                  line-height: rem(20px);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      height: 100%;
+      width: rem(8px);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #091e4214;
+      border-radius: 2em;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $add-card;
+      background-color: #cac7d3;
+      border-radius: 2em;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: block;
+      height: 100%;
+    }
+  }
+}
