@@ -9,6 +9,7 @@ import {
   UPDATE_BOARD,
   SET_BOARD,
   SET_LABELS_OPEN,
+  SET_FILTER_BY,
 } from './board.reducer.js'
 
 // Action Creators:
@@ -40,6 +41,13 @@ export function getActionSetLabelsOpen(labelsOpen) {
   }
 }
 
+export function getActionSetFilterBy(filterBy) {
+  return {
+    type: SET_FILTER_BY,
+    filterBy,
+  }
+}
+
 export async function loadBoards() {
   try {
     const boards = await boardService.query()
@@ -54,9 +62,8 @@ export async function loadBoards() {
   }
 }
 
-export function setCurrBoard(board, filterBy) {
+export function setCurrBoard(board) {
   try {
-    board = boardService.filterBoard(board, filterBy)
     store.dispatch({
       type: SET_BOARD,
       board,
@@ -126,4 +133,8 @@ export async function saveNewTask(board, groupId, updatedTask, activity) {
     console.log('Cannot save task', err)
     throw err
   }
+}
+
+export function setCurrFilterBy(filterBy) {
+  store.dispatch(getActionSetFilterBy(filterBy))
 }

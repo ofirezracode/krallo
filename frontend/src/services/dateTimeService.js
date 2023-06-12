@@ -12,6 +12,8 @@ export const dateTimeService = {
   getPrevDate,
   isStartDateBeforeEndDate,
   isValidTime,
+  hasTimestampPassed,
+  isTimestampNextDay,
 }
 
 function formatToDMYAndTime(timestamp) {
@@ -132,4 +134,21 @@ function isValidTime(timeString) {
   }
 
   return false
+}
+
+function hasTimestampPassed(timestamp) {
+  return Date.now() >= timestamp
+}
+
+function isTimestampNextDay(timestamp) {
+  const currentDate = new Date()
+  const startOfToday = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
+  const startOfTomorrow = new Date(startOfToday)
+  const startOfTwoDays = new Date(startOfToday)
+  startOfTomorrow.setDate(startOfTomorrow.getDate() + 1)
+  startOfTwoDays.setDate(startOfTomorrow.getDate() + 2)
+
+  const inputDate = new Date(timestamp)
+
+  return inputDate >= startOfTomorrow && inputDate < startOfTwoDays
 }

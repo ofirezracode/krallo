@@ -8,9 +8,11 @@ import { LabelEditor } from './popover-labels/label-editor'
 import { Checkbox } from '../checkbox'
 import { UserImg } from '../user-img'
 import { userService } from '../../services/user.service'
+import { setCurrFilterBy } from '../../store/board.actions'
 
 export function PopoverFilter({ onFilterBy, onClose }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const filterBy = useSelector((storeState) => storeState.boardModule.filterBy)
 
   const [filterKeyword, setFilterKeyword] = useState('')
 
@@ -42,7 +44,7 @@ export function PopoverFilter({ onFilterBy, onClose }) {
       setLoggedinUser(user)
 
       const userIdx = board.members.findIndex((member) => member._id === user._id)
-      let newMembers
+      let newMembers = [...board.members]
       if (userIdx >= 0) {
         let member = newMembers.splice(userIdx, 1)
         newMembers.unshift(member)
@@ -53,6 +55,29 @@ export function PopoverFilter({ onFilterBy, onClose }) {
       checkFilterValidity()
     }
   }, [board])
+
+  useEffect(() => {
+    if (filterBy.keywords) {
+      setFilterKeyword(filterBy.keywords)
+    }
+    if (filterBy.dates && filterBy.dates.length > 0) {
+      setFilterDates(filterBy.dates)
+    }
+    if (filterBy.labels && filterBy.labels.length > 0) {
+      if (filterBy.labels === 'no-labels') {
+        setNoLabels({ labels: 'no-labels' })
+      } else {
+        setFilterLabels(filterBy.labels)
+      }
+    }
+    if (filterBy.members && filterBy.members.length > 0) {
+      if (filterBy.members === 'no-members') {
+        setNoMembers({ members: 'no-members' })
+      } else {
+        setFilterMembers(filterBy.members)
+      }
+    }
+  }, [filterBy])
 
   function checkFilterValidity() {
     if (filterMembers.length > 0) {
@@ -181,7 +206,7 @@ export function PopoverFilter({ onFilterBy, onClose }) {
 
     filterBy[key] = value
 
-    console.log('filterBy', filterBy)
+    setCurrFilterBy(filterBy)
     // onFilterBy(filterBy)
   }
 
@@ -205,6 +230,7 @@ export function PopoverFilter({ onFilterBy, onClose }) {
               </button>
             </li>
             {members.map((member) => {
+              console.log('filterMembers', filterMembers)
               const isLabelChecked = filterMembers ? filterMembers.some((filteredMember) => filteredMember._id === member._id) : false
               let memberFullname = member.fullname
               if (member._id === loggedinUser._id) memberFullname = 'Cards assigned to me'
