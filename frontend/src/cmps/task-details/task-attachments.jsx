@@ -5,10 +5,10 @@ import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
 
 export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, onEditAttachment, onOpenPopover }) {
-    if (!task) return <Loader />
-    const { attachments } = task
     const handleFocus = (ev) => ev.target.select()
 
+    if (!task) return <Loader />
+    const { attachments } = task
     if (!attachments) return <div></div>
     return (
         <section className="task-attachments">

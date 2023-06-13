@@ -8,7 +8,6 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   if (!task || !board) return <div></div>
   const { members, dueDate } = task
-  console.log('task', task)
 
   const taskLabelIds = task.labelIds ? task.labelIds : []
   const taskLabels = taskLabelIds.map((labelId) => {

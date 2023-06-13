@@ -4,7 +4,6 @@ import { utilService } from '../../services/util.service'
 
 export function MenuActivitiesList({ board, activities }) {
     if (!activities) return <div></div>
-    console.log(activities)
     return (
         <>
             {activities.map(activity =>

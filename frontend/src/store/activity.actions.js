@@ -13,7 +13,6 @@ export function getActionAddActivity(activity) {
 export async function loadActivities(filterBy) {
   try {
     const activities = await activityService.query(filterBy)
-    console.log('activities', activities)
     store.dispatch({ type: SET_ACTIVITIES, activities })
   } catch (err) {
     console.log('ActivityActions: err in loadActivities', err)

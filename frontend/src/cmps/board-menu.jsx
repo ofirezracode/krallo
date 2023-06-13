@@ -31,8 +31,6 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
     }
   }
 
-  console.log('setting', setting)
-
   return (
     <section className={`board-menu ${showMenuClass}`}>
       <MenuTitle title={title} setIsMenuHidden={setIsMenuHidden} setIsOn={setIsOn} goBackClass={goBackClass} setTitle={setTitle} setSetting={setSetting} />
