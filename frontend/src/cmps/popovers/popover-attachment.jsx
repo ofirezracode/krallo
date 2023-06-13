@@ -2,11 +2,39 @@ import { useState } from 'react'
 import { uploadService } from '../../services/upload.service'
 import { PopoverCmpHeader } from './popover-cmp-header'
 import { boardService } from '../../services/board.service'
+import { Configuration, OpenAIApi } from 'openai'
+import axios from 'axios';
+
+const config = new Configuration({
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY_TAMAR,
+})
+const openai = new OpenAIApi(config)
 
 export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
   const [url, setUrl] = useState('')
   const [title, setTitle] = useState('')
   const [attachments, setAttachments] = useState(task.attachments ? task.attachments : [])
+  const [userPrompt, setUserPrompt] = useState('')
+  const [imgUrl, setImgUrl] = useState('')
+
+  async function generatorImg(ev) {
+    ev.preventDefault();
+    const imgParameters = {
+      prompt: userPrompt,
+      n: 1,
+      size: '256x256'
+    };
+    const title = userPrompt
+    try {
+      const response = await openai.createImage(imgParameters, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+      console.log(response.data)
+      const urlData = response.data.data[0].url;
+      setImgUrl(urlData);
+      onSubmitUrlAI(urlData, title)
+    } catch (err) {
+      console.error('err', err);
+    }
+  }
 
   async function onAddAttachment(ev) {
     try {
@@ -15,7 +43,6 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
       const newAttach = boardService.getEmptyAttachment()
       newAttach.url = imgUrl.url
       newAttach.title = imgUrl.original_filename
-      console.log(newAttach)
       setAttachments([...attachments, newAttach])
       onAttachmentAdded([...attachments, newAttach])
       onClose()
@@ -36,6 +63,15 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
     onClose()
   }
 
+  function onSubmitUrlAI(imgUrlAI, title) {
+    const newAttach = boardService.getEmptyAttachment()
+    newAttach.url = imgUrlAI
+    newAttach.title = title
+    if (title) newAttach.title = title
+    setAttachments([...attachments, newAttach])
+    onAttachmentAdded([...attachments, newAttach])
+    onClose()
+  }
   return (
     <section>
       <PopoverCmpHeader title="Attach from..." onClose={onClose} />
@@ -60,6 +96,17 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
               Attach
             </button>
           </form>
+        </div>
+        <div className="url-input">
+          <hr />
+          <form onSubmit={generatorImg}>
+            <h5>Use AI photo generator</h5>
+            <input type="text" placeholder="Write your prompt here..." value={userPrompt} onChange={(ev) => setUserPrompt(ev.target.value)} />
+            <button className="btn" type="submit">
+              Generate
+            </button>
+          </form>
+          {/* {imgUrl && <img src={imgUrl} alt="AI img" />} */}
         </div>
       </section>
     </section>

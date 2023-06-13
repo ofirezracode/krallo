@@ -17,6 +17,7 @@ import { ChecklistIndex } from './task-details/checklist/checklist-index'
 import { utilService } from '../services/util.service'
 import { addActivity } from '../store/activity.actions'
 import { TaskDescription } from './task-details/task-description'
+import { TaskActivities } from './task-details/task-activities'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -211,6 +212,7 @@ export function TaskDetails() {
               onOpenPopover={onOpenPopover}
             />
             <ChecklistIndex task={task} onOpenPopover={onOpenPopover} onUpdateChecklists={onUpdateChecklists} />
+            <TaskActivities />
           </section>
           <ActionsList
             task={task}

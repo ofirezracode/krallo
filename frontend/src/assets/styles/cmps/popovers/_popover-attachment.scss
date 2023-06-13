@@ -23,7 +23,8 @@
     .url-input {
         hr {
             margin-block: rem(8px);
-            border: 1px solid $card-input-hover;
+            border: none;
+            border-block-end: 1px solid $card-input-hover;
         }
 
         h5 {

@@ -5,12 +5,11 @@
   // filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
   box-shadow: $card-shadow;
   border-radius: 3px;
+  width: 304px;
   // width: fit-content;
   z-index: 1000;
-  width: 304px;
 
-  @include for-wide-layout {
-  }
+  @include for-wide-layout {}
 }
 
 .popover-backdrop {
