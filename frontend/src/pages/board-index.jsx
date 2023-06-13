@@ -72,8 +72,12 @@ export function BoardIndex() {
     const newBoard = { ...board }
     const newStyle = {}
     newStyle.type = 'img'
-    newStyle.imgUrlSmall = urls.small
-    newStyle.imgUrlFull = urls.full
+    if (Array.isArray(urls)) {
+      newStyle.imgUrlSmall = urls.small
+      newStyle.imgUrlFull = urls.full
+    } else {
+      newStyle.imgUrl = urls
+    }
     newBoard.style = newStyle
     try {
       await updateBoard(newBoard)

@@ -31,7 +31,6 @@ export function BoardList({ boards, onToggleIsStarred, isOnlyStarred, onAddBoard
             if (board.style.type === 'bgColor') {
               boardStyle = { backgroundColor: board.style.bgColor }
             } else if (board.style.type === 'img') {
-              console.log('board list board.style', board.style)
               let url = ''
               if (board.style.imgUrlSmall) {
                 url = board.style.imgUrlSmall
