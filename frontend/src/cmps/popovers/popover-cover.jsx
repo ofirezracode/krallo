@@ -15,11 +15,11 @@ export function PopoverCover({ coverStyle, onStyleChange, onClose }) {
     onStyleChange({ bgColor, type: activeType ? activeType : 'half' })
   }
 
-  function onImgClick(imgUrl) {
+  function onImgClick(imgUrls) {
     setActiveColor('')
-    setActiveImg(imgUrl)
+    setActiveImg(imgUrls.small)
     if (!activeType) setActiveType('half')
-    onStyleChange({ imgUrl, type: activeType ? activeType : 'half' })
+    onStyleChange({ imgUrl: imgUrls.small, type: activeType ? activeType : 'half' })
   }
 
   function onTypeClick(type) {
@@ -94,7 +94,7 @@ export function PopoverCover({ coverStyle, onStyleChange, onClose }) {
       </ul>
       <h4 className="popover-title unsplash">Photos from Unsplash</h4>
       <div className="cover-photos-list">
-        <PhotosList onUpdateBoardBg={onImgClick} resultsAmount={6} returnSize={'small'} />
+        <PhotosList onUpdateBoardBg={onImgClick} resultsAmount={6} />
       </div>
     </div>
   )

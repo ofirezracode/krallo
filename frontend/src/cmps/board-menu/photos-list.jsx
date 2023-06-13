@@ -22,11 +22,10 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSele
   }, [])
 
   function handleChange(img, ev) {
-    let url = img.urls.full
-    if (selectedImg) setSelectedImg(url)
-    if (returnSize) url = img.urls[returnSize]
+    let urls = img.urls
+    if (selectedImg) setSelectedImg(urls.small)
     ev.stopPropagation()
-    onUpdateBoardBg(url)
+    onUpdateBoardBg(urls)
   }
 
   return (
@@ -40,7 +39,7 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSele
           {imgs.map((img, idx) => (
             <li
               key={idx}
-              className={`flex justify-center column ${selectedImg === img.urls.full ? 'selected' : ''}`}
+              className={`flex justify-center column ${selectedImg === img.urls.small ? 'selected' : ''}`}
               onClick={(ev) => handleChange(img, ev)}
             >
               <div className="bg-img" style={{ background: `url(${img.urls.small}) center center / cover` }}>

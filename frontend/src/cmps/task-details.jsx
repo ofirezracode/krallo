@@ -45,7 +45,7 @@ export function TaskDetails() {
 
   async function onHandleTaskMembers(activityType, member) {
     try {
-      let activity = activityService.createActivity(board._id, activityType, user, member, task)
+      let activity = activityService.createActivity(board._id, activityType, user, task)
       const updatedTask = boardService.toggleMemberOnTask(task, member, activityType)
       await saveTask(board, updatedTask, activity)
       await addActivity(activity)
@@ -110,7 +110,6 @@ export function TaskDetails() {
   async function onDueDateSave(dueDate) {
     try {
       const updatedTask = { ...task, dueDate }
-      console.log(updatedTask)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.log('err', err)
@@ -202,6 +201,7 @@ export function TaskDetails() {
               onLabelChange={onLabelChange}
               onLabelEdit={onLabelEdit}
               onLabelDelete={onLabelDelete}
+              onDueDateSave={onDueDateSave}
             />
             <TaskDescription task={task} onDescriptionUpdate={onDescriptionUpdate} />
             <TaskAttachments

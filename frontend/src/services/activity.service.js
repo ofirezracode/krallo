@@ -31,9 +31,9 @@ function createActivity(boardId, activityType, byMember, task, groupName = '', b
   if (activityType === 'add') {
     activity.txt = ` added ${task.title} to ${groupName}`
   } else if (activityType === 'add-member') {
-    activity.txt = ` joined ${task.fullname}`
+    activity.txt = ` joined ${task.title}`
   } else if (activityType === 'remove-member') {
-    activity.txt = ` left ${task.fullname}`
+    activity.txt = ` left ${task.title}`
   } else if (activityType === 'add-attachment') {
     activity.txt = ` attached to ${task.title}`
   } else if (activityType === 'delete-attachment') {
@@ -44,9 +44,9 @@ function createActivity(boardId, activityType, byMember, task, groupName = '', b
     activity.txt = ` removed Checklist from ${task.title}`
   } else if (activityType === 'updated-checklist') {
     activity.txt = ` updated checklist title at ${task.title}`
-  }else if (activityType === 'add-member-board') {
-    activity.txt = ` updated checklist title at ${board.title}`
-  }else if (activityType === 'remove-member-board') {
+  } else if (activityType === 'add-member-board') {
+    activity.txt = ` updated checklist title at ${task.title}`
+  } else if (activityType === 'remove-member-board') {
     activity.txt = ` left ${board.title}`
   }
   return activity

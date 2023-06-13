@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { BsStar, BsStarFill } from 'react-icons/bs'
+import { BsStar, BsStarFill, BsPlusLg } from 'react-icons/bs'
 import { updateBoard } from '../store/board.actions'
 import { BoardMenu } from './board-menu'
 import { Popover } from './popover'
@@ -35,9 +35,9 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   async function onHandleBoardMembers(member, activityType) {
     try {
       const updatedBoard = boardService.toggleMemberOnBoard(board, member, activityType)
-      let activity = activityService.createActivity(board._id, activityType, user, member, board)
+      // let activity = activityService.createActivity(board._id, activityType, user, task)
       await updateBoard(updatedBoard)
-      await addActivity(activity)
+      // await addActivity(activity)
     } catch (err) {
       console.log('err', err)
     }
@@ -94,6 +94,21 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
     }
   }
 
+  let shownMembers = []
+  if (members?.length) {
+    if (window.innerWidth < 500) {
+      shownMembers.push(<img key={members[0]._id} className="member-img" src={members[0].imgUrl} alt="" />)
+      // shownMembers.push(<img key={members[0]._id} className="member-img" src={members[0].imgUrl} alt="" />)
+      shownMembers.push(
+        <div className="mobile-more-members flex center">
+          <label>+{members.length - 1}</label>
+        </div>
+      )
+    } else {
+      shownMembers = members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)
+    }
+  }
+
   if (!board) return <Loader />
   return (
     <section className="board-header-container" ref={boardHeader}>
@@ -125,7 +140,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           <button
             title="Filter cards"
             className="flex align-center"
-            onClick={(e) => onOpenPopover(e, { onFilterBy: () => { }, widthOverride: '384px' }, 'filter')}
+            onClick={(e) => onOpenPopover(e, { onFilterBy: () => {}, widthOverride: '384px' }, 'filter')}
           >
             {/* <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -140,7 +155,8 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           </button>
           <span>|</span>
           <div className="members">
-            {members?.length && members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)}
+            {/* {members?.length && members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)} */}
+            {shownMembers}
           </div>
           <button
             className="btn-fill"

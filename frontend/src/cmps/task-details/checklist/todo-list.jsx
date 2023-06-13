@@ -4,7 +4,7 @@ import { TodoPreview } from './todo-preview'
 export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo, calculateProgress }) {
   const [isAdding, setIsAdding] = useState(false)
   const handleFocus = (ev) => ev.target.select()
-  const [todoTitle, setTodoTitle] = useState('Add an item')
+  const [todoTitle, setTodoTitle] = useState('')
 
   function handleChange(ev) {
     setTodoTitle(ev.target.value)
@@ -13,6 +13,7 @@ export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo
   function onSubmitAdding(ev) {
     ev.preventDefault()
     onAddTodo(checklist._id, todoTitle)
+    setTodoTitle('')
     setIsAdding(false)
   }
 
@@ -39,7 +40,14 @@ export function TodoList({ todos, checklist, onDeleteTodo, onAddTodo, onEditTodo
       </ul>
       {isAdding && (
         <form onSubmit={onSubmitAdding}>
-          <textarea rows="2" value={todoTitle} onChange={handleChange} onFocus={handleFocus} onKeyPress={handleKeyPress}></textarea>
+          <textarea
+            rows="2"
+            value={todoTitle}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            onKeyPress={handleKeyPress}
+            placeholder="Add an item"
+          ></textarea>
           <div className="textarea-btns flex">
             <button className="btn save">Add</button>
             <button className="close-area-btn" type="button" onClick={toggleAdding}>

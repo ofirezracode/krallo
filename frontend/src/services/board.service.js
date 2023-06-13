@@ -247,7 +247,11 @@ function _moveGroup(newBoard, groups, sourceGroupIdx, destGroupIdx) {
 
 function toggleMemberOnTask(task, member, activityType) {
   if (activityType === 'add-member') {
-    task.members.push(member)
+    if (task.members) {
+      task.members.push(member)
+    } else {
+      task.members = [member]
+    }
   } else if (activityType === 'remove-member') {
     const memberIdx = task.members.findIndex((m) => m._id === member._id)
     task.members.splice(memberIdx, 1)
@@ -258,7 +262,11 @@ function toggleMemberOnTask(task, member, activityType) {
 
 function toggleMemberOnBoard(board, member, activityType) {
   if (activityType === 'add-member-board') {
-    board.members.push(member)
+    if (board.members) {
+      board.members.push(member)
+    } else {
+      board.members = [member]
+    }
   } else if (activityType === 'remove-member-board') {
     const memberIdx = board.members.findIndex((m) => m._id === member._id)
     board.members.splice(memberIdx, 1)
@@ -352,7 +360,6 @@ function getEmptyBoard(title, imgUrl) {
     isStarred: false,
     createdAt: Date.now(),
     groups: [createGroup('New group')],
-    tasks: [],
     style: {
       type: 'img',
       imgUrl,

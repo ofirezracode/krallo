@@ -1,4 +1,4 @@
 export default {
-  dbURL: 'mongodb+srv://ofirezracode:ym4WX6whEX8Jdljb@krallo.yylqxah.mongodb.net/?retryWrites=true&w=majority',
+  dbURL: 'mongodb+srv://ofirezracode:spBMwdAnkB0KrryC@cluster-krallo.r27h5el.mongodb.net/',
   dbName: 'krallo',
 }

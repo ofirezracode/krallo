@@ -1,13 +1,24 @@
 import Ofir from '../../assets/img/members/ofir-pic.jpg'
 import Etai from '../../assets/img/members/etai-pic.jpg'
 import Tamar from '../../assets/img/members/tamar-pic.jpg'
-import { BsPlusLg } from 'react-icons/bs'
+import { BsPlusLg, BsChevronDown } from 'react-icons/bs'
 import { useSelector } from 'react-redux'
+import { dateTimeService } from '../../services/dateTimeService'
+import { Checkbox } from '../checkbox'
+import { useEffect, useState } from 'react'
 
-export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdit, onLabelDelete, onHandleTaskMembers }) {
+export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdit, onLabelDelete, onHandleTaskMembers, onDueDateSave }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const [dueDate, setDueDate] = useState(task && task.dueDate ? task.dueDate : {})
+
+  useEffect(() => {
+    if (task && task.dueDate) {
+      setDueDate(task.dueDate)
+    }
+  }, [task])
+
   if (!task || !board) return <div></div>
-  const { members, dueDate } = task
+  const { members } = task
 
   const taskLabelIds = task.labelIds ? task.labelIds : []
   const taskLabels = taskLabelIds.map((labelId) => {
@@ -16,6 +27,15 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
     if (label.color) labelStyle = { backgroundColor: label.color.code }
     return { ...labelStyle, title: label.title ? label.title : '' }
   })
+
+  function onDateClicked() {
+    const updatedDueDate = { ...dueDate }
+    updatedDueDate.isCompleted = !updatedDueDate.isCompleted
+    setDueDate(updatedDueDate)
+    onDueDateSave(updatedDueDate)
+  }
+
+  let formattedDate = dueDate ? dateTimeService.formatTimestampToTaskDetailsDate(dueDate.dueDate) : ''
 
   return (
     <section className="show-task-details">
@@ -71,8 +91,11 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
         <div className="date-wrapper">
           <h5>Due date</h5>
           <div className="date-container flex">
-            <button className="add-label">
-              <BsPlusLg />
+            <Checkbox onToggle={onDateClicked} isChecked={dueDate.isCompleted} />
+            <button className="flex center">
+              <label>{formattedDate}</label>
+              {dueDate.isCompleted && <span className="complete">complete</span>}
+              <BsChevronDown />
             </button>
           </div>
         </div>

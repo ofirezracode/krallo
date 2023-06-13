@@ -24,7 +24,6 @@ export async function addActivity(activity) {
   try {
     if (!activity.txt) return
     const addedActivity = await activityService.add(activity)
-    console.log('activity action', activity)
     if (addedActivity) await loadActivities({ boardId: activity.boardId })
     // store.dispatch(getActionAddActivity(addedActivity))
   } catch (err) {
