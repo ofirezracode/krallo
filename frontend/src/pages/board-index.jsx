@@ -72,7 +72,7 @@ export function BoardIndex() {
     const newBoard = { ...board }
     const newStyle = {}
     newStyle.type = 'img'
-    if (Array.isArray(urls)) {
+    if (urls.full) {
       newStyle.imgUrlSmall = urls.small
       newStyle.imgUrlFull = urls.full
     } else {
