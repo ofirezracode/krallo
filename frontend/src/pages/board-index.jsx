@@ -68,10 +68,13 @@ export function BoardIndex() {
     }
   }
 
-  async function onUpdateBoardBg(url) {
-    const newBoard = { ...board, style: board.style }
-    newBoard.style.type = 'img'
-    newBoard.style.imgUrl = url
+  async function onUpdateBoardBg(urls) {
+    const newBoard = { ...board }
+    const newStyle = {}
+    newStyle.type = 'img'
+    newStyle.imgUrlSmall = urls.small
+    newStyle.imgUrlFull = urls.full
+    newBoard.style = newStyle
     try {
       await updateBoard(newBoard)
     } catch (err) {
@@ -125,8 +128,15 @@ export function BoardIndex() {
     if (board.style.type === 'bgColor') {
       boardStyle = { backgroundColor: board.style.bgColor }
     } else if (board.style.type === 'img') {
+      console.log('board index board.style', board.style)
+      let url = ''
+      if (board.style.imgUrlFull) {
+        url = board.style.imgUrlFull
+      } else {
+        url = board.style.imgUrl
+      }
       boardStyle = {
-        backgroundImage: `url(${board.style.imgUrl})`,
+        backgroundImage: `url(${url})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

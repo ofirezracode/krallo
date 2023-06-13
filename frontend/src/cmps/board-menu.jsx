@@ -26,7 +26,14 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
     if (board.style.type === 'bgColor') {
       boardStyle = { backgroundColor: board.style.bgColor }
     } else if (board.style.type === 'img') {
-      boardStyle = { background: `url(${board.style.imgUrl}) center center / cover` }
+      console.log('board index board.style', board.style)
+      let url = ''
+      if (board.style.imgUrlSmall) {
+        url = board.style.imgUrlSmall
+      } else {
+        url = board.style.imgUrl
+      }
+      boardStyle = { background: `url(${url}) center center / cover` }
     }
   }
 
