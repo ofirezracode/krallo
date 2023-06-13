@@ -87,7 +87,7 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
           </div>
         </div>
       )}
-      {dueDate && (
+      {dueDate && dueDate.dueDate && (
         <div className="date-wrapper">
           <h5>Due date</h5>
           <div className="date-container flex">
