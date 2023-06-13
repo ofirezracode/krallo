@@ -128,7 +128,6 @@ export function BoardIndex() {
     if (board.style.type === 'bgColor') {
       boardStyle = { backgroundColor: board.style.bgColor }
     } else if (board.style.type === 'img') {
-      console.log('board index board.style', board.style)
       let url = ''
       if (board.style.imgUrlFull) {
         url = board.style.imgUrlFull

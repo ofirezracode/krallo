@@ -14,6 +14,7 @@ export const dateTimeService = {
   isValidTime,
   hasTimestampPassed,
   isTimestampNextDay,
+  formatTimestampToTaskDetailsDate,
 }
 
 function formatToDMYAndTime(timestamp) {
@@ -151,4 +152,22 @@ function isTimestampNextDay(timestamp) {
   const inputDate = new Date(timestamp)
 
   return inputDate >= startOfTomorrow && inputDate < startOfTwoDays
+}
+
+function formatTimestampToTaskDetailsDate(timestamp) {
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  }
+
+  const date = new Date(timestamp).toLocaleString('en-US', options)
+  const [month, day] = date.split(' ').slice(0, 2)
+  // const time = date.split(' ')[3] + ' ' + date.split(' ')[4]
+  const time = date.split(' ').slice(3).join(' ')
+
+  return `${day.replace(',', '')} ${month} at ${time}`
 }

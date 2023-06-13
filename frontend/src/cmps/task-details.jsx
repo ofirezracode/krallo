@@ -109,7 +109,6 @@ export function TaskDetails() {
   async function onDueDateSave(dueDate) {
     try {
       const updatedTask = { ...task, dueDate }
-      console.log(updatedTask)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.log('err', err)
@@ -201,6 +200,7 @@ export function TaskDetails() {
               onLabelChange={onLabelChange}
               onLabelEdit={onLabelEdit}
               onLabelDelete={onLabelDelete}
+              onDueDateSave={onDueDateSave}
             />
             <TaskDescription task={task} onDescriptionUpdate={onDescriptionUpdate} />
             <TaskAttachments
