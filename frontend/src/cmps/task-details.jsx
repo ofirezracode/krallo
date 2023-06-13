@@ -44,7 +44,7 @@ export function TaskDetails() {
 
   async function onHandleTaskMembers(activityType, member) {
     try {
-      let activity = activityService.createActivity(board._id, activityType, user, member, task)
+      let activity = activityService.createActivity(board._id, activityType, user, task)
       const updatedTask = boardService.toggleMemberOnTask(task, member, activityType)
       await saveTask(board, updatedTask, activity)
       await addActivity(activity)
@@ -182,9 +182,6 @@ export function TaskDetails() {
       console.log('err', err)
     }
   }
-
-  console.log(task)
-  console.log(board)
 
   return (
     <section className="task-details-screen">

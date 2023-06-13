@@ -8,7 +8,6 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   if (!task || !board) return <div></div>
   const { members, dueDate } = task
-  console.log('task', task)
 
   const taskLabelIds = task.labelIds ? task.labelIds : []
   const taskLabels = taskLabelIds.map((labelId) => {
@@ -68,7 +67,7 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
           </div>
         </div>
       )}
-      {dueDate && (
+      {/* {dueDate && (
         <div className="date-wrapper">
           <h5>Due date</h5>
           <div className="date-container flex">
@@ -77,7 +76,7 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </section>
   )
 }
