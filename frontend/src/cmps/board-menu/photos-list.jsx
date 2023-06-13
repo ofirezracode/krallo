@@ -13,7 +13,7 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSele
   useEffect(() => {
     const amount = resultsAmount ? resultsAmount : 30
     const fetchImgs = async () => {
-      const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=${amount}&query=${text}&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`)
+      const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=${amount}&query=${text}&client_id=${API_KEY_ETAI}`)
       // const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=${amount}&query=pattern&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`)
       const data = await response.json()
       setImgs(data)
