@@ -27,7 +27,6 @@ export function TaskDetails() {
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
   const taskDetails = useRef()
-  const [cover, setCover] = useState(null)
 
   const navigate = useNavigate()
 
@@ -191,7 +190,11 @@ export function TaskDetails() {
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
           <HiXMark className="close-icon" />
         </button>
-        <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} setCover={setCover} cover={cover} />
+        <TaskCover
+          task={task}
+          taskDetails={taskDetails}
+          onStyleChange={onStyleChange}
+        />
         <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
           <section className="card-details-container flex column">
@@ -204,16 +207,23 @@ export function TaskDetails() {
               onLabelDelete={onLabelDelete}
               onDueDateSave={onDueDateSave}
             />
-            <TaskDescription task={task} onDescriptionUpdate={onDescriptionUpdate} />
+            <TaskDescription
+              task={task}
+              onDescriptionUpdate={onDescriptionUpdate}
+            />
             <TaskAttachments
               task={task}
               onAttachmentAdded={onAttachmentAdded}
               onDeleteAttachment={onDeleteAttachment}
               onEditAttachment={onEditAttachment}
               onOpenPopover={onOpenPopover}
-              setCover={setCover}
+              onStyleChange={onStyleChange}
             />
-            <ChecklistIndex task={task} onOpenPopover={onOpenPopover} onUpdateChecklists={onUpdateChecklists} />
+            <ChecklistIndex
+              task={task}
+              onOpenPopover={onOpenPopover}
+              onUpdateChecklists={onUpdateChecklists}
+            />
             <TaskActivities />
           </section>
           <ActionsList

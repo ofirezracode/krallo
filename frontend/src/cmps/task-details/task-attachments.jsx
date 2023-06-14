@@ -3,8 +3,9 @@ import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
+import { useState } from 'react'
 
-export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, onEditAttachment, onOpenPopover, setCover }) {
+export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, onEditAttachment, onOpenPopover, onStyleChange }) {
     const handleFocus = (ev) => ev.target.select()
 
     if (!task) return <Loader />
@@ -12,9 +13,10 @@ export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, o
 
     function onAttachToCover(ev, url) {
         ev.preventDefault()
-        console.log(url)
         task.style.imgUrl = url
+        onStyleChange({ imgUrl: task.style.imgUrl, type: 'half' })
     }
+
     if (!attachments) return <div></div>
     return (
         <section className="task-attachments">
