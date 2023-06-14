@@ -18,6 +18,7 @@ import { utilService } from '../services/util.service'
 import { addActivity } from '../store/activity.actions'
 import { TaskDescription } from './task-details/task-description'
 import { TaskActivities } from './task-details/task-activities'
+import { MenuActivitiesList } from './board-menu/menu-activities-list'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -26,6 +27,7 @@ export function TaskDetails() {
   const [task, setTask] = useState(boardService.getEmptyTask())
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
+  const activities = useSelector((storeState) => storeState.activityModule.activities)
   const taskDetails = useRef()
 
   const navigate = useNavigate()
@@ -224,7 +226,10 @@ export function TaskDetails() {
               onOpenPopover={onOpenPopover}
               onUpdateChecklists={onUpdateChecklists}
             />
-            <TaskActivities />
+            {/* <TaskActivities /> */}
+            {/* <div className="activity-list">
+              < MenuActivitiesList board={board} activities={activities} />
+            </div> */}
           </section>
           <ActionsList
             task={task}

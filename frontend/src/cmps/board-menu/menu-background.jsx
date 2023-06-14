@@ -35,7 +35,7 @@ export function MenuBackground({ board, setTitle, onUpdateBoardBg }) {
     <>
       {!isBgClicked && (
         <ul className="backgrounds clean-list flex justify-center">
-          <li className="flex justify-center column" onClick={() => handleBackground('Photos')}>
+          <li className="flex justify-center column" onClick={() => handleBackground('Photos by Unsplash')}>
             <div className="change-bg-img"></div>
             <p>Photos</p>
           </li>
@@ -45,7 +45,7 @@ export function MenuBackground({ board, setTitle, onUpdateBoardBg }) {
           </li>
         </ul>
       )}
-      {bgType === 'Photos' && (
+      {bgType === 'Photos by Unsplash' && (
         <PhotosList
           board={board}
           setTitle={setTitle}
