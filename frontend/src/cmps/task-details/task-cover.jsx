@@ -4,8 +4,8 @@ import { usePopover } from '../../customHooks/usePopover'
 import { Popover } from '../popover'
 import { colorService } from '../../services/color.service'
 
-export function TaskCover({ task, taskDetails, onStyleChange }) {
-  const [cover, setCover] = useState(null)
+export function TaskCover({ task, taskDetails, onStyleChange, cover, setCover }) {
+  // const [cover, setCover] = useState(null)
 
   useEffect(
     function () {

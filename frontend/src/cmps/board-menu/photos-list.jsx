@@ -46,7 +46,7 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSele
                 <a href={img.user.portfolio_url} target="_blank">
                   {img.user.username}
                 </a>
-                {selectedImg === img.urls.full && (
+                {selectedImg === img.urls.small && (
                   <span className="selected-img flex center">
                     <BsCheckLg />
                   </span>
