@@ -160,7 +160,7 @@ async function getAvgColor(imgUrl) {
 
 function formatDate(timestamp) {
   const date = new Date(timestamp)
-  const month = date.toLocaleString('default', { month: 'short' })
+  const month = date.toLocaleString('en', { month: 'short' })
   const day = date.getDate()
 
   let year = ''
