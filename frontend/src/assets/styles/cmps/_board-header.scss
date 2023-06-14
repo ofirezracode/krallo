@@ -18,7 +18,7 @@
     gap: rem(6px);
     padding: rem(6px) rem(6px) rem(6px) rem(6px);
     background-color: $board-header-background-transparent;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     z-index: -1;
     transition: 0.1s ease-in;
@@ -39,7 +39,7 @@
       margin-inline-end: rem(339px);
     }
 
-    & > * {
+    &>* {
       z-index: 10;
       height: rem(32px);
     }
@@ -50,10 +50,11 @@
       @include for-narrow-layout {
         .board-name {
           input[type='text'] {
-            padding: 0 rem(10px);
+            padding: 0;
           }
         }
       }
+
       .board-name {
         input[type='text'] {
           background-color: transparent;
