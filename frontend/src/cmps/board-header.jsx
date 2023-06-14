@@ -121,8 +121,8 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
                 type="text"
                 value={title}
                 onChange={handleChange}
-                style={{ width: `${inputWidth}px` }} // Set the width dynamically
-                // style={{ width: `${title.length * 9}px` }} // Set the width dynamically
+                // style={{ width: `${inputWidth}px` }} // Set the width dynamically
+                style={{ width: `${title.length * 10.8}px` }} // Set the width dynamically
                 onFocus={handleFocus}
               />
             </form>
@@ -140,7 +140,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           <button
             title="Filter cards"
             className="flex align-center"
-            onClick={(e) => onOpenPopover(e, { onFilterBy: () => {}, widthOverride: '384px' }, 'filter')}
+            onClick={(e) => onOpenPopover(e, { onFilterBy: () => { }, widthOverride: '384px' }, 'filter')}
           >
             {/* <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
