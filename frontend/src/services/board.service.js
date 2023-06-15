@@ -74,8 +74,9 @@ async function saveTask(board, updatedTask, activity) {
   //   board.activities.unshift(activity)
   // }
 
-  const newBoard = await save(board)
-  return newBoard
+  return board
+  // const newBoard = await save(board)
+  // return newBoard
 }
 
 async function saveNewTask(board, groupId, updatedTask, activity) {

@@ -117,7 +117,8 @@ export function setLabelsOpen(isOpen) {
 
 export async function saveTask(board, updatedTask, activity) {
   try {
-    const savedBoard = await boardService.saveTask(board, updatedTask, activity)
+    const savedBoard = boardService.saveTask(board, updatedTask, activity)
+    await boardService.save(savedBoard)
     store.dispatch(getActionUpdateBoard(savedBoard))
   } catch (err) {
     console.log('Cannot save task', err)

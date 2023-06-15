@@ -19,7 +19,7 @@
     padding: rem(6px) rem(6px) rem(6px) rem(6px);
     background-color: $board-header-background-transparent;
     flex-direction: row;
-    justify-content: flex-start;
+    // justify-content: flex-start;
     z-index: -1;
     transition: 0.1s ease-in;
 
@@ -39,7 +39,7 @@
       margin-inline-end: rem(339px);
     }
 
-    &>* {
+    & > * {
       z-index: 10;
       height: rem(32px);
     }
