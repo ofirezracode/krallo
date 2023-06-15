@@ -88,6 +88,7 @@ export function BoardIndex() {
 
   async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
     const newBoard = boardService.move('task', board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
+    setCurrBoard(newBoard)
     try {
       await updateBoard(newBoard)
     } catch (err) {
