@@ -17,6 +17,7 @@ export function BoardIndex() {
   const activities = useSelector((storeState) => storeState.activityModule.activities)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const filterBy = useSelector((storeState) => storeState.boardModule.filterBy)
+  const user = useSelector((storeState) => storeState.userModule.user)
   const [filteredBoard, setFilteredBoard] = useState(board)
   const { boardId } = useParams()
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
@@ -27,6 +28,7 @@ export function BoardIndex() {
     loadBoards()
     socketService.on('board-update', onUpdatedBoardEmitted)
     socketService.emit('set-board-id', boardId)
+    socketService.emit('set-user-socket', user._id)
   }, [])
 
   useEffect(() => {
@@ -47,6 +49,7 @@ export function BoardIndex() {
   }, [filterBy])
 
   function onUpdatedBoardEmitted(updatedBoard) {
+    console.log('updated board recieved')
     setCurrBoard(updatedBoard)
     const newBoard = boardService.filterBoard(updatedBoard, filterBy)
     setFilteredBoard(newBoard)
