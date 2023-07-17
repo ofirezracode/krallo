@@ -39,7 +39,7 @@
       margin-inline-end: rem(339px);
     }
 
-    & > * {
+    &>* {
       z-index: 10;
       height: rem(32px);
     }
@@ -161,6 +161,7 @@
           padding: rem(4px);
           border-radius: 50%;
           margin-inline-start: rem(-10px);
+          cursor: pointer;
 
           &:hover {
             filter: contrast(70%) brightness(120%);

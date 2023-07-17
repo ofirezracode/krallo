@@ -18,7 +18,7 @@ export function MenuAbout({ board }) {
                     </div>
                     <div className='admin-name flex column'>
                         <h1>{createdBy.fullname}</h1>
-                        <p>@{createdBy.fullname.trim(' ').toLowerCase()}</p>
+                        <p>@{createdBy.fullname.replace(' ', '').toLowerCase()}</p>
                     </div>
                 </li>
             </ul>

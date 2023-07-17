@@ -97,7 +97,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   let shownMembers = []
   if (members?.length) {
     if (window.innerWidth < 500) {
-      shownMembers.push(<img key={members[0]._id} className="member-img" src={members[0].imgUrl} alt="" />)
+      shownMembers.push(<img key={members[0]._id} className="member-img" src={members[0].imgUrl} alt="" onClick={(e) => onOpenPopover(e, { member: members[0] }, 'member-info')} />)
       // shownMembers.push(<img key={members[0]._id} className="member-img" src={members[0].imgUrl} alt="" />)
       shownMembers.push(
         <div className="mobile-more-members flex center">
@@ -105,7 +105,8 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
         </div>
       )
     } else {
-      shownMembers = members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)
+      shownMembers = members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt={member.fullname}
+        onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)
     }
   }
 
