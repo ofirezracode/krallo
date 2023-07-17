@@ -43,7 +43,7 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
       newAttach.url = imgUrl.url
       newAttach.title = imgUrl.original_filename
       setAttachments([...attachments, newAttach])
-      onAttachmentAdded([...attachments, newAttach])
+      onAttachmentAdded([...attachments, newAttach], newAttach)
       onClose()
     } catch (err) {
       console.log('err', err)
@@ -58,7 +58,7 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
     newAttach.url = url
     if (title) newAttach.title = title
     setAttachments([...attachments, newAttach])
-    onAttachmentAdded([...attachments, newAttach])
+    onAttachmentAdded([...attachments, newAttach], newAttach)
     onClose()
   }
 
@@ -68,7 +68,7 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
     newAttach.title = title
     if (title) newAttach.title = title
     setAttachments([...attachments, newAttach])
-    onAttachmentAdded([...attachments, newAttach])
+    onAttachmentAdded([...attachments, newAttach], newAttach)
     onClose()
   }
   return (

@@ -21,7 +21,7 @@ async function add(activity) {
   return await httpService.post(API_URL, activity)
 }
 
-function createActivity(boardId, activityType, byMember, task, groupName = '', board = '') {
+function createActivity(boardId, activityType, byMember, task, groupName = '', board = '', attachTitle = '') {
   const activity = {
     boardId,
     byMemberId: byMember._id,
@@ -35,7 +35,7 @@ function createActivity(boardId, activityType, byMember, task, groupName = '', b
   } else if (activityType === 'remove-member') {
     activity.txt = ` left ${task.title}`
   } else if (activityType === 'add-attachment') {
-    activity.txt = ` attached to ${task.title}`
+    activity.txt = ` attached ${attachTitle} to ${task.title}`
   } else if (activityType === 'delete-attachment') {
     activity.txt = ` deleted an attachment from ${task.title}`
   } else if (activityType === 'add-checklist') {
@@ -48,6 +48,8 @@ function createActivity(boardId, activityType, byMember, task, groupName = '', b
     activity.txt = ` updated checklist title at ${task.title}`
   } else if (activityType === 'remove-member-board') {
     activity.txt = ` left ${board.title}`
+  } else if (activityType === 'updated-description') {
+    activity.txt = ` updated the description on ${task.title}`
   }
   return activity
 }

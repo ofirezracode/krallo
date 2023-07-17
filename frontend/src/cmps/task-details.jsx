@@ -92,16 +92,18 @@ export function TaskDetails() {
   async function onDescriptionUpdate(description) {
     try {
       const updatedTask = { ...task, description }
-      await saveTask(board, updatedTask)
+      const activity = activityService.createActivity(board._id, 'updated-description', user, task)
+      await saveTask(board, updatedTask, activity)
+      await addActivity(activity)
     } catch (err) {
       console.log('err', err)
     }
   }
 
-  async function onAttachmentAdded(attachments) {
+  async function onAttachmentAdded(attachments, newAttach) {
     try {
       const updatedTask = { ...task, attachments }
-      const activity = activityService.createActivity(board._id, 'add-attachment', user, task)
+      const activity = activityService.createActivity(board._id, 'add-attachment', user, task, newAttach.title)
       await saveTask(board, updatedTask, activity)
       await addActivity(activity)
     } catch (err) {
