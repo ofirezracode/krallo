@@ -73,7 +73,7 @@ export function PopoverAttachment({ task, onAttachmentAdded, onClose }) {
   }
   return (
     <section>
-      <PopoverCmpHeader title="Attach from..." onClose={onClose} />
+      <PopoverCmpHeader title="Attach" onClose={onClose} />
 
       <section className="popover-attachment">
         <label className="file-input flex column" htmlFor="img-input">

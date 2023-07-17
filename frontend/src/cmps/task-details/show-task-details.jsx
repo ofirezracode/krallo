@@ -45,7 +45,7 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
           <div className="members">
             {members &&
               members.map((member) => (
-                <img key={member._id} src={`${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} />
+                <img key={member._id} src={`${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />
               ))}
 
             <button
