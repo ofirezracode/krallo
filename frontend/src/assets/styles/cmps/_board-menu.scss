@@ -73,10 +73,15 @@
             button {
 
                 img,
+                .trash,
                 .board-bg-img {
                     width: rem(20px);
                     height: rem(20px);
                     border-radius: 3px;
+                }
+
+                .trash {
+                    padding: rem(2px);
                 }
 
             }

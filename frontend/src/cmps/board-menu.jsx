@@ -10,6 +10,7 @@ import { MenuActivitiesList } from "./board-menu/menu-activities-list"
 import { colorService } from "../services/color.service"
 import { Popover } from "./popover"
 import { usePopover } from "../customHooks/usePopover"
+import { BsTrash3Fill } from "react-icons/bs"
 
 
 export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg, onDeleteBoard }) {
@@ -74,6 +75,12 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
               <button>
                 <div className="board-bg-img" style={boardStyle}></div>
                 <p>Change background</p>
+              </button>
+            </li>
+            <li className="delete-board" ref={boardMenu} onClick={(e) => onOpenPopover(e, { board, onDeleteBoard }, 'delete-board')}>
+              <button>
+                <BsTrash3Fill className="trash" />
+                <p>Delete board</p>
               </button>
             </li>
             <hr />

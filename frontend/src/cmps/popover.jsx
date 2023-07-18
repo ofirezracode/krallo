@@ -159,6 +159,8 @@ function DynamicCmp({ type, addedProps, onClose }) {
       return <PopoverMemberInfo {...addedProps} onClose={onClose} />
     case 'group-actions':
       return <PopoverGroupActions {...addedProps} onClose={onClose} />
+    case 'delete-board':
+      return <PopoverDeleteBoard {...addedProps} onClose={onClose} />
     default:
       return <PopoverDummy />
   }
