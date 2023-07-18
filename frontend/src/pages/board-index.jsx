@@ -121,6 +121,17 @@ export function BoardIndex() {
     }
   }
 
+  async function onDeleteGroup(groupId) {
+    const newBoard = { ...board }
+    const groupIdx = await newBoard.groups.findIndex(group => groupId === group._id)
+    newBoard.groups.splice(groupIdx, 1)
+    try {
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   async function onChangeTitle(title) {
     const newBoard = { ...board, title }
     console.log(newBoard)
@@ -163,6 +174,7 @@ export function BoardIndex() {
         onUpdateGroupTitle={onUpdateGroupTitle}
         onAddGroup={onAddGroup}
         showMenuClass={showMenuClass}
+        onDeleteGroup={onDeleteGroup}
       />
       <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} onUpdateBoardBg={onUpdateBoardBg} />
     </section>

@@ -16,6 +16,7 @@ import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 import { PopoverShare } from './popovers/popover-share'
 import { PopoverFilter } from './popovers/popover-filter'
 import { PopoverMemberInfo } from './popovers/popover-member-info'
+import { PopoverGroupActions } from './popovers/popover-group-actions'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   const [isListening, setIsListening] = useCloseOnOutsideClick(onClosePopover, 'popover', 'add-to-card-btn', '.popover-backdrop')
@@ -155,6 +156,8 @@ function DynamicCmp({ type, addedProps, onClose }) {
       return <PopoverFilter {...addedProps} onClose={onClose} />
     case 'member-info':
       return <PopoverMemberInfo {...addedProps} onClose={onClose} />
+    case 'group-actions':
+      return <PopoverGroupActions {...addedProps} onClose={onClose} />
     default:
       return <PopoverDummy />
   }
