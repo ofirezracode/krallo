@@ -15,6 +15,8 @@ export const usePopover = () => {
     setType(type)
     const closestBtn = e.target.closest('button')
     setParentRect(closestBtn ? closestBtn.getBoundingClientRect() : e.target.getBoundingClientRect())
+    console.log(closestBtn ? closestBtn : e.target
+    );
     setIsShown(true)
   }
 

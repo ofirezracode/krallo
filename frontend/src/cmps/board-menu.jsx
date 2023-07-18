@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import KralloIcon from '../assets/img/svg/krallo-icon.svg'
 import ActivityIcon from '../assets/img/svg/activity-icon.svg'
 import { MenuTitle } from "./board-menu/board-menu-title"
@@ -8,18 +8,30 @@ import { MenuAbout } from "./board-menu/menu-about"
 import { MenuBackground } from "./board-menu/menu-background"
 import { MenuActivitiesList } from "./board-menu/menu-activities-list"
 import { colorService } from "../services/color.service"
+import { Popover } from "./popover"
+import { usePopover } from "../customHooks/usePopover"
 
-export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg }) {
+
+export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg, onDeleteBoard }) {
   const [isOn, setIsOn] = useState(true)
   const [title, setTitle] = useState('Menu')
   const goBackClass = isOn ? 'go-back' : ''
+  const [addedProps, setAddedProps] = useState({})
+  const [popoverProps, closePopover, openPopover] = usePopover()
+  const boardMenu = useRef()
   const activities = useSelector((storeState) => storeState.activityModule.activities)
   const [setting, setSetting] = useState('')
   function onChangeSettings(currTitle, settingName) {
     setIsOn(prevIsOn => !prevIsOn)
     setTitle(currTitle)
     setSetting(settingName)
+  }
 
+  function onOpenPopover(e, props, type) {
+    closePopover()
+    props.refElement = boardMenu.current
+    setAddedProps(props)
+    openPopover(e, type)
   }
 
   let boardStyle = {}
@@ -31,7 +43,6 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
     }
   }
 
-  console.log('setting', setting)
 
   return (
     <section className={`board-menu ${showMenuClass}`}>
@@ -50,6 +61,11 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
               <p>Change background</p>
             </button>
           </li>
+          <li className="remove-board" ref={boardMenu} onClick={(e) => onOpenPopover(e, { board, onDeleteBoard, widthOverride: '250px' }, 'delete-board')}>
+            <button >
+              <p >Remove board </p>
+            </button>
+          </li>
           <hr />
           <li className='board-activity' onClick={() => onChangeSettings('Activity', 'activities')}>
             <button className="flex center">
@@ -59,6 +75,7 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
           </li>
         </ul>
 
+        <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
 
         <div className="activity-list">
           <MenuActivitiesList board={board} activities={activities} />

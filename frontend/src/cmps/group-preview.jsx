@@ -20,6 +20,8 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
 
   const [isListening, setIsListening] = useCloseOnOutsideClick(onSubmit, '.edit-title-form', 'group-preview-title')
   const [editedTitle, setEditedTitle] = useState(group.title)
+  const scrollRef = useRef(null)
+
 
   const { boardId } = useParams()
 
@@ -57,6 +59,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
   async function onSubmit(e) {
     if (e) {
       e.preventDefault()
+      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
     toggleForm(false)
     await onUpdateGroupTitle(group._id, editedTitle)
@@ -87,7 +90,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
         </button>
       </header>
 
-      <TaskList boardId={boardId} tasks={group.tasks} provided={provided} />
+      <TaskList boardId={boardId} tasks={group.tasks} provided={provided}/>
 
       {!isAddingTask && (
         <section className="add-card-section">
@@ -99,13 +102,15 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
             <img src={TemplateIcon} className="template-icon" alt="template-icon" />
           </button>
         </section>
+        
       )}
       {isAddingTask && (
         <form onSubmit={onAddTask} className="add-card-form">
           <div className="text-container">
             <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText}  onKeyPress={handleKeyPress}></textarea>
           </div>
-          <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} />
+          <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} scrollRef={scrollRef}/>
+          
         </form>
       )}
       <div></div>

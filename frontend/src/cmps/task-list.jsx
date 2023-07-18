@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { TaskPreview } from './task-preview'
 import { Draggable } from 'react-beautiful-dnd'
 
 export function TaskList({ boardId, tasks, provided }) {
+
+
+
   return (
+    <>
     <ul className="task-list clean-list flex column">
       {tasks.map((task, idx) => (
         <Draggable key={task._id} draggableId={task._id} index={idx}>
@@ -25,5 +29,7 @@ export function TaskList({ boardId, tasks, provided }) {
       ))}
       {provided.placeholder}
     </ul>
+
+   </>
   )
 }

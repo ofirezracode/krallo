@@ -15,6 +15,7 @@ import { PopoverLogout } from './popovers/popover-logout'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 import { PopoverShare } from './popovers/popover-share'
 import { PopoverFilter } from './popovers/popover-filter'
+import { PopoverDeleteBoard } from './popovers/popover-delete-board'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   const [isListening, setIsListening] = useCloseOnOutsideClick(onClosePopover, 'popover', 'add-to-card-btn', '.popover-backdrop')
@@ -153,6 +154,8 @@ function DynamicCmp({ type, addedProps, onClose }) {
       return <PopoverShare {...addedProps} onClose={onClose} />
     case 'filter':
       return <PopoverFilter {...addedProps} onClose={onClose} />
+    case 'delete-board':
+      return <PopoverDeleteBoard {...addedProps} onClose={onClose} />
     default:
       return <PopoverDummy />
   }
