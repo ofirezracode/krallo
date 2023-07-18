@@ -7,10 +7,10 @@
   box-shadow: $card-shadow;
   position: relative;
 
-  header {
+  .group-header {
     padding: rem(7px) rem(8px) rem(8px);
 
-    h3 {
+    .group-preview-title {
       padding: rem(4px) rem(8px) rem(4px) rem(12px);
       font-size: inherit;
       font-weight: 600;

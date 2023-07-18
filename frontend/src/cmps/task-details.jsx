@@ -111,15 +111,6 @@ export function TaskDetails() {
     }
   }
 
-  async function onDueDateSave(dueDate) {
-    try {
-      const updatedTask = { ...task, dueDate }
-      await saveTask(board, updatedTask)
-    } catch (err) {
-      console.log('err', err)
-    }
-  }
-
   async function onDeleteAttachment(attachId) {
     try {
       const attachIdx = task.attachments.findIndex((attachment) => attachId === attachment._id)
@@ -145,6 +136,15 @@ export function TaskDetails() {
       await saveTask(board, updatedTask)
     } catch (err) {
       console.error('err', err)
+    }
+  }
+
+  async function onDueDateSave(dueDate) {
+    try {
+      const updatedTask = { ...task, dueDate }
+      await saveTask(board, updatedTask)
+    } catch (err) {
+      console.log('err', err)
     }
   }
 

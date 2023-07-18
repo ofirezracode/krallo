@@ -12,8 +12,10 @@ import { AddCloseButtons } from './add-close-buttons'
 import { useCloseOnOutsideClick } from '../customHooks/useCloseOnOutsideClick'
 import { useSelector } from 'react-redux'
 import { addActivity } from '../store/activity.actions'
+import { usePopover } from '../customHooks/usePopover'
+import { Popover } from './popover'
 
-export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
+export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provided }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [isAddingTask, setIsAddingTask] = useState(false)
   const [newTaskText, setNewTaskText] = useState('')
@@ -23,10 +25,21 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
   const scrollRef = useRef(null)
 
 
+  const [addedProps, setAddedProps] = useState({})
+  const [popoverProps, closePopover, openPopover] = usePopover()
+  const groupPreview = useRef()
+
   const { boardId } = useParams()
 
   function toggleForm(status) {
     setIsListening(status)
+  }
+
+  function onOpenPopover(e, props, type) {
+    closePopover()
+    props.refElement = groupPreview.current
+    setAddedProps(props)
+    openPopover(e, type)
   }
 
   function onCloseAddCard(e) {
@@ -74,7 +87,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
 
   return (
     <article className="group-preview flex column">
-      <header className="flex between">
+      <header className="group-header flex between">
         {!isListening && (
           <h3 className="group-preview-title" onClick={() => toggleForm(true)}>
             {group.title}
@@ -85,7 +98,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
             <input value={editedTitle} onChange={(e) => onTitleChange(e)} autoFocus></input>
           </form>
         )}
-        <button className="group-options flex justify-center align-center">
+        <button className="group-options flex justify-center align-center" ref={groupPreview} onClick={(e) => onOpenPopover(e, { group, onDeleteGroup }, 'group-actions')}>
           <BsThreeDots />
         </button>
       </header>
@@ -107,13 +120,14 @@ export function GroupPreview({ group, onUpdateGroupTitle, provided }) {
       {isAddingTask && (
         <form onSubmit={onAddTask} className="add-card-form">
           <div className="text-container">
-            <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText}  onKeyPress={handleKeyPress}></textarea>
+            <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText} onKeyPress={handleKeyPress}></textarea>
           </div>
           <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} scrollRef={scrollRef}/>
           
         </form>
       )}
       <div></div>
+      <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
     </article>
   )
 }

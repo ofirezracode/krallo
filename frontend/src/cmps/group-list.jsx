@@ -4,7 +4,7 @@ import { AddGroup } from './add-group'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { loadBoards } from '../store/board.actions'
 
-export function GroupList({ board, onMoveTask, onMoveGroup, onUpdateGroupTitle, onAddGroup, showMenuClass }) {
+export function GroupList({ board, onMoveTask, onMoveGroup, onUpdateGroupTitle, onAddGroup, showMenuClass, onDeleteGroup }) {
   useEffect(() => {
     loadBoards()
   }, [])
@@ -32,7 +32,7 @@ export function GroupList({ board, onMoveTask, onMoveGroup, onUpdateGroupTitle, 
           <Droppable key={group._id} index={idx} droppableId={group._id}>
             {(provided) => (
               <li key={group._id} {...provided.droppableProps} ref={provided.innerRef}>
-                <GroupPreview group={group} onUpdateGroupTitle={onUpdateGroupTitle} provided={provided} />
+                <GroupPreview group={group} onUpdateGroupTitle={onUpdateGroupTitle} onDeleteGroup={onDeleteGroup} provided={provided} />
               </li>
             )}
           </Droppable>
