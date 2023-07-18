@@ -232,7 +232,6 @@ export function PopoverFilter({ onFilterBy, onClose }) {
             </li>
             {members &&
               members.map((member) => {
-                console.log('filterMembers', filterMembers)
                 const isLabelChecked = filterMembers ? filterMembers.some((filteredMember) => filteredMember._id === member._id) : false
                 let memberFullname = member.fullname
                 if (member._id === loggedinUser._id) memberFullname = 'Cards assigned to me'

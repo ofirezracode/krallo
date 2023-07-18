@@ -52,7 +52,6 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
     e.preventDefault()
     if (newTaskText.trim().length > 0) {
       const task = boardService.createTask(newTaskText)
-      console.log('task', task)
       const activity = activityService.createActivity(board._id, 'add', {}, task)
       try {
         await saveNewTask(board, group._id, task, activity)
@@ -103,7 +102,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
         </button>
       </header>
 
-      <TaskList boardId={boardId} tasks={group.tasks} provided={provided}/>
+      <TaskList boardId={boardId} tasks={group.tasks} provided={provided} />
 
       {!isAddingTask && (
         <section className="add-card-section">
@@ -115,15 +114,15 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
             <img src={TemplateIcon} className="template-icon" alt="template-icon" />
           </button>
         </section>
-        
+
       )}
       {isAddingTask && (
         <form onSubmit={onAddTask} className="add-card-form">
           <div className="text-container">
             <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText} onKeyPress={handleKeyPress}></textarea>
           </div>
-          <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} scrollRef={scrollRef}/>
-          
+          <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} scrollRef={scrollRef} />
+
         </form>
       )}
       <div></div>

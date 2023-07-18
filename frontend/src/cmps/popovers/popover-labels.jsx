@@ -50,7 +50,6 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
   }
 
   function onClickEditLabel(labelId, label, title, target) {
-    console.log('label', label)
     setChosenLabel({ _id: labelId, color: label?.color, title })
     navigateToState(target)
   }

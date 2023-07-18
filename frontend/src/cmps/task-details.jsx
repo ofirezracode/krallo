@@ -132,7 +132,6 @@ export function TaskDetails() {
       updatedAttachments[attachmentIdx] = updatedAttachment
       const updatedTask = { ...task, attachments: updatedAttachments }
 
-      console.log(updatedTask)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.error('err', err)
@@ -160,7 +159,6 @@ export function TaskDetails() {
 
   async function onLabelChange(board, newLabelIds) {
     try {
-      console.log('newLabelIds', newLabelIds)
       const updatedTask = { ...task, labelIds: newLabelIds }
       await saveTask(board, updatedTask)
     } catch (err) {

@@ -17,10 +17,6 @@
         right: 0;
     }
 
-    button {
-        background-color: transparent;
-    }
-
     hr {
         margin-block: rem(12px);
         border: none;
@@ -64,6 +60,10 @@
 
             li {
                 cursor: pointer;
+
+                button {
+                    background-color: transparent;
+                }
             }
 
             li:hover {

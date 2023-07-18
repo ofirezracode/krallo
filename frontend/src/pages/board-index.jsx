@@ -6,7 +6,7 @@ import { socketService } from '../services/socket.service'
 
 import { GroupList } from '../cmps/group-list'
 import { BoardHeader } from '../cmps/board-header'
-import { loadBoards, setCurrBoard, updateBoard } from '../store/board.actions'
+import { loadBoards, removeBoard, setCurrBoard, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service'
 import { Loader } from '../cmps/loader'
 import { BoardMenu } from '../cmps/board-menu'
@@ -109,14 +109,9 @@ export function BoardIndex() {
     }
   }
 
-  async function onDeleteBoard(boardId) {
-    console.log('hi22222');
-    const newBoards = { ...boards }
-    console.log('newBoards', newBoards)
-    const boardIdx = await newBoards.findIndex(board => boardId === board._id)
-    newBoards.splice(boardIdx, 1)
+  async function onRemoveBoard(boardId) {
     try {
-      // await updateBoard(newBoards)
+      await removeBoard(boardId)
     } catch (err) {
       console.log('err', err)
     }
@@ -147,7 +142,6 @@ export function BoardIndex() {
 
   async function onChangeTitle(title) {
     const newBoard = { ...board, title }
-    console.log(newBoard)
     try {
       await updateBoard(newBoard)
     } catch (err) {
@@ -189,7 +183,7 @@ export function BoardIndex() {
         showMenuClass={showMenuClass}
         onDeleteGroup={onDeleteGroup}
       />
-      <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} onUpdateBoardBg={onUpdateBoardBg} onDeleteBoard={onDeleteBoard} />
+      <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} onUpdateBoardBg={onUpdateBoardBg} onRemoveBoard={onRemoveBoard} />
     </section>
   )
 }

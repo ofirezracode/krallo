@@ -14,7 +14,6 @@ export function GroupList({ board, onMoveTask, onMoveGroup, onUpdateGroupTitle, 
   const { groups } = board
 
   function onDragEnd(result) {
-    console.log('result', result)
     if (!result.destination) return
     const { source, destination } = result
     const sourceGroupId = source.droppableId

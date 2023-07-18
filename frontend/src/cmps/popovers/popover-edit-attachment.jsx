@@ -14,8 +14,6 @@ export function PopoverEditAttachment({ attachment, onEditAttachment, onClose, h
         onEditAttachment(attachment._id, title)
         onClose()
     }
-    console.log(attachment.title)
-    console.log(title)
     return (
         <section>
             <PopoverCmpHeader title="Edit attachment" onClose={onClose} />

@@ -47,7 +47,6 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
     try {
       let updatedBoard = { ...board }
       updatedBoard = boardService.removeMemberFromTasks(board, member._id)
-      console.log('updatedBoard', updatedBoard)
       await updateBoard(updatedBoard)
     } catch (err) {
       console.log('err', err)

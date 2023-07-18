@@ -11,7 +11,6 @@ export function MenuBackground({ board, setTitle, onUpdateBoardBg }) {
     if (board.style.type === 'bgColor') {
       setSelectedImg({ backgroundColor: board.style.bgColor })
     } else if (board.style.type === 'img') {
-      console.log('menu-background board.style', board.style)
       let url = ''
       if (board.style.imgUrlSmall) {
         url = board.style.imgUrlSmall

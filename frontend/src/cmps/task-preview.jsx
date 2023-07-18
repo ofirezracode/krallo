@@ -36,7 +36,6 @@ export function TaskPreview({ boardId, taskToPrev }) {
     try {
       const newDueDate = { ...task.dueDate, isCompleted: !task.dueDate.isCompleted }
       const updatedTask = { ...task, dueDate: newDueDate }
-      console.log('updatedTask', updatedTask)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.log('err', err)

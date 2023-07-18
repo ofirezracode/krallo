@@ -17,7 +17,6 @@ export function ChecklistIndex({ task, onOpenPopover, onUpdateChecklists }) {
     const checklistIdx = localChecklists.findIndex((checklist) => checklistId === checklist._id)
     const updatedChecklists = [...localChecklists]
     updatedChecklists.splice(checklistIdx, 1)
-    console.log('vfdsvsdv', updatedChecklists)
     const activity = 'delete-checklist'
     setLocalChecklists(updatedChecklists)
     onUpdateChecklists(updatedChecklists, activity)

@@ -13,7 +13,7 @@ import { usePopover } from "../customHooks/usePopover"
 import { BsTrash3Fill } from "react-icons/bs"
 
 
-export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg, onDeleteBoard }) {
+export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg, onRemoveBoard }) {
   const [isOn, setIsOn] = useState(true)
   const [title, setTitle] = useState('Menu')
   const goBackClass = isOn ? 'go-back' : ''
@@ -66,7 +66,7 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
         <div className="menu-main-content">
           <ul className="menu-content clean-list flex column">
             <li className="board-about" onClick={() => onChangeSettings('About this board', 'about')}>
-              <button className=" align-center">
+              <button className="align-center">
                 <img src={KralloIcon} alt="krallo-icon" />
                 <p>About this board</p>
               </button>
@@ -77,10 +77,10 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
                 <p>Change background</p>
               </button>
             </li>
-            <li className="delete-board" ref={boardMenu} onClick={(e) => onOpenPopover(e, { board, onDeleteBoard }, 'delete-board')}>
+            <li className="delete-board" ref={boardMenu} onClick={(e) => onOpenPopover(e, { board, onRemoveBoard }, 'delete-board')}>
               <button>
                 <BsTrash3Fill className="trash" />
-                <p>Delete board</p>
+                <p>Close board...</p>
               </button>
             </li>
             <hr />

@@ -33,7 +33,6 @@ export function ChecklistPreview({
 
   function onSubmit(ev) {
     ev.preventDefault()
-    console.log(checklistTitle)
     onEditChecklist(checklist._id, checklistTitle)
     setIsEditing(false)
   }

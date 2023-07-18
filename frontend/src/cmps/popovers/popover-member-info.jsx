@@ -2,7 +2,6 @@ import { HiXMark } from 'react-icons/hi2'
 import { UserImg } from '../user-img'
 
 export function PopoverMemberInfo({ member, onClose }) {
-    // console.log(member.fullname)
     return (
         <section className='popover-member-info flex'>
             <div className='member-img'>

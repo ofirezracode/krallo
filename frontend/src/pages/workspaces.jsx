@@ -19,10 +19,8 @@ export function Workspaces() {
     try {
       ev.stopPropagation()
       ev.preventDefault()
-      console.log('before change')
       const boardToToggle = await { ...board, isStarred: !board.isStarred }
       updateBoard(boardToToggle)
-      console.log('after')
     } catch (err) {
       console.log('err', err)
     }

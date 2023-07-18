@@ -79,7 +79,6 @@ function formatTime(time) {
 
 function _getFormattedTime(t) {
   var d = new Date(t)
-  // console.log('d', d)
 
   var str = 'At ' + d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' Time: ' + d.getHours() + ':' + d.getMinutes()
   return str

@@ -6,7 +6,6 @@ import { UserImg } from '../user-img'
 export function PopoverLogout({ onLogout, onClose }) {
   const user = useSelector((storeState) => storeState.userModule.user)
 
-  console.log('user', user);
   return (
     <div className='popover-logout'>
       {/* <PopoverCmpHeader title="ACCOUNT" onClose={onClose} /> */}
