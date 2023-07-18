@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8d611504.css",
+    "main.js": "/static/js/main.6cd48be2.js",
+    "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/Roboto-Bold.ttf": "/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
+    "static/media/home-img.webp": "/static/media/home-img.845b652fadf993ce6a92.webp",
+    "static/media/etai-pic.jpg": "/static/media/etai-pic.df8444a3bfb27d255033.jpg",
+    "static/media/charlie-display-bold.ttf": "/static/media/charlie-display-bold.ebed06848d03476152ff.ttf",
+    "static/media/charlie-text-semibold.ttf": "/static/media/charlie-text-semibold.75717c01a0d0e2c53239.ttf",
+    "static/media/charlie-display-regular.ttf": "/static/media/charlie-display-regular.bc863e1c6be56e255ea6.ttf",
+    "static/media/left-footer-img.svg": "/static/media/left-footer-img.47238298680cf64177bdb1faa64d3804.svg",
+    "service-worker.js": "/service-worker.js",
+    "static/media/tamar-pic.jpg": "/static/media/tamar-pic.bf3915d29f76796167b5.jpg",
+    "static/media/change-background-img.jpg": "/static/media/change-background-img.0acfd7c7831dfd8f006a.jpg",
+    "static/media/ofir-pic.jpg": "/static/media/ofir-pic.cb2f6cfbc88755401078.jpg",
+    "static/media/right-footer-img.svg": "/static/media/right-footer-img.3a2e83cef20d6bab2dbaf88d4a44819f.svg",
+    "static/media/change-bg-color.png": "/static/media/change-bg-color.97db30fe74a58b7b7a18.png",
+    "static/media/logo.svg": "/static/media/logo.a84be9045503f2c4beee4503b1256f07.svg",
+    "static/media/krallo-logo-blue.svg": "/static/media/krallo-logo-blue.e2cb08804429a92c5bb5c2dc4db1b8cc.svg",
+    "static/media/template-icon.svg": "/static/media/template-icon.6bcd61b66e436f4e76ebe6b753dbbc7b.svg",
+    "static/media/clip-icon.svg": "/static/media/clip-icon.877d611e91a23ea2fef65d92c6634b58.svg",
+    "static/media/member-icon.svg": "/static/media/member-icon.3cd8a1cd7668cb8d1af6cdda522fbc68.svg",
+    "static/media/loader.svg": "/static/media/loader.4ce56a5f125d91cf6f2023fde70ca3d0.svg",
+    "static/media/star-empty.svg": "/static/media/star-empty.2f87ce094b7b74836ea5247de341cdf7.svg",
+    "static/media/activity-icon.svg": "/static/media/activity-icon.0fb63a7b8bb9c6d8224ab802a148d503.svg",
+    "static/media/card-icon.svg": "/static/media/card-icon.5a1328db4594a63eebf25544e53e349e.svg",
+    "static/media/desc-icon.svg": "/static/media/desc-icon.8ee047c8ef060f0255d9853bf914348b.svg",
+    "index.html": "/index.html",
+    "static/media/krallo-icon.svg": "/static/media/krallo-icon.45e80bf3fb98c281c23b48ad64b23faa.svg",
+    "static/media/cover-icon.svg": "/static/media/cover-icon.997975e01b3873f865902aa0e877e1ca.svg",
+    "static/media/filter-icon.svg": "/static/media/filter-icon.9af0cd00bb26b9f5b10dd305185e54a7.svg",
+    "main.8d611504.css.map": "/static/css/main.8d611504.css.map",
+    "main.6cd48be2.js.map": "/static/js/main.6cd48be2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8d611504.css",
+    "static/js/main.6cd48be2.js"
+  ]
+}

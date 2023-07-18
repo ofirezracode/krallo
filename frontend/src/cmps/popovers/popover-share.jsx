@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { PopoverCmpHeader } from './popover-cmp-header';
-import { UserImg } from '../user-img';
-import { BsCheckLg } from 'react-icons/bs';
-import { useSelector } from 'react-redux';
-import { loadUsers } from '../../store/user.actions';
+import React, { useEffect, useState } from 'react'
+import { PopoverCmpHeader } from './popover-cmp-header'
+import { UserImg } from '../user-img'
+import { BsCheckLg } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
+import { loadUsers } from '../../store/user.actions'
 
-export function PopoverShare({ board,onHandleBoardMembers, onMemberDelete, onClose }) {
+export function PopoverShare({ board, onHandleBoardMembers, onMemberDelete, onClose }) {
   const users = useSelector((storeState) => storeState.userModule.users)
   const [members, setMembers] = useState(board.members)
 
-
   const newUsers = users.map((user) => {
-    const isOnBoard = members.some((member) => member._id === user._id)
+    const isOnBoard = members ? members.some((member) => member._id === user._id) : false
     return { ...user, isOnBoard }
-  });
+  })
 
   useEffect(() => {
     loadUsers()
@@ -22,13 +21,12 @@ export function PopoverShare({ board,onHandleBoardMembers, onMemberDelete, onClo
   function toggleMember(user) {
     const activityType = user.isOnBoard ? 'remove-member-board' : 'add-member-board'
     onHandleBoardMembers(user, activityType)
-    onMemberDelete(board ,user)
+    onMemberDelete(board, user)
   }
-
 
   return (
     <div>
-      <PopoverCmpHeader title="Share Board" onClose={onClose}/>
+      <PopoverCmpHeader title="Share Board" onClose={onClose} />
       <div className="popover-members">
         <ul className="members-list clean-list">
           {newUsers.map((user) => {

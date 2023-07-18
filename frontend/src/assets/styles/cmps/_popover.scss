@@ -2,15 +2,14 @@
   padding: 0 rem(12px) rem(12px);
 
   background-color: #fff;
-  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
-  // box-shadow: $card-shadow;
-  border-radius: 3px;
-  width: fit-content;
+  // filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+  box-shadow: var(--ds-shadow-overlay, 0 8px 12px #091e4226, 0 0 1px $close-icon-hover);
+  border-radius: 8px;
+  width: 304px;
+  // width: fit-content;
   z-index: 1000;
 
-  @include for-wide-layout {
-    width: 304px;
-  }
+  @include for-wide-layout {}
 }
 
 .popover-backdrop {

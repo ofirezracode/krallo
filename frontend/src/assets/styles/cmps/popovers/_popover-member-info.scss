@@ -1,0 +1,61 @@
+.popover-member-info {
+    align-items: flex-start;
+    background-image: linear-gradient(to bottom, var(--ds-background-brand-bold, $blue-button) 0%, var(--ds-background-brand-bold, $blue-button) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 82px;
+    border-radius: 8px;
+    box-sizing: content-box;
+    padding: 24px 12px 8px 14px;
+    margin-inline: rem(-12px);
+    position: relative;
+
+    .member-img {
+        border-radius: 50%;
+        border: 1px solid $gray-subtler;
+        box-shadow: 2px 2px 2px 2px solid $gray-subtler;
+    }
+
+    .member-info {
+        margin-inline-start: 8px;
+        margin-block-start: 8px;
+        color: #fff;
+        line-height: rem(20px);
+
+        h1 {
+            font-weight: 500;
+            font-size: rem(16px);
+        }
+
+        h1,
+        p {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap
+        }
+
+        p {
+            font-size: rem(12px);
+            font-weight: 400;
+        }
+    }
+
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        padding: 10px 12px 10px 8px;
+        background-color: transparent;
+        color: #fff;
+
+        &:hover svg {
+            filter: brightness(75%);
+        }
+
+        svg {
+            width: rem(16px);
+            height: rem(16px);
+            stroke-width: rem(.5px);
+        }
+    }
+}

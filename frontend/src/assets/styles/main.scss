@@ -37,6 +37,7 @@
 @import 'cmps/_color-palette.scss';
 @import 'cmps/_users-list.scss';
 @import 'cmps/_checkbox.scss';
+@import 'cmps/_loader.scss';
 
 //Popovers
 @import 'cmps/popovers/_popover-labels.scss';
@@ -53,12 +54,13 @@
 @import 'cmps/popovers/popover-logout';
 @import 'cmps/popovers/popover-create-board';
 @import 'cmps/popovers/popover-filter.scss';
+@import 'cmps/popovers/popover-member-info';
 
 //Task Details
 @import 'cmps/task-details/_task-cover.scss';
 @import 'cmps/task-details/_task-description.scss';
 @import 'cmps/task-details/_task-attachments.scss';
-@import 'cmps/task-details/_show-members-labels.scss';
+@import 'cmps/task-details/_show-task-details.scss';
 @import 'cmps/task-details/_task-details-header.scss';
 @import 'cmps/task-details/_actions-list.scss';
 

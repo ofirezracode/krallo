@@ -1,8 +1,6 @@
 .board-header-container {
   position: relative;
 
-
-
   .blur-header {
     position: absolute;
     width: 100%;
@@ -20,10 +18,10 @@
     gap: rem(6px);
     padding: rem(6px) rem(6px) rem(6px) rem(6px);
     background-color: $board-header-background-transparent;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    // justify-content: flex-start;
     z-index: -1;
-    transition: .1s ease-in;
+    transition: 0.1s ease-in;
 
     @include for-narrow-layout {
       padding: rem(12px) rem(12px) rem(12px) rem(16px);
@@ -46,18 +44,24 @@
       height: rem(32px);
     }
 
-
     li {
       gap: rem(4px);
 
-      .board-name {
+      @include for-narrow-layout {
+        .board-name {
+          input[type='text'] {
+            padding: 0;
+          }
+        }
+      }
 
-        input[type="text"] {
+      .board-name {
+        input[type='text'] {
           background-color: transparent;
           border: none;
           height: rem(32px);
           border-radius: 3px;
-          padding: 0 rem(10px);
+          padding-inline-start: rem(10px);
           cursor: pointer;
 
           font-family: $font-input;
@@ -117,7 +121,6 @@
 
         @include for-mobile-layout {
           padding: rem(6px) rem(12px);
-
         }
 
         @include for-narrow-layout {
@@ -133,7 +136,6 @@
 
           width: rem(16px);
         }
-
 
         &:not(.btn-fill) {
           background-color: transparent;
@@ -159,10 +161,24 @@
           padding: rem(4px);
           border-radius: 50%;
           margin-inline-start: rem(-10px);
+          cursor: pointer;
 
           &:hover {
             filter: contrast(70%) brightness(120%);
           }
+        }
+
+        .mobile-more-members {
+          margin-inline-start: rem(-4px);
+          border-radius: 50%;
+          height: 26px;
+          width: 26px;
+          align-self: center;
+          font-size: rem(12px);
+          // font-family: inherit;
+          font-weight: 200;
+          color: #fff;
+          letter-spacing: -1px;
         }
       }
 

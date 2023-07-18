@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { boardService } from '../services/board.service'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
-import { ShowMembersLabels } from './task-details/show-members-labels'
+import { ShowTaskDetails } from './task-details/show-task-details'
 import { HiXMark } from 'react-icons/hi2'
 import { TaskCover } from './task-details/task-cover'
 import { TaskDetailsHeader } from './task-details/task-details-header'
@@ -17,6 +17,8 @@ import { ChecklistIndex } from './task-details/checklist/checklist-index'
 import { utilService } from '../services/util.service'
 import { addActivity } from '../store/activity.actions'
 import { TaskDescription } from './task-details/task-description'
+import { TaskActivities } from './task-details/task-activities'
+import { MenuActivitiesList } from './board-menu/menu-activities-list'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -25,6 +27,7 @@ export function TaskDetails() {
   const [task, setTask] = useState(boardService.getEmptyTask())
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
+  const activities = useSelector((storeState) => storeState.activityModule.activities)
   const taskDetails = useRef()
 
   const navigate = useNavigate()
@@ -44,7 +47,7 @@ export function TaskDetails() {
 
   async function onHandleTaskMembers(activityType, member) {
     try {
-      let activity = activityService.createActivity(board._id, activityType, user, member, task)
+      let activity = activityService.createActivity(board._id, activityType, user, task)
       const updatedTask = boardService.toggleMemberOnTask(task, member, activityType)
       await saveTask(board, updatedTask, activity)
       await addActivity(activity)
@@ -89,16 +92,18 @@ export function TaskDetails() {
   async function onDescriptionUpdate(description) {
     try {
       const updatedTask = { ...task, description }
-      await saveTask(board, updatedTask)
+      const activity = activityService.createActivity(board._id, 'updated-description', user, task)
+      await saveTask(board, updatedTask, activity)
+      await addActivity(activity)
     } catch (err) {
       console.log('err', err)
     }
   }
 
-  async function onAttachmentAdded(attachments) {
+  async function onAttachmentAdded(attachments, newAttach) {
     try {
       const updatedTask = { ...task, attachments }
-      const activity = activityService.createActivity(board._id, 'add-attachment', user, task)
+      const activity = activityService.createActivity(board._id, 'add-attachment', user, task, newAttach.title)
       await saveTask(board, updatedTask, activity)
       await addActivity(activity)
     } catch (err) {
@@ -109,7 +114,6 @@ export function TaskDetails() {
   async function onDueDateSave(dueDate) {
     try {
       const updatedTask = { ...task, dueDate }
-      console.log(updatedTask)
       await saveTask(board, updatedTask)
     } catch (err) {
       console.log('err', err)
@@ -183,9 +187,6 @@ export function TaskDetails() {
     }
   }
 
-  console.log(task)
-  console.log(board)
-
   return (
     <section className="task-details-screen">
       {/* <div className="backdrop"></div> */}
@@ -193,27 +194,44 @@ export function TaskDetails() {
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
           <HiXMark className="close-icon" />
         </button>
-        <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
+        <TaskCover
+          task={task}
+          taskDetails={taskDetails}
+          onStyleChange={onStyleChange}
+        />
         <TaskDetailsHeader task={task} board={board} />
         <section className="task-details-container">
           <section className="card-details-container flex column">
-            <ShowMembersLabels
+            <ShowTaskDetails
               task={task}
               board={board}
               onOpenPopover={onOpenPopover}
               onLabelChange={onLabelChange}
               onLabelEdit={onLabelEdit}
               onLabelDelete={onLabelDelete}
+              onDueDateSave={onDueDateSave}
             />
-            <TaskDescription task={task} onDescriptionUpdate={onDescriptionUpdate} />
+            <TaskDescription
+              task={task}
+              onDescriptionUpdate={onDescriptionUpdate}
+            />
             <TaskAttachments
               task={task}
               onAttachmentAdded={onAttachmentAdded}
               onDeleteAttachment={onDeleteAttachment}
               onEditAttachment={onEditAttachment}
               onOpenPopover={onOpenPopover}
+              onStyleChange={onStyleChange}
             />
-            <ChecklistIndex task={task} onOpenPopover={onOpenPopover} onUpdateChecklists={onUpdateChecklists} />
+            <ChecklistIndex
+              task={task}
+              onOpenPopover={onOpenPopover}
+              onUpdateChecklists={onUpdateChecklists}
+            />
+            {/* <TaskActivities /> */}
+            {/* <div className="activity-list">
+              < MenuActivitiesList board={board} activities={activities} />
+            </div> */}
           </section>
           <ActionsList
             task={task}

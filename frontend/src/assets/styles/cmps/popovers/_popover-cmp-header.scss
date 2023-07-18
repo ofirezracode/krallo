@@ -3,13 +3,16 @@
   text-align: center;
   display: grid;
   align-items: center;
-  grid-template-columns: rem(12px) 1fr rem(12px);
-  border-bottom: 1px solid $card-input-hover;
+  grid-template-columns: rem(20px) 1fr rem(20px);
+  height: rem(40px);
+  padding: rem(4px) rem(8px);
+  // border-bottom: 1px solid $card-input-hover;
 
   .return-icon {
     width: rem(12px);
     height: rem(20px);
   }
+
   h3 {
     height: rem(40px);
     padding: 0 rem(32px);
@@ -18,15 +21,30 @@
 
     color: $small-titles;
     font-size: rem(14px);
-    font-weight: 400;
+    font-weight: 600;
     line-height: rem(40px);
     overflow: hidden;
   }
 
-  svg {
-    align-self: center;
-    justify-self: center;
-    font-size: rem(16px);
-    cursor: pointer;
+  button {
+    height: rem(32px);
+    width: rem(32px);
+    padding: rem(6px);
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border-radius: 8px;
+      background-color: $button-hover;
+    }
+
+    svg {
+      font-size: rem(16px);
+      cursor: pointer;
+      color: $icon;
+      stroke-width: rem(.5px);
+    }
   }
 }

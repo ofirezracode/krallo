@@ -17,6 +17,7 @@ export function BoardIndex() {
   const activities = useSelector((storeState) => storeState.activityModule.activities)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const filterBy = useSelector((storeState) => storeState.boardModule.filterBy)
+  const user = useSelector((storeState) => storeState.userModule.user)
   const [filteredBoard, setFilteredBoard] = useState(board)
   const { boardId } = useParams()
   // const [board, setBoard] = useState(boardService.getEmptyBoard())
@@ -27,6 +28,7 @@ export function BoardIndex() {
     loadBoards()
     socketService.on('board-update', onUpdatedBoardEmitted)
     socketService.emit('set-board-id', boardId)
+    socketService.emit('set-user-socket', user._id)
   }, [])
 
   useEffect(() => {
@@ -47,6 +49,7 @@ export function BoardIndex() {
   }, [filterBy])
 
   function onUpdatedBoardEmitted(updatedBoard) {
+    console.log('updated board recieved')
     setCurrBoard(updatedBoard)
     const newBoard = boardService.filterBoard(updatedBoard, filterBy)
     setFilteredBoard(newBoard)
@@ -68,10 +71,17 @@ export function BoardIndex() {
     }
   }
 
-  async function onUpdateBoardBg(url) {
-    const newBoard = { ...board, style: board.style }
-    newBoard.style.type = 'img'
-    newBoard.style.imgUrl = url
+  async function onUpdateBoardBg(urls) {
+    const newBoard = { ...board }
+    const newStyle = {}
+    newStyle.type = 'img'
+    if (urls.full) {
+      newStyle.imgUrlSmall = urls.small
+      newStyle.imgUrlFull = urls.full
+    } else {
+      newStyle.imgUrl = urls
+    }
+    newBoard.style = newStyle
     try {
       await updateBoard(newBoard)
     } catch (err) {
@@ -81,6 +91,7 @@ export function BoardIndex() {
 
   async function onMoveTask(sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx) {
     const newBoard = boardService.move('task', board, sourceGroupId, destGroupId, taskSourceIdx, taskDestIdx)
+    setCurrBoard(newBoard)
     try {
       await updateBoard(newBoard)
     } catch (err) {
@@ -138,8 +149,14 @@ export function BoardIndex() {
     if (board.style.type === 'bgColor') {
       boardStyle = { backgroundColor: board.style.bgColor }
     } else if (board.style.type === 'img') {
+      let url = ''
+      if (board.style.imgUrlFull) {
+        url = board.style.imgUrlFull
+      } else {
+        url = board.style.imgUrl
+      }
       boardStyle = {
-        backgroundImage: `url(${board.style.imgUrl})`,
+        backgroundImage: `url(${url})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

@@ -23,7 +23,8 @@
     .url-input {
         hr {
             margin-block: rem(8px);
-            border: 1px solid $card-input-hover;
+            border: none;
+            border-block-end: 1px solid $card-input-hover;
         }
 
         h5 {
@@ -64,5 +65,86 @@
         }
     }
 
+    .url-ai-input {
 
+        hr {
+            margin-block: rem(8px);
+            border: none;
+            border-block-end: 1px solid $card-input-hover;
+        }
+
+        h5 {
+            padding-block-start: rem(2.5px);
+            letter-spacing: rem(.3px);
+            color: $text;
+
+        }
+
+        span {
+            font-weight: 100;
+            font-size: rem(11px);
+            display: flex;
+            align-self: flex-start;
+            margin-block-start: -13px;
+            gap: rem(2px);
+
+            svg {
+                display: flex;
+                align-self: flex-start;
+                margin-block-start: -11px;
+                width: rem(12px);
+            }
+        }
+
+        .gradient-border {
+
+            padding: rem(8px) rem(12px);
+            width: 100%;
+            margin: rem(3px) 0 rem(12px);
+            background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            animation: animatedgradient 8s ease alternate infinite;
+            background-size: 300% 300%;
+            color: #fff;
+            font-size: rem(13px);
+            font-weight: 600;
+            letter-spacing: rem(.2px);
+            line-height: rem(20px);
+            box-shadow: inset 0 0 0 2px var(--ds-border-input, $button-board-header);
+            transition-property: background-color,
+                border-color,
+                box-shadow;
+            transition-duration: 200ms;
+            transition-timing-function: ease;
+
+            &:hover {
+                background-color: $input-hover;
+            }
+
+            &:focus {
+                box-shadow: inset 0 0 0 2px $input-focus;
+                animation: animatedgradient 5s ease alternate none;
+            }
+
+            &::placeholder {
+                color: #fff;
+            }
+        }
+
+        @keyframes animatedgradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    }
 }

@@ -7,7 +7,7 @@ export function PopoverCmpHeader({ title, onClose, onReturn }) {
     <header className="popover-cmp-header">
       {onReturn && <BsChevronLeft className="return-icon" onClick={onReturn} />}
       <h3>{title}</h3>
-      <HiXMark onClick={onClose} />
+      <button onClick={onClose}><HiXMark /></button>
     </header>
   )
 }

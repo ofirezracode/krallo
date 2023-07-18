@@ -103,11 +103,11 @@ export function TaskPreview({ boardId, taskToPrev }) {
       {typeClass !== 'full' && (
         <section className="preview-container">
           {/* labels */}
-          {task.labelIds && boardLabels.length > 0 && (
+          {task.labelIds && boardLabels && boardLabels.length > 0 && (
             <ul className="labels flex clean-list">
               {task.labelIds.map((labelId, i) => {
                 const label = boardLabels.find((boardLabel) => boardLabel._id === labelId)
-                if (!label.color) return ''
+                if (!label || !label.color) return ''
                 const labelStyle = { backgroundColor: label.color.code }
                 const labelText = labelsOpen ? label.title : ''
                 return (

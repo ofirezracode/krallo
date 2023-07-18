@@ -31,7 +31,15 @@ export function BoardList({ boards, onToggleIsStarred, isOnlyStarred, onAddBoard
             if (board.style.type === 'bgColor') {
               boardStyle = { backgroundColor: board.style.bgColor }
             } else if (board.style.type === 'img') {
-              boardStyle = { background: `url(${board.style.imgUrl}) center center / cover` }
+              let url = ''
+              if (board.style.imgUrlSmall) {
+                url = board.style.imgUrlSmall
+              } else if (board.style.imgUrlFull) {
+                url = board.style.imgUrlFull
+              } else {
+                url = board.style.imgUrl
+              }
+              boardStyle = { background: `url(${url}) center center / cover` }
             }
           }
           return (

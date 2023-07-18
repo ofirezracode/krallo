@@ -13,13 +13,8 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSele
   useEffect(() => {
     const amount = resultsAmount ? resultsAmount : 30
     const fetchImgs = async () => {
-      const response = await fetch(
-        `https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(
-          1,
-          1000
-        )}&per_page=${amount}&query=${text}&client_id=${API_KEY_TAMAR}`
-      )
-      // const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=30&query=pattern&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`)
+      const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=${amount}&query=${text}&client_id=${API_KEY_ETAI}`)
+      // const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=${amount}&query=pattern&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`)
       const data = await response.json()
       setImgs(data)
     }
@@ -27,11 +22,10 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSele
   }, [])
 
   function handleChange(img, ev) {
-    let url = img.urls.full
-    if (selectedImg) setSelectedImg(url)
-    if (returnSize) url = img.urls[returnSize]
+    let urls = img.urls
+    if (selectedImg) setSelectedImg(urls.small)
     ev.stopPropagation()
-    onUpdateBoardBg(url)
+    onUpdateBoardBg(urls)
   }
 
   return (
@@ -45,14 +39,14 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSele
           {imgs.map((img, idx) => (
             <li
               key={idx}
-              className={`flex justify-center column ${selectedImg === img.urls.full ? 'selected' : ''}`}
+              className={`flex justify-center column ${selectedImg === img.urls.small ? 'selected' : ''}`}
               onClick={(ev) => handleChange(img, ev)}
             >
               <div className="bg-img" style={{ background: `url(${img.urls.small}) center center / cover` }}>
                 <a href={img.user.portfolio_url} target="_blank">
                   {img.user.username}
                 </a>
-                {selectedImg === img.urls.full && (
+                {selectedImg === img.urls.small && (
                   <span className="selected-img flex center">
                     <BsCheckLg />
                   </span>

@@ -3,11 +3,19 @@ import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import { Loader } from '../../cmps/loader'
 import { utilService } from '../../services/util.service'
+import { useState } from 'react'
 
-export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, onEditAttachment, onOpenPopover }) {
+export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, onEditAttachment, onOpenPopover, onStyleChange }) {
+    const handleFocus = (ev) => ev.target.select()
+
     if (!task) return <Loader />
     const { attachments } = task
-    const handleFocus = (ev) => ev.target.select()
+
+    function onAttachToCover(ev, url) {
+        ev.preventDefault()
+        task.style.imgUrl = url
+        onStyleChange({ imgUrl: task.style.imgUrl, type: 'half' })
+    }
 
     if (!attachments) return <div></div>
     return (
@@ -46,7 +54,7 @@ export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, o
                                 </div>
                                 <div className='img-to-cover flex align-center'>
                                     <img src={CoverIcon} alt="cover-icon" />
-                                    <button>Make Cover</button>
+                                    <button onClick={(ev) => onAttachToCover(ev, attachment.url)}>Make Cover</button>
                                 </div>
                             </div>
                         </li>

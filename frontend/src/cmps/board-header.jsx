@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { BsStar, BsStarFill } from 'react-icons/bs'
+import { BsStar, BsStarFill, BsPlusLg } from 'react-icons/bs'
 import { updateBoard } from '../store/board.actions'
 import { BoardMenu } from './board-menu'
 import { Popover } from './popover'
@@ -35,9 +35,9 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
   async function onHandleBoardMembers(member, activityType) {
     try {
       const updatedBoard = boardService.toggleMemberOnBoard(board, member, activityType)
-      let activity = activityService.createActivity(board._id, activityType, user, member, board)
+      // let activity = activityService.createActivity(board._id, activityType, user, task)
       await updateBoard(updatedBoard)
-      await addActivity(activity)
+      // await addActivity(activity)
     } catch (err) {
       console.log('err', err)
     }
@@ -94,6 +94,22 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
     }
   }
 
+  let shownMembers = []
+  if (members?.length) {
+    if (window.innerWidth < 500) {
+      shownMembers.push(<img key={members[0]._id} className="member-img" src={members[0].imgUrl} alt="" onClick={(e) => onOpenPopover(e, { member: members[0] }, 'member-info')} />)
+      // shownMembers.push(<img key={members[0]._id} className="member-img" src={members[0].imgUrl} alt="" />)
+      shownMembers.push(
+        <div className="mobile-more-members flex center">
+          <label>+{members.length - 1}</label>
+        </div>
+      )
+    } else {
+      shownMembers = members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt={member.fullname}
+        onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)
+    }
+  }
+
   if (!board) return <Loader />
   return (
     <section className="board-header-container" ref={boardHeader}>
@@ -106,8 +122,8 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
                 type="text"
                 value={title}
                 onChange={handleChange}
-                style={{ width: `${inputWidth}px` }} // Set the width dynamically
-                // style={{ width: `${title.length * 9}px` }} // Set the width dynamically
+                // style={{ width: `${inputWidth}px` }} // Set the width dynamically
+                style={{ width: `${title.length * 10.8}px` }} // Set the width dynamically
                 onFocus={handleFocus}
               />
             </form>
@@ -140,7 +156,8 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
           </button>
           <span>|</span>
           <div className="members">
-            {members?.length && members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)}
+            {/* {members?.length && members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt="" />)} */}
+            {shownMembers}
           </div>
           <button
             className="btn-fill"
