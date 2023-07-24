@@ -120,7 +120,7 @@ export function TaskPreview({ boardId, taskToPrev }) {
             </ul>
           )}
           <h4>{task.title}</h4>
-
+          <button>edit</button>
           <section className="preview-details flex">
             {/* indicators */}
             <div className="task-indicators flex">

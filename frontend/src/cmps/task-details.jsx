@@ -24,7 +24,7 @@ export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const user = useSelector((storeState) => storeState.userModule.user)
   const { taskId, boardId } = useParams()
-  const [task, setTask] = useState(boardService.getEmptyTask())
+  const [task, setTask] = useState(null)
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
   const activities = useSelector((storeState) => storeState.activityModule.activities)
@@ -36,7 +36,7 @@ export function TaskDetails() {
     if (board) {
       setTask(boardService.getTaskById(board ? board : [], taskId))
     }
-  }, [board])
+  }, [board, taskId])
 
   function onOpenPopover(e, props, type) {
     closePopover()
@@ -51,6 +51,16 @@ export function TaskDetails() {
       const updatedTask = boardService.toggleMemberOnTask(task, member, activityType)
       await saveTask(board, updatedTask, activity)
       await addActivity(activity)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async function onChangeTitle(title) {
+    try {
+      const updatedTask = { ...task, title }
+      await saveTask(board, updatedTask)
+      setTask(updatedTask)
     } catch (err) {
       console.log('err', err)
     }
@@ -197,7 +207,7 @@ export function TaskDetails() {
           taskDetails={taskDetails}
           onStyleChange={onStyleChange}
         />
-        <TaskDetailsHeader task={task} board={board} />
+        <TaskDetailsHeader board={board} onChangeTitle={onChangeTitle} />
         <section className="task-details-container">
           <section className="card-details-container flex column">
             <ShowTaskDetails

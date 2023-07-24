@@ -17,13 +17,31 @@
     .task-title {
         display: flex;
         flex-direction: column;
+        flex: 1;
         padding-inline-start: rem(7px);
 
         h1 {
-            line-height: 1.25em;
+            cursor: text;
             margin-block-end: rem(7px);
+        }
+
+        h1,
+        .edit-title-form input {
+            width: 100%;
+            line-height: 1.25em;
             font-size: rem(20px);
-            font-weight: 500;
+            font-weight: 600;
+        }
+
+        .edit-title-form {
+            input {
+                margin-block-start: rem(-4px);
+                margin-block-end: rem(4px);
+                margin-inline-start: rem(-7px);
+                padding: rem(4px) rem(8px) rem(4px) rem(7px);
+                height: rem(32px);
+                font-family: inherit
+            }
         }
 
         p {
