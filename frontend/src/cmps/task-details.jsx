@@ -197,7 +197,7 @@ export function TaskDetails() {
 
   return (
     <section className="task-details-screen">
-      {/* <div className="backdrop"></div> */}
+      <div className="backdrop" onClick={() => navigate(`/board/${boardId}`)}></div>
       <article ref={taskDetails} className="task-details">
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
           <HiXMark className="close-icon" />

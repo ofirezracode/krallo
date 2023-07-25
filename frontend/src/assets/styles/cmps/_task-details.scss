@@ -12,6 +12,15 @@
   align-items: start;
   padding: rem(48px) 0 rem(80px);
 
+  .backdrop {
+    position: fixed;
+    bottom: 0;
+    overflow-y: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
   .task-details {
     // top: 0;
     // left: 0;
