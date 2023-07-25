@@ -15,7 +15,6 @@
   .backdrop {
     position: fixed;
     bottom: 0;
-    overflow-y: auto;
     left: 0;
     right: 0;
     top: 0;
@@ -44,7 +43,6 @@
 
       background-color: unset;
       color: $small-titles;
-
       z-index: 200;
 
       .close-icon {
