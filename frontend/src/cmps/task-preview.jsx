@@ -7,8 +7,9 @@ import { IndicatorDueDate } from './task-preview-indicators/indicator-due-date'
 import { Indicator } from './task-preview-indicators/indicator'
 import { UsersList } from './users-list'
 import { colorService } from '../services/color.service'
+import { BsPencil } from 'react-icons/bs'
 
-export function TaskPreview({ boardId, taskToPrev }) {
+export function TaskPreview({ boardId, taskToPrev, onDeleteTask }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const labelsOpen = useSelector((storeState) => storeState.boardModule.labelsOpen)
 
@@ -88,60 +89,62 @@ export function TaskPreview({ boardId, taskToPrev }) {
   // }
 
   return (
-    <article className="task-preview" onClick={onOpenTaskDetails}>
-      {previewStyle.backgroundColor && (
-        <div className={`preview-cover flex ${typeClass} ${addedClass}`} style={previewStyle}>
-          {typeClass === 'full' && <h4>{task.title}</h4>}
-        </div>
-      )}
-      {previewStyle.backgroundImage && (
-        <div className={`preview-cover flex ${typeClass} ${addedClass}`} style={previewStyle}>
-          {typeClass === 'full' && <h4>{task.title}</h4>}
-        </div>
-      )}
-      {typeClass !== 'full' && (
-        <section className="preview-container">
-          {/* labels */}
-          {task.labelIds && boardLabels && boardLabels.length > 0 && (
-            <ul className="labels flex clean-list">
-              {task.labelIds.map((labelId, i) => {
-                const label = boardLabels.find((boardLabel) => boardLabel._id === labelId)
-                if (!label || !label.color) return ''
-                const labelStyle = { backgroundColor: label.color.code }
-                const labelText = labelsOpen ? label.title : ''
-                return (
-                  <li className={`flex center ${labelsOpen ? 'open' : ''}`} key={i}>
-                    <button onClick={(e) => onLabelClick(e)} className="" style={labelStyle}>
-                      {labelText}
-                    </button>
-                  </li>
-                )
-              })}
-            </ul>
-          )}
-          <h4>{task.title}</h4>
-          <button>edit</button>
-          <section className="preview-details flex">
-            {/* indicators */}
-            <div className="task-indicators flex">
-              <ul className="indicators clean-list">
-                {task.dueDate && task.dueDate.dueDate && <IndicatorDueDate dueDate={task.dueDate} onDateClick={onDateClick} />}
-                {task.description && <Indicator type="description" />}
-                {task.comments && task.comments.length > 0 && <Indicator type="comments" txt={task.comments.length} />}
-                {task.attachments && task.attachments.length > 0 && <Indicator type="attachments" txt={task.attachments.length} />}
-                {task.checklists && task.checklists.length > 0 && (
-                  <Indicator type="checklists" txt={`${checklistsTodos.finished}/${checklistsTodos.total}`} />
-                )}
+    <article className="task-preview">
+      <button className='btn-edit' onClick={() => onDeleteTask(task._id)}><BsPencil /></button>
+      <div className='task-wrapper' onClick={onOpenTaskDetails}>
+        {previewStyle.backgroundColor && (
+          <div className={`preview-cover flex ${typeClass} ${addedClass}`} style={previewStyle}>
+            {typeClass === 'full' && <h4>{task.title}</h4>}
+          </div>
+        )}
+        {previewStyle.backgroundImage && (
+          <div className={`preview-cover flex ${typeClass} ${addedClass}`} style={previewStyle}>
+            {typeClass === 'full' && <h4>{task.title}</h4>}
+          </div>
+        )}
+        {typeClass !== 'full' && (
+          <section className="preview-container">
+            {/* labels */}
+            {task.labelIds && boardLabels && boardLabels.length > 0 && (
+              <ul className="labels flex clean-list">
+                {task.labelIds.map((labelId, i) => {
+                  const label = boardLabels.find((boardLabel) => boardLabel._id === labelId)
+                  if (!label || !label.color) return ''
+                  const labelStyle = { backgroundColor: label.color.code }
+                  const labelText = labelsOpen ? label.title : ''
+                  return (
+                    <li className={`flex center ${labelsOpen ? 'open' : ''}`} key={i}>
+                      <button onClick={(e) => onLabelClick(e)} style={labelStyle}>
+                        {labelText}
+                      </button>
+                    </li>
+                  )
+                })}
               </ul>
-            </div>
+            )}
+            <h4>{task.title}</h4>
+            <section className="preview-details flex">
+              {/* indicators */}
+              <div className="task-indicators flex">
+                <ul className="indicators clean-list">
+                  {task.dueDate && task.dueDate.dueDate && <IndicatorDueDate dueDate={task.dueDate} onDateClick={onDateClick} />}
+                  {task.description && <Indicator type="description" />}
+                  {task.comments && task.comments.length > 0 && <Indicator type="comments" txt={task.comments.length} />}
+                  {task.attachments && task.attachments.length > 0 && <Indicator type="attachments" txt={task.attachments.length} />}
+                  {task.checklists && task.checklists.length > 0 && (
+                    <Indicator type="checklists" txt={`${checklistsTodos.finished}/${checklistsTodos.total}`} />
+                  )}
+                </ul>
+              </div>
 
-            {/* users */}
-            <div className="members-list-container">
-              <UsersList users={task.members} size="xsmall" hover="gray" />
-            </div>
+              {/* users */}
+              <div className="members-list-container">
+                <UsersList users={task.members} size="xsmall" hover="gray" />
+              </div>
+            </section>
           </section>
-        </section>
-      )}
+        )}
+      </div>
     </article>
   )
 }
