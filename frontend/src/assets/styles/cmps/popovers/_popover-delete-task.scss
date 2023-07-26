@@ -1,0 +1,17 @@
+.popover-delete-task {
+    .btn-delete-task {
+        color: $card-title;
+        width: 108.5%;
+        margin-inline: rem(-12px);
+        padding: rem(6px) rem(12px);
+        font-family: $font-input;
+        font-size: rem(14px);
+        font-weight: 400;
+        text-align: start;
+        background-color: #fff;
+
+        &:hover {
+            background-color: $button-hover;
+        }
+    }
+}

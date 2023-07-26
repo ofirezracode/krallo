@@ -11,15 +11,9 @@ export function PopoverDeleteTask({ boardId, taskId, onTaskDelete, onClose }) {
   }
 
   return (
-    <div className="popover-delete-task">
-      <PopoverCmpHeader title="Delete task" onClose={onClose} />
-      <p>
-        Are you sure you want to delete this task? <br />
-        Deleting a task is permanent and cannot be recovered
-      </p>
-      <button className="btn delete-btn" onClick={() => onClickDelete()}>
-        Close
-      </button>
-    </div>
+    <section className='popover-delete-task'>
+      <PopoverCmpHeader title="Remove task?" onClose={onClose} />
+      <button className='btn-delete-task' onClick={() => onClickDelete()}>Remove this task</button>
+    </section>
   )
 }

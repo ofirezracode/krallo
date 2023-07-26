@@ -1,4 +1,4 @@
-import { BsCheck2Square, BsClock, BsPaperclip, BsSquareHalf, BsTag, BsTrash3Fill } from 'react-icons/bs'
+import { BsCheck2Square, BsClock, BsPaperclip, BsSquareHalf, BsTag, BsTrash3, BsTrash3Fill } from 'react-icons/bs'
 import ClipIcon from '../../assets/img/svg/clip-icon.svg'
 import CoverIcon from '../../assets/img/svg/cover-icon.svg'
 import MemberIcon from '../../assets/img/svg/member-icon.svg'
@@ -59,7 +59,7 @@ export function ActionsList({
           <p>Attachment</p>
         </button>
         {!isCover && (
-          <button onClick={(e) => onOpenPopover(e, { coverStyle: task?.style, onStyleChange }, 'cover')} className="flex center">
+          <button onClick={(e) => onOpenPopover(e, { coverStyle: task?.style, onStyleChange }, 'cover')} className="flex center" title="Cover">
             <img src={CoverIcon} className="box-icon" alt="cover-icon" />
             <p>Cover</p>
           </button>
@@ -68,8 +68,8 @@ export function ActionsList({
       <h5>Actions</h5>
       <section className="action-btns">
         <button onClick={(e) => onOpenPopover(e, { boardId: board._id, taskId: task._id, onTaskDelete }, 'delete-task')} title="Delete">
-          <BsTrash3Fill />
-          <p>Delete</p>
+          <BsTrash3 />
+          <p>Remove</p>
         </button>
       </section>
     </section>
