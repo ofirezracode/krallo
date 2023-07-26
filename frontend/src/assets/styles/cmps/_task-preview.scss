@@ -68,6 +68,7 @@
 
       &:hover {
         background-color: $card-preview;
+        border-block-end-color: $button-hover;
       }
 
       h4 {

@@ -66,7 +66,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
 
   async function onDeleteTask(taskId) {
     const newGroup = { ...group }
-    const taskIdx = await newGroup.tasks.findIndex(task => taskId === task._id)
+    const taskIdx = newGroup.tasks.findIndex(task => taskId === task._id)
     newGroup.tasks.splice(taskIdx, 1)
     try {
       await updateBoard(board)
