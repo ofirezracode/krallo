@@ -35,6 +35,11 @@
     width: rem(32px);
     padding: rem(6px);
     background-color: $card-preview;
+
+    img {
+      height: rem(10px);
+      width: rem(10px);
+    }
   }
 
   .preview-cover {
@@ -66,8 +71,6 @@
   .preview-container {
     padding: rem(8px) rem(8px) rem(4px) rem(12px);
     background-color: #fff;
-
-
 
     h4 {
       font-weight: 400;

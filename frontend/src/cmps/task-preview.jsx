@@ -7,6 +7,7 @@ import { IndicatorDueDate } from './task-preview-indicators/indicator-due-date'
 import { Indicator } from './task-preview-indicators/indicator'
 import { UsersList } from './users-list'
 import { colorService } from '../services/color.service'
+import EditIcon from '../assets/img/svg/edit-icon.svg'
 import { BsPencil } from 'react-icons/bs'
 
 export function TaskPreview({ boardId, taskToPrev, onDeleteTask }) {
@@ -90,7 +91,7 @@ export function TaskPreview({ boardId, taskToPrev, onDeleteTask }) {
   return (
     <article className="task-preview" onClick={onOpenTaskDetails}>
       <button className="btn-edit" onClick={(e) => deleteTask(e)}>
-        <BsPencil />
+        <img src={EditIcon} alt="edit-icon" />
       </button>
       {/* <div className='task-wrapper'> */}
       {previewStyle.backgroundColor && (
