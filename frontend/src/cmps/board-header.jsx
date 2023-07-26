@@ -104,7 +104,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
         </div>
       )
     } else {
-      shownMembers = members.map((member) => <img key={member._id} className="member-img" src={member.imgUrl} alt={member.fullname}
+      shownMembers = members.map((member, idx) => <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member.imgUrl} alt={member.fullname}
         onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)
     }
   }

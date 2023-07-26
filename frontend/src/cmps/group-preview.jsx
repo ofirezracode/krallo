@@ -5,7 +5,7 @@ import { BsThreeDots, BsPlusLg, BsWindowStack } from 'react-icons/bs'
 import TemplateIcon from '../assets/img/svg/template-icon.svg'
 
 import { TaskList } from './task-list'
-import { saveNewTask } from '../store/board.actions'
+import { saveNewTask, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service'
 import { activityService } from '../services/activity.service'
 import { AddCloseButtons } from './add-close-buttons'
@@ -64,6 +64,17 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
     setNewTaskText('')
   }
 
+  async function onDeleteTask(taskId) {
+    const newGroup = { ...group }
+    const taskIdx = await newGroup.tasks.findIndex(task => taskId === task._id)
+    newGroup.tasks.splice(taskIdx, 1)
+    try {
+      await updateBoard(board)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   function onTitleChange(e) {
     setEditedTitle(e.target.value)
   }
@@ -76,7 +87,6 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
     toggleForm(false)
     await onUpdateGroupTitle(group._id, editedTitle)
   }
-
 
   function handleKeyPress(ev) {
     if (ev.key === 'Enter') {
@@ -102,7 +112,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
         </button>
       </header>
 
-      <TaskList boardId={boardId} tasks={group.tasks} provided={provided} />
+      <TaskList boardId={boardId} tasks={group.tasks} onDeleteTask={onDeleteTask} provided={provided} />
 
       {!isAddingTask && (
         <section className="add-card-section">
