@@ -5,7 +5,7 @@ import { BsThreeDots, BsPlusLg, BsWindowStack } from 'react-icons/bs'
 import TemplateIcon from '../assets/img/svg/template-icon.svg'
 
 import { TaskList } from './task-list'
-import { saveNewTask, updateBoard } from '../store/board.actions'
+import { deleteTask, saveNewTask, updateBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service'
 import { activityService } from '../services/activity.service'
 import { AddCloseButtons } from './add-close-buttons'
@@ -23,7 +23,6 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
   const [isListening, setIsListening] = useCloseOnOutsideClick(onSubmit, '.edit-title-form', 'group-preview-title')
   const [editedTitle, setEditedTitle] = useState(group.title)
   const scrollRef = useRef(null)
-
 
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
@@ -65,11 +64,8 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
   }
 
   async function onDeleteTask(taskId) {
-    const newGroup = { ...group }
-    const taskIdx = await newGroup.tasks.findIndex(task => taskId === task._id)
-    newGroup.tasks.splice(taskIdx, 1)
     try {
-      await updateBoard(board)
+      await deleteTask(board, taskId)
     } catch (err) {
       console.log('err', err)
     }
@@ -107,7 +103,11 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
             <input value={editedTitle} onChange={(e) => onTitleChange(e)} autoFocus></input>
           </form>
         )}
-        <button className="group-options flex justify-center align-center" ref={groupPreview} onClick={(e) => onOpenPopover(e, { group, onDeleteGroup }, 'group-actions')}>
+        <button
+          className="group-options flex justify-center align-center"
+          ref={groupPreview}
+          onClick={(e) => onOpenPopover(e, { group, onDeleteGroup }, 'group-actions')}
+        >
           <BsThreeDots />
         </button>
       </header>
@@ -124,7 +124,6 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
             <img src={TemplateIcon} className="template-icon" alt="template-icon" />
           </button>
         </section>
-
       )}
       {isAddingTask && (
         <form onSubmit={onAddTask} className="add-card-form">
@@ -132,7 +131,6 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
             <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText} onKeyPress={handleKeyPress}></textarea>
           </div>
           <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} scrollRef={scrollRef} />
-
         </form>
       )}
       <div></div>

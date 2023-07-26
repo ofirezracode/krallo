@@ -8,7 +8,7 @@
   overflow: hidden;
 
   &:hover .btn-edit {
-    opacity: .8;
+    opacity: 0.8;
 
     &:hover {
       opacity: 1;
@@ -32,114 +32,109 @@
     background-color: $card-preview;
   }
 
-  .task-wrapper {
-    width: 100%;
-    height: 100%;
+  .preview-cover {
+    height: rem(32px);
 
-    .preview-cover {
-      height: rem(32px);
+    &.full {
+      min-height: rem(56px);
+    }
 
-      &.full {
-        min-height: rem(56px);
-      }
+    h4 {
+      padding: rem(8px) rem(8px) rem(4px) rem(12px);
+      align-self: flex-end;
+      font-size: rem(16px);
+      font-weight: 500;
+      line-height: rem(20px);
+    }
 
+    &.dark-background-header {
       h4 {
-        padding: rem(8px) rem(8px) rem(4px) rem(12px);
-        align-self: flex-end;
-        font-size: rem(16px);
-        font-weight: 500;
-        line-height: rem(20px);
+        overflow: visible;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0), #000);
+        color: #fff;
+        padding-block-end: rem(8px);
+        width: 100%;
       }
+    }
+  }
 
-      &.dark-background-header {
-        h4 {
-          overflow: visible;
-          background: linear-gradient(180deg, rgba(0, 0, 0, 0), #000);
-          color: #fff;
-          padding-block-end: rem(8px);
-          width: 100%;
+  .preview-container {
+    padding: rem(8px) rem(8px) rem(4px) rem(12px);
+    background-color: #fff;
+
+    &:hover {
+      background-color: $card-preview;
+    }
+
+    h4 {
+      font-weight: 400;
+      margin-block-end: rem(4px);
+    }
+
+    .labels {
+      flex-wrap: wrap;
+      gap: rem(4px);
+      margin-bottom: rem(4px);
+
+      li {
+        height: max-content;
+
+        button {
+          min-width: rem(40px);
+          height: rem(8px);
+          padding-inline: rem(8px);
+
+          font-weight: 500;
+          font-size: rem(12px);
+          font-family: inherit;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+          border-radius: 4px;
+
+          color: inherit;
+
+          transition: width, height 0.3s;
+
+          &:hover {
+            filter: saturate(85%) brightness(85%);
+          }
+        }
+
+        &.open {
+          button {
+            padding-block-end: rem(2px);
+            min-width: rem(56px);
+            max-width: rem(88px);
+            height: 18px;
+          }
         }
       }
     }
 
-    .preview-container {
-      padding: rem(8px) rem(8px) rem(4px) rem(12px);
-      background-color: #fff;
+    .preview-details {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: rem(4px);
+      margin-block-end: rem(4px);
 
-      &:hover {
-        background-color: $card-preview;
-      }
+      .task-indicators {
+        .indicators {
+          min-height: rem(20px);
+          color: $text-subtle;
 
-      h4 {
-        font-weight: 400;
-        margin-block-end: rem(4px);
-      }
-
-      .labels {
-        flex-wrap: wrap;
-        gap: rem(4px);
-        margin-bottom: rem(4px);
-
-        li {
-          height: max-content;
-
-          button {
-            min-width: rem(40px);
-            height: rem(8px);
-            padding-inline: rem(8px);
-
-            font-weight: 500;
-            font-size: rem(12px);
-            font-family: inherit;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: normal;
-            border-radius: 4px;
-
-            color: inherit;
-
-            transition: width, height 0.3s;
-
-            &:hover {
-              filter: saturate(85%) brightness(85%);
-            }
-          }
-
-          &.open {
-            button {
-              padding-block-end: rem(2px);
-              min-width: rem(56px);
-              max-width: rem(88px);
-              height: 18px;
-            }
-          }
-        }
-      }
-
-      .preview-details {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        row-gap: rem(4px);
-        margin-block-end: rem(4px);
-
-        .task-indicators {
-          .indicators {
-            min-height: rem(20px);
-            color: $text-subtle;
-
-            display: flex;
-            align-items: center;
-          }
-        }
-
-        .members-list-container {
-          flex: 1;
           display: flex;
-          justify-content: end;
+          align-items: center;
+        }
+      }
 
-          .users-list {
-            justify-self: end;
-          }
+      .members-list-container {
+        flex: 1;
+        display: flex;
+        justify-content: end;
+
+        .users-list {
+          justify-self: end;
         }
       }
     }
