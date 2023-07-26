@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import DescIcon from '../../assets/img/svg/desc-icon.svg'
 
 export function TaskDescription({ task, onDescriptionUpdate }) {
-  const handleFocus = (ev) => ev.target.select()
   const [isEditing, setIsEditing] = useState(false)
   const [description, setDescription] = useState(task && task.description ? task.description : '')
   const [updatedDescription, setUpdatedDescription] = useState('')
@@ -37,9 +36,10 @@ export function TaskDescription({ task, onDescriptionUpdate }) {
       <div className="desc-title flex align-center">
         <img src={DescIcon} alt="desc-icon" />
         <h3>Description</h3>
-        <button onClick={toggleEditing} className="btn">
-          Edit
-        </button>
+        {!isEditing && description &&
+          (<button onClick={toggleEditing} className="btn">
+            Edit
+          </button>)}
       </div>
       {!isEditing && !description && (
         <button onClick={toggleEditing} className="add-description flex">
@@ -63,7 +63,7 @@ export function TaskDescription({ task, onDescriptionUpdate }) {
           </div>
         </div>
       )}
-      {!isEditing && description.length > 0 && <p>{description}</p>}
+      {!isEditing && description.length > 0 && <p onClick={toggleEditing}>{description}</p>}
     </section>
   )
 }

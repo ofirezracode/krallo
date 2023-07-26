@@ -16,11 +16,13 @@
         h3 {
             font-size: rem(16px);
             font-weight: 600;
+            flex: 1;
         }
     }
 
     >p {
         padding-inline-start: rem(38px);
+        cursor: pointer;
     }
 
     .add-description {
