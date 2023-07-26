@@ -10,7 +10,7 @@ import { HiXMark } from 'react-icons/hi2'
 import { TaskCover } from './task-details/task-cover'
 import { TaskDetailsHeader } from './task-details/task-details-header'
 import { ActionsList } from './task-details/actions-list'
-import { saveTask, updateBoard } from '../store/board.actions'
+import { deleteTask, saveTask, updateBoard } from '../store/board.actions'
 import { activityService, createActivity } from '../services/activity.service'
 import { TaskAttachments } from './task-details/task-attachments'
 import { ChecklistIndex } from './task-details/checklist/checklist-index'
@@ -195,6 +195,14 @@ export function TaskDetails() {
     }
   }
 
+  async function onTaskDelete(taskId) {
+    try {
+      await deleteTask(board, taskId)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   return (
     <section className="task-details-screen">
       <div className="backdrop" onClick={() => navigate(`/board/${boardId}`)}></div>
@@ -202,11 +210,7 @@ export function TaskDetails() {
         <button onClick={() => navigate(`/board/${boardId}`)} className="close-btn">
           <HiXMark className="close-icon" />
         </button>
-        <TaskCover
-          task={task}
-          taskDetails={taskDetails}
-          onStyleChange={onStyleChange}
-        />
+        <TaskCover task={task} taskDetails={taskDetails} onStyleChange={onStyleChange} />
         <TaskDetailsHeader board={board} onChangeTitle={onChangeTitle} />
         <section className="task-details-container">
           <section className="card-details-container flex column">
@@ -219,10 +223,7 @@ export function TaskDetails() {
               onLabelDelete={onLabelDelete}
               onDueDateSave={onDueDateSave}
             />
-            <TaskDescription
-              task={task}
-              onDescriptionUpdate={onDescriptionUpdate}
-            />
+            <TaskDescription task={task} onDescriptionUpdate={onDescriptionUpdate} />
             <TaskAttachments
               task={task}
               onAttachmentAdded={onAttachmentAdded}
@@ -231,11 +232,7 @@ export function TaskDetails() {
               onOpenPopover={onOpenPopover}
               onStyleChange={onStyleChange}
             />
-            <ChecklistIndex
-              task={task}
-              onOpenPopover={onOpenPopover}
-              onUpdateChecklists={onUpdateChecklists}
-            />
+            <ChecklistIndex task={task} onOpenPopover={onOpenPopover} onUpdateChecklists={onUpdateChecklists} />
             {/* <TaskActivities /> */}
             {/* <div className="activity-list">
               < MenuActivitiesList board={board} activities={activities} />
@@ -253,6 +250,7 @@ export function TaskDetails() {
             onAddChecklist={onAddChecklist}
             onStyleChange={onStyleChange}
             onDueDateSave={onDueDateSave}
+            onTaskDelete={onTaskDelete}
           />
         </section>
         <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />

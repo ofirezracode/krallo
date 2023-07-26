@@ -134,6 +134,16 @@ export async function saveNewTask(board, groupId, updatedTask, activity) {
   }
 }
 
+export async function deleteTask(board, taskId) {
+  try {
+    const savedBoard = await boardService.removeTaskFromBoard(board, taskId)
+    store.dispatch(getActionUpdateBoard(savedBoard))
+  } catch (err) {
+    console.log('Cannot delete task', err)
+    throw err
+  }
+}
+
 export function setCurrFilterBy(filterBy) {
   store.dispatch(getActionSetFilterBy(filterBy))
 }
