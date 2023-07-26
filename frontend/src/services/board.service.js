@@ -13,6 +13,7 @@ export const boardService = {
   remove,
   saveTask,
   saveNewTask,
+  removeTaskFromBoard,
   getEmptyBoard,
   createTask,
   getTaskById,
@@ -94,6 +95,14 @@ async function saveNewTask(board, groupId, updatedTask, activity) {
 
   const newBoard = await save(board)
   return newBoard
+}
+
+async function removeTaskFromBoard(board, taskId) {
+  let newBoard = JSON.parse(JSON.stringify(board))
+  newBoard.groups.forEach((group) => {
+    group.tasks = group.tasks.filter((task) => task._id !== taskId)
+  })
+  return await save(newBoard)
 }
 
 function filterBoard(board, filterBy = {}) {

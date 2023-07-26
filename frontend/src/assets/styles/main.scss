@@ -48,14 +48,14 @@
 @import 'cmps/popovers/_popover-edit-attachment.scss';
 @import 'cmps/popovers/_popover-cover.scss';
 @import 'cmps/popovers/_popover-cmp-header.scss';
-@import 'cmps/popovers/_popover-checklist';
+@import 'cmps/popovers/_popover-checklist.scss';
 @import 'cmps/popovers/_popover-dates.scss';
-@import 'cmps/popovers/popover-delete-checklist';
-@import 'cmps/popovers/popover-logout';
-@import 'cmps/popovers/popover-create-board';
+@import 'cmps/popovers/popover-delete-checklist.scss';
+@import 'cmps/popovers/popover-logout.scss';
+@import 'cmps/popovers/popover-create-board.scss';
 @import 'cmps/popovers/popover-filter.scss';
-@import 'cmps/popovers/popover-member-info';
-@import 'cmps/popovers/popover-group-actions';
+@import 'cmps/popovers/popover-member-info.scss';
+@import 'cmps/popovers/popover-group-actions.scss';
 
 //Task Details
 @import 'cmps/task-details/_task-cover.scss';
