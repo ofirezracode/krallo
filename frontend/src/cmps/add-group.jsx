@@ -40,6 +40,7 @@ export function AddGroup({ onAddGroup }) {
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
           placeholder="Enter list title..."
+          autoFocus
         ></input>
       )}
       <AddCloseButtons btnText={'Add list'} onClose={(e) => toggleInput(e)} isVisible={isListening} />
