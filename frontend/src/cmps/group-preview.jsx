@@ -59,7 +59,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
         console.log('err', err)
       }
     }
-    setIsAddingTask(false)
+    setIsAddingTask(true)
     setNewTaskText('')
   }
 
@@ -128,7 +128,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
       {isAddingTask && (
         <form onSubmit={onAddTask} className="add-card-form">
           <div className="text-container">
-            <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText} onKeyPress={handleKeyPress}></textarea>
+            <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText} onKeyPress={handleKeyPress} autoFocus></textarea>
           </div>
           <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} scrollRef={scrollRef} />
         </form>
