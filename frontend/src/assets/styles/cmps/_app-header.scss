@@ -5,7 +5,20 @@
   backdrop-filter: blur(6px);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
+  &.dark {
+    background-color: #54525b;
+  }
+
   a {
+
+    &.dark {
+      color: #fff;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, .3);
+      }
+    }
+
     gap: rem(5px);
     color: $icon;
     border-radius: 3px;
@@ -92,6 +105,19 @@
     margin-inline-end: rem(4px);
 
     .search-input {
+      &.dark {
+        background-color: rgba(255, 255, 255, .2);
+        color: #fff;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, .4);
+        }
+
+        &::placeholder {
+          color: #fff;
+        }
+      }
+
       height: rem(32px);
       width: rem(200px);
       padding: 0 rem(12px) 0 rem(30px);
@@ -99,19 +125,15 @@
       font-size: rem(14px);
       border: 1px solid lightgray;
       margin: rem(2px);
-      // transition: width 0.3s;
+      transition: background-color 0.2s ease-in-out;
       display: none;
 
       @include for-narrow-layout {
         display: block;
       }
 
-      &::placeholder {
-        font-size: rem(17px);
-      }
-
       &:hover {
-        background-color: #f7f8f9;
+        background-color: rgba(0, 0, 0, 0.04);
       }
 
       &:focus {
@@ -136,7 +158,16 @@
     }
   }
 
+  &.dark path {
+    color: #fff;
+  }
+
   .header-btn {
+
+    &.dark:hover {
+      background-color: rgba(255, 255, 255, .3);
+    }
+
     background-color: transparent;
     border: none;
     // padding: rem(8px);

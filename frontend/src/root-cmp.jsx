@@ -9,11 +9,16 @@ import { AppHeader } from './cmps/app-header'
 
 export function RootCmp() {
   const user = useSelector((storeState) => storeState.userModule.user)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const darkClass = isDarkMode ? 'dark' : ''
 
+  function toggleDarkMode() {
+    setIsDarkMode(prev => !prev)
+  }
   return (
     <div className='main-routes'>
       {/* <header className='headers'> */}
-      {user ? <AppHeader /> : <AppHeaderHome />}
+      {user ? <AppHeader toggleDarkMode={toggleDarkMode} darkClass={darkClass} /> : <AppHeaderHome />}
       {/* </header> */}
       <main>
         <Routes>{_getRoutes(routes)}</Routes>
