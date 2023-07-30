@@ -83,6 +83,7 @@ export async function removeBoard(boardId) {
     throw err
   }
 }
+
 export async function addBoard(board) {
   try {
     const savedBoard = await boardService.save(board)

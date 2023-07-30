@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BsCircleHalf, BsTrello, BsFillPersonXFill, BsPlusLg } from 'react-icons/bs'
 import { UserImg } from './user-img'
@@ -14,8 +14,14 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
   const navigate = useNavigate()
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
+  const [isBoardCreated, setIsBoardCreated] = useState(false)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  const user = useSelector((storeState) => storeState.userModule.user)
+
+  useEffect(() => {
+    if (isBoardCreated) {
+      window.location.reload()
+    }
+  }, [isBoardCreated])
 
   function onOpenPopover(e, props, type) {
     closePopover()
@@ -30,6 +36,7 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
       const savedBoard = await addBoard(boardToSave)
       setCurrBoard(savedBoard)
       navigate(`/board/${savedBoard._id}`)
+      setIsBoardCreated(true)
     } catch (err) {
       console.error('Error:', err)
     }
@@ -40,17 +47,6 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
       await logout()
       navigate(`/`)
     } catch (err) { }
-  }
-
-  async function onCreateBoard(ev) {
-    ev.preventDefault()
-    try {
-      const boardToSave = boardService.getEmptyBoard()
-      const savedBoard = await addBoard(boardToSave)
-      navigate(`/board/${savedBoard._id}`)
-    } catch (err) {
-      console.error('Error:', err)
-    }
   }
 
   return (
@@ -100,7 +96,7 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
             </li>
             <li>
               <button className="user-img-header flex" onClick={(e) => onOpenPopover(e, { onLogout }, 'logout')} title="logout">
-                <UserImg size="small" hover="circle" userImg={user.imgUrl} padding={true} />
+                <UserImg size="small" hover="circle" userImg={loggedInUser.imgUrl} padding={true} />
               </button>
             </li>
           </ul>

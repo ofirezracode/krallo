@@ -69,7 +69,7 @@ export function ActionsList({
       <section className="action-btns">
         <button onClick={(e) => onOpenPopover(e, { boardId: board._id, taskId: task._id, onTaskDelete }, 'delete-task')} title="Delete">
           <BsTrash3 />
-          <p>Remove</p>
+          <p>Remove card</p>
         </button>
       </section>
     </section>

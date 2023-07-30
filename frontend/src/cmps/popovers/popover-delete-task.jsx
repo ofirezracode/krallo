@@ -12,8 +12,8 @@ export function PopoverDeleteTask({ boardId, taskId, onTaskDelete, onClose }) {
 
   return (
     <section className='popover-delete-task'>
-      <PopoverCmpHeader title="Remove task?" onClose={onClose} />
-      <button className='btn-delete-task' onClick={() => onClickDelete()}>Remove this task</button>
+      <PopoverCmpHeader title="Remove card?" onClose={onClose} />
+      <button className='btn-delete-task' onClick={() => onClickDelete()}>Remove this card</button>
     </section>
   )
 }

@@ -30,7 +30,6 @@ export async function loadUsers() {
 export async function login(credentials) {
   try {
     const user = await userService.login(credentials)
-    console.log(user);
     store.dispatch({
       type: SET_USER,
       user,

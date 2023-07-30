@@ -10,18 +10,19 @@ import { MenuActivitiesList } from "./board-menu/menu-activities-list"
 import { colorService } from "../services/color.service"
 import { Popover } from "./popover"
 import { usePopover } from "../customHooks/usePopover"
-import { BsTrash3Fill } from "react-icons/bs"
+import { BsFillDoorOpenFill, BsTrash3Fill } from "react-icons/bs"
 
 
-export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg, onRemoveBoard }) {
+export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoardBg, onRemoveBoard, onLeaveBoard, onMemberDelete }) {
   const [isOn, setIsOn] = useState(true)
   const [title, setTitle] = useState('Menu')
+  const [setting, setSetting] = useState('')
   const goBackClass = isOn ? 'go-back' : ''
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
   const boardMenu = useRef()
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const activities = useSelector((storeState) => storeState.activityModule.activities)
-  const [setting, setSetting] = useState('')
   function onChangeSettings(currTitle, settingName) {
     setIsOn((prevIsOn) => !prevIsOn)
     setTitle(currTitle)
@@ -77,12 +78,18 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
                 <p>Change background</p>
               </button>
             </li>
-            <li className="delete-board" ref={boardMenu} onClick={(e) => onOpenPopover(e, { board, onRemoveBoard }, 'delete-board')}>
+            <li className="leave-board" ref={boardMenu} onClick={(e) => onOpenPopover(e, { board, onLeaveBoard, onMemberDelete }, 'leave-board')}>
+              <button>
+                <BsFillDoorOpenFill className="trash" />
+                <p>Leave board</p>
+              </button>
+            </li>
+            {loggedInUser?._id === board?.createdBy?._id && <li className="delete-board" ref={boardMenu} onClick={(e) => onOpenPopover(e, { board, onRemoveBoard }, 'delete-board')}>
               <button>
                 <BsTrash3Fill className="trash" />
                 <p>Close board...</p>
               </button>
-            </li>
+            </li>}
             <hr />
             <li className="board-activity" onClick={() => onChangeSettings('Activity', 'activities')}>
               <button className="flex center">
@@ -96,15 +103,18 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
 
           <div className="activity-list">
             <MenuActivitiesList board={board} activities={activities} />
-          </div></div>)}
+          </div></div>)
+      }
 
       {setting === 'about' && <MenuAbout board={board} />}
       {setting === 'background' && <MenuBackground board={board} setTitle={setTitle} onUpdateBoardBg={onUpdateBoardBg} />}
-      {setting === 'activities' && (
-        <div className="activity-list">
-          <MenuActivitiesList board={board} activities={reversedActivities} />
-        </div>
-      )}
-    </section>
+      {
+        setting === 'activities' && (
+          <div className="activity-list">
+            <MenuActivitiesList board={board} activities={reversedActivities} />
+          </div>
+        )
+      }
+    </section >
   )
 }

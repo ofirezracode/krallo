@@ -19,6 +19,7 @@ import { PopoverDeleteBoard } from './popovers/popover-delete-board'
 import { PopoverMemberInfo } from './popovers/popover-member-info'
 import { PopoverGroupActions } from './popovers/popover-group-actions'
 import { PopoverDeleteTask } from './popovers/popover-delete-task'
+import { PopoverLeaveBoard } from './popovers/popover-leave-board'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   const [isListening, setIsListening] = useCloseOnOutsideClick(onClosePopover, 'popover', 'add-to-card-btn', '.popover-backdrop')
@@ -162,6 +163,8 @@ function DynamicCmp({ type, addedProps, onClose }) {
       return <PopoverGroupActions {...addedProps} onClose={onClose} />
     case 'delete-board':
       return <PopoverDeleteBoard {...addedProps} onClose={onClose} />
+    case 'leave-board':
+      return <PopoverLeaveBoard {...addedProps} onClose={onClose} />
     case 'delete-task':
       return <PopoverDeleteTask {...addedProps} onClose={onClose} />
     default:

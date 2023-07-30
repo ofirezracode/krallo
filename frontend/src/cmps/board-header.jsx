@@ -11,7 +11,7 @@ import { boardService } from '../services/board.service'
 import { addActivity } from '../store/activity.actions'
 import { activityService } from '../services/activity.service'
 
-export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
+export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelete, showMenuClass, setIsMenuHidden }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const user = useSelector((storeState) => storeState.userModule.user)
   const [title, setTitle] = useState(board ? board.title : '')
@@ -32,26 +32,7 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
     openPopover(e, type)
   }
 
-  async function onHandleBoardMembers(member, activityType) {
-    try {
-      const updatedBoard = boardService.toggleMemberOnBoard(board, member, activityType)
-      // let activity = activityService.createActivity(board._id, activityType, user, task)
-      await updateBoard(updatedBoard)
-      // await addActivity(activity)
-    } catch (err) {
-      console.log('err', err)
-    }
-  }
 
-  async function onMemberDelete(board, member) {
-    try {
-      let updatedBoard = { ...board }
-      updatedBoard = boardService.removeMemberFromTasks(board, member._id)
-      await updateBoard(updatedBoard)
-    } catch (err) {
-      console.log('err', err)
-    }
-  }
 
   async function onToggleIsStarred(ev, board) {
     try {
@@ -74,7 +55,9 @@ export function BoardHeader({ onChangeTitle, showMenuClass, setIsMenuHidden }) {
 
   function onSubmit(ev) {
     ev.preventDefault()
-    onChangeTitle(title)
+    if (title) {
+      onChangeTitle(title)
+    }
   }
 
   let inputWidth = 1

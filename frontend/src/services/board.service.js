@@ -283,7 +283,7 @@ function toggleMemberOnBoard(board, member, activityType) {
   return board
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {
@@ -368,6 +368,9 @@ function getEmptyBoard(title, imgUrl) {
     title,
     isStarred: false,
     createdAt: Date.now(),
+    members: [
+      userService.getLoggedInUser()
+    ],
     groups: [createGroup('New group')],
     style: {
       type: 'img',

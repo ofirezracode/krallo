@@ -9,7 +9,11 @@ export function Workspaces() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
-
+  const myBoards = boards.filter(board => {
+    return loggedInUser && board.members && board.members.some(member => member._id === loggedInUser._id)
+  })
+  const starredBoards = myBoards.filter(board => board.isStarred)
+  console.log(starredBoards)
 
   useEffect(() => {
     loadBoards()
@@ -40,8 +44,8 @@ export function Workspaces() {
   return (
     <section className="workspaces">
       <section className="all-boards">
-        <BoardList boards={boards} onToggleIsStarred={onToggleIsStarred} isOnlyStarred={true} />
-        <BoardList boards={boards} onToggleIsStarred={onToggleIsStarred} isOnlyStarred={false} onAddBoard={onAddBoard} />
+        {starredBoards?.length > 0 && <BoardList boards={myBoards} onToggleIsStarred={onToggleIsStarred} isOnlyStarred={true} />}
+        <BoardList boards={myBoards} onToggleIsStarred={onToggleIsStarred} isOnlyStarred={false} onAddBoard={onAddBoard} />
       </section>
     </section>
   )

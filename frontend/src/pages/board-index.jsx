@@ -117,6 +117,39 @@ export function BoardIndex() {
     }
   }
 
+  async function onLeaveBoard(loggedInUserId) {
+    const newBoard = { ...board }
+    const loggedInUserIdx = newBoard.members.findIndex(member => member._id === loggedInUserId)
+    if (loggedInUserIdx < 0) return
+    newBoard.members.splice(loggedInUserIdx, 1)
+    try {
+      await updateBoard(newBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async function onHandleBoardMembers(member, activityType) {
+    try {
+      const updatedBoard = boardService.toggleMemberOnBoard(board, member, activityType)
+      // let activity = activityService.createActivity(board._id, activityType, user, task)
+      await updateBoard(updatedBoard)
+      // await addActivity(activity)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async function onMemberDelete(board, member) {
+    try {
+      let updatedBoard = { ...board }
+      updatedBoard = boardService.removeMemberFromTasks(board, member._id)
+      await updateBoard(updatedBoard)
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
   async function onAddGroup(group) {
     const newBoard = { ...board }
     newBoard.groups.push(group)
@@ -173,7 +206,13 @@ export function BoardIndex() {
   return (
     <section style={boardStyle} className="board-index flex column">
       <Outlet />
-      <BoardHeader board={board} onChangeTitle={onChangeTitle} showMenuClass={showMenuClass} setIsMenuHidden={setIsMenuHidden} />
+      <BoardHeader
+        onChangeTitle={onChangeTitle}
+        onHandleBoardMembers={onHandleBoardMembers}
+        onMemberDelete={onMemberDelete}
+        showMenuClass={showMenuClass}
+        setIsMenuHidden={setIsMenuHidden}
+      />
       <GroupList
         board={filteredBoard}
         onMoveTask={onMoveTask}
@@ -183,7 +222,14 @@ export function BoardIndex() {
         showMenuClass={showMenuClass}
         onDeleteGroup={onDeleteGroup}
       />
-      <BoardMenu board={board} setIsMenuHidden={setIsMenuHidden} showMenuClass={showMenuClass} onUpdateBoardBg={onUpdateBoardBg} onRemoveBoard={onRemoveBoard} />
+      <BoardMenu
+        board={board}
+        setIsMenuHidden={setIsMenuHidden}
+        showMenuClass={showMenuClass}
+        onUpdateBoardBg={onUpdateBoardBg}
+        onRemoveBoard={onRemoveBoard}
+        onLeaveBoard={onLeaveBoard}
+        onMemberDelete={onMemberDelete} />
     </section>
   )
 }
