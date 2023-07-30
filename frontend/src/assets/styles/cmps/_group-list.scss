@@ -5,7 +5,7 @@
 
   flex-grow: 1;
 
-  overflow-x: scroll;
+  overflow-x: auto;
 
   &::-webkit-scrollbar {
     height: rem(12px);
