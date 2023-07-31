@@ -21,6 +21,7 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               backgroundColor: avgClr,
+              height: '160px',
             })
           } else {
             setCover(null)
