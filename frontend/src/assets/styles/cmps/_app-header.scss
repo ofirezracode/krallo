@@ -55,24 +55,23 @@
 
     .create-btn {
       &.dark {
-        background-color: rgba($button-board-header, .7);
-        color: $card-title;
+        background-color: rgba(255, 255, 255, .2);
 
         svg {
           path {
-            color: $card-title;
+            color: inherit;
           }
         }
 
         &:hover {
-          background-color: $button-board-header;
+          background-color: rgba(255, 255, 255, .3);
         }
       }
 
       background-color: $btn-blue;
       color: #fff;
       border-radius: 4px;
-      font-size: rem(16px);
+      font-size: rem(14px);
       height: rem(32px);
       padding: rem(6px) rem(8px);
       display: flex;
@@ -86,7 +85,7 @@
 
         svg {
           path {
-            stroke-width: rem(.75px);
+            stroke-width: rem(1.5px);
           }
         }
       }
