@@ -56,12 +56,15 @@
       }
 
       .board-name {
-        input[type='text'] {
+
+
+        input[type='text'],
+        h1 {
           background-color: transparent;
           border: none;
-          height: rem(32px);
+          // height: rem(32px);
           border-radius: 3px;
-          padding-inline-start: rem(10px);
+          padding-inline: rem(10px);
           cursor: pointer;
 
           font-family: $font-input;

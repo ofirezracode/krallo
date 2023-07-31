@@ -15,6 +15,7 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const user = useSelector((storeState) => storeState.userModule.user)
   const [title, setTitle] = useState(board ? board.title : '')
+  const [isEditing, setIsEditing] = useState(false)
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
   const boardHeader = useRef()
@@ -44,8 +45,20 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
     }
   }
 
+  function handleEditClick() {
+    setIsEditing(true)
+  }
+
+  function handleInputBlur() {
+    if (title) {
+      onChangeTitle(title)
+    }
+    setIsEditing(false)
+  }
+
   function handleChange(ev) {
-    setTitle(ev.target.value)
+    const { value } = ev.target
+    setTitle(value)
   }
 
   function handleFocus(ev) {
@@ -53,27 +66,8 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
     ev.target.select()
   }
 
-  function onSubmit(ev) {
-    ev.preventDefault()
-    if (title) {
-      onChangeTitle(title)
-    }
-  }
-
-  let inputWidth = 1
-  if (!title) return
-  for (let i = 0; i < title.length; i++) {
-    const charCode = title.charCodeAt(i)
-    if (charCode >= 65 && charCode <= 90) {
-      // uppercase character
-      inputWidth += 13
-    } else if (charCode >= 97 && charCode <= 122) {
-      // lowercase character
-      inputWidth += 13
-    } else {
-      // punctuation, space, and other symbols
-      inputWidth += 5
-    }
+  async function onSubmit() {
+    handleInputBlur()
   }
 
   let shownMembers = []
@@ -98,15 +92,18 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
       <ul className={`board-header ${showMenuClass} clean-list flex align-center between`}>
         <li className="flex align-center">
           <div className="board-name">
-            <form onSubmit={onSubmit}>
+            {!isEditing && (<h1 className='board-name' onClick={handleEditClick}>{board.title}</h1>)}
+            {isEditing && (<form onSubmit={onSubmit}>
               <input
-                type="text"
+                className='input'
+                type='text'
                 value={title}
                 onChange={handleChange}
-                style={{ width: `${title.length * 10.8}px` }}
+                onBlur={handleInputBlur}
                 onFocus={handleFocus}
+                autoFocus
               />
-            </form>
+            </form>)}
           </div>
 
           <button
