@@ -57,7 +57,7 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
             <BsTrello />
             <label>Krallo</label>
           </Link>
-          <button className="create-btn" title="Create new board" onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}>
+          <button className={`create-btn ${darkClass}`} title="Create new board" onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}>
             <p className='create-wide'>Create</p>
             <p className='create-mobile'><BsPlusLg /></p>
           </button>
