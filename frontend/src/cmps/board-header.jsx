@@ -13,7 +13,6 @@ import { activityService } from '../services/activity.service'
 
 export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelete, showMenuClass, setIsMenuHidden }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
-  const user = useSelector((storeState) => storeState.userModule.user)
   const [title, setTitle] = useState(board ? board.title : '')
   const [isEditing, setIsEditing] = useState(false)
   const [addedProps, setAddedProps] = useState({})
@@ -80,7 +79,7 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
         </div>
       )
     } else {
-      shownMembers = members.map((member, idx) => <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member.imgUrl} alt={member.fullname}
+      shownMembers = members?.map((member, idx) => <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member.imgUrl} alt={member.fullname}
         onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)
     }
   }
