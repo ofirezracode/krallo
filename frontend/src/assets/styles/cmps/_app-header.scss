@@ -71,9 +71,12 @@
       background-color: $btn-blue;
       color: #fff;
       border-radius: 4px;
+      font-family: $font-input;
+      font-weight: 400;
       font-size: rem(14px);
+      line-height: rem(32px);
       height: rem(32px);
-      padding: rem(6px) rem(8px);
+      padding: 0 rem(10px);
       display: flex;
       align-items: center;
 
