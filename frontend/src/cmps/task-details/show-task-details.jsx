@@ -3,7 +3,7 @@ import Etai from '../../assets/img/members/etai-pic.jpg'
 import Tamar from '../../assets/img/members/tamar-pic.jpg'
 import { BsPlusLg, BsChevronDown } from 'react-icons/bs'
 import { useSelector } from 'react-redux'
-import { dateTimeService } from '../../services/dateTimeService'
+import { dateTimeService } from '../../services/date-time.service.js'
 import { Checkbox } from '../checkbox'
 import { useEffect, useState } from 'react'
 
@@ -45,7 +45,13 @@ export function ShowTaskDetails({ task, onOpenPopover, onLabelChange, onLabelEdi
           <div className="members">
             {members &&
               members.map((member) => (
-                <img key={member._id} src={`${member.imgUrl}`} className="member-img" alt={`Member ${member._id} photo`} onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />
+                <img
+                  key={member._id}
+                  src={`${member.imgUrl}`}
+                  className="member-img"
+                  alt={`Member ${member._id} photo`}
+                  onClick={(e) => onOpenPopover(e, { member }, 'member-info')}
+                />
               ))}
 
             <button
