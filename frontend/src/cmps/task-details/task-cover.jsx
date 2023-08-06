@@ -33,10 +33,6 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
     [task]
   )
 
-  // ;(async function () {
-
-  // })()
-
   const coverChangeBtnRef = useRef()
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BsCircleHalf, BsTrello, BsFillPersonXFill, BsPlusLg } from 'react-icons/bs'
+import { BsCircleHalf, BsTrello, BsPlusLg } from 'react-icons/bs'
 import { UserImg } from './user-img'
 import { logout } from '../store/user.actions.js'
 import { useNavigate } from 'react-router-dom'
-import { addBoard, loadBoards, setCurrBoard, updateBoard } from '../store/board.actions'
+import { addBoard, setCurrBoard } from '../store/board.actions'
 import { boardService } from '../services/board.service'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
@@ -46,7 +46,7 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
     try {
       await logout()
       navigate(`/`)
-    } catch (err) { }
+    } catch (err) {}
   }
 
   return (
@@ -57,9 +57,15 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
             <BsTrello />
             <label>Krallo</label>
           </Link>
-          <button className={`create-btn ${darkClass}`} title="Create new board" onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}>
-            <p className='create-wide'>Create</p>
-            <p className='create-mobile'><BsPlusLg /></p>
+          <button
+            className={`create-btn ${darkClass}`}
+            title="Create new board"
+            onClick={(e) => onOpenPopover(e, { onAddBoard }, 'create-board')}
+          >
+            <p className="create-wide">Create</p>
+            <p className="create-mobile">
+              <BsPlusLg />
+            </p>
           </button>
         </li>
         <li>

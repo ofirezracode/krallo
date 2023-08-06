@@ -1,5 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { Link, useNavigate } from 'react-router-dom'
 import Img from '../assets/img/logo.svg'
 import { userService } from '../services/user.service'
 import { login } from '../store/user.actions'
@@ -9,7 +8,6 @@ export function AppHeaderHome() {
 
   async function onNavToWorkspaces() {
     if (!userService.getLoggedInUser()) {
-      // await login({ email: 'guest@krallo.com', password: '123' })
       await login({ email: 'tamar@krallo.com', password: '123' })
     }
     navigate('/workspaces')
@@ -29,7 +27,6 @@ export function AppHeaderHome() {
       </div>
       <nav className="nav flex">
         <label onClick={onNavToWorkspaces}>Workspaces</label>
-        {/* <NavLink to={'/workspaces'}>Workspaces</NavLink> */}
       </nav>
       <div className="header-btns flex">
         <Link to={'/login'} className="login-btn flex align-center justify-center">
@@ -38,9 +35,6 @@ export function AppHeaderHome() {
         <label className="try-btn flex align-center justify-center" onClick={onKralloForFree}>
           Get Krallo for free
         </label>
-        {/* <Link to={'/login'} className="try-btn flex align-center justify-center">
-          Get Krallo for free
-        </Link> */}
       </div>
     </header>
   )

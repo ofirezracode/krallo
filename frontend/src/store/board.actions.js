@@ -1,6 +1,5 @@
 import { boardService } from '../services/board.service.js'
 import { store } from './store.js'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import {
   ADD_BOARD,
   REMOVE_BOARD,

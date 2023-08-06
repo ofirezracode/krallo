@@ -21,13 +21,11 @@ export function TaskDescription({ task, onDescriptionUpdate }) {
   function onSaveDescription() {
     setDescription(updatedDescription)
     onDescriptionUpdate(updatedDescription)
-    // setIsEditing(false)
     toggleEditing()
   }
 
   function onCancel() {
     setUpdatedDescription(description)
-    // setIsEditing(false)
     toggleEditing()
   }
 
@@ -36,10 +34,11 @@ export function TaskDescription({ task, onDescriptionUpdate }) {
       <div className="desc-title flex align-center">
         <img src={DescIcon} alt="desc-icon" />
         <h3>Description</h3>
-        {!isEditing && description &&
-          (<button onClick={toggleEditing} className="btn">
+        {!isEditing && description && (
+          <button onClick={toggleEditing} className="btn">
             Edit
-          </button>)}
+          </button>
+        )}
       </div>
       {!isEditing && !description && (
         <button onClick={toggleEditing} className="add-description flex">

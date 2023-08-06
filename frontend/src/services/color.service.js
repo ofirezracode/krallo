@@ -137,6 +137,11 @@ export const colorService = {
   getBgColors,
   getNewBoardImgs,
   getNewBoardColors,
+  getDefaultColors,
+}
+
+function getDefaultColors() {
+  return [...DEFAULT_COLORS]
 }
 
 function getNewBoardImgs() {

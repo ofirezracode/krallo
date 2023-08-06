@@ -2,7 +2,7 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { colorService } from './color.service.js'
-import { dateTimeService } from './dateTimeService.js'
+import { dateTimeService } from './date-time.service.js'
 
 const API_URL = 'board'
 
@@ -283,7 +283,7 @@ function toggleMemberOnBoard(board, member, activityType) {
   return board
 }
 
-function createBoardFromTemplate() { }
+function createBoardFromTemplate() {}
 
 function createTask(title) {
   const task = {
@@ -368,9 +368,7 @@ function getEmptyBoard(title, imgUrl) {
     title,
     isStarred: false,
     createdAt: Date.now(),
-    members: [
-      userService.getLoggedInUser()
-    ],
+    members: [userService.getLoggedInUser()],
     groups: [createGroup('New group')],
     style: {
       type: 'img',

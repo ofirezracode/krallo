@@ -27,26 +27,25 @@ export function AddGroup({ onAddGroup }) {
 
   return (
     <>
-    <form onSubmit={onSubmit} className={`add-group ${isListening ? 'visible' : ''}` }>
-      {!isListening && (
-        <button onClick={(e) => toggleInput(e)} className="open-form-button flex align-center">
-          <BsPlusLg className="icon" />
-          Add another list
-        </button>
-      )}
-      {isListening && (
-        <input
-          className="add-group-input"
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
-          placeholder="Enter list title..."
-          autoFocus
-        ></input>
-      )}
-      <AddCloseButtons btnText={'Add list'} onClose={(e) => toggleInput(e)} isVisible={isListening} />
-    </form>
+      <form onSubmit={onSubmit} className={`add-group ${isListening ? 'visible' : ''}`}>
+        {!isListening && (
+          <button onClick={(e) => toggleInput(e)} className="open-form-button flex align-center">
+            <BsPlusLg className="icon" />
+            Add another list
+          </button>
+        )}
+        {isListening && (
+          <input
+            className="add-group-input"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            placeholder="Enter list title..."
+            autoFocus
+          ></input>
+        )}
+        <AddCloseButtons btnText={'Add list'} onClose={(e) => toggleInput(e)} isVisible={isListening} />
+      </form>
       <div ref={groupRef}></div> {/* Empty div to serve as a reference for the group container */}
-      </>
+    </>
   )
 }
-

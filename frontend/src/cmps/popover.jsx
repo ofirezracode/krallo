@@ -129,8 +129,6 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
 
 function DynamicCmp({ type, addedProps, onClose }) {
   switch (type) {
-    case 'dummy':
-      return <PopoverDummy />
     case 'labels':
       return <PopoverLabels {...addedProps} onClose={onClose} />
     case 'members':
