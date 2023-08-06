@@ -60,8 +60,3 @@ function validateToken(loginToken) {
   }
   return null
 }
-
-// ;(async ()=>{
-//     await signup('bubu', '123', 'Bubu Bi')
-//     await signup('mumu', '123', 'Mumu Maha')
-// })()

@@ -5,12 +5,6 @@ import { asyncLocalStorage } from '../../services/als.service.mjs'
 
 export async function getBoards(req, res) {
   try {
-    logger.debug('Getting Boards:', req.query)
-    const filterBy = {
-      // txt: req.query.txt || '',
-      // pageIdx: req.query.pageIdx,
-    }
-    // const boards = await boardService.query(filterBy)
     const boards = await boardService.query()
     res.json(boards)
   } catch (err) {
@@ -23,7 +17,6 @@ export async function getBoardById(req, res) {
   try {
     const boardId = req.params.id
     const board = await boardService.getById(boardId)
-    logger.info('Got board')
     res.json(board)
   } catch (err) {
     logger.error('Failed to get board', err)
@@ -32,11 +25,8 @@ export async function getBoardById(req, res) {
 }
 
 export async function addBoard(req, res) {
-  const { loggedinUser } = req
-
   try {
     const board = req.body
-    // board.createdBy = loggedinUser
     const addedBoard = await boardService.add(board)
     res.json(addedBoard)
   } catch (err) {
@@ -70,33 +60,3 @@ export async function removeBoard(req, res) {
     res.status(400).send({ err: 'Failed to remove board' })
   }
 }
-
-// export async function addBoardMsg(req, res) {
-//   const { loggedinUser } = req
-//   try {
-//     const boardId = req.params.id
-//     const msg = {
-//       txt: req.body.txt,
-//       by: loggedinUser,
-//     }
-//     const savedMsg = await boardService.addBoardMsg(boardId, msg)
-//     res.json(savedMsg)
-//   } catch (err) {
-//     logger.error('Failed to update board', err)
-//     res.status(400).send({ err: 'Failed to update board' })
-//   }
-// }
-
-// export async function removeBoardMsg(req, res) {
-//   const { loggedinUser } = req
-//   try {
-//     const boardId = req.params.id
-//     const { msgId } = req.params
-
-//     const removedId = await boardService.removeBoardMsg(boardId, msgId)
-//     res.send(removedId)
-//   } catch (err) {
-//     logger.error('Failed to remove board msg', err)
-//     res.status(400).send({ err: 'Failed to remove board msg' })
-//   }
-// }

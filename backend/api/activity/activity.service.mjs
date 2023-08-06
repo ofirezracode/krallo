@@ -1,14 +1,17 @@
 import { dbService } from '../../services/db.service.mjs'
 import { logger } from '../../services/logger.service.mjs'
-import { asyncLocalStorage } from '../../services/als.service.mjs'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
+export const activityService = {
+  query,
+  remove,
+  add,
+}
+
 async function query(filterBy = {}) {
   try {
-    logger.debug(filterBy)
     const criteria = _buildCriteria(filterBy)
-    logger.debug(criteria)
     const collection = await dbService.getCollection('activities')
     let activities = await collection
       .aggregate([
@@ -54,12 +57,8 @@ async function query(filterBy = {}) {
 
 async function remove(activityId) {
   try {
-    // const store = asyncLocalStorage.getStore()
-    // const { loggedinUser } = store
     const collection = await dbService.getCollection('activities')
-    // remove only if user is owner/admin
     const criteria = { _id: ObjectId(activityId) }
-    // if (!loggedinUser.isAdmin) criteria.byUserId = ObjectId(loggedinUser._id)
     const { deletedCount } = await collection.deleteOne(criteria)
     return deletedCount
   } catch (err) {
@@ -70,13 +69,11 @@ async function remove(activityId) {
 
 async function add(activity) {
   try {
-    logger.debug('activity', activity)
     const activityToAdd = {
       ...activity,
       boardId: ObjectId(activity.boardId),
       byMemberId: ObjectId(activity.byMemberId),
     }
-    logger.debug('activityToAdd', activityToAdd)
     const collection = await dbService.getCollection('activities')
     await collection.insertOne(activityToAdd)
     return activityToAdd
@@ -90,10 +87,4 @@ function _buildCriteria(filterBy) {
   const criteria = {}
   if (filterBy.boardId) criteria.boardId = ObjectId(filterBy.boardId)
   return criteria
-}
-
-export const activityService = {
-  query,
-  remove,
-  add,
 }

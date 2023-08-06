@@ -1,7 +1,4 @@
 import { logger } from '../../services/logger.service.mjs'
-import { socketService } from '../../services/socket.service.mjs'
-import { userService } from '../user/user.service.mjs'
-import { authService } from '../auth/auth.service.mjs'
 import { activityService } from './activity.service.mjs'
 
 export async function getActivities(req, res) {
@@ -34,12 +31,8 @@ export async function addActivity(req, res) {
 
   try {
     let activity = req.body
-    if (!loggedinUser) activity.byMemberId = '000000000000000000000000'
-    else activity.byMemberId = loggedinUser._id
+    activity.byMemberId = loggedinUser._id
     activity = await activityService.add(activity)
-
-    // socketService.broadcast({ type: 'activity-added', data: activity })
-
     res.send(activity)
   } catch (err) {
     logger.error('Failed to add activity', err)

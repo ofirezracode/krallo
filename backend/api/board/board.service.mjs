@@ -4,29 +4,18 @@ import { utilService } from '../../services/util.service.mjs'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
-// const PAGE_SIZE = 3
-
 export const boardService = {
   remove,
   query,
   getById,
   add,
   update,
-  //   addBoardMsg,
-  //   removeBoardMsg,
 }
 
-async function query(filterBy = { txt: '' }) {
+async function query() {
   try {
-    const criteria = {
-      // vendor: { $regex: filterBy.txt, $options: 'i' }
-    }
     const collection = await dbService.getCollection('boards')
-    const boardCursor = await collection.find(criteria)
-
-    // if (filterBy.pageIdx !== undefined) {
-    //     boardCursor.skip(filterBy.pageIdx * PAGE_SIZE).limit(PAGE_SIZE)
-    // }
+    const boardCursor = await collection.find({})
 
     const boards = boardCursor.toArray()
     return boards
@@ -39,7 +28,7 @@ async function query(filterBy = { txt: '' }) {
 async function getById(boardId) {
   try {
     const collection = await dbService.getCollection('boards')
-    const board = collection.findOne({ _id: new ObjectId(boardId) })
+    const board = await collection.findOne({ _id: new ObjectId(boardId) })
     return board
   } catch (err) {
     logger.error(`while finding board ${boardId}`, err)
@@ -83,26 +72,3 @@ async function update(board, boardId) {
     throw err
   }
 }
-
-// async function addBoardMsg(boardId, msg) {
-//   try {
-//     msg.id = utilService.makeId()
-//     const collection = await dbService.getCollection('boards')
-//     await collection.updateOne({ _id: new ObjectId(boardId) }, { $push: { msgs: msg } })
-//     return msg
-//   } catch (err) {
-//     logger.error(`cannot add board msg ${boardId}`, err)
-//     throw err
-//   }
-// }
-
-// async function removeBoardMsg(boardId, msgId) {
-//   try {
-//     const collection = await dbService.getCollection('boards')
-//     await collection.updateOne({ _id: new ObjectId(boardId) }, { $pull: { msgs: { id: msgId } } })
-//     return msgId
-//   } catch (err) {
-//     logger.error(`cannot add board msg ${boardId}`, err)
-//     throw err
-//   }
-// }
