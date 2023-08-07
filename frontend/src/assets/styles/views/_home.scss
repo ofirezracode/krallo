@@ -19,25 +19,34 @@
       text-align: center;
 
       .home-txt {
-        width: rem(500px);
         flex: 0 0 auto;
         color: #fff;
         padding: rem(91px) rem(7px);
 
         .txt-opening {
           line-height: 1.25;
-          font-size: rem(48px);
+          font-size: rem(38px);
           margin-block-end: rem(8px);
           font-family: charlie-semibold;
           letter-spacing: rem(-2.7px);
+
+          @include for-normal-layout {
+            font-size: rem(48px);
+          }
         }
 
         .txt-opening-p {
-          line-height: 1.5;
-          letter-spacing: rem(1.05px);
-          font-size: rem(20px);
+          font-size: rem(18px);
+          line-height: normal;
+          letter-spacing: normal;
           margin-block-end: rem(42px);
           font-weight: 400;
+
+          @include for-normal-layout {
+            font-size: rem(20px);
+            line-height: 1.5;
+            letter-spacing: rem(1.05px);
+          }
         }
 
         .signup-btn {
@@ -52,7 +61,7 @@
           font-size: rem(20px);
           width: 100%;
           transition: 0.2s ease-in-out;
-          color: #fff;
+          color: inherit;
 
           &:hover {
             background-color: $default-blue;
@@ -60,20 +69,24 @@
           }
 
           a {
-            color: #fff;
             text-decoration: none;
             font-family: inherit;
           }
+
 
           @include for-wide-layout {
             font-size: rem(16px);
             width: fit-content;
           }
         }
+
+        @include for-normal-layout {
+          padding: rem(91px) rem(7px);
+          width: rem(500px);
+        }
       }
 
       .home-img {
-        padding-block-start: rem(114px);
         display: flex;
         margin-inline-end: rem(-20px);
         padding-inline: rem(40px);
@@ -86,6 +99,10 @@
             height: auto;
             scale: 1.2;
           }
+        }
+
+        @include for-normal-layout {
+          padding-block-start: rem(114px);
         }
       }
 
@@ -100,6 +117,8 @@
   }
 
   .productivity-container {
+    background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
+    background-blend-mode: normal;
     font-family: charlie-regular;
     color: $home-text;
     margin-inline: auto;
@@ -109,7 +128,7 @@
     .productivity-text-container {
       order: 1;
       flex: 0 0 auto;
-      padding: rem(40px);
+      padding: rem(10px);
 
       @include for-wide-layout {
         padding-inline: 0;
@@ -121,16 +140,26 @@
         .krallo-101 {
           font-family: charlie-semibold;
           margin-block-end: rem(1px);
-          font-size: rem(16px);
+          font-size: rem(12px);
           color: $home-text;
+
+          @include for-normal-layout {
+            font-size: rem(16px);
+          }
         }
 
         h2 {
-          font-size: rem(36px);
+          font-size: rem(28px);
           font-family: charlie-semibold;
           letter-spacing: rem(-1.75px);
           margin-block-end: rem(17px);
           color: $home-text;
+          line-height: rem(35px);
+
+          @include for-normal-layout {
+            font-size: rem(36px);
+            line-height: normal;
+          }
         }
       }
 
@@ -139,10 +168,14 @@
 
         p {
           font-family: inherit;
-          font-size: rem(20px);
-          letter-spacing: rem(.95px);
-          line-height: rem(30px);
+          font-size: rem(16px);
           color: #091E42;
+
+          @include for-normal-layout {
+            font-size: rem(20px);
+            letter-spacing: rem(.95px);
+            line-height: rem(30px);
+          }
         }
       }
     }

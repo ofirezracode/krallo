@@ -104,15 +104,15 @@
       .btn-star {
         padding: rem(12px);
 
-        svg:hover {
-          scale: 1.2;
-        }
-      }
 
-      .star-empty,
-      .star-fill {
-        width: rem(13px);
-        stroke-width: rem(0.5px);
+        .star-empty,
+        .star-fill {
+          height: rem(13px);
+
+          &:hover {
+            scale: 1.2;
+          }
+        }
       }
 
       button {

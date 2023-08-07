@@ -110,7 +110,7 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
             title="Click to star or unstar this board. Starred boards show up at the top of your boards list."
             onClick={(ev) => onToggleIsStarred(ev, board)}
           >
-            {board.isStarred ? <BsStarFill className="star-fill" /> : <BsStar className="star-empty" />}
+            {board.isStarred ? <BsStarFill className="star-fill" strokeWidth={'1px'} /> : <BsStar className="star-empty" strokeWidth={'1px'} />}
           </button>
         </li>
         <li className="board-header-actions flex align-center">

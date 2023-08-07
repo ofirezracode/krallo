@@ -49,47 +49,36 @@
         overflow: hidden;
       }
 
-      .star-fill {
+      .star-fill,
+      .star-empty {
         position: absolute;
         bottom: rem(11.5px);
-        right: rem(12px);
-        color: $yellow-subtle;
         width: rem(15px);
         height: rem(12px);
-        transition: .2s ease-out;
         z-index: 10;
 
         &:hover {
           scale: 1.15;
-
-          path {
-            fill: none;
-            stroke-width: rem(2px);
-          }
         }
+      }
+
+      .star-fill {
+        right: rem(12px);
+        color: $yellow-subtle;
+        transition: .2s ease-out;
       }
 
       .star-empty {
         color: #fff;
-        width: rem(15px);
-        height: rem(12px);
-        position: absolute;
-        bottom: rem(11.5px);
         right: rem(-15px);
         opacity: 0;
         overflow-clip-margin: content-box;
         overflow: hidden;
-        z-index: 10;
         transition: 0.2s ease-out;
-
-        &:hover {
-          scale: 1.15;
-        }
       }
 
       &:hover .star-empty {
         opacity: 1;
-        // bottom: rem(11.5px);
         right: rem(12px);
       }
     }
