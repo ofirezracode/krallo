@@ -17,7 +17,6 @@ import { ChecklistIndex } from './task-details/checklist/checklist-index'
 import { utilService } from '../services/util.service'
 import { addActivity } from '../store/activity.actions'
 import { TaskDescription } from './task-details/task-description'
-import { TaskActivities } from './task-details/task-activities'
 import { MenuActivitiesList } from './board-menu/menu-activities-list'
 
 export function TaskDetails() {
@@ -233,7 +232,6 @@ export function TaskDetails() {
               onStyleChange={onStyleChange}
             />
             <ChecklistIndex task={task} onOpenPopover={onOpenPopover} onUpdateChecklists={onUpdateChecklists} />
-            {/* <TaskActivities /> */}
             {/* <div className="activity-list">
               < MenuActivitiesList board={board} activities={activities} />
             </div> */}

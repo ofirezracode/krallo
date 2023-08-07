@@ -3,7 +3,7 @@ import { Calendar, DateRange } from 'react-date-range'
 import { addDays } from 'date-fns'
 import { PopoverCmpHeader } from './popover-cmp-header'
 import { Checkbox } from '../checkbox'
-import { dateTimeService } from '../../services/dateTimeService'
+import { dateTimeService } from '../../services/date-time.service.js'
 
 export function PopoverDates({ activeDueDate, onDueDateSave, onClose }) {
   const [isRange, setIsRange] = useState(false)
