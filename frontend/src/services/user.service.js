@@ -1,4 +1,7 @@
+import { colorService } from './color.service'
 import { httpService } from './http.service'
+import { uploadService } from './upload.service'
+import { utilService } from './util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const API_USER_ROUTE = 'user'
@@ -49,7 +52,17 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-  if (!userCred.imgUrl) userCred.imgUrl = 'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1685965117/vikaaq6fdnfgmelpafh6.png'
+  const firstLetter = userCred.email.charAt(0).toUpperCase()
+  if (!userCred.fullname) {
+    const idx = userCred.email.indexOf('@')
+
+    userCred.fullname = userCred.email.substring(0, idx)
+    userCred.fullname = firstLetter + userCred.fullname.slice(1)
+  }
+  if (!userCred.imgUrl) {
+    const color = colorService.getRandomColor()
+    userCred.imgUrl = uploadService.generateLetterImage(color, firstLetter)
+  }
   const user = await httpService.post(`${API_AUTH_ROUTE}/signup`, userCred)
   return saveLocalUser(user)
 }
