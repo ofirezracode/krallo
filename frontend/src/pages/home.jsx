@@ -21,17 +21,19 @@ export function Home() {
           </div>
         </section>
       </section>
-      <div className="productivity-container">
-        <div className="productivity-text-container flex wrap">
-          <div className="productivity-header">
-            <div className="krallo-101">KRALLO 101</div>
-            <h2>A productivity powerhouse</h2>
-          </div>
-          <div className="productivity-text">
-            <p>
-              Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what
-              needs to get done.
-            </p>
+      <div className="bg-color-productivity">
+        <div className="productivity-container">
+          <div className="productivity-text-container flex wrap">
+            <div className="productivity-header">
+              <div className="krallo-101">KRALLO 101</div>
+              <h2>A productivity powerhouse</h2>
+            </div>
+            <div className="productivity-text">
+              <p>
+                Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what
+                needs to get done.
+              </p>
+            </div>
           </div>
         </div>
       </div>

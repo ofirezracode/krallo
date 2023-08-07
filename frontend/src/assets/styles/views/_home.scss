@@ -116,65 +116,68 @@
     }
   }
 
-  .productivity-container {
+  .bg-color-productivity {
     background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
     background-blend-mode: normal;
-    font-family: charlie-regular;
-    color: $home-text;
-    margin-inline: auto;
-    padding-inline: rem(9px);
-    max-width: 1140px;
 
-    .productivity-text-container {
-      order: 1;
-      flex: 0 0 auto;
-      padding: rem(10px);
+    .productivity-container {
+      font-family: charlie-regular;
+      color: $home-text;
+      margin-inline: auto;
+      padding-inline: rem(9px);
+      max-width: 1140px;
 
-      @include for-wide-layout {
-        padding-inline: 0;
-        max-width: rem(664px);
-      }
+      .productivity-text-container {
+        order: 1;
+        flex: 0 0 auto;
+        padding: rem(10px);
 
-      .productivity-header {
+        @include for-wide-layout {
+          padding-inline: 0;
+          max-width: rem(664px);
+        }
 
-        .krallo-101 {
-          font-family: charlie-semibold;
-          margin-block-end: rem(1px);
-          font-size: rem(12px);
-          color: $home-text;
+        .productivity-header {
 
-          @include for-normal-layout {
+          .krallo-101 {
+            font-family: charlie-semibold;
+            margin-block-end: rem(1px);
+            font-size: rem(12px);
+            color: $home-text;
+
+            @include for-normal-layout {
+              font-size: rem(16px);
+            }
+          }
+
+          h2 {
+            font-size: rem(28px);
+            font-family: charlie-semibold;
+            letter-spacing: rem(-1.75px);
+            margin-block-end: rem(17px);
+            color: $home-text;
+            line-height: rem(35px);
+
+            @include for-normal-layout {
+              font-size: rem(36px);
+              line-height: normal;
+            }
+          }
+        }
+
+        .productivity-text {
+          padding-inline-end: rem(50px);
+
+          p {
+            font-family: inherit;
             font-size: rem(16px);
-          }
-        }
+            color: #091E42;
 
-        h2 {
-          font-size: rem(28px);
-          font-family: charlie-semibold;
-          letter-spacing: rem(-1.75px);
-          margin-block-end: rem(17px);
-          color: $home-text;
-          line-height: rem(35px);
-
-          @include for-normal-layout {
-            font-size: rem(36px);
-            line-height: normal;
-          }
-        }
-      }
-
-      .productivity-text {
-        padding-inline-end: rem(50px);
-
-        p {
-          font-family: inherit;
-          font-size: rem(16px);
-          color: #091E42;
-
-          @include for-normal-layout {
-            font-size: rem(20px);
-            letter-spacing: rem(.95px);
-            line-height: rem(30px);
+            @include for-normal-layout {
+              font-size: rem(20px);
+              letter-spacing: rem(.95px);
+              line-height: rem(30px);
+            }
           }
         }
       }
