@@ -15,7 +15,7 @@ export function MenuAbout({ board }) {
                 </li>
                 <li className='flex row admin-details'>
                     <div className='admin-img'>
-                        <UserImg size={'xlarge'} user={imgUrl} />
+                        <UserImg size={'xlarge'} userImg={imgUrl} />
                     </div>
                     <div className='admin-name flex column'>
                         <h1>{fullname}</h1>
