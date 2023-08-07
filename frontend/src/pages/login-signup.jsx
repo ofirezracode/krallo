@@ -82,7 +82,7 @@ export function LoginSignup() {
             )}
             {isSignup && (
               <div>
-                <h1 className="sginup-title">Sign up for your account</h1>
+                <h1 className="signup-title">Sign up for your account</h1>
                 <div className="login-password-container">
                   <form className="login-form" onSubmit={(e) => onSignup(e)}>
                     <input

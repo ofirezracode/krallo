@@ -12,11 +12,17 @@
     width: 100%;
     overflow: visible;
     margin-bottom: rem(30px);
+    padding-inline: rem(20px);
+
+    @include for-normal-layout {
+      padding-inline: 0;
+    }
 
     .login-container {
       margin: 0 auto;
       max-width: rem(400px);
       height: rem(564px);
+
 
       .login-container-layout {
         background-color: #ffffff;
@@ -34,7 +40,7 @@
           margin-bottom: rem(25px);
         }
 
-        .sginup-title {
+        .signup-title {
           font-size: rem(20px);
           line-height: 1.2;
           font-weight: 500;
@@ -46,7 +52,7 @@
           max-width: rem(320px);
 
           .email-input {
-            width: rem(320px);
+            width: 100%;
             font-size: rem(14px);
             background-color: #fafbfc;
             border: 2px solid #dfe1e6;
@@ -66,7 +72,7 @@
 
           .continue-btn {
             font-size: rem(14px);
-            width: rem(320px);
+            width: 100%;
             height: rem(33px);
             background: $continue-btn;
             color: #fff;
@@ -89,7 +95,7 @@
             font-family: inherit;
             font-weight: bold;
             font-size: rem(14px);
-            width: rem(320px);
+            width: 100%;
             height: rem(33px);
           }
         }
@@ -187,6 +193,7 @@
           margin: rem(0px) rem(8px) rem(0px) rem(4px);
           text-decoration: none;
           color: $btn-blue;
+
           &:hover {
             color: $default-blue;
           }
