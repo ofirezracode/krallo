@@ -59,8 +59,7 @@
           overflow: hidden;
 
           @include for-narrow-layout {
-            width: max-content;
-            overflow: auto;
+            max-width: max-content;
           }
         }
 
