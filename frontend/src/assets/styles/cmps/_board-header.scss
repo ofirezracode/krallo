@@ -18,8 +18,8 @@
     gap: rem(6px);
     padding: rem(6px) rem(6px) rem(6px) rem(6px);
     background-color: $board-header-background-transparent;
-    flex-direction: row;
-    // justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     z-index: -1;
     transition: 0.1s ease-in;
 
@@ -47,19 +47,21 @@
     li {
       gap: rem(4px);
 
-      @include for-narrow-layout {
-        .board-name {
-          input[type='text'] {
-            padding: 0;
-          }
-        }
-      }
-
       .board-name {
 
         h1 {
           cursor: pointer;
           padding-block-start: rem(2px);
+          width: rem(200px);
+          text-overflow: ellipsis;
+          overflow-wrap: break-word;
+          white-space: nowrap;
+          overflow: hidden;
+
+          @include for-narrow-layout {
+            width: max-content;
+            overflow: auto;
+          }
         }
 
         input[type='text'],
@@ -102,7 +104,7 @@
       }
 
       .btn-star {
-        padding: rem(12px);
+        padding: rem(10px);
 
 
         .star-empty,
@@ -130,9 +132,9 @@
           display: none;
         }
 
-        @include for-mobile-layout {
-          padding: rem(6px) rem(12px);
-        }
+        // @include for-mobile-layout {
+        //   padding: rem(6px) rem(12px);
+        // }
 
         @include for-narrow-layout {
           p {
@@ -173,6 +175,15 @@
           border-radius: 50%;
           margin-inline-start: rem(-10px);
           cursor: pointer;
+          display: none;
+
+          &:first-of-type {
+            display: block;
+          }
+
+          @include for-narrow-layout {
+            display: block;
+          }
 
           &:hover {
             filter: contrast(70%) brightness(120%);
@@ -180,7 +191,7 @@
         }
 
         .mobile-more-members {
-          margin-inline-start: rem(-4px);
+          margin-inline-start: rem(-8px);
           border-radius: 50%;
           height: 26px;
           width: 26px;
@@ -190,6 +201,10 @@
           font-weight: 200;
           color: #fff;
           letter-spacing: -1px;
+
+          @include for-narrow-layout {
+            display: none;
+          }
         }
       }
 

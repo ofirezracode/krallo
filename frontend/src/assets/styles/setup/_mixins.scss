@@ -7,7 +7,7 @@
 }
 
 @mixin for-narrow-layout {
-  @media (min-width: calc($mobile-breakpoint + 40px)) {
+  @media (min-width: calc($mobile-breakpoint + 140px)) {
     @content;
   }
 }
@@ -28,13 +28,15 @@
 @mixin aspect-ratio($width, $height) {
   position: relative;
   overflow: hidden;
+
   &::before {
     display: block;
     content: '';
     width: 100%;
     padding-top: calc(($height / $width) * 100%);
   }
-  > * {
+
+  >* {
     position: absolute;
     top: 0;
     left: 0;
@@ -42,7 +44,7 @@
     bottom: 0;
   }
 
-  > img {
+  >img {
     height: 100%;
     object-fit: cover;
   }

@@ -69,24 +69,22 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
     handleInputBlur()
   }
 
-  let shownMembers = []
-  if (members?.length) {
-    if (window.innerWidth < 500) {
-      shownMembers.push(<img key={members[0]._id} className="member-img" src={members[0].imgUrl} alt={members[0].fullname}
-        title={`${member.fullname} (${member.fullname.replace(' ', '').toLowerCase()})`}
-        onClick={(e) => onOpenPopover(e, { member: members[0] }, 'member-info')} />)
-      shownMembers.push(
-        <div className="mobile-more-members flex center">
-          <label>+{members.length - 1}</label>
-        </div>
-      )
-    } else {
-      shownMembers = members?.map((member, idx) =>
-        <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member.imgUrl} alt={member.fullname}
-          title={`${member.fullname} (${member.fullname.replace(' ', '').toLowerCase()})`}
-          onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)
-    }
-  }
+  // let shownMembers = []
+  // if (members?.length) {
+  //   if (window.innerWidth < 650) {
+  //     shownMembers.push(<img className="member-img" src={members[0].imgUrl} alt={members[0].fullname}
+  //       title={`${members[0].fullname} (${members[0].fullname.replace(' ', '').toLowerCase()})`}
+  //       onClick={(e) => onOpenPopover(e, { member: members[0] }, 'member-info')} />)
+  //     shownMembers.push(
+
+  //     )
+  //   } else {
+  //     shownMembers = members?.map((member, idx) =>
+  //       <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member.imgUrl} alt={member.fullname}
+  //         title={`${member.fullname} (${member.fullname.replace(' ', '').toLowerCase()})`}
+  //         onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)
+  //   }
+  // }
 
   if (!board) return <Loader />
   return (
@@ -128,7 +126,13 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
           </button>
           <span>|</span>
           <div className="members">
-            {shownMembers}
+            {members?.map((member, idx) =>
+              <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member.imgUrl} alt={member.fullname}
+                title={`${member.fullname} (${member.fullname.replace(' ', '').toLowerCase()})`}
+                onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)}
+            <div className="mobile-more-members flex center">
+              <label>+{members.length - 1}</label>
+            </div>
           </div>
           <button
             className="btn-fill"
