@@ -48,23 +48,20 @@ async function uploadImg(ev) {
 
 function generateLetterImage(color, letter) {
   const canvas = document.createElement('canvas')
-  canvas.width = 170 // Adjust the dimensions as needed
-  canvas.height = 170
+  canvas.width = 200
+  canvas.height = 200
 
   const ctx = canvas.getContext('2d')
 
-  // Set background color
   ctx.fillStyle = color
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-  // Draw the letter in the middle
   ctx.font = 'bold 100px Arial'
   ctx.fillStyle = 'rgba(0,0,0,.5)'
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
   ctx.fillText(letter, canvas.width / 2, canvas.height / 2)
 
-  // Convert canvas to data URL
   const imageUrl = canvas.toDataURL('image/png')
 
   return imageUrl
