@@ -1,7 +1,7 @@
 .board-preview:not(.new-board) {
   border-radius: 3px;
-  width: rem(190.58px);
-  height: rem(96px);
+  width: 100%;
+  height: rem(120px);
   background-color: rgb(222, 222, 222);
   cursor: pointer;
   position: relative;
@@ -9,6 +9,10 @@
   background-position: center;
   background-size: cover;
 
+  @include for-narrow-layout {
+    width: rem(190.58px);
+    height: rem(96px);
+  }
 
   .screen {
     background-color: rgba(0, 0, 0, .2);
@@ -42,20 +46,30 @@
         color: #fff;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
           'Helvetica Neue', sans-serif;
-        font-size: rem(16px);
-        line-height: rem(20px);
+        font-size: rem(24px);
+        line-height: rem(25px);
         padding: rem(8px);
         text-overflow: ellipsis;
         overflow: hidden;
+
+        @include for-narrow-layout {
+          font-size: rem(16px);
+          line-height: rem(20px);
+        }
       }
 
       .star-fill,
       .star-empty {
         position: absolute;
+        width: rem(21px);
+        height: rem(18px);
         bottom: rem(11.5px);
-        width: rem(15px);
-        height: rem(12px);
         z-index: 10;
+
+        @include for-narrow-layout {
+          width: rem(15px);
+          height: rem(12px);
+        }
 
         &:hover {
           scale: 1.15;

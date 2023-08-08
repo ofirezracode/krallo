@@ -1,13 +1,22 @@
 .workspaces {
   max-width: rem(1111px);
-  padding-block-start: rem(44px);
-  padding-inline: rem(47px);
+  padding-block-start: rem(24px);
+  padding-inline: rem(27px);
   margin: auto;
+
+  @include for-narrow-layout {
+    padding-inline: rem(47px);
+    padding-block-start: rem(44px);
+  }
 
   .all-boards {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: rem(45px);
+    gap: rem(25px);
+
+    @include for-narrow-layout {
+      gap: rem(45px);
+    }
   }
 }

@@ -1,9 +1,12 @@
 .app-header {
   height: rem(48px);
-  padding: rem(8px);
   align-items: center;
   backdrop-filter: blur(6px);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+  @include for-narrow-layout {
+    padding: rem(8px);
+  }
 
   &.dark {
     background-color: #54525b;
@@ -25,7 +28,11 @@
     text-decoration: none;
     width: rem(91px);
     padding-inline: rem(8px);
-    margin-inline-end: rem(8px);
+    margin-inline-end: rem(6px);
+
+    @include for-narrow-layout {
+      margin-inline-end: rem(8px);
+    }
 
     label {
       font-size: rem(20px);
@@ -41,9 +48,12 @@
     font-size: rem(18px);
     font-weight: 700;
     font-family: charlie-bold;
-    margin-inline-start: rem(16px);
+    margin-inline-start: rem(6px);
     align-items: center;
 
+    @include for-narrow-layout {
+      margin-inline-start: rem(16px);
+    }
 
     .logo-link {
       height: rem(32px);
