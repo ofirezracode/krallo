@@ -69,23 +69,6 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
     handleInputBlur()
   }
 
-  // let shownMembers = []
-  // if (members?.length) {
-  //   if (window.innerWidth < 650) {
-  //     shownMembers.push(<img className="member-img" src={members[0].imgUrl} alt={members[0].fullname}
-  //       title={`${members[0].fullname} (${members[0].fullname.replace(' ', '').toLowerCase()})`}
-  //       onClick={(e) => onOpenPopover(e, { member: members[0] }, 'member-info')} />)
-  //     shownMembers.push(
-
-  //     )
-  //   } else {
-  //     shownMembers = members?.map((member, idx) =>
-  //       <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member.imgUrl} alt={member.fullname}
-  //         title={`${member.fullname} (${member.fullname.replace(' ', '').toLowerCase()})`}
-  //         onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)
-  //   }
-  // }
-
   if (!board) return <Loader />
   return (
     <section className="board-header-container" ref={boardHeader}>
