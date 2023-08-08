@@ -7,7 +7,7 @@ export function UsersList({ users, size, hover, padding }) {
     <ul className="users-list clean-list flex">
       {users.map((user) => (
         <li key={user._id}>
-          <UserImg userImg={user.imgUrl} size={size} hover={hover} padding={padding} />
+          <UserImg user={user} size={size} hover={hover} padding={padding} />
         </li>
       ))}
     </ul>

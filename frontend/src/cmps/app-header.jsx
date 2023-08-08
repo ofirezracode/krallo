@@ -46,7 +46,7 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
     try {
       await logout()
       navigate(`/`)
-    } catch (err) {}
+    } catch (err) { }
   }
 
   return (
@@ -102,7 +102,7 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
             </li>
             <li>
               <button className="user-img-header flex" onClick={(e) => onOpenPopover(e, { onLogout }, 'logout')} title="logout">
-                <UserImg size="small" hover="circle" userImg={loggedInUser.imgUrl} padding={true} />
+                <UserImg size="small" hover="circle" user={loggedInUser} padding={true} />
               </button>
             </li>
           </ul>

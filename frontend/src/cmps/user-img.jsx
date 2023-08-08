@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function UserImg({ size, hover, userImg, padding }) {
+export function UserImg({ size, hover, user, padding }) {
   let imgClasses = ''
 
   if (!size) {
@@ -21,8 +21,10 @@ export function UserImg({ size, hover, userImg, padding }) {
 
   return (
     <div className="img-container">
-      {userImg && <img className={`user-img ${imgClasses}`} src={userImg} alt="" title="Ofir Ezra (ofirezra)" />}
-      {!userImg && <div className={`user-img ${imgClasses}`} style={{ backgroundColor: '#94c748' }} />}
+      {user.imgUrl ? (<img className={`user-img ${imgClasses}`} src={user.imgUrl} alt={user.fullname}
+        title={`${user.fullname} (${user.fullname.replace(' ', '').toLowerCase()})`} />
+      ) : (
+        <div className={`user-img ${imgClasses}`} style={{ backgroundColor: '#94c748' }} />)}
     </div>
   )
 }

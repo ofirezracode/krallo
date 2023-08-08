@@ -5,7 +5,7 @@ export function PopoverMemberInfo({ member, onClose }) {
     return (
         <section className='popover-member-info flex'>
             <div className='member-img'>
-                <UserImg userImg={member.imgUrl} size="xxlarge" />
+                <UserImg user={member} size="xxlarge" />
             </div>
             <div className="member-info">
                 <h1>{member.fullname}</h1>

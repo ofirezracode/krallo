@@ -6,7 +6,7 @@ import { UserImg } from '../user-img'
 export function MenuAbout({ board }) {
 
     const { createdBy } = board
-    const { fullname, email, imgUrl } = createdBy
+    const { fullname } = createdBy
     return (
         <div className='menu-about'>
             <ul className='clean-list flex column'>
@@ -15,7 +15,7 @@ export function MenuAbout({ board }) {
                 </li>
                 <li className='flex row admin-details'>
                     <div className='admin-img'>
-                        <UserImg size={'xlarge'} userImg={imgUrl} />
+                        <UserImg size={'xlarge'} user={createdBy} />
                     </div>
                     <div className='admin-name flex column'>
                         <h1>{fullname}</h1>

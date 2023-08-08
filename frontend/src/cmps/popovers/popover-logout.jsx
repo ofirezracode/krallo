@@ -14,7 +14,7 @@ export function PopoverLogout({ onLogout, onClose }) {
       </div>
       <div>
         <div className='popover-logout-container flex'>
-          <UserImg size="large" userImg={user.imgUrl} padding={true} />
+          <UserImg size="large" user={user} padding={true} />
           <div className='flex column'>
             <span className='fullname'>{user.fullname}</span>
             <span className='email'>{user.email}</span>

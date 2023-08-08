@@ -239,7 +239,7 @@ export function PopoverFilter({ onFilterBy, onClose }) {
                   <li className="flex" key={member._id}>
                     <Checkbox isChecked={isLabelChecked} onToggle={onClickMember} onClickProps={member} />
                     <button onClick={(e) => onClickMember(e, member)} className="member-btn flex align-center">
-                      <UserImg userImg={member.imgUrl} size="xsmall" />
+                      <UserImg user={member} size="xsmall" />
                       <label>{memberFullname}</label>
                     </button>
                   </li>

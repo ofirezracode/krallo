@@ -34,7 +34,7 @@ export function PopoverShare({ board, onHandleBoardMembers, onMemberDelete, onCl
             return (
               <li key={user._id}>
                 <button className="user-button flex align-center" onClick={() => toggleMember(user)}>
-                  <UserImg userImg={user.imgUrl} size="medium" />
+                  <UserImg user={user} size="medium" />
                   <p className="user-info">{userInfo}</p>
                   {user.isOnBoard && (
                     <span>
