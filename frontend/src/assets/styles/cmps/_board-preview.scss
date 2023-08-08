@@ -101,11 +101,16 @@
 
 .new-board {
   border-radius: 3px;
-  width: rem(190.58px);
-  height: rem(96px);
+  width: 100%;
+  height: rem(120px);
   background-color: rgb(244, 244, 244);
   cursor: pointer;
   transition: 0.2s ease-in-out;
+
+  @include for-narrow-layout {
+    width: rem(190.58px);
+    height: rem(96px);
+  }
 
   &:hover {
     filter: brightness(90%);
@@ -116,7 +121,11 @@
 
     p {
       color: $card-title;
-      font-size: rem(14px);
+      font-size: rem(20px);
+
+      @include for-narrow-layout {
+        font-size: rem(14px);
+      }
     }
   }
 }
