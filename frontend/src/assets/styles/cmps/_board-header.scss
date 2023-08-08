@@ -52,7 +52,7 @@
         h1 {
           cursor: pointer;
           padding-block-start: rem(2px);
-          width: rem(200px);
+          max-width: rem(200px);
           text-overflow: ellipsis;
           overflow-wrap: break-word;
           white-space: nowrap;
