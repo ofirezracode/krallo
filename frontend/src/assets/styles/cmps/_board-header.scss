@@ -1,7 +1,17 @@
 .board-header-container {
   position: relative;
-  backdrop-filter: blur(4px);
-  background-color: $add-card;
+
+  .blur-header {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    backdrop-filter: blur(4px);
+    filter: brightness(95%);
+    background-color: #dfdfdf32;
+  }
 
   .board-header {
     height: max-content;
