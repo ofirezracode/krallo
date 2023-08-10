@@ -25,10 +25,14 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   const [isListening, setIsListening] = useCloseOnOutsideClick(onClosePopover, 'popover', 'add-to-card-btn', '.popover-backdrop')
 
   useEffect(() => {
-    if (type) {
+    if (isShown) {
+      document.body.style.overflow = 'hidden'
       setIsListening(true)
     }
-  }, [type])
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isShown])
 
   const popoverRef = useRef()
 

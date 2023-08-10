@@ -7,7 +7,7 @@ import { dateTimeService } from '../../services/date-time.service.js'
 
 export function PopoverDates({ activeDueDate, onDueDateSave, onClose }) {
   const [isRange, setIsRange] = useState(false)
-  const [isDueDate, setIsDueDate] = useState(false)
+  const [isDueDate, setIsDueDate] = useState(true)
 
   const [datePicker, setDatePicker] = useState(new Date())
   const [rangePicker, setRangePicker] = useState([
@@ -248,6 +248,7 @@ export function PopoverDates({ activeDueDate, onDueDateSave, onClose }) {
           className="date-input"
           type="text"
           disabled={!isDueDate}
+          autoFocus
         />
         <input
           onBlur={testTimeInput}

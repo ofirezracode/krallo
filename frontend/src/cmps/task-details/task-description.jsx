@@ -51,6 +51,7 @@ export function TaskDescription({ task, onDescriptionUpdate }) {
             onChange={(e) => setUpdatedDescription(e.target.value)}
             value={updatedDescription}
             placeholder="Enter a description..."
+            autoFocus
           />
           <div className="btn-sections">
             <button onClick={onSaveDescription} className="btn-save">

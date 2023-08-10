@@ -102,7 +102,7 @@ export function PopoverLabels({ task, labels, onClose, onLabelChange, onLabelEdi
       <PopoverCmpHeader title={title} onClose={onClose} onReturn={popoverState !== 'labels' ? () => navigateToState(returnTarget) : ''} />
       {popoverState === 'labels' && (
         <div className="labels">
-          <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search labels..." />
+          <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search labels..." autoFocus />
           <p>Labels</p>
           <ul className="labels-list flex column">
             {filteredBoardLabels.map((label) => {
