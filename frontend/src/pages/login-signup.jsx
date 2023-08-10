@@ -74,6 +74,7 @@ export function LoginSignup() {
                       name="email"
                       value={credentials.email}
                       onChange={handleChange}
+                      autoFocus
                     />
                     <button className="continue-btn">Continue</button>
                   </form>
@@ -92,6 +93,7 @@ export function LoginSignup() {
                       name="email"
                       value={credentials.email}
                       onChange={handleChange}
+                      autoFocus
                     />
                     <p className="acknowledge-pra">
                       By clicking “Continue” below, you agree to the Atlassian Cloud Terms of Service and acknowledge the Privacy Policy.

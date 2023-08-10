@@ -19,23 +19,25 @@ export function AppHeaderHome() {
   }
 
   return (
-    <header className="app-header-home flex between">
-      <div className="logo flex column between">
-        <Link to={'/'}>
-          <img className="logo-img" src={Img} alt="logo" />
-        </Link>
-      </div>
-      <nav className="nav flex">
-        <label onClick={onNavToWorkspaces}>Workspaces</label>
-      </nav>
-      <div className="header-btns flex">
-        <Link to={'/login'} className="login-btn flex align-center justify-center">
-          Log in
-        </Link>
-        <label className="try-btn flex align-center justify-center" onClick={onKralloForFree}>
-          Get Krallo for free
-        </label>
-      </div>
-    </header>
+    <div className="app-header-home-container">
+      <header className="app-header-home flex between">
+        <div className="logo flex column between">
+          <Link to={'/'}>
+            <img className="logo-img" src={Img} alt="logo" />
+          </Link>
+        </div>
+        <nav className="nav flex">
+          <label onClick={onNavToWorkspaces}>Workspaces</label>
+        </nav>
+        <div className="header-btns flex">
+          <Link to={'/login'} className="login-btn flex align-center justify-center">
+            Log in
+          </Link>
+          <label className="try-btn flex align-center justify-center" onClick={onKralloForFree}>
+            Get Krallo for free
+          </label>
+        </div>
+      </header>
+    </div>
   )
 }

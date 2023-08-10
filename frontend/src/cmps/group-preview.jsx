@@ -100,7 +100,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
         )}
         {isListening && (
           <form className="edit-title-form flex align-center" onSubmit={onSubmit}>
-            <input value={editedTitle} onChange={(e) => onTitleChange(e)} autoFocus></input>
+            <input value={editedTitle} onChange={(e) => onTitleChange(e)} autoFocus />
           </form>
         )}
         <button

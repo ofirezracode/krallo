@@ -1,106 +1,110 @@
 // .headers:not(.app-header) {
-
-.app-header-home {
-  font-family: charlie-regular;
-  height: rem(60px);
-  align-items: stretch;
-  height: rem(60px);
-  margin: 0px auto;
-  max-width: rem(1320px);
+.app-header-home-container {
+  position: fixed;
+  top: 0;
+  z-index: 100;
   background-color: #fff;
-  box-shadow: none;
-  // position: sticky;
-  // top: 0;
-  // z-index: 100;
+  width: 100%;
+  box-shadow: rgba(9, 30, 66, 0.15) 0px 0.5rem 1rem 0px;
   transition: box-shadow 0.5s ease 0s;
 
   &:hover {
-    box-shadow: rgba(9, 30, 66, 0.15) 0px 0.5rem 1rem 0px;
+    box-shadow: none;
   }
 
-  .logo {
-    width: rem(150px);
-    height: 100%;
+  .app-header-home {
+    font-family: charlie-regular;
+    height: rem(60px);
+    align-items: stretch;
+    height: rem(60px);
+    margin: 0px auto;
+    max-width: rem(1320px);
 
-    .logo-img {
-      padding: rem(18px) rem(16px);
-    }
 
-    @include for-normal-layout {
-      height: rem(40px);
+    .logo {
+      width: rem(150px);
+      // height: 100%;
+      display: flex;
 
       .logo-img {
-        width: rem(170px);
+        padding: rem(18px) rem(16px);
+        height: 100%;
+        display: flex;
+      }
+
+      @include for-narrow-layout {
+        height: rem(40px);
+
+        .logo-img {}
+      }
+    }
+
+    .nav {
+      flex: 1;
+      gap: rem(4px);
+
+      a,
+      label {
+        align-self: center;
+        font-size: rem(14px);
+        color: $card-title;
+        text-decoration: none;
+        transition: 0.2s ease-in-out;
+
+        @include for-normal-layout {
+          font-size: rem(16px);
+          padding: rem(20px) rem(16px) rem(16px);
+
+
+        }
+
+        &:hover {
+          color: $btn-blue1;
+        }
+      }
+    }
+
+    .header-btns {
+      & * {
+        text-decoration: none;
+        letter-spacing: 0.03em;
+      }
+
+      .login-btn {
+        min-width: rem(60px);
+        padding: rem(4px);
+        text-decoration: none;
+        margin: 0;
+        font-size: rem(14px);
+        color: $card-title;
+        background-color: #fff;
+
+        @include for-normal-layout {
+          padding: rem(8px) rem(24px);
+          width: rem(101.81px);
+          font-size: rem(19.2px);
+        }
+      }
+
+      .try-btn {
+        margin: 0;
+        background-color: $btn-blue1;
+        color: #fff;
+        padding: rem(4px);
+        font-size: rem(14px);
+        text-align: center;
+
+        @include for-normal-layout {
+          padding: rem(8px) rem(24px);
+          width: rem(204px);
+          font-size: rem(19.2px);
+        }
+
+        &:hover {
+          background-color: $default-blue;
+        }
       }
     }
   }
 
-  .nav {
-    flex: 1;
-    gap: rem(4px);
-
-    a,
-    label {
-      align-self: center;
-      font-size: rem(14px);
-      color: $card-title;
-      text-decoration: none;
-      transition: 0.2s ease-in-out;
-
-      @include for-normal-layout {
-        font-size: rem(16px);
-        padding: rem(20px) rem(16px) rem(16px);
-
-
-      }
-
-      &:hover {
-        color: $btn-blue1;
-      }
-    }
-  }
-
-  .header-btns {
-    & * {
-      text-decoration: none;
-      letter-spacing: 0.03em;
-    }
-
-    .login-btn {
-      min-width: rem(60px);
-      padding: rem(4px);
-      text-decoration: none;
-      margin: 0;
-      font-size: rem(14px);
-      color: $card-title;
-      background-color: #fff;
-
-      @include for-normal-layout {
-        padding: rem(8px) rem(24px);
-        width: rem(101.81px);
-        font-size: rem(19.2px);
-      }
-    }
-
-    .try-btn {
-      margin: 0;
-      background-color: $btn-blue1;
-      color: #fff;
-      padding: rem(4px);
-      font-size: rem(14px);
-      text-align: center;
-
-      @include for-normal-layout {
-        padding: rem(8px) rem(24px);
-        width: rem(204px);
-        font-size: rem(19.2px);
-      }
-
-      &:hover {
-        background-color: $default-blue;
-      }
-    }
-  }
 }
-
-// }

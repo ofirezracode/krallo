@@ -1,27 +1,28 @@
 .home {
 
-
   .home-first-container {
     background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
       linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
 
-    //   background-size: 173%;
-    // background-position: 7% bottom;
-
     font-family: charlie-regular;
     margin-block-end: rem(21px);
+    padding-block-start: rem(68px);
 
     .home-container {
-      max-width: rem(1137px);
       margin: auto;
       flex-direction: column;
       align-items: center;
       text-align: center;
 
+      @include for-narrow-layout {
+        max-width: rem(1137px);
+
+      }
+
       .home-txt {
         flex: 0 0 auto;
         color: #fff;
-        padding: rem(91px) rem(7px);
+        padding: rem(60px) rem(19px);
 
         .txt-opening {
           line-height: 1.25;
@@ -73,36 +74,46 @@
             font-family: inherit;
           }
 
-
           @include for-wide-layout {
             font-size: rem(16px);
             width: fit-content;
           }
         }
 
-        @include for-normal-layout {
+        @include for-narrow-layout {
+          padding: rem(60px) rem(15px);
+          max-width: rem(720px);
+        }
+
+        @include for-wide-layout {
           padding: rem(91px) rem(7px);
-          width: rem(500px);
+          max-width: rem(500px);
         }
       }
 
       .home-img {
         display: flex;
-        margin-inline-end: rem(-20px);
         padding-inline: rem(40px);
 
         img {
-          max-width: rem(528px);
-          height: 80%;
+          max-width: 100%;
+          margin: auto;
+
+          @include for-narrow-layout {
+            max-width: 60%;
+          }
 
           @include for-wide-layout {
             height: auto;
             scale: 1.2;
+            height: 80%;
+            max-width: rem(528px);
           }
         }
 
-        @include for-normal-layout {
+        @include for-wide-layout {
           padding-block-start: rem(114px);
+          margin-inline-end: rem(-20px);
         }
       }
 
@@ -117,7 +128,7 @@
   }
 
   .bg-color-productivity {
-    background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
+    background: linear-gradient(0deg, rgb(255, 255, 255), rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
     background-blend-mode: normal;
 
     .productivity-container {
@@ -125,7 +136,11 @@
       color: $home-text;
       margin-inline: auto;
       padding-inline: rem(9px);
-      max-width: 1140px;
+      max-width: rem(1140px);
+
+      @include for-wide-layout {
+        height: rem(254px);
+      }
 
       .productivity-text-container {
         order: 1;
@@ -173,7 +188,8 @@
             font-size: rem(16px);
             color: #091E42;
 
-            @include for-normal-layout {
+            @include for-narrow-layout {
+              max-width: rem(700px);
               font-size: rem(20px);
               letter-spacing: rem(.95px);
               line-height: rem(30px);
