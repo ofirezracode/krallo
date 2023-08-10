@@ -131,16 +131,16 @@
     background: linear-gradient(0deg, rgb(255, 255, 255), rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
     background-blend-mode: normal;
 
+    @include for-narrow-layout {
+      padding: 0 rem(40px) rem(40px);
+    }
+
     .productivity-container {
       font-family: charlie-regular;
       color: $home-text;
       margin-inline: auto;
       padding-inline: rem(9px);
       max-width: rem(1140px);
-
-      @include for-wide-layout {
-        height: rem(254px);
-      }
 
       .productivity-text-container {
         order: 1;
