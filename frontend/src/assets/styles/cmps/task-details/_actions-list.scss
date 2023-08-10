@@ -1,6 +1,7 @@
 .add-to-card-container {
   grid-column: 2;
   padding: 0 rem(16px) rem(8px) rem(8px);
+  min-height: rem(375px);
 
   h5 {
     font-weight: 500;
