@@ -1,3 +1,5 @@
+import { dateTimeService } from "./date-time.service"
+
 export const utilService = {
   makeId,
   getRandomIntInclusive,
@@ -80,7 +82,7 @@ function formatTime(time) {
 function _getFormattedTime(t) {
   var d = new Date(t)
 
-  var str = 'At ' + d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' Time: ' + d.getHours() + ':' + d.getMinutes()
+  var str = d.toLocaleString('en-US', { month: 'short' }) + ' ' + d.getDate(t) + ' at ' + dateTimeService.getTimeFromTimestamp(t)
   return str
 }
 
