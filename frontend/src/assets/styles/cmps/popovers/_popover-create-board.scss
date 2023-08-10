@@ -120,7 +120,7 @@
             font-size: rem(12px);
             line-height: rem(16px);
             font-weight: 700;
-            font-family: $font-input;
+            font-family: $font;
 
             .asterisk {
                 color: $asterisk;
@@ -136,13 +136,13 @@
             outline: none;
 
             color: $text;
-            font-family: $font-input;
+            font-family: $font;
             font-size: rem(14px);
             line-height: rem(20px);
             box-shadow: inset 0 0 0 2px #091E4224;
 
             &.required {
-               &:focus {
+                &:focus {
                     box-shadow: inset 0 0 0 2px $asterisk;
                 }
             }
@@ -170,7 +170,7 @@
             p {
                 margin: 0 0 8px;
                 color: $text;
-                font-family: $font-input;
+                font-family: $font;
                 font-size: 14px;
                 line-height: 20px;
                 font-weight: 400;
@@ -183,7 +183,7 @@
             border: none;
             width: 100%;
             margin-block-start: rem(12px);
-            font-family: $font-input;
+            font-family: $font;
             font-size: rem(14px);
             line-height: rem(20px);
 

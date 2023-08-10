@@ -15,7 +15,7 @@
       overflow-wrap: break-word;
 
       line-height: rem(19px);
-      font-family: $font-input;
+      font-family: $font;
       cursor: text;
       font-size: 14px;
       font-weight: 400;
@@ -48,7 +48,7 @@
         line-height: 20px;
         border-radius: 3px;
         color: $text;
-        font-family: $font-input;
+        font-family: $font;
         padding: rem(6px) rem(12px);
         background-color: transparent;
 

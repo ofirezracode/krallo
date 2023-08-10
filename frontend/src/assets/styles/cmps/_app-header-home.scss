@@ -23,7 +23,6 @@
 
     .logo {
       width: rem(150px);
-      // height: 100%;
       display: flex;
 
       .logo-img {
@@ -34,8 +33,6 @@
 
       @include for-narrow-layout {
         height: rem(40px);
-
-        .logo-img {}
       }
     }
 

@@ -3,8 +3,16 @@
 
   .login-logo-img {
     display: block;
-    height: rem(43px);
+    height: rem(35px);
     margin: rem(40px) auto;
+
+    @include for-narrow-layout {
+      height: rem(39px);
+    }
+
+    @include for-wide-layout {
+      height: rem(43px);
+    }
   }
 
   .main-login {
@@ -26,8 +34,12 @@
       .login-container-layout {
         background-color: #ffffff;
         border-radius: 3px;
-        padding: rem(25px) rem(40px);
+        padding: rem(25px) rem(25px);
         box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
+
+        @include for-narrow-layout {
+          padding: rem(25px) rem(40px);
+        }
 
         .login-title {
           text-align: center;
@@ -48,7 +60,6 @@
         }
 
         .login-form {
-          max-width: rem(320px);
 
           .email-input {
             width: 100%;
