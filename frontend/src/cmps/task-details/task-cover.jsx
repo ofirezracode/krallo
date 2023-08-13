@@ -8,7 +8,7 @@ export function TaskCover({ task, taskDetails, onStyleChange }) {
   const [cover, setCover] = useState(null)
 
   useEffect(
-    function () {
+    () => {
       async function getAvgColor() {
         if (task && task.style) {
           if (task.style.bgColor) {
