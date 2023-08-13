@@ -50,6 +50,10 @@
 
         border-radius: 50%;
         color: $small-titles;
+
+        path {
+          stroke-width: rem(.5px);
+        }
       }
 
       transition: background-color 85ms,
