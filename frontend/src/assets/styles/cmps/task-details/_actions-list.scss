@@ -22,7 +22,11 @@
     position: relative;
 
     button {
-      width: 100%;
+      width: rem(168px);
+      @include for-normal-layout{
+
+        width: 100%;
+      }
       height: rem(32px);
       padding: rem(6px);
       background-color: #091e420f;

@@ -10,7 +10,7 @@
   display: grid;
   justify-items: center;
   align-items: start;
-  padding: rem(48px) 0 rem(80px);
+  padding: rem(48px) rem(10px) rem(80px);
 
   .backdrop {
     position: fixed;
@@ -27,7 +27,11 @@
     // transform: translate(calc(50vw - 50%));
     background-color: $menu-bgc;
     border-radius: 8px;
-    width: rem(768px);
+    width: 100%;
+    @include for-normal-layout{
+
+      width: rem(768px);
+    }
     // min-height: rem(600px);
     position: relative;
 
@@ -66,10 +70,13 @@
 
     .task-details-container {
       padding-block: rem(16px);
-      padding-inline-start: rem(16px);
-      display: grid;
-      grid-template-columns: rem(560px) rem(192px);
+      padding-inline: rem(16px);
+      @include for-normal-layout{
+        padding-inline-start: rem(16px);
+  display: grid;
+  grid-template-columns: rem(560px) rem(192px);
 
+}
       .card-details-container {
         padding-inline-end: rem(8px);
         grid-column: 1;
