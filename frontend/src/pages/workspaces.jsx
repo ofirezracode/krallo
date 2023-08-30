@@ -12,7 +12,7 @@ export function Workspaces() {
   const myBoards = boards.filter(board => {
     return loggedInUser && board.members && board.members?.some(member => member._id === loggedInUser._id)
   })
-  const starredBoards = myBoards.filter(board => board.isStarred)
+  const starredBoards = myBoards.filter(board => board && board.isStarred)
 
   useEffect(() => {
     loadBoards()
