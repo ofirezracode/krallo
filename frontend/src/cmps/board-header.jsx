@@ -114,7 +114,7 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
                 title={`${member.fullname} (${member.fullname.replace(/\s/g, '').toLowerCase()})`}
                 onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)}
             <div className="mobile-more-members flex center">
-              <label>+{members.length - 1}</label>
+              <label>+{members?.length - 1}</label>
             </div>
           </div>
           <button
