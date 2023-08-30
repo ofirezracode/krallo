@@ -22,7 +22,7 @@ export function UserImg({ size, hover, user, padding }) {
   return (
     <div className="img-container">
       {user.imgUrl ? (<img className={`user-img ${imgClasses}`} src={user.imgUrl} alt={user.fullname}
-        title={`${user.fullname} (${user.fullname.replace(' ', '').toLowerCase()})`} />
+        title={`${user.fullname} (${user.fullname?.replace(' ', '').toLowerCase()})`} />
       ) : (
         <div className={`user-img ${imgClasses}`} style={{ backgroundColor: '#94c748' }} />)}
     </div>

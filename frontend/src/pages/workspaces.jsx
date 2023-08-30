@@ -10,7 +10,7 @@ export function Workspaces() {
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
   const myBoards = boards.filter(board => {
-    return loggedInUser && board.members && board.members.some(member => member._id === loggedInUser._id)
+    return loggedInUser && board.members && board.members?.some(member => member._id === loggedInUser._id)
   })
   const starredBoards = myBoards.filter(board => board.isStarred)
 
