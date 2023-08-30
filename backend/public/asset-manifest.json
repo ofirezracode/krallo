@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.88ef09a8.css",
-    "main.js": "/static/js/main.4e6ad670.js",
+    "main.css": "/static/css/main.8099b682.css",
+    "main.js": "/static/js/main.e95a1356.js",
     "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "static/media/home-img.webp": "/static/media/home-img.845b652fadf993ce6a92.webp",
@@ -16,26 +16,26 @@
     "static/media/ofir-pic.jpg": "/static/media/ofir-pic.cb2f6cfbc88755401078.jpg",
     "static/media/right-footer-img.svg": "/static/media/right-footer-img.3a2e83cef20d6bab2dbaf88d4a44819f.svg",
     "static/media/change-bg-color.png": "/static/media/change-bg-color.97db30fe74a58b7b7a18.png",
-    "static/media/logo.svg": "/static/media/logo.a84be9045503f2c4beee4503b1256f07.svg",
-    "static/media/krallo-logo-blue.svg": "/static/media/krallo-logo-blue.e2cb08804429a92c5bb5c2dc4db1b8cc.svg",
+    "static/media/logo.svg": "/static/media/logo.9657b20433c2a67a4c2682a66ca9b5a0.svg",
+    "static/media/krallo-logo-blue.svg": "/static/media/krallo-logo-blue.391389c0f8dfefc6a53a78cdc98c1e87.svg",
     "static/media/template-icon.svg": "/static/media/template-icon.6bcd61b66e436f4e76ebe6b753dbbc7b.svg",
     "static/media/clip-icon.svg": "/static/media/clip-icon.877d611e91a23ea2fef65d92c6634b58.svg",
     "static/media/member-icon.svg": "/static/media/member-icon.3cd8a1cd7668cb8d1af6cdda522fbc68.svg",
-    "static/media/loader.svg": "/static/media/loader.4ce56a5f125d91cf6f2023fde70ca3d0.svg",
     "static/media/star-empty.svg": "/static/media/star-empty.2f87ce094b7b74836ea5247de341cdf7.svg",
-    "static/media/activity-icon.svg": "/static/media/activity-icon.0fb63a7b8bb9c6d8224ab802a148d503.svg",
-    "static/media/card-icon.svg": "/static/media/card-icon.5a1328db4594a63eebf25544e53e349e.svg",
-    "static/media/edit-icon.svg": "/static/media/edit-icon.3ef7416d4e6c6027db9c2db1ef0b2d9d.svg",
-    "static/media/desc-icon.svg": "/static/media/desc-icon.8ee047c8ef060f0255d9853bf914348b.svg",
+    "static/media/loader.svg": "/static/media/loader.24976c46bbf8be9db6632d95684435f7.svg",
+    "static/media/activity-icon.svg": "/static/media/activity-icon.8054590e9da2f20b3ffb3af2b59a5e85.svg",
+    "static/media/card-icon.svg": "/static/media/card-icon.b5f351329eaa830b0c5e885c2883c37f.svg",
     "index.html": "/index.html",
+    "static/media/edit-icon.svg": "/static/media/edit-icon.43a212b01da44e8b3920b893a6276973.svg",
+    "static/media/desc-icon.svg": "/static/media/desc-icon.91410b73a133fcba293444ad6b4e157e.svg",
     "static/media/krallo-icon.svg": "/static/media/krallo-icon.45e80bf3fb98c281c23b48ad64b23faa.svg",
-    "static/media/cover-icon.svg": "/static/media/cover-icon.997975e01b3873f865902aa0e877e1ca.svg",
+    "static/media/cover-icon.svg": "/static/media/cover-icon.281432fd4f3d6ca16759f668c8041c06.svg",
     "static/media/filter-icon.svg": "/static/media/filter-icon.9af0cd00bb26b9f5b10dd305185e54a7.svg",
-    "main.88ef09a8.css.map": "/static/css/main.88ef09a8.css.map",
-    "main.4e6ad670.js.map": "/static/js/main.4e6ad670.js.map"
+    "main.8099b682.css.map": "/static/css/main.8099b682.css.map",
+    "main.e95a1356.js.map": "/static/js/main.e95a1356.js.map"
   },
   "entrypoints": [
-    "static/css/main.88ef09a8.css",
-    "static/js/main.4e6ad670.js"
+    "static/css/main.8099b682.css",
+    "static/js/main.e95a1356.js"
   ]
 }
