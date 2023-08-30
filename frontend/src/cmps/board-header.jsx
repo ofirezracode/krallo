@@ -111,7 +111,7 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
           <div className="members">
             {members?.map((member, idx) =>
               <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member?.imgUrl} alt={member?.fullname}
-                title={`${member.fullname} (${member.fullname.replace(' ', '').toLowerCase()})`}
+                title={`${member.fullname} (${member.fullname.replace(/\s/g, '').toLowerCase()})`}
                 onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)}
             <div className="mobile-more-members flex center">
               <label>+{members.length - 1}</label>

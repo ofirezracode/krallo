@@ -9,7 +9,7 @@ export function PopoverMemberInfo({ member, onClose }) {
             </div>
             <div className="member-info">
                 <h1>{member.fullname}</h1>
-                <p>@{member.fullname.replace(' ', '').toLowerCase()}</p>
+                <p>@{member.fullname.replace(/\s/g, '').toLowerCase()}</p>
             </div>
             <button onClick={onClose}><HiXMark /></button>
         </section>
