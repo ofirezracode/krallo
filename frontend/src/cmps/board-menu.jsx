@@ -102,7 +102,7 @@ export function BoardMenu({ board, setIsMenuHidden, showMenuClass, onUpdateBoard
           <Popover {...popoverProps} addedProps={addedProps} onClose={closePopover} />
 
           <div className="activity-list">
-            <MenuActivitiesList board={board} activities={activities} />
+            <MenuActivitiesList board={board} activities={reversedActivities} />
           </div></div>)
       }
 
