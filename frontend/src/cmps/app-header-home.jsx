@@ -8,14 +8,13 @@ export function AppHeaderHome() {
 
   async function onNavToWorkspaces() {
     if (!userService.getLoggedInUser()) {
-      await login({ email: 'tamar@krallo.com', password: '123' })
+      await login({ email: 'guest@krallo.com', password: '123' })
     }
     navigate('/workspaces')
   }
 
   async function onKralloForFree() {
-    sessionStorage.setItem('isKralloForFree', true)
-    navigate('/login')
+    onNavToWorkspaces()
   }
 
   return (

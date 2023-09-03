@@ -1,9 +1,21 @@
 import React from 'react'
 import HomeImg from '../assets/img/home-img.webp'
 import { boardService } from '../services/board.service'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { userService } from '../services/user.service'
+import { login } from '../store/user.actions'
 
 export function Home() {
+
+  const navigate = useNavigate()
+
+  async function onTryDemo() {
+    if (!userService.getLoggedInUser()) {
+      await login({ email: 'guest@krallo.com', password: '123' })
+    }
+    navigate('/workspaces')
+  }
+
   return (
     <section className="home">
       <section className="home-first-container">
@@ -11,8 +23,7 @@ export function Home() {
           <div className="home-txt">
             <h1 className="txt-opening"> Krallo brings all your tasks, teammates, and tools together</h1>
             <p className="txt-opening-p">Keep everything in the same place-even if your team isn’t.</p>
-            {/* <button className="signup-btn"  >Try demo - it’s free!</button>å */}
-            <Link className="signup-btn" to="/workspaces">
+            <Link className="signup-btn" onClick={onTryDemo}>
               Try demo - it’s free!
             </Link>
           </div>

@@ -9,9 +9,10 @@ export function Workspaces() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
-  const myBoards = boards.filter(board => {
-    return loggedInUser && board.members && board.members?.some(member => member?._id === loggedInUser._id)
-  })
+  const myBoards = boards
+  // const myBoards = boards.filter(board => {
+  //   return loggedInUser && board.members && board.members?.some(member => member?._id === loggedInUser._id)
+  // })
   const starredBoards = myBoards.filter(board => board && board.isStarred)
 
   useEffect(() => {
