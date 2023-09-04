@@ -39,6 +39,9 @@
       position: absolute;
       right: rem(12px);
       top: rem(12px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: rem(4px);
       height: rem(40px);
       width: rem(40px);
