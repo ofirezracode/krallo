@@ -4,9 +4,7 @@
     padding-left: rem(40px);
     position: relative;
     transform-origin: left bottom;
-    transition-duration: 0.3s;
-    transition-property: transform, opacity, height, padding, margin, background-color;
-    transition-timing-function: ease-in;
+    transition: .1s ease-in-out;
     display: flex;
     align-items: center;
 
