@@ -5,7 +5,7 @@ import { boardService } from '../../services/board.service'
 import { Configuration, OpenAIApi } from 'openai'
 
 const config = new Configuration({
-  apiKey: process.env.REACT_APP_OPENAI_API_KEY_ETAI,
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY_TAMAR,
 })
 const openai = new OpenAIApi(config)
 

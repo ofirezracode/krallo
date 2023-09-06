@@ -26,24 +26,23 @@ export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, o
             </div>}
             {attachments.length > 0 && <ul className="flex column clean-list">
                 {attachments.map((attachment) => {
-                    // let modeImgColor = utilService.getAvgColor(attachment.url)
-                    // let bgColor = { backgroundColor: modeImgColor }
-                    <div key={attachment._id}></div>
-                    let boardStyle = { backgroundImage: `url(${attachment.url})` }
+                    const { _id, url, title, uploadedAt } = attachment
+                    let boardStyle = { backgroundImage: `url(${url})` }
                     return (
-                        <li key={attachment._id} className='flex'>
-                            <div className='attach-img flex center' style={boardStyle}>
-                                <div className='blur-bg-img'></div>
-                                <img src={attachment.url} alt={attachment.title} />
-                            </div>
-                            <div className='attach-details'>
-                                <h4>{attachment.title}
-                                    <a href={attachment.url} target="_blank"><BsArrowUpRight /></a>
+                        <li key={_id} className='flex'>
+                            <a href={url} target="_blank">
+                                <div className='attach-img flex center' style={boardStyle}>
+                                    <div className='blur-bg-img'></div>
+                                    <img src={url} alt={title} />
+                                </div>
+                            </a>
+                            <div className='attach-details flex column justify-center'>
+                                <h4>{title}
+                                    <a href={url} target="_blank"><BsArrowUpRight /></a>
                                 </h4>
-                                <div className='attach-actions flex'>
-                                    <span>Added {utilService.formatTime(attachment.uploadedAt)}</span>
+                                <div className='attach-actions flex wrap'>
+                                    <span>Added {utilService.formatTime(uploadedAt)}</span>
                                     <span><button>Comment</button></span>
-                                    {/* <span><button onClick={() => { onDeleteAttachment(attachment._id) }}>Delete</button></span> */}
                                     <span><button onClick={(e) => onOpenPopover(e, { attachment, onDeleteAttachment }, 'delete-attachment')}>
                                         Delete
                                     </button></span>
@@ -54,18 +53,20 @@ export function TaskAttachments({ task, onAttachmentAdded, onDeleteAttachment, o
                                 </div>
                                 <div className='img-to-cover flex align-center'>
                                     <img src={CoverIcon} alt="cover-icon" />
-                                    <button onClick={(ev) => onAttachToCover(ev, attachment.url)}>Make Cover</button>
+                                    <button onClick={(ev) => onAttachToCover(ev, url)}>Make Cover</button>
                                 </div>
                             </div>
                         </li>
                     )
                 })}
             </ul >}
-            {attachments.length > 0 && <div>
-                <button className='btn' onClick={(e) => onOpenPopover(e, { task, onAttachmentAdded }, 'attachment')}>
-                    Add an attachment
-                </button>
-            </div>}
+            {
+                attachments.length > 0 && <div>
+                    <button className='btn' onClick={(e) => onOpenPopover(e, { task, onAttachmentAdded }, 'attachment')}>
+                        Add an attachment
+                    </button>
+                </div>
+            }
         </section >
     )
 }
