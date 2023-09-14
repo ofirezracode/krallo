@@ -32,8 +32,6 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
     openPopover(e, type)
   }
 
-
-
   async function onToggleIsStarred(ev, board) {
     try {
       ev.preventDefault()
@@ -102,7 +100,7 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
           <button
             title="Filter cards"
             className="flex align-center"
-            onClick={(e) => onOpenPopover(e, { onFilterBy: () => { }, widthOverride: '384px' }, 'filter')}
+            onClick={(e) => onOpenPopover(e, { onFilterBy: () => { } }, 'filter')}
           >
             <img src={FilterIcon} className="filter-icon" alt="filter-icon" />
             <p>Filter</p>
@@ -110,7 +108,7 @@ export function BoardHeader({ onChangeTitle, onHandleBoardMembers, onMemberDelet
           <span>|</span>
           <div className="members">
             {members?.map((member, idx) =>
-             member && <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member?.imgUrl} alt={member?.fullname}
+              member && <img key={member._id} className="member-img" style={{ zIndex: idx + 1 }} src={member?.imgUrl} alt={member?.fullname}
                 title={`${member.fullname} (${member.fullname.replace(/\s/g, '').toLowerCase()})`}
                 onClick={(e) => onOpenPopover(e, { member }, 'member-info')} />)}
             <div className="mobile-more-members flex center">

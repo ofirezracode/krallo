@@ -9,6 +9,7 @@ import { boardService } from '../services/board.service'
 import { usePopover } from '../customHooks/usePopover'
 import { Popover } from './popover'
 import { useSelector } from 'react-redux'
+import { setCurrFilterBy } from '../store/board.actions'
 
 export function AppHeader({ toggleDarkMode, darkClass }) {
   const navigate = useNavigate()
@@ -16,7 +17,7 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
   const [popoverProps, closePopover, openPopover] = usePopover()
   const [isBoardCreated, setIsBoardCreated] = useState(false)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-
+  const [filterKeyword, setFilterKeyword] = useState('')
   useEffect(() => {
     if (isBoardCreated) {
       window.location.reload()
@@ -49,6 +50,26 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
     } catch (err) { }
   }
 
+  function onKeywordChange(newKeyword) {
+    setFilterKeyword(newKeyword)
+    onFilterChange('keywords', newKeyword)
+  }
+
+  function onFilterChange(key, value) {
+    const filterBy = {}
+    if (filterKeyword) {
+      filterBy.keywords = filterKeyword
+    }
+
+    filterBy[key] = value
+
+    setCurrFilterBy(filterBy)
+  }
+  function handleFocus(ev) {
+    ev.preventDefault()
+    ev.target.select()
+  }
+
   return (
     <>
       <ul className={`app-header flex between clean-list ${darkClass}`}>
@@ -71,7 +92,15 @@ export function AppHeader({ toggleDarkMode, darkClass }) {
         <li>
           <ul className="app-header-links flex">
             <li>
-              <input className={`search-input ${darkClass}`} type="search" id="site-search" maxLength={'500px'} placeholder="Search" />
+              <input
+                className={`search-input ${darkClass}`}
+                type="search"
+                value={filterKeyword}
+                id="site-search"
+                onChange={(e) => onKeywordChange(e.target.value)}
+                maxLength={'500px'}
+                placeholder="Search"
+                onFocus={handleFocus} />
             </li>
             <li>
               <button className="btn-search" title="Search">

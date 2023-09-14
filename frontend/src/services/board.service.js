@@ -129,21 +129,24 @@ function filterBoard(board, filterBy = {}) {
 
 function _filterGroupKeywords(group, keywords) {
   let filteredGroup = { ...group }
-
+  const regex = new RegExp(keywords, 'i')
   filteredGroup.tasks = filteredGroup.tasks.filter((task) => {
     return (
-      task.title.includes(keywords) ||
-      (task.description && task.description.includes(keywords)) ||
+      regex.test(task.title) ||
+      (task.description && regex.test(task.description)) ||
       (task.checklists &&
-        task.checklists.filter((checklist) => {
-          if (checklist.title.includes(keywords)) return true
+        task.checklists.some((checklist) => {
+          if (regex.test(checklist.title)) return true;
           else {
-            if (checklist.todos.filter((todo) => todo.title.includes(keywords)).length > 0) return true
+            if (
+              checklist.todos.some((todo) => regex.test(todo.title))
+            )
+              return true;
           }
-          return false
-        }).length > 0) ||
-      (task.comments && task.comments.filter((comment) => comment.txt.includes(keywords)).length > 0)
-    )
+          return false;
+        })) ||
+      (task.comments && task.comments.some((comment) => regex.test(comment.txt)))
+    );
   })
 
   return filteredGroup
@@ -283,7 +286,7 @@ function toggleMemberOnBoard(board, member, activityType) {
   return board
 }
 
-function createBoardFromTemplate() {}
+function createBoardFromTemplate() { }
 
 function createTask(title) {
   const task = {

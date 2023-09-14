@@ -217,7 +217,7 @@ export function PopoverFilter({ onFilterBy, onClose }) {
       <section className="popover-content">
         <div className="filter-container filter-keywords">
           <h4 className="labels-title">Keyword</h4>
-          <input type="text" value={filterKeyword} onChange={(e) => onKeywordChange(e.target.value)} placeholder="Enter a keyword..." />
+          <input type="search" value={filterKeyword} onChange={(e) => onKeywordChange(e.target.value)} placeholder="Enter a keyword..." />
           <p className="keyword-help">Search cards, comments, checklists and more.</p>
         </div>
         <div className="filter-container filter-members">
