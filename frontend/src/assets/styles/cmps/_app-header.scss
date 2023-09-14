@@ -152,7 +152,8 @@
       font-size: rem(14px);
       border: 1px solid lightgray;
       margin: rem(2px);
-      transition: background-color 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out,
+      width 0.2s ease-in-out;
       display: none;
 
       @include for-narrow-layout {
@@ -165,7 +166,11 @@
 
       &:focus {
         outline: 1px solid $btn-blue;
-        width: rem(700px);
+
+        @include for-wide-layout {
+          width: rem(700px);
+        }
+
         border: none;
       }
     }
