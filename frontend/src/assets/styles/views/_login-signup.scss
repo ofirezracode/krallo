@@ -16,7 +16,6 @@
   }
 
   .main-login {
-    width: 100%;
     overflow: visible;
     margin-bottom: rem(30px);
     padding-inline: rem(20px);
@@ -30,6 +29,18 @@
       max-width: rem(400px);
       height: rem(564px);
 
+      & * {
+        width: 100%;
+      }
+
+      p {
+        text-align: center;
+        margin-block: rem(16px);
+        font-size: rem(12px);
+        color: $seperator;
+        font-weight: 100;
+        line-height: 1;
+      }
 
       .login-container-layout {
         background-color: #ffffff;
@@ -60,9 +71,7 @@
         }
 
         .login-form {
-
           .email-input {
-            width: 100%;
             font-size: rem(14px);
             background-color: #fafbfc;
             border: 2px solid #dfe1e6;
@@ -82,7 +91,6 @@
 
           .continue-btn {
             font-size: rem(14px);
-            width: 100%;
             height: rem(33px);
             background: $continue-btn;
             color: #fff;
@@ -105,7 +113,6 @@
             font-family: inherit;
             font-weight: bold;
             font-size: rem(14px);
-            width: 100%;
             height: rem(33px);
           }
         }

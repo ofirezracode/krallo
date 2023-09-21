@@ -1,23 +1,40 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import { login, signup } from '../store/user.actions.js'
 import footerImgRight from '../assets/img/right-footer-img.svg'
 import footerImgLeft from '../assets/img/left-footer-img.svg'
 import KralloLogo from '../assets/img/krallo-logo-blue.svg'
 import { loadUsers } from '../store/user.actions'
 import { useNavigate } from 'react-router-dom'
+import { GoogleLoginBtn } from '../cmps/google-login-btn.jsx'
 
 export function LoginSignup() {
   const [credentials, setCredentials] = useState({ email: '', password: '' })
   const [isSignup, setIsSignup] = useState(sessionStorage.getItem('isKralloForFree'))
-  const users = useSelector((storeState) => storeState.userModule.users)
   const navigate = useNavigate()
 
   useEffect(() => {
     loadUsers()
     sessionStorage.removeItem('isKralloForFree')
   }, [])
+
+  async function onGoogleLogin(userData) {
+    const { email, name, picture } = userData;
+
+    const googleUser = {
+      email,
+      password: '',
+      fullname: name,
+      imgUrl: picture,
+    }
+    try{
+    const user = await signup(googleUser)
+    console.log(user)
+    navigate(`/workspaces`)
+    clearState()
+    } catch (err) {
+      console.log('Google login has failed:', err)
+    }
+  }
 
   async function onLogin(ev) {
     if (ev) ev.preventDefault()
@@ -76,8 +93,10 @@ export function LoginSignup() {
                       onChange={handleChange}
                       autoFocus
                     />
-                    <button className="continue-btn">Continue</button>
+                    <button className="continue-btn flex center">Continue</button>
                   </form>
+                  <p>OR</p>
+                  <GoogleLoginBtn onGoogleLogin={onGoogleLogin} />
                 </div>
               </div>
             )}
@@ -98,7 +117,7 @@ export function LoginSignup() {
                     <p className="acknowledge-pra">
                       By clicking “Continue” below, you agree to the Atlassian Cloud Terms of Service and acknowledge the Privacy Policy.
                     </p>
-                    <button className="continue-btn-gray">Continue</button>
+                    <button className="continue-btn-gray flex center">Continue</button>
                   </form>
                 </div>
               </div>

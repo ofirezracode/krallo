@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 const server = http.createServer(app)
-
+console.log('server', server)
 // Express App Config
 app.use(express.json())
 app.use(cookieParser())
@@ -30,7 +30,7 @@ import { setupSocketAPI } from './services/socket.service.mjs'
 
 import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
 app.all('*', setupAsyncLocalStorage)
-
+console.log('authRoutes', authRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/activity', activityRoutes)

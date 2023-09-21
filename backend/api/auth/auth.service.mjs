@@ -29,19 +29,20 @@ async function login(email, password) {
   return user
 }
 
-async function signup({ email, password, fullname, imgUrl }) {
+async function signup({ email, password, fullname, imgUrl = '' }) {
   const saltRounds = 10
-
   logger.debug(`auth.service - signup with email: ${email}, fullname: ${fullname}`)
   //remove after password is implamented
   password = password ? password : '123'
   if (!email || !password) return Promise.reject('Missing required signup information')
 
   const userExist = await userService.getByEmail(email)
-  if (userExist) return Promise.reject('email already taken')
+  if (userExist) {
+    login(email)
+    return
+  }
 
   const hash = await bcrypt.hash(password, saltRounds)
-  imgUrl = imgUrl ? imgUrl : ''
   return userService.add({ email, password: hash, fullname, imgUrl })
 }
 
