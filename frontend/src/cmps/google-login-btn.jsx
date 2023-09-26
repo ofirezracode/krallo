@@ -10,9 +10,10 @@ export function GoogleLoginBtn({ onGoogleLogin }) {
     }
 
     function errorMessage(error) {
-        console.log(error)
+        console.log('Login with Google has failed', error)
     }
+
     return (
-        <GoogleLogin onSuccess={responseMessage} onError={errorMessage} locale={'en'} />
+        <GoogleLogin onSuccess={responseMessage} onFailure={errorMessage} locale={'en'} size='medium' useOneTap/>
     )
 }
