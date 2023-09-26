@@ -3,13 +3,19 @@
 
   background-color: #fff;
   // filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
-  box-shadow: var(--ds-shadow-overlay, 0 8px 12px #091e4226, 0 0 1px $close-icon-hover);
+  box-shadow: 0 8px 12px #091e4226, 0 0 1px $close-icon-hover;
   border-radius: 8px;
-  width: 304px;
+  max-width: 304px;
   // width: fit-content;
   z-index: 1000;
+  position: absolute;
 
-  @include for-wide-layout {}
+  @include for-wide-layout {
+    width: 304px;
+  }
+
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .popover-backdrop {

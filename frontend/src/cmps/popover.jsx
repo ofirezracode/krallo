@@ -28,8 +28,7 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
     if (isShown) {
       document.body.style.overflow = 'hidden'
       setIsListening(true)
-    }
-    return () => {
+    } else {
       document.body.style.overflow = ''
     }
   }, [isShown])
