@@ -2,11 +2,9 @@
   padding: 0 rem(12px) rem(12px);
 
   background-color: #fff;
-  // filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
   box-shadow: 0 8px 12px #091e4226, 0 0 1px $close-icon-hover;
   border-radius: 8px;
   max-width: 304px;
-  // width: fit-content;
   z-index: 1000;
   position: absolute;
 
@@ -24,4 +22,5 @@
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }

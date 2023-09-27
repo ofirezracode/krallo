@@ -22,13 +22,14 @@ import { PopoverDeleteTask } from './popovers/popover-delete-task'
 import { PopoverLeaveBoard } from './popovers/popover-leave-board'
 
 export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
-  const [isListening, setIsListening] = useCloseOnOutsideClick(onClosePopover, 'popover', 'add-to-card-btn', '.popover-backdrop')
+  const [isListening, setIsListening] = useCloseOnOutsideClick(onClosePopover, 'popover', 'add-to-card-btns', '.popover-backdrop')
 
   useEffect(() => {
     if (isShown) {
       document.body.style.overflow = 'hidden'
       setIsListening(true)
-    } else {
+    }
+    return () => {
       document.body.style.overflow = ''
     }
   }, [isShown])

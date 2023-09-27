@@ -28,7 +28,6 @@ export function LoginSignup() {
     }
     try{
     const user = await signup(googleUser)
-    console.log(user)
     navigate(`/workspaces`)
     clearState()
     } catch (err) {

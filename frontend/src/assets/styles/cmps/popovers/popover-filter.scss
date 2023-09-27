@@ -17,6 +17,7 @@
 
       li {
         padding: rem(8px);
+
         .checkbox {
           margin-inline-end: rem(16px);
         }
@@ -24,6 +25,7 @@
 
       &.filter-keywords {
         padding-inline-end: rem(8px);
+
         input {
           padding: rem(8px) rem(12px);
           width: 100%;
@@ -33,7 +35,7 @@
           font-family: inherit;
           line-height: rem(20px);
 
-          box-shadow: inset 0 0 0 2px var(--ds-border-input, $button-board-header);
+          box-shadow: inset 0 0 0 2px $button-board-header;
           transition-property: background-color, border-color, box-shadow;
           transition-duration: 85ms;
           transition-timing-function: ease;
@@ -78,6 +80,7 @@
                 line-height: rem(20px);
               }
             }
+
             &.no-members {
               .member-btn {
                 margin-inline-start: -2px;
@@ -117,16 +120,20 @@
                 padding: rem(6px);
                 box-sizing: content-box;
                 border-radius: 50%;
+
                 &.img-overdue,
                 &.img-next-day {
                   color: #fff;
                 }
+
                 &.img-overdue {
                   background-color: $red-bolder;
                 }
+
                 &.img-next-day {
                   background-color: $yellow-subtle;
                 }
+
                 &.img-no-date {
                   color: $icon;
                   background-color: $close-icon-hover-light;

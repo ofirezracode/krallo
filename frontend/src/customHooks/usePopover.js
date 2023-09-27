@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const usePopover = () => {
+export function usePopover() {
   const [isShown, setIsShown] = useState(false)
   const [type, setType] = useState('')
   const [parentRect, setParentRect] = useState({})
