@@ -27,10 +27,11 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   useEffect(() => {
     if (isShown) {
       setIsListening(true)
-      window.document.body.overflow = 'hidden'
-    } else {
-      window.document.body.overflow = 'auto'
+      // window.document.body.overflow = 'hidden'
     }
+    // } else {
+      // window.document.body.overflow = 'auto'
+    // }
   }, [isShown])
 
   const popoverRef = useRef()
@@ -120,7 +121,7 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
   } else {
     popoverStyles.opacity = 1
   }
-console.log('popoverStyles', popoverStyles)
+
   return (
     <>
       <div className="popover-backdrop" />
