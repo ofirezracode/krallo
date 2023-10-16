@@ -28,10 +28,10 @@ export function Popover({ isShown, type, parentRect, onClose, addedProps }) {
     if (isShown) {
       setIsListening(true)
       // window.document.body.overflow = 'hidden'
-    }
-    // } else {
+    } else {
+      setIsListening(false)
       // window.document.body.overflow = 'auto'
-    // }
+    }
   }, [isShown])
 
   const popoverRef = useRef()
