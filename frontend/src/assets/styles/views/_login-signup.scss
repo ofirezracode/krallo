@@ -70,50 +70,56 @@
           margin-bottom: 1.5rem;
         }
 
-        .login-form {
-          .email-input {
-            font-size: rem(14px);
-            background-color: #fafbfc;
-            border: 2px solid #dfe1e6;
-            border-radius: 3px;
-            height: rem(40px);
-            transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
-            padding: rem(7px);
-            margin: 0 0 rem(16.8px);
+        .login-password-container {
+          .login-form {
+            .email-input {
+              font-size: rem(14px);
+              background-color: #fafbfc;
+              border: 2px solid #dfe1e6;
+              border-radius: 3px;
+              height: rem(40px);
+              transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+              padding: rem(7px);
+              margin: 0 0 rem(16.8px);
 
-            &:focus {
-              padding-inline: rem(9px);
-              box-shadow: inset 0 0 0 2px #388bff;
-              outline: none;
-              border: none;
+              &:focus {
+                padding-inline: rem(9px);
+                box-shadow: inset 0 0 0 2px #388bff;
+                outline: none;
+                border: none;
+              }
+            }
+
+            .continue-btn {
+              font-size: rem(14px);
+              height: rem(33px);
+              background: $continue-btn;
+              color: #fff;
+              padding: rem(8px) rem(18px);
+              border-radius: 4.2px;
+              font-family: inherit;
+              font-weight: bold;
+
+              &:hover {
+                background: #61bd4f;
+              }
+            }
+
+            .continue-btn-gray {
+              // cursor: not-allowed;
+              background-color: rgb(235, 236, 250);
+              color: rgb(122, 134, 154);
+              padding: rem(8px) rem(18px);
+              border-radius: 4.2px;
+              font-family: inherit;
+              font-weight: bold;
+              font-size: rem(14px);
+              height: rem(33px);
             }
           }
 
-          .continue-btn {
-            font-size: rem(14px);
-            height: rem(33px);
-            background: $continue-btn;
-            color: #fff;
-            padding: rem(8px) rem(18px);
-            border-radius: 4.2px;
-            font-family: inherit;
-            font-weight: bold;
-
-            &:hover {
-              background: #61bd4f;
-            }
-          }
-
-          .continue-btn-gray {
-            // cursor: not-allowed;
-            background-color: rgb(235, 236, 250) !important;
-            color: rgb(122, 134, 154) !important;
-            padding: rem(8px) rem(18px);
-            border-radius: 4.2px;
-            font-family: inherit;
-            font-weight: bold;
-            font-size: rem(14px);
-            height: rem(33px);
+          iframe {
+            margin: auto !important;
           }
         }
 

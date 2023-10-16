@@ -119,13 +119,6 @@ export function LoginSignup() {
                 </div>
               </div>
             )}
-            {/* <div className='login-separator'>OR</div>
-                        <ul className='login-links clean-list'>
-                            <li><Link><span><img className='login-icon google' src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg" alt="slack" /></span><span className='login-label'>Continue with Google</span></Link></li>
-                            <li><Link><span ><img className='login-icon microsoft' src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/72ece804e5285ab6507e2406157cda3c/microsoft-logo.svg" alt="slack" /></span><span className='login-label'>Continue with Microsoft</span></Link></li>
-                            <li><Link><span ><img className='login-icon apple' src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/6fc4ecf05a97cfb43cfcbb14738a5aa0/apple-logo-black.svg" alt="slack" /></span><span className='login-label' >Continue with Apple</span></Link></li>
-                            <li><Link><span ><img className='login-icon slack' src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/267584bf90783090ede8f337d9baf909/slack-logo.svg" alt="slack" /></span><span className='login-label'>Continue with Slack</span></Link></li>
-                        </ul> */}
             <hr />
             <button className={`account ${!isSignup ? 'signup-account' : 'login-account '} `} onClick={toggleSignup}>
               {!isSignup ? 'Sign up for an account' : 'Already have an account? Log In'}
