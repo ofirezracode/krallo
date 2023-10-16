@@ -23,6 +23,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
   const [isListening, setIsListening] = useCloseOnOutsideClick(onSubmit, '.edit-title-form', 'group-preview-title')
   const [editedTitle, setEditedTitle] = useState(group.title)
   const scrollRef = useRef(null)
+  const lastTaskRef = useRef(null)
 
   const [addedProps, setAddedProps] = useState({})
   const [popoverProps, closePopover, openPopover] = usePopover()
@@ -55,6 +56,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
       try {
         await saveNewTask(board, group._id, task, activity)
         await addActivity(activity)
+        scrollToLastTask()
       } catch (err) {
         console.log('err', err)
       }
@@ -78,15 +80,19 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
   async function onSubmit(e) {
     if (e) {
       e.preventDefault()
-      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
     toggleForm(false)
     await onUpdateGroupTitle(group._id, editedTitle)
   }
 
-  function handleKeyPress(ev) {
-    if (ev.key === 'Enter') {
-      onSubmit(ev)
+  function scrollToLastTask() {
+    const lastTask = lastTaskRef.current.lastChild
+    lastTask.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      onAddTask(e)
     }
   }
 
@@ -111,8 +117,8 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
           <BsThreeDots />
         </button>
       </header>
-
-      <TaskList boardId={boardId} tasks={group.tasks} onDeleteTask={onDeleteTask} provided={provided} />
+    
+      <TaskList boardId={boardId} tasks={group.tasks} onDeleteTask={onDeleteTask} provided={provided} lastTaskRef={lastTaskRef}/>
 
       {!isAddingTask && (
         <section className="add-card-section">
@@ -128,7 +134,7 @@ export function GroupPreview({ group, onUpdateGroupTitle, onDeleteGroup, provide
       {isAddingTask && (
         <form onSubmit={onAddTask} className="add-card-form">
           <div className="text-container">
-            <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText} onKeyPress={handleKeyPress} autoFocus></textarea>
+            <textarea onChange={(e) => setNewTaskText(e.target.value)} value={newTaskText} onKeyPress={handleKeyPress} autoFocus/>
           </div>
           <AddCloseButtons btnText="Add Card" onClose={onCloseAddCard} isVisible={isAddingTask} scrollRef={scrollRef} />
         </form>
