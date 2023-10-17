@@ -3,7 +3,7 @@
     right: rem(-339px);
     top: rem(48px);
     width: rem(339px);
-    height: 100%;
+    height: calc(100% - 47px);
     background-color: $menu-bgc;
     z-index: 80;
     overflow-clip-margin: content-box;

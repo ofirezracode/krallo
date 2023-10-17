@@ -4,6 +4,10 @@
     position: relative;
     border-block-end: 1px solid $card-input-hover;
 
+    button {
+        background: none;
+    }
+
     .arrow-left {
         position: absolute;
         left: 0;

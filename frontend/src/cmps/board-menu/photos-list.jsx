@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { Loader } from '../loader'
 import { utilService } from '../../services/util.service'
-import { useSelector } from 'react-redux'
 import { BsCheckLg } from 'react-icons/bs'
 
 export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSelectedImg, selectedImg }) {
   const [imgs, setImgs] = useState([])
+  const [searchedTxt, setSearchedTxt] = useState('')
+  const [debouncedSearchTxt, setDebouncedSearchTxt] = useState('')
 
   const API_KEY_TAMAR = 'hAwJMEKfBFwvCKiI1MZl5TeXMPkv4tCdr_YPOW3im0g'
-  const API_KEY_ETAI = 'hjp37zjNt0WQ1s8R1MB8eXIvk5PNQigrRyOXgijwwT8'
-  const text = 'programming'
+  const API_KEY_ETAI = process.env.REACT_APP_UNSPLASH_API_KEY
   useEffect(() => {
-    const amount = resultsAmount ? resultsAmount : 30
-    const fetchImgs = async () => {
-      const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=${amount}&query=${text}&client_id=${API_KEY_ETAI}`)
+    async function fetchImgs() {
+      const response = await fetch(`https://api.unsplash.com/photos/random?count=30${debouncedSearchTxt ? `&query=${debouncedSearchTxt}` : ''}&client_id=${API_KEY_ETAI}`)
       // const response = await fetch(`https://api.unsplash.com/photos?&page=${utilService.getRandomIntInclusive(1, 1000)}&per_page=${amount}&query=pattern&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`)
       const data = await response.json()
       setImgs(data)
     }
     fetchImgs()
-  }, [])
+  }, [debouncedSearchTxt])
+
+  const debouncedSearch = utilService.debounce((value) => setDebouncedSearchTxt(value))
+
+  function onSearchPhotos(ev) {
+    ev.preventDefault()
+    setImgs([])
+    debouncedSearch(searchedTxt)
+  }
 
   function handleChange(img, ev) {
     let urls = img.urls
@@ -30,6 +37,17 @@ export function PhotosList({ onUpdateBoardBg, resultsAmount, returnSize, setSele
 
   return (
     <>
+      <form className="search-photos-bar" onSubmit={onSearchPhotos}>
+        <div>
+          <input
+            placeholder="Photos"
+            type="search"
+            className="input"
+            value={searchedTxt}
+            onChange={(ev) => setSearchedTxt(ev.target.value)}
+          />
+        </div>
+      </form>
       {!imgs ? (
         <div>
           <Loader />

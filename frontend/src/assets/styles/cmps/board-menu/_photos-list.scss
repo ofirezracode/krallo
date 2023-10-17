@@ -5,7 +5,7 @@
   gap: rem(8px);
   grid-auto-rows: max-content;
   grid-auto-flow: dense;
-  height: calc(100% - 98px);
+  height: calc(100% - 150px);
   overflow-x: hidden;
   overflow-y: auto;
   padding: rem(8px) rem(8px) rem(8px) rem(16px);
@@ -110,4 +110,8 @@
     display: block;
     height: 100%;
   }
+}
+
+.search-photos-bar {
+  padding: rem(6px) rem(6px) rem(6px) rem(12px);
 }
