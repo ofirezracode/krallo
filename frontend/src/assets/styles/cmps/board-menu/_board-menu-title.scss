@@ -6,12 +6,23 @@
 
     button {
         background: none;
+        width: rem(32px);
+        height: rem(32px);
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: $close-icon-hover-light;
+        }
     }
 
     .arrow-left {
         position: absolute;
         left: 0;
-        top: rem(10px);
+        top: rem(8px);
+
 
         svg {
             width: rem(28px);
@@ -19,10 +30,6 @@
             padding: rem(6px);
             stroke-width: rem(.5px);
             color: $text-subtle;
-
-            &:hover {
-                color: $blue-bolder;
-            }
         }
 
         transition: .2s ease-in-out;
