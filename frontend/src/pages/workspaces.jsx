@@ -19,11 +19,11 @@ export function Workspaces() {
     loadBoards()
   }, [])
 
-  async function onToggleIsStarred(ev, board) {
+  function onToggleIsStarred(ev, board) {
     try {
       ev.stopPropagation()
       ev.preventDefault()
-      const boardToToggle = await { ...board, isStarred: !board.isStarred }
+      const boardToToggle = { ...board, isStarred: !board.isStarred }
       updateBoard(boardToToggle)
     } catch (err) {
       console.log('err', err)

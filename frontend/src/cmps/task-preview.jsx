@@ -8,7 +8,7 @@ import { Indicator } from './task-preview-indicators/indicator'
 import { UsersList } from './users-list'
 import { colorService } from '../services/color.service'
 import EditIcon from '../assets/img/svg/edit-icon.svg'
-import { BsPencil } from 'react-icons/bs'
+import { BsPencil, BsTrash3 } from 'react-icons/bs'
 
 export function TaskPreview({ boardId, taskToPrev, onDeleteTask }) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -91,7 +91,7 @@ export function TaskPreview({ boardId, taskToPrev, onDeleteTask }) {
   return (
     <article className="task-preview" onClick={onOpenTaskDetails}>
       <button className="btn-edit" onClick={(e) => deleteTask(e)}>
-        <img src={EditIcon} alt="edit-icon" />
+        <BsTrash3 />
       </button>
       {/* <div className='task-wrapper'> */}
       {previewStyle.backgroundColor && (
